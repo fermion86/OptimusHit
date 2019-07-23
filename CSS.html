@@ -1,0 +1,121 @@
+<!--
+SY] 기초 문법
+선택자 { 속성 : 구체적인 값 ;}
+
+선택자 : a 링크, h1 태그
+속성 : color 색상, font-size 글자크기, text-align 문자위치
+
+   # <style>// css 요청 태그 </style>
+
+   # css text size property - 검색
+   # css text center property - 검색
+
+   # 클래스 선언 class ="클래스명 1, 클래스명 2"
+   .클래스명 {} < 호출가능     [ 순서에 영향을 받는다 : 2순위]
+
+   # ID 선언 ID="아이디명" [ 유일 무이한 값 ]
+   #아이디명 {} < 호출가능   [ 순서에 영향을 받는다 : 1순위]
+
+   # 코드의 우선순위
+   id(#.id명) > class(.클래스명) > a (태그 호출)
+
+   # block level element : 화면 전체를 대상으로 적용되는 테그
+   # in line element : 최소 부분만을 대상으로 적용되는 테그
+
+
+## CSS box model
+> 간편하게 확인하는 방법 (아래의 코드로 확인해보자)
+  속성1, 속성2 {
+   border-width:5px;
+   border-color:red;
+   border-style:soild;
+   // [한줄로 줄이면 border:5px solid red;]
+   참고 display :block; (비활성화)
+   내용과 테두리 사이의 간격 주기 padding: 20px;
+   테두리와 외부 사이의 간격 주기  margin:20px;
+   테그 (폭) 값을 주기 width:100px
+ }
+
+ 우클릭 > 검사 > 영향을 받는 내용을 모두 표시해줌
+
+# 아무의미가 없고 디자인 용도로만 쓰는 테그
+<div id="grid">
+  <div>NAVIGATION</div>>
+  <div>ARTICLE</div>>
+</div>
+
+caniuse.com < css 코드를 사용할 수 있는지 확인 가능한 사이트
+
+# media 쿼리 -특정 조건에서 자료를 보여주거나 지워주는 코드
+@media (max-width:800px){
+div{
+display:none;
+}
+}
+
+
+# style.css 파일을 생성해서
+<style>
+  내부 코드를 볼사해서 >> style.css 파일에 저장
+</style>
+
+그리고 우리가 만든 페이지로 이동해서
+<link rel ="stylesheet" href="style.css">
+이런식으로 링크를 걸어주면 페이지에 적용 완료
+
+-->
+
+
+<!doctype html>
+<html>
+ <head>
+   <title><h1><a href="1.html" style="color:pink; text-decoration:underline">WEB</a></h1></title>
+   <meta charset="utf-8">
+
+  <style>// css 요청 태그
+    #active{
+      color:red;
+    }
+
+    .saw {
+      color:skyblue;
+    }
+
+    h1 {
+        font-size: 60px;
+        text-align: center;
+    }
+
+    a {
+      color:black;  // a 링크로 시작하는 값을 모두 처리하는 코드
+      text-decoration:none;
+    }
+
+    #grid {
+      border:5px solid pink;
+      display:grid;
+      grid-template-columns: 150px 1fr;
+    }
+
+  </style>
+
+</head>
+
+
+<body>
+  <h1><a href="1.html" style="color:pink; text-decoration:underline">WEB</a></h1>
+
+  <div id="grid">
+    <div>NAVIGATION</div>
+
+    <div>ARTICLE</div>
+  </div>
+
+
+  <ol>
+    <h2><li><a href="2.html" class="saw"> HTML </a></li></h2>
+    <h2><li><a href="2.html" id="active"> CSS </a></li></h2>
+    <h2><li><a href="2.html"> JAVA </a></li></h2>
+  </ol>
+
+</body>
