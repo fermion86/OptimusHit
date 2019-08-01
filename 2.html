@@ -1,0 +1,393 @@
+<!doctype html>
+<html>
+    <head>
+            <title>WEB - html</title>
+            <meta charset="utf-8">
+
+          <style >
+            #GRID{
+              display: grid;
+              grid-template-columns: 250px 1fr;
+            }
+
+            a{
+              color:pink;
+              text-decoration: none;
+            }
+
+            pre{
+              font-size:20px;
+              text-decoration: none;
+            }
+            h1 {
+            font-size:40px;
+            text-align: center;
+            border-bottom:2px solid gray;
+            margin:0px;
+            padding:20px;
+            display:block;
+            }
+
+            #GRID ol{
+                border-right:2px solid gray;
+                width:150px;
+                margin:0px;
+                padding:20px;
+            }
+
+            @media(max-width:800px){
+            ol{
+              display:none;
+            }
+
+            #GRID{
+              display: block;
+            }
+          }
+          </style>
+    </head>
+
+
+
+    <body>
+
+        <h1><a href="index.html"> WEB - (html, css, java script) </a></h1>
+
+<div ID="GRID">
+
+
+        <ol>
+            <h3><li><a href="1.html"> 비교 연산자 & 논리연산자 </a></li></h3>
+            <h3><li><a href="2.html" > SUB QUERY </a></li></h3>
+            <h3><li><a href="3.html"> 테이블 명령문, 시퀀스 문제 </a></li></h3>
+        </ol>
+
+
+    <div id="GRId2">
+
+             <br><h2> 2.SUB QUERY </h2><br>
+<pre>
+
+  1. ['정남일' 선수가 소속된 팀]의 선수들에 대한 정보를 출력하시오
+  ( 알려지지 않은 구체적인 팀에 대한 정보가 필요하다 [결과 값이 1개] >> 단일 비교연산자 사용 )
+
+  SELECT *
+  FROM PLAYER P
+  WHERE P.TEAM_ID LIKE (SELECT TEAM_ID
+  FROM PLAYER
+  WHERE PLAYER_NAME LIKE '정남일');
+
+
+  2. 선수들 중에서 [키가 평균 이하인 선수]들의 정보를 출력하시오
+  ( 알려지지 않은 평균 키에 대한 정보가 필요하다 [결과 값이 1개] >> 단일 비교연산자 사용)
+
+  SELECT *
+  FROM PLAYER P
+  WHERE P.HEIGHT <=
+  (SELECT AVG(HEIGHT)
+  FROM PLAYER );
+
+
+  3. (어떤 부서별 급여 평균보다// 모든 부서별 급여 평균보다) 더 많이 받는 사원의 사원번호, 이름, 급여를 출력하세요.
+  (예) 각 부서별 // 각 구단별 // 각 지역별  - 각 XX별 << GROUP BY로 묶어서 사용하자
+  ( 알려지지 부서별 급여 평균에 대한 정보가 필요하다 [결과 값이 다수] 비교는 다중 행 비교연산자 사용 )
+
+  * 다중 행 비교 연산자( ANY, ALL, IN, EXISTS )
+
+  SELECT *
+  FROM EMP
+  WHERE SAL > ANY (SELECT AVG(SAL) // 어떤 값보다 크다 ( 즉 가장 작은 값보다 크면 참 )
+  FROM EMP
+  GROUP BY DEPTNO )
+
+  SELECT *
+  FROM EMP
+  WHERE SAL > ALL (SELECT AVG(SAL) // 모든 값보다 크다 ( 즉 가장 큰 값보다 크면 참 )
+  FROM EMP
+  FROM EMP
+  GROUP BY DEPTNO )
+
+
+  4. [CHICAGO 지역에 근무]하는 사원들 중 [BLAKE가 직속상관]인 사원들의 사원번호, 이름, 직무를 출력하세요.
+  ( 알려지지 BLAKE에 EMPNO에 대한 정보가 필요하다 [결과 값이 1개] >> 단일 비교연산자 사용 )
+  ( 조회된 결과 값을 비교하는 곳이 기존의 EMPNO 열이 아니라 MGR 열이라는 부분이 새롭다 )
+
+  SELECT *
+  FROM EMP e, DEPT d
+  WHERE e.DEPTNO = d.DEPTNO
+  AND e.mgr = (SELECT empno FROM EMP WHERE ename = 'BLAKE')
+  AND d.loc = 'CHICAGO';
+
+
+  * 아래는 조인 없이 문제를 풀어보았다 ( 쿼리문을 확인해보자 )
+
+  SELECT *
+  FROM EMP
+  WHERE MGR LIKE (
+  SELECT EMPNO
+  FROM EMP
+  WHERE DEPTNO LIKE (
+  SELECT DEPTNO
+  FROM DEPT
+  WHERE LOC LIKE 'CHICAGO')
+  AND ENAME LIKE 'BLAKE');
+
+  + GROUP BY
+
+  5. [각 부서별]로 [최고급여를 받는 직원]의 Dept_id, ID, Last_name, Salary를 출력하시오.
+  (예) 각 부서별 // 각 구단별 // 각 지역별  - 각 XX별 << GROUP BY로 묶어서 사용하자
+  ( 알려지지 않은 각 부서별 최고급여에 대한 정보가 필요하다 [결과 값이 다수] 비교는 다중 행 비교연산자 사용 )
+
+  [SY] [좌측] IN [우측] - IN 명령어는 좌측에 주어진 값이 우측에 들어 있는지를 비교해서 확인하는 명령어이다
+   따라서 비교 대상이 다수라면 괄호를 사용해 묶어주고 복수의 비교대상을 명확히 알려주어야 비교할 수 있다
+
+  SELECT *
+  FROM S_EMP
+  WHERE (DEPT_ID, SALARY) IN(
+  SELECT  E.DEPT_ID, MAX(SALARY)
+  FROM S_EMP E
+  GROUP BY E.DEPT_ID)
+
+
+  6. ['20120501' 부터 '20120502' 사이에 경기가 있는] 경기장을 출력하시오.
+  ( 알려지지 않은 기간별 경기일정에 대한 정보가 필요하다 [결과 값이 다수] )
+
+  SELECT *
+  FROM STADIUM S, SCHEDULE C
+  WHERE C.SCHE_DATE BETWEEN '20120501' AND '20120502'
+  AND S.STADIUM_ID=C.STADIUM_ID;
+
+  * 다중 행 비교 연산자( EXISTS )
+  SELECT STADIUM_ID ID
+       , STADIUM_NAME 경기장명
+    FROM STADIUM A
+   WHERE EXISTS
+         (SELECT 1
+          FROM SCHEDULE X
+          WHERE X.STADIUM_ID = A.STADIUM_ID
+          AND X.SCHE_DATE BETWEEN '20120501' AND '20120502'
+         ) ;
+
+
+  7. [소속팀별] 키가 가장 작은 사람들의 정보를 출력하시오
+  (예) 각 부서별 // 각 구단별 // 각 지역별  - 각 XX별 << GROUP BY로 묶어서 사용하자
+  ( 알려지지 않은  소속팀별 키가 가장 작은 사람에 대한 정보가 필요하다 [결과 값이 다수] 비교는 다중 행 비교연산자 사용 )
+
+  SELECT *
+  FROM PLAYER
+  WHERE (TEAM_ID, HEIGHT) IN
+  (SELECT TEAM_ID, MIN(HEIGHT)
+  FROM PLAYER
+  GROUP BY TEAM_ID);
+
+
+  8. [각 부서별]로 최고급여를 받는 직원의 Dept_id, ID, Last_name, Salary를 출력하시오.
+  (예) 각 부서별 // 각 구단별 // 각 지역별  - 각 XX별 << GROUP BY로 묶어서 사용하자
+  ( 알려지지 않은  부서별 최고급여를 받는 직원에 대한 정보가 필요하다 [결과 값이 다수] 비교는 다중 행 비교연산자 사용 )
+
+  SELECT *
+  FROM S_EMP
+  WHERE ( DEPT_ID, SALARY) IN
+  (SELECT DEPT_ID, MAX(SALARY)
+  FROM S_EMP
+  GROUP BY DEPT_ID);
+
+
+  9. K-리그 선수들 중에서 [포지션이 미드필더(MF)]인 선수들의 [소속팀명] 및 선수 정보를 출력하시오.
+  ( [소속팀명]에 대한 정보가 PLAYER 테이블에 없으므로 [TEAM 테이블에 조인해서 사용] )
+
+  SELECT *
+  FROM PLAYER P, TEAM T
+  WHERE P.POSITION LIKE 'MF'
+  AND P.TEAM_ID=T.TEAM_ID;
+
+
+  ## 주제 SUB QUERY > IN LINE VIEW
+  + ORDER BY
+  10. K리그 선수 중 [가장 키가 큰 선수 5명]을 출력하시오.
+  조사하는 열에 null이 존재 - 모든 과정에 방해요소로 작용할 수 있다 [ is not null을 통해 제거해주자 ]
+  가장 큰 선수부터 5명 (ORDER BY DESC)  < ROWNUM을 사용해야함 ( IN LINE VIEW )
+
+  SELECT *
+  FROM (SELECT *
+  FROM PLAYER
+  WHERE HEIGHT IS NOT NULL
+  ORDER BY HEIGHT DESC)
+  WHERE ROWNUM <= 5;
+
+  11. [최근 입사한 5명의 사원]을 출력하시오.
+  최근 입사한 5명의 사원 (ORDER BY DESC) < ROWNUM을 사용해야함 ( IN LINE VIEW )
+
+  SELECT *
+  FROM (SELECT *
+  FROM EMP
+  ORDER BY HIREDATE DESC)
+  WHERE ROWNUM <=5
+
+  12. 사원의 급여를 [내림차순]으로 모든 정보를 출력하시오.
+
+  SELECT *
+  FROM EMP
+  ORDER BY SAL DESC;
+
+  만약 월급이 동일 한 경우 사원 이름을 [오름 차순]으로 출력하시오
+
+  SELECT *
+  FROM EMP
+  ORDER BY SAL DESC, ENAME ASC;
+
+  13. [급여를 최고 높은 순으로 정렬]하여 사원과 [급여 순위]를 출력하시오.
+  최고 높은 순으로 정렬 (ORDER BY DESC) < ROWNUM을 사용해야함 ( IN LINE VIEW )
+
+  SELECT ROWNUM, ENAME, SAL
+  FROM
+  (SELECT *
+  FROM EMP E
+  ORDER BY SAL DESC);
+
+  14. 급여를 많이 받는 [6 ~ 10번째 사원]을 출력하시오.
+  급여를 많이 받는 [6 ~ 10번째 사원] (ORDER BY DESC) < ROWNUM을 사용해야함 ( IN LINE VIEW )
+  [ ROWNUM은 1번부터 확인을 하기 때문에 중간 값을 확인하기 위해서는 열이름을 부여해서 열로 지정하고 사용함 ]
+
+  SELECT  NO, ENAME, SAL
+  FROM
+  (SELECT ROWNUM AS NO, ENAME, SAL
+  FROM EMP
+  ORDER BY SAL DESC)
+  WHERE NO BETWEEN 6 AND 10;
+  ( WHERE NO >=6 AND NO <= 10; )
+
+
+  ## ROWNUM은 1번부터 처리 ( 열이름 부여 x )
+  SELECT ROWNUM,  ENAME, SAL
+  FROM
+  (SELECT *
+  FROM EMP
+  ORDER BY SAL DESC)
+  WHERE ROWNUM BETWEEN 1 AND 10;
+
+
+  ## NOT BETWEEN
+  SELECT  NO, ENAME, SAL
+  FROM
+  (SELECT ROWNUM AS NO, ENAME, SAL
+  FROM EMP
+  ORDER BY SAL DESC)
+  WHERE NO NOT BETWEEN 6 AND 10;
+
+  ## SUB QUERY 종합문제
+  15. 삼성블루윙즈팀(K02)의 [평균키]보다 평균키가 작은 팀의 [이름]과 해당 팀의 [평균키]를 출력하시오.
+  ( 알려지지 않은 [삼성블루윙즈의 평균키 확인]에 대한 정보가 필요하다 [결과 값이 1개] >> 단일 비교연산자 사용)
+
+  > 비교를 하기 위해서는 [각 팀의 평균키] 필요
+   (예) 각 부서별 // 각 구단별 // 각 지역별  - 각 XX별 << GROUP BY로 묶어서 사용하자
+
+  > [삼성블루윙즈의 평균키] [각 팀의 평균키]을 비교하여 결과 출력
+   ( GROUP BY로 묶어진 자료를 비교할 때에는 HAVING절을 사용한다 )
+
+  SELECT A.TEAM_ID
+       , B.TEAM_NAME
+       , AVG(A.HEIGHT)
+   FROM PLAYER A
+       , TEAM B
+   WHERE A.TEAM_ID=B.TEAM_ID
+   GROUP BY A.TEAM_ID, B.TEAM_NAME
+
+  HAVING AVG(A.HEIGHT) <
+         (SELECT AVG(P.HEIGHT) AS AH
+           FROM PLAYER P
+              , TEAM T
+          WHERE P.TEAM_ID=T.TEAM_ID
+                AND T.TEAM_NAME LIKE '삼성블루윙즈'
+         );
+
+  16. [사원이 속해있는] [부서번호와 부서이름]을 출력하시오, 단, [중복 값은 허용하지 않는다]
+  ( 일반 조인활용 쿼리문과 서브쿼리 활용문이 있다 두가지를 생각해보고 차이점을 생각해보자)
+
+  ( [부서이름]에 대한 정보가 EMP 테이블에 없으므로 [EMP 테이블에 조인해서 사용] )
+  > 중복 값을 허용하지 않을 때 DISTINCT 함수 사용  << 주의 SELECT 절에서만 사용가능
+
+  SELECT DISTINCT D.DEPTNO, D.DNAME
+  FROM EMP E, DEPT D
+  WHERE E.DEPTNO=D.DEPTNO
+
+
+  ## 다중 행 비교 연산자( EXISTS )
+  ( 알려지지 않은 [사원이 소속된 부서 번호, 부서이름]에 대한 정보가 필요하다 [결과 값이 다수] >> 다중 행 비교연산자 사용)
+
+  SELECT A.DEPTNO, A.DNAME
+  FROM DEPT A
+  WHERE EXISTS
+  (SELECT *
+  FROM EMP B
+  WHERE A.DEPTNO=B.DEPTNO)
+
+
+  ## GROUP BY는 DISTINCT 기능을 가진다
+  SELECT D.DEPTNO, D.DNAME
+  FROM EMP E, DEPT D
+  WHERE E.DEPTNO=D.DEPTNO
+  GROUP BY  D.DEPTNO, D.DNAME
+
+  [ 직접 설명해 보는 시간을 갖자 ]
+  17. [K02소속의 선수 평균키]보다 [작은 소속팀]의 이름과 평균키 팀번호를 출력하시오
+  ( 알려지지 않은 [K02의 평균키 확인]에 대한 정보가 필요하다 [결과 값이 1개] >> 단일 비교연산자 사용)
+
+  SELECT P.TEAM_ID 팀코드
+       , T.TEAM_NAME 팀명
+       , AVG(P.HEIGHT) 평균키
+    FROM PLAYER P
+       , TEAM T
+   WHERE P.TEAM_ID = T.TEAM_ID
+   GROUP BY P.TEAM_ID
+       , T.TEAM_NAME
+  HAVING AVG(P.HEIGHT) <
+         (SELECT AVG(HEIGHT)
+           FROM PLAYER
+          WHERE TEAM_ID ='K02'
+         );
+
+
+</pre>
+          </div>
+        </div>
+
+  <p>
+    <div id="disqus_thread"></div>
+    <script>
+
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://optimushit.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </p>
+  <p>
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/5d42ddb27d27204601c8c3a9/default';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    <!--End of Tawk.to Script-->
+  </p>
+  </body>
+</html>
