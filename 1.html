@@ -1,0 +1,234 @@
+<!doctype html>
+<html>
+    <head>
+            <title>WEB - html</title>
+            <meta charset="utf-8">
+
+          <style >
+            #GRID{
+              display: grid;
+              grid-template-columns: 250px 1fr;
+            }
+
+            a{
+              color:pink;
+              text-decoration: none;
+            }
+
+            pre{
+              font-size:20px;
+              text-decoration: none;
+            }
+            h1 {
+            font-size:40px;
+            text-align: center;
+            border-bottom:2px solid gray;
+            margin:0px;
+            padding:20px;
+            display:block;
+            }
+
+            #GRID ol{
+                border-right:2px solid gray;
+                width:150px;
+                margin:0px;
+                padding:20px;
+            }
+
+            @media(max-width:800px){
+            ol{
+              display:none;
+            }
+
+            #GRID{
+              display: block;
+            }
+          }
+          </style>
+    </head>
+
+
+
+    <body>
+
+        <h1><a href="index.html"> WEB - (html, css, java script) </a></h1>
+
+<div ID="GRID">
+
+
+        <ol>
+            <h3><li><a href="1.html"> 비교 연산자 & 논리연산자 </a></li></h3>
+            <h3><li><a href="2.html" > SUB QUERY </a></li></h3>
+            <h3><li><a href="3.html"> 테이블 명령문, 시퀀스 문제 </a></li></h3>
+        </ol>
+
+
+    <div id="GRId2">
+
+             <br><h2> 1. 비교 연산자 & 논리연산자 활용 & SQL 연산자 </h2><br>
+<pre>
+             비교 연산자 & 논리연산자 활용 & SQL 연산자
+
+             1. 소속팀이 삼성블루윙즈팀인 선수들을 출력 하시오
+
+             SELECT *
+             FROM PLAYER P, TEAM T
+             WHERE P.TEAM_ID=T.TEAM_ID
+             AND TEAM_NAME LIKE '삼성블루윙즈';
+
+             2. 포지션이 미드필더인 선수들을 출력하시오
+
+             SELECT *
+             FROM PLAYER P
+             WHERE P.POSITION LIKE 'MF';
+
+             3. 키가 170이상인 선수들을 출력하시오
+
+             SELECT *
+             FROM PLAYER P
+             WHERE P.HEIGHT >=170;
+
+             4. 소속팀이 삼성블루윙즈(K02) [이거나, 혹은] 전남드래곤즈에 소속된 선수들을 출력하시오
+             ( A 이거나(혹은) B => A 라도 true B 라도 true )  < 확인 대상이 2개 이상일 때 IN을 사용
+
+             SELECT *
+             FROM PLAYER P, TEAM T
+             WHERE P.TEAM_ID=T.TEAM_ID
+             AND TEAM_NAME IN ('삼성블루윙즈', '드래곤즈');
+
+             예를들어 포지션이 DF이거나 MF 이거나 FW 인 사람을 구한다면
+             WHERE POSITION IN('MF','DF','FW');
+
+             5. 소속이 삼성블루윙즈 [이거나, 혹은] 전남드래곤즈이며, 포지션이 미드필더이면서 현재 키가 [170이상 180이하]인 선수들을 출력하시오
+             ( XX 이상 ~ XX 이하 ) < 특정구간 내 확인 BETWEEN a AND b
+
+             SELECT *
+             FROM PLAYER P, TEAM T
+             WHERE P.TEAM_ID=T.TEAM_ID
+             AND TEAM_NAME IN ('삼성블루윙즈', '드래곤즈')
+             ( WHERE TEAM_ID LIKE '삼성블루윙즈' OR TEAM_ID = '드래곤즈' )
+             AND POSITION LIKE 'MF'
+             AND HEIGHT BETWEEN 170 AND 180;
+             ( AND HEIGHT >= 170 AND HEIGHT <= 180 )
+
+
+             6. 소속이 삼성블루윙즈[이거나, 혹은] 전남드래곤즈이며, 포지션이 미드필더가 [아니면서] 현재 키가 [170이상 180이하]인 선수들을 출력하시오
+
+             SELECT *
+             FROM PLAYER P, TEAM T
+             WHERE P.TEAM_ID=T.TEAM_ID
+             AND TEAM_NAME IN ('삼성블루윙즈', '드래곤즈')
+             AND POSITION NOT LIKE 'MF'
+             ( AND POSITION <> 'MF' ) // [<>] 동일한 의미 [!=], [^=]
+             AND HEIGHT BETWEEN 170 AND 180;
+
+
+             7. JOB이 MANAGER[이면서] 20번 부서에 [속하거나] JOB이 CLERK[이면서] 30번 부서에 속하는 사원의 정보를 출력하여라
+             ( IN을 통해 확인해야할 조건이 기존에 1개가 아나라  2개로 늘어났다 )
+
+             [SY] [좌측] IN [우측] - IN 명령어는 좌측에 주어진 값이 우측에 들어 있는지를 비교해서 확인하는 명령어이다
+              따라서 비교 대상이 다수라면 괄호를 사용해 묶어주고 복수의 비교대상을 명확히 알려주어야 비교할 수 있다
+
+             SELECT *
+             FROM EMP
+             WHERE (JOB, DEPTNO) IN (('MANAGER',20),('CLERK',30));
+             ( 위에서 설명한 IN을 써야 하는 것은 알겠다 -> 모르겠으면 위로 다시 이동 )
+
+             * 추가 - UNION(합집합)을 이용해서 처리하는 방법도 있다
+             SELECT *
+             FROM EMP
+             WHERE JOB LIKE 'MANAGER'
+             AND DEPTNO LIKE 20
+             UNION
+             SELECT *
+             FROM EMP
+             WHERE JOB LIKE 'CLERK'
+             AND DEPTNO LIKE 30;
+
+
+             	8, 부서 번호가 20번[이면서] 급여가 1000이상 받는 사원 [이거나(혹은)] 전체 사원중 급여 4000이상을 받는 사원을 출력하시오
+
+             [SY] [좌측] OR [우측] - OR 명령어는 좌측에 주어진 값  이거나(혹은) 우측에 주어진 값 인지를 확인하는 명령어이다
+               따라서 테이블 값이 좌측에 주어진 조건 이거나 (혹은) 우측에 주어진 조건인가를 식별하는 용도로 사용할 수 있다
+
+             SELECT *
+             FROM EMP
+             WHERE (DEPTNO LIKE 20 AND SAL >= 1000) OR SAL >=4000;
+
+
+             * 추가 - UNION(합집합)을 이용해서 처리하는 방법도 있다
+             SELECT *
+             FROM EMP
+             WHERE DEPTNO LIKE 20
+             AND SAL >= 1000
+             UNION
+             SELECT *
+             FROM EMP
+             WHERE SAL >=4000
+
+             	9. 부서번호가 20이번 이면서 급여가 1000이상이거나 4000이하인 사원을 출력 하시오
+
+             SELECT *
+             FROM EMP
+             WHERE DEPTNO LIKE 20
+             AND SAL BETWEEN 1000 AND 4000;
+
+             * 실전 문제
+
+             	부서 번호가 10번[이면서] 직업이 ‘CLERK‘ [이거나(혹은)] 부서 번호가 30번[이면서] 직업이 ‘SALESMAN‘ 인 사원들과
+                부서 번호가 20번[이면서] 급여가 3000이상 받는 사원 [이거나(혹은)] 전체 사원중 급여가 1000이하인 사원들을 모두 출력하세오
+
+
+              사원을 출력하시오
+
+
+             ANS]
+
+             SELECT *
+             FROM EMP
+             WHERE (JOB, DEPTNO) IN(('CLERK',10),('SALESMAN',30)) OR (DEPTNO LIKE 20 AND SAL>=3000) OR SAL<=1000;
+
+
+             ANS]
+
+             SELECT *
+             FROM EMP
+             WHERE (JOB, DEPTNO) IN(('CLERK',10),('SALESMAN',30))
+             UNION
+             SELECT *
+             FROM EMP
+             WHERE  (DEPTNO LIKE 20 AND SAL>=1000)
+             UNION
+             SELECT*
+             FROM EMP
+             WHERE SAL<=1000;
+
+</pre>
+          </div>
+        </div>
+
+  <p>
+    <div id="disqus_thread"></div>
+    <script>
+
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://optimushit.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </p>
+
+  </body>
+</html>
