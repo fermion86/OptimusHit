@@ -1,0 +1,426 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="logi_GiveOrderForm" width="1200" height="780" titletext="New Form" onload="logi_GiveOrderForm_onload">
+    <Layouts>
+      <Layout height="780" mobileorientation="landscape" width="1200">
+        <Static id="giveOrder_stc" taborder="0" text="발주관리" onclick="Static00_onclick" left="14" top="9" right="29" height="45" border="3px solid darkblue" font="18pt/normal &quot;a두리둥실&quot;" textAlign="center"/>
+        <Grid id="orderDetail_grid" taborder="1" binddataset="ds_orderDetail" autofittype="col" left="14" top="490" width="1156" height="278" font="12pt &quot;a두리둥실&quot;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="120"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="25"/>
+              </Rows>
+              <Band id="head">
+                <Cell displaytype="normal" text="발주상세번호" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" displaytype="normal" text="품목코드" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" displaytype="normal" text="품목명" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" displaytype="normal" text="단위" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" displaytype="normal" text="납기일" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="5" displaytype="normal" text="입고일" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="6" displaytype="normal" text="발주수량" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="7" displaytype="normal" text="단가" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="8" displaytype="normal" text="합계금액" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="normal" text="bind:ORDER_DETAIL_NO" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" displaytype="normal" text="bind:ITEM_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" displaytype="normal" text="bind:ITEM_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" displaytype="normal" text="bind:UNIT_OF_ORDER" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" displaytype="normal" text="bind:DUE_DATE_OF_ORDER" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="5" displaytype="normal" text="bind:DUE_DATE_OF_ORDER" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="6" displaytype="normal" text="bind:ORDER_AMOUNT" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="7" displaytype="normal" text="bind:UNIT_PRICE_OF_ORDER" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="8" displaytype="normal" text="bind:SUM_PRICE_OF_ORDER" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="registerOrder_btn" taborder="2" text="발주등록" left="1053" top="439" width="117" height="39" onclick="registerOrder_btn_onclick" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="addOderDetail_btn" taborder="3" left="910" top="439" width="117" height="39" onclick="addOderDetail_btn_onclick" visible="true" font="12pt &quot;a두리둥실&quot;" text="발주상세추가"/>
+        <GroupBox id="GroupBox00" taborder="4" text="대기중인 발주" left="14" top="95" width="1156" height="333" font="18pt/normal &quot;a두리둥실&quot;"/>
+        <Grid id="mrpGathering_grid" taborder="5" binddataset="ds_orderGathering" autofittype="col" left="14" top="130" width="572" height="288" oncelldblclick="addOderDetail_btn_onclick" font="12pt &quot;a두리둥실&quot;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="25"/>
+              </Rows>
+              <Band id="head">
+                <Cell displaytype="normal" text="품목코드" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" displaytype="normal" text="품목명" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" displaytype="normal" text="수주수량" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" displaytype="normal" text="필요수량" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" displaytype="normal" text="납기일" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="normal" text="bind:ITEM_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" displaytype="normal" text="bind:ITEM_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" displaytype="normal" text="bind:AMOUNT" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" displaytype="normal" edittype="text" text="bind:ORDER_AMOUNT" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" displaytype="normal" text="bind:DELIVERY_SCHEDULE_DATE" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="orderGathering_btn" taborder="6" text="소요량 발주취합" left="449" top="81" width="137" height="39" onclick="orderGathering_btn_onclick" font="12pt &quot;a두리둥실&quot;"/>
+        <Grid id="orderInfo_grid" taborder="7" binddataset="ds_orderInfo" autofittype="col" left="598" top="130" width="572" height="288" treeinitstatus="collapse,all" font="12pt &quot;a두리둥실&quot;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell displaytype="normal" text="발주번호" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" displaytype="normal" text="구매처" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" displaytype="normal" text="발주일자" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" displaytype="normal" text="발주담당자" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="normal" text="bind:ORDER_NO" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" displaytype="combo" edittype="combo" text="bind:CUSTOMER_CODE" combodataset="gds_customer" combocodecol="CUSTOMER_CODE" combodatacol="CUSTOMER_NAME" combodisplayrowcount="5" combodisplay="display" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" displaytype="normal" text="bind:ORDER_DATE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" displaytype="normal" text="bind:PERSON_CODE_IN_CHARGE" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="addOrder_btn" taborder="8" text="발주추가" left="1053" top="81" width="117" height="39" onclick="addOrder_btn_onclick" font="12pt &quot;a두리둥실&quot;"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_orderGathering">
+        <ColumnInfo>
+          <Column id="ITEM_CODE" type="STRING" size="256"/>
+          <Column id="ITEM_NAME" type="STRING" size="256"/>
+          <Column id="UNIT_OF_ORDER" type="STRING" size="256"/>
+          <Column id="DELIVERY_SCHEDULE_DATE" type="STRING" size="256"/>
+          <Column id="AMOUNT" type="STRING" size="256"/>
+          <Column id="ORDER_AMOUNT" type="STRING" size="256"/>
+          <Column id="ORDER_GATHERING_STATUS" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_orderInfo">
+        <ColumnInfo>
+          <Column id="ORDER_NO" type="STRING" size="256"/>
+          <Column id="CUSTOMER_CODE" type="STRING" size="256"/>
+          <Column id="ORDER_DATE" type="STRING" size="256"/>
+          <Column id="PERSON_CODE_IN_CHARGE" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+          <Column id="ORDER_INFO_STATUS" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_orderDetail">
+        <ColumnInfo>
+          <Column id="ORDER_DETAIL_NO" type="STRING" size="256"/>
+          <Column id="ORDER_NO" type="STRING" size="256"/>
+          <Column id="ITEM_CODE" type="STRING" size="256"/>
+          <Column id="ITEM_NAME" type="STRING" size="256"/>
+          <Column id="UNIT_OF_ORDER" type="STRING" size="256"/>
+          <Column id="DUE_DATE_OF_ORDER" type="STRING" size="256"/>
+          <Column id="DELIVERY_SCHEDULE_DATE" type="STRING" size="256"/>
+          <Column id="ORDER_AMOUNT" type="STRING" size="256"/>
+          <Column id="UNIT_PRICE_OF_ORDER" type="STRING" size="256"/>
+          <Column id="SUM_PRICE_OF_ORDER" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+          <Column id="MRP_GATHERING_NO" type="STRING" size="256"/>
+          <Column id="ORDER_DETAIL_STATUS" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_item">
+        <ColumnInfo>
+          <Column id="ITEM_CODE" type="STRING" size="256"/>
+          <Column id="ITEM_NAME" type="STRING" size="256"/>
+          <Column id="ITEM_GROUP_CODE" type="STRING" size="256"/>
+          <Column id="ITEM_CLASSIFICATION" type="STRING" size="256"/>
+          <Column id="UNIT_OF_STOCK" type="STRING" size="256"/>
+          <Column id="LOSS_RATE" type="STRING" size="256"/>
+          <Column id="LEAD_TIME" type="STRING" size="256"/>
+          <Column id="STANDARD_UNIT_PRICE" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[// 온로드
+this.logi_GiveOrderForm_onload = function (obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.ds_orderInfo.filter("ORDER_INFO_STATUS!='Y'");
+	this.ds_orderDetail.filter("ORDER_DETAIL_STATUS=='xx'");
+
+	// 발주상세
+	this.transaction("findOrderDetailList",
+		"dataURL::logi/purchase/findOrderDetailList.do",
+		"",
+		"ds_orderDetail=ds_orderDetail",
+		"",
+		"callback",
+		false
+	);
+
+	// 품목
+	this.transaction("findItemList",
+		"dataURL::logi/purchase/findItemList.do",
+		"",
+		"ds_item=ds_item",
+		"",
+		"callback",
+		false
+	);
+	this.transaction("findOrderGatheringList",
+		"dataURL::logi/purchase/findOrderGatheringList.do",
+		"",
+		"ds_orderGathering=ds_orderGathering",
+		"page='giveOrder'",
+		"callback",
+		true
+	);
+};
+
+// 소요량 발주취합
+this.orderGathering_btn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	nexacro.open(
+		"logi_OrderGatheringDial",
+		"logi_purchase::logi_OrderGatheringDialog.xfdl",
+		this.getOwnerFrame(),	//소속된 부모 Frame 을 반환하는 메소드입니다.
+		null, //null설정시 부모가 설정안됨
+		"showtitlebar=true showstatusbar=false openalign='center middle' showcascadetitletext=false titletext='deliveryHistory'"
+		//Modeless Window 로 표시할 ChildFrame 에 추가될 변수리스트를 "{변수명:변수값 , 변수명:변수값}" 형식으로 설정합니다.
+	);
+};
+
+this.squenceNo = "";
+// 발주추가
+this.addOrder_btn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	// ======ORDER_NO 생성=========
+	this.transaction("takeSerialCode",
+		"dataURL::sys/findSequenceNo.do", "", "", "findSeq='SERIAL_SEQ'", "codeCallback", false);
+
+	var serialCode = this.squenceNo;
+	nexacro.getApplication().trace("000" + serialCode);
+	
+	//새로운 발주번호는 ORD로시작 
+	var newNo = "ORD" + serialCode;	
+	trace(newNo+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+	// ===========================
+
+
+	// 거래처 조회
+	this.transaction(
+		"findCustomerList",
+		"dataURL::sys/findCustomerList.do",
+		"",
+		"gds_customer=ds_customer",
+		"",
+		"callback",
+		false
+	);
+
+	var rowNum = this.ds_orderInfo.addRow();
+
+	this.ds_orderInfo.setColumn(rowNum, "ORDER_NO", newNo);
+	this.ds_orderInfo.setColumn(rowNum, "ORDER_DATE", nexacro.getApplication().today());
+	this.ds_orderInfo.setColumn(rowNum, "PERSON_CODE_IN_CHARGE", nexacro.getApplication().g_empCode);
+
+	var OICount = this.ds_orderInfo.getRowCount();
+	nexacro.getApplication().trace(OICount);
+	nexacro.getApplication().trace(i + "," + "주문번호 : " + this.ds_orderInfo.getColumn(i, "ORDER_NO"));
+};
+
+// 발주상세 추가
+this.addOderDetail_btn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	var orderGNum = this.ds_orderGathering.rowposition;
+	var orderNum = this.ds_orderInfo.rowposition;
+	var customer = this.ds_orderInfo.getColumn(orderNum, "CUSTOMER_CODE");
+
+	if (this.ds_orderGathering.getColumn(orderGNum, "ORDER_AMOUNT") < 1) 
+	{
+		alert("0개는 발주 신청을 할 수 없습니다.");
+		return;
+	}
+
+
+	if (orderNum == -1) 
+	{
+		nexacro.getApplication().alert("발주서를 선택해주세요");
+	}
+	else 
+	{
+		// if(Type(customer)!="null")
+		if (customer != "null") 
+		{
+			if (orderGNum == -1) 
+			{
+				nexacro.getApplication().alert("선택한 아이템이 없습니다");
+			}
+			else 
+			{
+				orderNo = this.ds_orderInfo.getColumn(orderNum, "ORDER_NO");
+				nexacro.getApplication().trace("4,orderNo : " + orderNo);
+				this.ds_orderGathering.setColumn(orderGNum, "ORDER_GATHERING_STATUS", 'Y');
+				var STATUS = this.ds_orderInfo.getColumn(orderGNum, "ORDER_GATHERING_STATUS");
+				nexacro.getApplication().trace("5,STATUS : " + STATUS);
+
+				var itemCode0 = this.ds_orderGathering.getColumn(orderGNum, "ITEM_CODE");
+				nexacro.getApplication().trace("6,itemCode0 : " + itemCode0);
+				var findItemRow = this.ds_item.findRow("ITEM_CODE", itemCode0);
+				nexacro.getApplication().trace("7,findItemRow : " + findItemRow);
+				var unitPrice = this.ds_item.getColumn(findItemRow, "STANDARD_UNIT_PRICE");
+				nexacro.getApplication().trace("8,unitPrice : " + unitPrice);
+
+				// var mrpGatheringNo; // 소요량 취합번호
+				var itemCode;
+				var itemName;
+				var unitOfOrder;
+				var dueDateOfOrder;
+				var orderAmount;
+				itemCode = this.ds_orderGathering.getColumn(orderGNum, "ITEM_CODE");
+				nexacro.getApplication().trace("9,itemCode : " + itemCode);
+				itemName = this.ds_orderGathering.getColumn(orderGNum, "ITEM_NAME");
+				nexacro.getApplication().trace("10,itemName : " + itemName);
+				unitOfOrder = this.ds_orderGathering.getColumn(orderGNum, "UNIT_OF_ORDER");
+				nexacro.getApplication().trace("11,unitOfOrder : " + unitOfOrder);
+				dueDateOfOrder = this.ds_orderGathering.getColumn(orderGNum, "DELIVERY_SCHEDULE_DATE");
+				nexacro.getApplication().trace("12,dueDateOfOrder : " + dueDateOfOrder);
+				orderAmount = this.ds_orderGathering.getColumn(orderGNum, "ORDER_AMOUNT");
+				nexacro.getApplication().trace("13,orderAmount : " + orderAmount);
+
+				nexacro.getApplication().trace("14" + this.ds_orderGathering.getColumn(orderGNum, "DELIVERY_SCHEDULE_DATE"));
+
+				// ======ORDER_NO 생성=========
+				this.transaction("takeSerialCode",
+					"dataURL::sys/findSequenceNo.do", "", "", "findSeq='SERIAL_SEQ'", "codeCallback", false
+				);
+
+				var serialCode = this.squenceNo;
+				// application.trace("000"+serialCode);
+				nexacro.getApplication().trace("15,serialCode : " + serialCode);
+				var newNo = "ORD" + serialCode;
+				// application.trace(newNo);
+				nexacro.getApplication().trace("16,serialCode : " + serialCode);
+				// ===========================
+
+				var orderDNum = this.ds_orderDetail.addRow();
+				nexacro.getApplication().trace("17,orderDNum : " + orderDNum);
+
+				this.ds_orderDetail.setColumn(orderDNum, "ORDER_NO", orderNo);
+				this.ds_orderDetail.setColumn(orderDNum, "ORDER_DETAIL_NO", newNo);
+				this.ds_orderDetail.setColumn(orderDNum, "ITEM_CODE", itemCode);
+				this.ds_orderDetail.setColumn(orderDNum, "ITEM_NAME", itemName);
+				this.ds_orderDetail.setColumn(orderDNum, "UNIT_OF_ORDER", unitOfOrder);
+				this.ds_orderDetail.setColumn(orderDNum, "DUE_DATE_OF_ORDER", dueDateOfOrder);
+				this.ds_orderDetail.setColumn(orderDNum, "ORDER_AMOUNT", orderAmount);
+				// this.ds_orderDetail.setColumn(orderDNum,"MRP_GATHERING_NO",mrpGatheringNo);
+				this.ds_orderDetail.setColumn(orderDNum, "UNIT_PRICE_OF_ORDER", unitPrice);
+
+				var sum = unitPrice * orderAmount;
+				this.ds_orderDetail.setColumn(orderDNum, "SUM_PRICE_OF_ORDER", sum);
+
+				this.ds_orderGathering.filter("ORDER_GATHERING_STATUS!='Y'");
+			}
+		}
+		else 
+		{
+			nexacro.getApplication().alert("업체를 선택해주세요");
+		}
+	}
+};
+
+
+// 발주등록
+this.registerOrder_btn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	if (confirm("발주를 등록하시겠습니까?")) 
+	{
+		var OICount = this.ds_orderInfo.getRowCount();
+		nexacro.getApplication().trace("OICount : " + OICount);
+
+		if (OICount >= 0) 
+		{
+			for (var i = 0; i < OICount; i++) 
+			{
+				this.ds_orderInfo.setColumn(i, "ORDER_INFO_STATUS", 'Y');
+				nexacro.getApplication().trace(i + "," + "주문번호 : " + this.ds_orderInfo.getColumn(i, "ORDER_NO"));
+				nexacro.getApplication().trace(i + "," + "주문상태 : " + this.ds_orderInfo.getColumn(i, "ORDER_INFO_STATUS"));
+			}
+		}
+
+		this.transaction(
+			"registerOrder",
+			"dataURL::logi/purchase/registerOrder.do",
+			"ds_orderInfo=ds_orderInfo:u ds_orderDetail=ds_orderDetail:u ds_orderGathering=ds_orderGathering:u",
+			"ds_orderInfo=ds_orderInfo ds_orderDetail=ds_orderDetail",
+			"",
+			"callback",
+			false);
+	}
+
+	this.ds_orderInfo.filter("ORDER_INFO_STATUS!='Y'");
+	this.ds_orderDetail.filter("ORDER_DETAIL_STATUS=='xx'");
+};
+
+// 콜백
+this.callback = function (trid, ErrorCode, ErrorMsg)
+{
+	if (trid == "findOrderInfoList" || trid == "findOrderDetailList" || trid == "findItemList") 
+	{
+		if (ErrorCode < 0) 
+		{
+			nexacro.getApplication().alert("온로드 실패");
+		}
+		else 
+		{
+		}
+	}
+	else if (trid == "takeSerialCode") 
+	{
+		if (ErrorCode < 0) 
+		{
+			nexacro.getApplication().alert("시퀀스 호출 실패");
+		}
+		else 
+		{
+		}
+	}
+	else if (trid == "registerOrder") 
+	{
+		if (ErrorCode < 0) 
+		{
+			nexacro.getApplication().alert("발주등록 실패");
+		}
+		else 
+		{
+			nexacro.getApplication().alert("발주등록 완료");
+		}
+	}
+};
+]]></Script>
+  </Form>
+</FDL>

@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="sys_businessPlaceForm" width="540" height="570" titletext="New Form" onload="sys_businessPlaceForm_onload">
+    <Layouts>
+      <Layout height="570" mobileorientation="landscape" width="540">
+        <Grid id="code_grid" taborder="0" left="1.67%" top="130" right="2.41%" height="420" binddataset="ds_businessPlace" autosizingtype="col" autofittype="col" oncellclick="code_grid_oncellclick" font="12pt &quot;a두리둥실&quot;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="40"/>
+                <Column size="40"/>
+                <Column size="40"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="사업장코드"/>
+                <Cell col="1" text="사업장명"/>
+                <Cell col="2" text="전화번호"/>
+              </Band>
+              <Band id="body">
+                <Cell edittype="normal" text="bind:BUSINESS_PLACE_CODE"/>
+                <Cell col="1" edittype="normal" text="bind:BUSINESS_PLACE_NAME"/>
+                <Cell col="2" edittype="normal" text="bind:BUSINESS_PLACE_TEL"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static01" taborder="1" text="사업장 관리" onclick="Static00_onclick" left="14" top="29" right="16" height="45" border="3px solid darkgray" font="18pt/normal &quot;a두리둥실&quot;" textAlign="center"/>
+        <Button id="add_btn" taborder="2" text="추가" left="59.26%" top="89" height="36" onclick="add_btn_onclick" font="12pt &quot;a두리둥실&quot;" width="60"/>
+        <Button id="delete_btn" taborder="3" text="삭제" left="72.41%" top="89" height="36" onclick="delete_btn_onclick" font="12pt &quot;a두리둥실&quot;" width="60"/>
+        <Button id="save_btn" taborder="4" text="저장" left="85.37%" top="89" height="36" onclick="save_btn_onclick" font="12pt &quot;a두리둥실&quot;" width="60"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_businessPlace">
+        <ColumnInfo>
+          <Column id="BUSINESS_PLACE_CODE" type="STRING" size="256"/>
+          <Column id="BUSINESS_PLACE_NAME" type="STRING" size="256"/>
+          <Column id="BUSINESS_PLACE_TEL" type="STRING" size="256"/>
+          <Column id="COMPANY_CODE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[/********************************************************************************                                                                            
+ 사업장검색 다이알로그
+ @Path		공통
+ @Description	사업장 CRUD
+ @Author	  	강순용
+ @Create           2019. 02. 15.
+ ********************************************************************************/
+
+
+this.sys_businessPlaceForm_onload = function (obj:Form, e:nexacro.LoadEventInfo)
+{
+	obj.transaction("findBusinessPlaceList",
+		"dataURL::sys/findBusinessPlaceList.do",
+		"",
+		"ds_businessPlace=gds_businessPlace",
+		"",
+		"callback");
+};
+
+this.add_btn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	this.ds_businessPlace.addRow();
+};
+
+
+this.delete_btn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	if (confirm("삭제하시겠습니까?")) 
+	{
+		this.ds_businessPlace.deleteRow(this.ds_businessPlace.rowposition);
+	}
+};
+
+this.save_btn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	if (confirm("변경사항을 저장하시겠습니까?")) 
+	{
+		this.transaction("batchBusinessPlace", "dataURL::sys/batchBusinessPlace.do", "gds_businessPlace=ds_businessPlace:u", "", "", "callback"
+		);
+	}
+};
+]]></Script>
+  </Form>
+</FDL>

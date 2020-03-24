@@ -1,0 +1,389 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="logi_WorkinstructionForm" width="1200" height="780" titletext="New Form" onload="logi_WorkinstructionForm_onload">
+    <Layouts>
+      <Layout height="780" mobileorientation="landscape" width="1200">
+        <Grid id="mrpGathering_grid" taborder="0" binddataset="ds_mrpGathering" autofittype="col" left="25" top="135" width="638" height="288" font="12pt &quot;a두리둥실&quot;" nodatatext="NO DATA">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="154"/>
+                <Column size="80"/>
+                <Column size="145"/>
+                <Column size="64"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="25"/>
+              </Rows>
+              <Band id="head">
+                <Cell displaytype="normal" text="소요량취합번호" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" displaytype="normal" text="품목코드" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" displaytype="normal" text="품목명" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" displaytype="normal" text="단위" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" displaytype="normal" text="필요수량" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="5" displaytype="normal" text="작업지시일" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="normal" text="bind:MRP_GATHERING_NO" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" displaytype="normal" text="bind:ITEM_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" displaytype="normal" text="bind:ITEM_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" displaytype="normal" text="bind:UNIT_OF_MRP_GATHERING" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" displaytype="normal" text="bind:NECESSARY_AMOUNT" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="5" displaytype="normal" text="bind:DUE_DATE" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="addWorkInstruction_btn" taborder="1" text="↓" left="602" top="440" width="117" height="39" onclick="addWorkInstruction_btn_onclick" font="12pt &quot;a두리둥실&quot;"/>
+        <Grid id="workInsturction_grid" taborder="2" binddataset="ds_workInstruction" autofittype="col" left="24" top="491" width="1142" height="278" font="12pt &quot;a두리둥실&quot;" nodatatext="NO DATA">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="96"/>
+                <Column size="110"/>
+                <Column size="120"/>
+                <Column size="80"/>
+                <Column size="100"/>
+                <Column size="50"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="25"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="생산라인" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" displaytype="normal" text="작업지시번호" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" displaytype="normal" text="소요량취합번호" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" displaytype="normal" text="품목코드" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" displaytype="normal" text="품목명" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="5" displaytype="normal" text="단위" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="6" displaytype="normal" text="작업지시수량" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="7" displaytype="normal" text="작업지시일" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="8" displaytype="normal" text="작업지시상태" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="9" displaytype="normal" text="생산완료여부" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:PRODUCTION_LINE_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" displaytype="normal" text="bind:WORK_INSTRUCTION_NO" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" displaytype="normal" text="bind:MRP_GATHERING_NO" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" displaytype="normal" text="bind:ITEM_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" displaytype="normal" text="bind:ITEM_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="5" displaytype="normal" text="bind:UNIT_OF_WORK_INSTRUCTION" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="6" displaytype="normal" text="bind:WORK_INSTRUCTION_AMOUNT" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="7" displaytype="normal" text="bind:INSTRUCTION_DATE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="8" displaytype="normal" text="bind:WORK_INSTRUCTION_STATUS" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="9" displaytype="normal" text="bind:PRODUCTION_STATUS" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Combo id="workinst_combo" taborder="3" codecolumn="codecolumn" datacolumn="datacolumn" type="search" left="1072" top="440" width="94" height="40" onitemchanged="workinst_combo_onitemchanged" innerdataset="innerdataset" font="12pt &quot;a두리둥실&quot;">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">Y</Col>
+                <Col id="datacolumn">Y</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">N</Col>
+                <Col id="datacolumn">N</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Combo>
+        <Static id="workinstruction_stc" taborder="4" text="작업지시" onclick="Static00_onclick" left="14" top="9" right="29" height="45" border="3px solid darkblue" font="18pt/normal &quot;a두리둥실&quot;" textAlign="center"/>
+        <Grid id="Grid00" taborder="5" left="55.83%" top="135" right="2.75%" height="288" binddataset="ds_factoryPL" nodatatext="NO DATA" font="12pt &quot;a두리둥실&quot;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="123"/>
+                <Column size="123"/>
+                <Column size="123"/>
+                <Column size="123"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="공장코드" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="공장구역" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" text="생산라인코드" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" text="가용상태" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:FACTORY_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="bind:FACTORY_PRODUCTION_LINE_NO" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" text="bind:PRODUCTION_LINE_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" text="bind:AVAILABLE_STATUS" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static00" taborder="6" text="소요량취합" left="18.75%" top="81" right="65.17%" height="43" border="3px solid darkblue" font="16pt/normal &quot;a두리둥실&quot;" textAlign="center"/>
+        <Static id="Static01" taborder="7" text="공장_생산라인" left="68.08%" top="81" right="15.83%" height="43" border="3px solid darkblue" font="16pt/normal &quot;a두리둥실&quot;" textAlign="center"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_workInstruction">
+        <ColumnInfo>
+          <Column id="WORK_INSTRUCTION_NO" type="STRING" size="256"/>
+          <Column id="MRP_GATHERING_NO" type="STRING" size="256"/>
+          <Column id="ITEM_CODE" type="STRING" size="256"/>
+          <Column id="ITEM_NAME" type="STRING" size="256"/>
+          <Column id="INSTRUCTION_DATE" type="STRING" size="256"/>
+          <Column id="UNIT_OF_WORK_INSTRUCTION" type="STRING" size="256"/>
+          <Column id="WORK_INSTRUCTION_AMOUNT" type="STRING" size="256"/>
+          <Column id="PRODUCTION_STATUS" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+          <Column id="WORK_INSTRUCTION_STATUS" type="STRING" size="256"/>
+          <Column id="PRODUCTION_LINE_CODE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_mrpGathering">
+        <ColumnInfo>
+          <Column id="MRP_GATHERING_NO" type="STRING" size="256"/>
+          <Column id="ORDER_OR_PRODUCTION_STATUS" type="STRING" size="256"/>
+          <Column id="ITEM_CODE" type="STRING" size="256"/>
+          <Column id="ITEM_NAME" type="STRING" size="256"/>
+          <Column id="UNIT_OF_MRP_GATHERING" type="STRING" size="256"/>
+          <Column id="NECESSARY_AMOUNT" type="STRING" size="256"/>
+          <Column id="DUE_DATE" type="STRING" size="256"/>
+          <Column id="CLAIM_DATE" type="STRING" size="256"/>
+          <Column id="ON_GOING_PROCESS_STATUS" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_materialCheckTempList">
+        <ColumnInfo>
+          <Column id="ITEM_CODE" type="STRING" size="256"/>
+          <Column id="ITEM_NAME" type="STRING" size="256"/>
+          <Column id="STOCKTAKING" type="STRING" size="256"/>
+          <Column id="SAFETY_STOCKTAKING" type="STRING" size="256"/>
+          <Column id="STOCK_STATUS" type="STRING" size="256"/>
+          <Column id="SAFETY_STOCK_STATUS" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_productionLine">
+        <ColumnInfo>
+          <Column id="PRODUCTION_LINE_CODE" type="STRING" size="256"/>
+          <Column id="PRODUCTABLE_ITEM_CODE" type="STRING" size="256"/>
+          <Column id="MIN_AVL_STAFF" type="STRING" size="256"/>
+          <Column id="MAX_AVL_STAFF" type="STRING" size="256"/>
+          <Column id="DAILY_AVRG_PRDCT" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_factoryPL">
+        <ColumnInfo>
+          <Column id="FACTORY_CODE" type="STRING" size="256"/>
+          <Column id="FACTORY_PRODUCTION_LINE_NO" type="STRING" size="256"/>
+          <Column id="PRODUCTION_LINE_CODE" type="STRING" size="256"/>
+          <Column id="AVAILABLE_STATUS" type="STRING" size="256"/>
+          <Column id="PRODUCT_CODE" type="STRING" size="256"/>
+          <Column id="JOB_GOAL_COUNT" type="STRING" size="256"/>
+          <Column id="PRODUCTION_COUNT" type="STRING" size="256"/>
+          <Column id="JOB_END_DATE" type="STRING" size="256"/>
+          <Column id="WORK_INSTRUCTION_NO" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[
+this.logi_WorkinstructionForm_onload = function (obj:Form, e:nexacro.LoadEventInfo)
+{
+	// 자바단구현
+	var gatheringStatus = 'N';
+
+	this.transaction(
+		"findMrpGatheringList",
+		"dataURL::logi/production/findMrpGatheringList.do",
+		"",
+		"ds_mrpGathering=ds_mrpGathering",
+		"gatheringStatus='" + gatheringStatus + "'",
+		"callback", true
+	);
+
+	this.ds_mrpGathering.filter("ORDER_OR_PRODUCTION_STATUS=='생산' && ON_GOING_PROCESS_STATUS!='Y' && ON_GOING_PROCESS_STATUS!='O'");
+
+	// 생산라인 조회
+	this.transaction(
+		"findProductionLineList",
+		"dataURL::logi/logiBase/findProductionLineList.do",
+		"",
+		"ds_productionLine=ds_productionLine",
+		"",
+		"callback",
+		false
+	);
+
+	// 공장_생산라인 조회
+	this.transaction(
+		"findFactoryProductionLines",
+		"dataURL::logi/logiBase/findFactoryProductionLines.do",
+		"",
+		"ds_factoryPL=ds_factoryPL",
+		"code = 'factoryCode' factoryCode ='FACTORY-01'",
+		"callback"
+	);
+
+	this.workinstruction();
+	this.ds_workInstruction.filter("aaa");
+};
+
+var mrpRow;
+var mrpGno;
+this.errorCode = "";
+this.addWorkInstruction_btn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	// 작업지시 추가 (소요량 전개 + 생산라인 조합)
+	var mrpRow = this.ds_mrpGathering.rowposition;
+	var plRow = this.ds_factoryPL.rowposition;
+	var productionLineCode = this.ds_factoryPL.getColumn(plRow, "PRODUCTION_LINE_CODE");
+
+
+	if (mrpRow == -1 || plRow == -1) 
+	{
+		alert("작업지시할 품목 or 생산라인을 선택하지 않았습니다");
+		return;
+	}
+	else 
+	{
+		alert("작업지시를 등록하시겠습니까?");
+
+
+
+		// ***********************************************************************
+
+		var mrpGno = this.ds_mrpGathering.getColumn(mrpRow, "MRP_GATHERING_NO");
+		this.transaction(
+			"findMaterialCheckTempList",
+			"dataURL::logi/production/findMaterialCheckTempList.do",
+			"",
+			"ds_materialCheckTempList=ds_materialCheckTempList",
+			"mrpGno='" + mrpGno + "' productionLineCode='" + productionLineCode + "'",
+			"callback",
+			false
+		);
+		this.ds_workInstruction.filter("MRP_GATHERING_NO=='" + mrpGno + "'");
+		// ***********************************************************************
+
+		this.transaction(
+			"batchMrpGathering",
+			"dataURL::logi/production/batchMrpGathering.do",
+			"ds_mrpGathering=ds_mrpGathering:u",
+			"",
+			"",
+			"callback",
+			false
+		);
+
+		this.ds_mrpGathering.filter("ORDER_OR_PRODUCTION_STATUS=='생산' && ON_GOING_PROCESS_STATUS!='Y' && ON_GOING_PROCESS_STATUS!='O'");
+	}
+};
+
+this.errMsg = "";
+this.callback = function (strSvcID, nErrorCode, strErrorMsg)
+{
+	if (strSvcID == "findMaterialCheckTempList") 
+	{
+		if (this.errorCode >= 0) 
+		{
+			var nRow = this.ds_mrpGathering.rowposition;
+			var uRow = this.ds_mrpGathering.setColumn(nRow, "ON_GOING_PROCESS_STATUS", "Y");
+			var openD = nexacro.open
+				(
+				"modeless", 
+				"logi_production::MaterialCheckDialog.xfdl", 
+				this.getOwnerFrame(), 
+				{
+				mode : 'modeless',
+				ds : this.ds_materialCheckTempList
+			}, 
+				"showtitlebar=true showstatusbar=false openalign='center middle' showcascadetitletext=false titletext='MaterialCheckDialog'"
+);
+
+			if (openD) 
+			{
+				openD;
+				alert("작업지시완료");
+				this.workinstruction();
+			}
+		}
+		else 
+		{
+			alert(this.errMsg);
+			var openD2 = nexacro.open("modeless2",
+				"logi_production::MaterialCheckDialog.xfdl",
+				this.getOwnerFrame(),
+				{
+				mode : 'modeless',
+				ds : this.ds_materialCheckTempList
+			},
+				"showtitlebar=true showstatusbar=false openalign='center middle' showcascadetitletext=false titletext='MaterialCheckDialog'"
+			);
+		}
+	}
+};
+
+
+this.workinst_combo_onitemchanged = function (obj:Combo, e:nexacro.ItemChangeEventInfo)
+{
+	if (e.posttext == 'Y') 
+	{
+		this.ds_workInstruction.filter("PRODUCTION_STATUS=='Y'");
+	}
+	else if (e.posttext == 'N') 
+	{
+		this.ds_workInstruction.filter("PRODUCTION_STATUS=='N'");
+	}
+};
+
+
+this.workinstruction = function ()
+{
+	// this.ds_workInstruction.filter("PRODUCTION_STATUS=='N'");
+	this.transaction(
+		"workinstruction",
+		"dataURL::logi/production/findWorkInstructionList.do",
+		"",
+		"ds_workInstruction=ds_workInstruction",
+		"",
+		"callback",
+		false
+	);
+	/*	
+	 var gatheringStatus='N'
+	 this.transaction(
+	 "findMrpGatheringList",
+	 "dataURL::logi/production/findMrpGatheringList.do",
+	 "",
+	 "ds_mrpGathering=ds_mrpGathering",
+	 "gatheringStatus='"+gatheringStatus+"'",
+	 "callback"
+	 ,true
+	 );
+	 */
+}
+	/*
+ this.ab = function(){
+ application.open("modeless",
+ "logi_production::MaterialCheckDialog.xfdl",
+ this.getOwnerFrame(),
+ {mode:'modeless',mrpzno:mrpGno},
+ "showtitlebar=true showstatusbar=false openalign='center middle' showcascadetitletext=false titletext='fff'"
+ )
+ }
+ */
+;
+]]></Script>
+  </Form>
+</FDL>

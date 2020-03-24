@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="acc_preFinancialStatementForm" width="1280" height="780" titletext="New Form" onload="acc_preFinancialStatementForm_onload">
+    <Layouts>
+      <Layout height="780" mobileorientation="landscape" width="1280">
+        <Static id="preFinancialState_stc" taborder="0" text="전기분 재무상태표" onclick="Static00_onclick" left="144" top="9" right="140" height="45" border="3px solid darkgray" font="18pt/normal &quot;a두리둥실&quot;" textAlign="center"/>
+        <Grid id="Grid00" taborder="1" left="10.08%" top="84" right="63.52%" height="649" binddataset="ds_preAssetsCount" autofittype="col" font="12pt &quot;a두리둥실&quot;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="40"/>
+                <Column size="64"/>
+                <Column size="97"/>
+                <Column size="112"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell rowspan="2" text="NO" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" colspan="3" text="자산" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell row="1" col="1" text="코드" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell row="1" col="2" text="계정과목" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell row="1" col="3" text="금액" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="bind:ACCOUNT_INNER_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" text="bind:ACCOUNT_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" text="bind:PRICE" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="Grid02" taborder="2" left="64.30%" top="84" right="9.38%" height="649" binddataset="ds_preFinancialStatements" autofittype="col" font="12pt &quot;a두리둥실&quot;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="40"/>
+                <Column size="108"/>
+                <Column size="131"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell rowspan="2" text="NO" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" colspan="2" text="계정별합계" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell row="1" col="1" text="계정과목" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell row="1" col="2" text="합계" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="bind:GROUP_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" text="bind:PRICE" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="Grid01" taborder="3" left="37.19%" top="84" right="36.41%" height="649" binddataset="ds_preLiabilitiesAndCapitalCount" autofittype="col" font="12pt &quot;a두리둥실&quot;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="40"/>
+                <Column size="64"/>
+                <Column size="97"/>
+                <Column size="113"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell rowspan="2" text="NO" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" colspan="3" text="부채 및 자본" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell row="1" col="1" text="코드" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell row="1" col="2" text="계정과목" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell row="1" col="3" text="금액" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="bind:ACCOUNT_INNER_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" text="bind:ACCOUNT_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" text="bind:PRICE" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_preAssetsCount">
+        <ColumnInfo>
+          <Column id="GROUP_CODE" type="STRING" size="256"/>
+          <Column id="ACCOUNT_INNER_CODE" type="STRING" size="256"/>
+          <Column id="ACCOUNT_NAME" type="STRING" size="256"/>
+          <Column id="PRICE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_preFinancialStatements">
+        <ColumnInfo>
+          <Column id="GROUP_CODE" type="STRING" size="256"/>
+          <Column id="PRICE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_preLiabilitiesAndCapitalCount">
+        <ColumnInfo>
+          <Column id="GROUP_CODE" type="STRING" size="256"/>
+          <Column id="ACCOUNT_INNER_CODE" type="STRING" size="256"/>
+          <Column id="ACCOUNT_NAME" type="STRING" size="256"/>
+          <Column id="PRICE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findFinancialStatementsOnLastYear</Col>
+            <Col id="URL">dataURL::statement/financialStatement/findFinancialStatementsOnLastYear.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">ds_preFinancialStatements=ds_earlyFinancialStatements ds_preAssetsCount=ds_earlyAssetsCount ds_preLiabilitiesAndCapitalCount=ds_earlyLiabilitiesAndCapitalCount</Col>
+            <Col id="callbackFunc">gfnCallbackFunc</Col>
+            <Col id="argument"/>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[/********************************************************************************                                                                            
+ 전기분 재무상태표화면
+ @Path		회계
+ @Description	전년도 재무상태 확인을 위한 창
+ @Author	  	조윤희
+ @Create           2019. 02. 28
+ ********************************************************************************/
+include "scripts::commonTransaction.xjs";
+
+// 화면이 호출될 때 발생 이벤트
+this.acc_preFinancialStatementForm_onload = function (obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.gfnService("findFinancialStatementsOnLastYear");
+};
+]]></Script>
+  </Form>
+</FDL>

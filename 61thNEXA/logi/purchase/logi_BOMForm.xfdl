@@ -1,0 +1,334 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="logi_BOMForm" width="1020" height="720" titletext="New Form" onload="logi_BOMForm_onload">
+    <Layouts>
+      <Layout height="720" mobileorientation="landscape" width="1020">
+        <Static id="Static00" taborder="0" text="소요량전개현황" left="4" top="7" width="1013" height="43" font="18pt/normal &quot;a두리둥실&quot;" textAlign="center" border="1px solid #002266" color="#002266"/>
+        <Tab id="BOM_Tab" taborder="1" tabindex="0" left="5" top="54" width="1011" height="661" onchanged="BOM_Tab_onchanged" font="12pt &quot;a두리둥실&quot;">
+          <Tabpages>
+            <Tabpage id="Tabpage1" text="소요량전개현황">
+              <Layouts>
+                <Layout>
+                  <Grid id="gd_bom" taborder="0" left="4" top="11" width="1002" height="609" binddataset="ds_bom" autofittype="col" autosizingtype="col" font="12pt &quot;a두리둥실&quot;">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="48"/>
+                          <Column size="83"/>
+                          <Column size="113"/>
+                          <Column size="80"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="24" band="head"/>
+                          <Row size="24"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell text="등급" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="1" text="품목코드" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="2" text="상위품목코드" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="3" text="정미수량" font="12pt/normal &quot;a두리둥실&quot;"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell text="bind:NO" textAlign="center" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="1" text="bind:ITEM_CODE" textAlign="center" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="2" text="bind:PARENT_ITEM_CODE" textAlign="center" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="3" text="bind:NET_AMOUNT" textAlign="center" font="12pt/normal &quot;a두리둥실&quot;"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+            <Tabpage id="Tabpage2" text="정전개">
+              <Layouts>
+                <Layout>
+                  <Grid id="Grid00" taborder="0" left="1" top="57" width="1005" height="561" binddataset="ds_bomDeploy" autofittype="col" autosizingtype="col" font="12pt &quot;a두리둥실&quot;">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="112"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="81"/>
+                          <Column size="49"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="24" band="head"/>
+                          <Row size="24"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell text="품목코드" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="1" text="품목명" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="2" text="상위품목코드" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="3" text="상위품목명" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="4" text="품목분류" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="5" text="소요일" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="6" text="손실율" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="7" text="정미수량" font="12pt/normal &quot;a두리둥실&quot;"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell text="bind:ITEM_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="1" text="bind:ITEM_NAME" textAlign="center" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="2" text="bind:PARENT_ITEM_CODE" textAlign="center" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="3" text="bind:PARENT_ITEM_NAME" textAlign="center" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="4" text="bind:ITEM_CLASSIFICATION" textAlign="center" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="5" text="bind:LEAD_TIME" textAlign="center" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="6" text="bind:LOSS_RATE" textAlign="center" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="7" text="bind:NET_AMOUNT" textAlign="center" font="12pt/normal &quot;a두리둥실&quot;"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                  <Combo id="BOMForward_combo" taborder="1" text="Combo00" left="838" top="7" width="168" height="40" innerdataset="ds_item" codecolumn="ITEM_CODE" datacolumn="ITEM_NAME" onitemchanged="BOM_Tab_Tabpage2_BOMForward_combo_onitemchanged" font="12pt &quot;a두리둥실&quot;"/>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+            <Tabpage id="Tabpage3" text="역전개">
+              <Layouts>
+                <Layout>
+                  <Combo id="BOMReverse_combo" taborder="0" text="Combo00" left="838" top="7" width="168" height="40" innerdataset="ds_item" codecolumn="ITEM_CODE" datacolumn="ITEM_NAME" onitemchanged="BOM_Tab_Tabpage3_BOMReverse_combo_onitemchanged" font="12pt &quot;a두리둥실&quot;"/>
+                  <Grid id="BOMRecerse_grid" taborder="1" left="1" top="57" width="1005" height="561" binddataset="ds_bomDeploy" autofittype="col" autosizingtype="col" font="12pt &quot;a두리둥실&quot;">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="111"/>
+                          <Column size="110"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="24" band="head"/>
+                          <Row size="24"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell text="품목코드" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="1" text="품목명" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="2" text="상위품목코드" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="3" text="상위품목명" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="4" text="품목분류" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="5" text="소요일" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="6" text="손실율" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="7" text="정미수량" font="12pt/normal &quot;a두리둥실&quot;"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell text="bind:ITEM_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="1" text="bind:ITEM_NAME" textAlign="center" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="2" text="bind:PARENT_ITEM_CODE" textAlign="center" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="3" text="bind:PARENT_ITEM_NAME" textAlign="center" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="4" text="bind:ITEM_CLASSIFICATION" textAlign="center" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="5" text="bind:LEAD_TIME" textAlign="center" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="6" text="bind:LOSS_RATE" textAlign="center" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="7" text="bind:NET_AMOUNT" textAlign="center" font="12pt/normal &quot;a두리둥실&quot;"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+          </Tabpages>
+        </Tab>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_item">
+        <ColumnInfo>
+          <Column id="ITEM_CODE" type="STRING" size="256"/>
+          <Column id="ITEM_NAME" type="STRING" size="256"/>
+          <Column id="ITEM_GROUP_CODE" type="STRING" size="256"/>
+          <Column id="ITEM_CLASSIFICATION" type="STRING" size="256"/>
+          <Column id="UNIT_OF_STOCK" type="STRING" size="256"/>
+          <Column id="LOSS_RATE" type="STRING" size="256"/>
+          <Column id="LEAD_TIME" type="STRING" size="256"/>
+          <Column id="STANDARD_UNIT_PRICE" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_bom">
+        <ColumnInfo>
+          <Column id="NO" type="STRING" size="256"/>
+          <Column id="ITEM_CODE" type="STRING" size="256"/>
+          <Column id="PARENT_ITEM_CODE" type="STRING" size="256"/>
+          <Column id="NET_AMOUNT" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_bomDeploy">
+        <ColumnInfo>
+          <Column id="ITEM_CODE" type="STRING" size="256"/>
+          <Column id="PARENT_ITEM_CODE" type="STRING" size="256"/>
+          <Column id="ITEM_NAME" type="STRING" size="256"/>
+          <Column id="LEAD_TIME" type="STRING" size="256"/>
+          <Column id="LOSS_RATE" type="STRING" size="256"/>
+          <Column id="NET_AMOUNT" type="STRING" size="256"/>
+          <Column id="STANDARD_UNIT_PRICE" type="STRING" size="256"/>
+          <Column id="PARENT_ITEM_NAME" type="STRING" size="256"/>
+          <Column id="ITEM_CLASSIFICATION" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[//공통 스크립트 include
+include "scripts::commonScripts.xjs";
+
+/**
+*  SYSTEM FORM NAME
+*
+*  @MenuPath    소요량전개현황
+*  @FileName    logi_BOMForm.xfdl 
+*  @Creator     박소연
+*  @CreateDate  2020.03.02
+*  @Version     1.0
+*  @Desction    소요량전개
+* 
+************** 소스 수정 이력 *************************************************
+*    date          Modifier            Description
+*******************************************************************************
+*  2020.03.02      박소연             최초 생성 
+*******************************************************************************
+*/
+
+//공통 라이브러리 호출 
+/*********************************************************
+ * 1.1 FORM 변수 선언 영역
+ ********************************************************/
+ var value;
+ 
+ /*********************************************************
+* 1.2 FORM EVENT 영역(onload)
+********************************************************/
+this.logi_BOMForm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+   this.fnTran("BOMList");
+   this.fnTran("ItemList");
+};
+
+/*********************************************************
+* 2. TRANSACTION 서비스 호출 처리
+ ********************************************************/
+/**
+ * fnTran : 조회 transaction (필수) --> 공통 조회에서 호출할 디폴트값 세팅 필요
+ * @param  {String} sTranId 트랜젝션 아이디
+ * @return {N/A}    N/A
+ * @example this.fnTran("ID");
+ */
+this.fnTran = function(sTranId){
+   var sUrl    = "",
+      sInDs    = "",
+      sOutDs    = "",
+      sParam    = "",
+      sCallBack = "";
+   
+   sCallBack = "fnCallback";
+   
+   switch(sTranId) {
+   case "BOMList":
+      //BOM목록조회
+      this.transaction(
+         "findBomList"
+         ,"dataURL::logi/purchase/findBomList.do"
+         ,""
+         ,"ds_bom=ds_bom"
+         ,""
+         ,sCallBack
+         ,false
+      );
+      break;
+   
+   case "ItemList":
+      //품목조회
+      this.transaction(
+         "findItemList"
+         ,"dataURL::logi/purchase/findItemList.do"
+         ,""
+         ,"ds_item=ds_item"
+         ,""
+         ,sCallBack
+         ,false
+      );
+      break;
+   
+   case "BomDeploy":	//정전개 조회
+      this.transaction(
+         "findBomDeployList",
+         "dataURL::logi/purchase/findBomDeployList.do",
+         "",
+         "ds_bomDeploy=ds_bomDeploy",
+         "deployCondition='forward' itemCode='"+this.value+"'",
+         "callback"
+      );
+   break;
+   
+   case "ReverseBomDeploy":	//역전개 조회
+      this.transaction(
+         "findBomDeployList",
+         "dataURL::logi/purchase/findBomDeployList.do",
+         "",
+         "ds_bomDeploy=ds_bomDeploy",
+         "deployCondition='reverse' itemCode='"+this.value+"'",
+         "callback"
+      );
+   
+   default:
+      break;
+   }
+};
+
+/********************************************************
+ * 3.CALLBACK 콜백 처리부분
+ ********************************************************/
+/**
+* fnCallback : transaction callback
+* @param  : svcId   - 서비스 아이디 (공통 콜백에서 넘어옴)
+* @param  : errCd   - 에러코드 (공통 콜백에서 넘어옴)
+* @param  : errMsg   - 에러메세지 (공통 콜백에서 넘어옴)
+* @return : N/A
+* @example :  
+*/
+this.fnCallback = function(svcId, errCd, errMsg)
+{
+   switch(svcId) {
+   case "findBomList":
+      break;
+   case "findItemList":
+      break;
+   default:
+      break;
+   }
+};
+
+/*********************************************************
+ * 4 각 COMPONENT 별 EVENT 영역
+  ********************************************************/
+/**
+* component_onclick : ~ 버튼 클릭
+*/
+   //탭전환시 데이터셋 지우기
+this.BOM_tab_onchanged = function(obj:Tab, e:nexacro.TabIndexChangeEventInfo)
+{
+   if(e.postindex==1 || e.postindex==2){
+      this.ds_bomDeploy.deleteAll();
+   }   
+};
+
+
+this.BOM_Tab_Tabpage2_BOMForward_combo_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemChangeEventInfo)
+{
+   this.value = e.postvalue;
+   this.fnTran("BomDeploy");
+};
+
+this.BOM_Tab_Tabpage3_BOMReverse_combo_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemChangeEventInfo)
+{
+   this.value = e.postvalue;
+   this.fnTran("ReverseBomDeploy");
+};]]></Script>
+  </Form>
+</FDL>

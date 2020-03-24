@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="acc_incomeStatementForm" width="1280" height="780" titletext="New Form">
+    <Layouts>
+      <Layout height="780" mobileorientation="landscape" width="1280">
+        <Static id="incomeState_stc" taborder="0" text="손익계산서" onclick="Static00_onclick" left="144" top="9" right="140" height="45" border="3px solid darkgray" font="18pt/normal &quot;a두리둥실&quot;" textAlign="center"/>
+        <Calendar id="income_cal" taborder="1" left="58.44%" top="72" right="25.94%" height="35" font="12pt &quot;a두리둥실&quot;" dateformat="yyyy-MM-dd"/>
+        <Button id="incomeSearch_btn" taborder="2" text="조회" left="74.38%" top="72" right="19.30%" height="34" onclick="incomeSearch_btn_onclick" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="incomeOutput_btn" taborder="3" text="출력" left="80.78%" top="72" right="12.66%" height="34" onclick="incomeOutput_btn_onclick" font="12pt &quot;a두리둥실&quot;"/>
+        <Grid id="incomeStatement_grid" taborder="4" left="11.25%" top="123" right="11.33%" height="573" autofittype="col" binddataset="ds_incomeStatement" font="12pt &quot;a두리둥실&quot;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="120"/>
+                <Column size="101"/>
+                <Column size="92"/>
+                <Column size="101"/>
+                <Column size="107"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell rowspan="2" text="계정과목" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" colspan="2" text="당기" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" colspan="2" text="전기" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell row="1" col="1" colspan="2" text="금액" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell row="1" col="3" colspan="2" text="금액" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:DISPLAY_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="bind:CURRENT_PERIOD_LEFT_COL" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" text="bind:CURRENT_PERIOD_RIGHT_COL" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" text="bind:PREVIOUS_PERIOD_LEFT_COL" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" text="bind:PREVIOUS_PERIOD_RIGHT_COL" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="noti_stc" taborder="5" text="중소기업 회계기준에 의하여 작성됨." left="41.88%" top="715" right="39.38%" height="38" color="red" font="12pt &quot;a두리둥실&quot;"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_incomeStatement">
+        <ColumnInfo>
+          <Column id="DISPLAY_NAME" type="STRING" size="256"/>
+          <Column id="CURRENT_PERIOD_LEFT_COL" type="STRING" size="256"/>
+          <Column id="CURRENT_PERIOD_RIGHT_COL" type="STRING" size="256"/>
+          <Column id="PREVIOUS_PERIOD_LEFT_COL" type="STRING" size="256"/>
+          <Column id="PREVIOUS_PERIOD_RIGHT_COL" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findIncomeStatement</Col>
+            <Col id="URL">dataURL::statement/incomeStatement/findIncomeStatement.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">ds_incomeStatement=ds_IncomeStatement</Col>
+            <Col id="callbackFunc">gfnCallbackFunc</Col>
+            <Col id="argument"/>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[/********************************************************************************                                                                            
+ 손익계산서화면
+ @Path		회계
+ @Description	손익 계산을 위한 창
+ @Author	  	조윤희
+ @Create           2019. 02. 28
+ ********************************************************************************/
+include "scripts::commonTransaction.xjs";
+
+// 손익계산서 조회 버튼 이벤트
+this.incomeSearch_btn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{	// 19년도를 기준으로 이전 년도 자료는 조회불가 
+	if (this.income_cal.value <= 20181231) 
+	{
+		alert("전년도 자료는 조회하실 수 없습니다");
+		return;
+	}
+
+	var argument = "approvalDate='" + this.income_cal.value + "'";
+	this.dsService.setColumn(0, 4, argument);
+	this.gfnService("findIncomeStatement");
+};
+
+
+// 엑셀 출력 버튼 이벤트
+this.incomeOutput_btn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	if (confirm("손익계산서를 출력하시겠습니까?")) 
+	{
+		this.exportObj = new ExcelExportObject();
+		var ret = this.exportObj.addExportItem(nexacro.ExportItemTypes.GRID, this.incomeStatement_grid, "Sheet1!A1");
+		this.exportObj.set_exporturl("http://localhost:8282/nexacro-xeni/XExportImport");  // 출력 URL 체크하고 올바른 메서드 잡아주기 
+		this.exportObj.exportData();
+	}
+};
+]]></Script>
+  </Form>
+</FDL>

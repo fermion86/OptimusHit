@@ -1,0 +1,278 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="paging_comm" width="1000" height="40" titletext="New Form">
+    <Layouts>
+      <Layout height="40" mobileorientation="landscape" width="1000">
+        <Div id="divPaging" taborder="0" text="Div00" left="0" top="3" width="746" height="35" font="16px/normal &quot;a두리둥실&quot;">
+          <Layouts>
+            <Layout>
+              <Button id="btnFirst" taborder="0" text="&lt;&lt;" left="15" top="4" width="21" height="21" onclick="divPaging_btnFirst_onclick" font="16px/normal &quot;a두리둥실&quot;"/>
+              <Button id="btnPrev" taborder="1" text="&lt;" left="45" top="4" width="21" height="21" onclick="divPaging_btnPrev_onclick" font="16px/normal &quot;a두리둥실&quot;"/>
+              <Button id="btnNext" taborder="2" text="&gt;" left="410" top="4" width="21" height="21" onclick="divPaging_btnNext_onclick" font="16px/normal &quot;a두리둥실&quot;"/>
+              <Button id="btnLast" taborder="3" text="&gt;&gt;" left="440" top="4" width="21" height="21" onclick="divPaging_btnLast_onclick" font="16px/normal &quot;a두리둥실&quot;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="divCount" taborder="1" text="Div01" left="786" top="6" width="213" height="34" onclick="divCount_onclick" font="16px/normal &quot;a두리둥실&quot;">
+          <Layouts>
+            <Layout>
+              <Edit id="edtNow" taborder="0" left="4" top="3" width="50" height="22" font="16px/normal &quot;a두리둥실&quot;"/>
+              <Static id="stTotal" taborder="1" text="/" left="75" top="0" width="42" height="29" font="16px/normal &quot;a두리둥실&quot;"/>
+              <Button id="btnGo" taborder="2" text="이동" left="148" top="0" width="53" height="27" onclick="divCount_btnGo_onclick" font="16px/normal &quot;a두리둥실&quot;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[this.iStartPageNo;
+this.iEndPageNo;
+this.iMaxPageNo;
+this.iNowPageNo;
+this.iUnitSelRowNo; // 한번 Server호출시 가져올 row갯수
+this.iPageBlock;
+this.iTotalCount;
+
+this.paging_comm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	//form의 scrollbar 제거
+    this.set_scrollbartype('none');
+	
+};
+
+this.paging_comm_onsize = function(obj:nexacro.Form,e:nexacro.SizeEventInfo)
+{
+	var nWidth = obj.width;
+    var nHeight = obj.height;
+    
+    if(this.divCount.visible)
+    {
+        nWidth = nWidth - this.divCount.getOffsetWidth();
+    }
+    
+    this.divPaging.setOffsetLeft(parseInt((nWidth-this.divPaging.getOffsetWidth())/2));
+}
+
+
+this.divPagingNumber_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+    this.fn_page (obj.text);
+};
+
+this.divCount_btnGo_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{	if(this.divCount.form.edtNow.value > this.iPageBlock){
+	alert("페이지 엄따~");
+	this.fn_page(this.iPageBlock);
+	}
+	else{
+	var nBtnNum = this.divCount.form.edtNow.value;
+    this.fn_page(nBtnNum);
+	}
+};
+
+/*****************************************************************************
+* 함 수 명 칭 : fn_initPageSet
+* 함 수 설 명 : Page button 세팅 및 총계/이동 div 활성화
+* 파 라 미 터 : dataset(objDs) - 조회할 dataset
+         objDs.rowCount : 한 페이지에서 조회 할 row count
+         objDs.pageCount : 페이지 버튼 개수
+         objDs.totalPageVisible : 총 row count 및 이동 div 활성화 여부
+* 리 턴 내 용 : 
+*****************************************************************************/
+//페이징처리 개수 및 사이즈 지정 (상위 페이지에서 호출)
+this.fn_initPageSet = function (objDs)
+{
+     this.iEndPageNo     = objDs.pageCount;
+     this.iMaxPageNo     = objDs.pageCount;
+     this.iUnitSelRowNo  = objDs.rowCount;
+    
+    //합계 div 활성화 여부 및 현재 width 값 가져오기
+    var sThisWidth = this.width;
+    if(objDs.totalPageVisible){
+        sThisWidth = sThisWidth - this.divCount.getOffsetWidth();
+        this.divCount.set_visible(true);
+    }else{
+        this.divCount.set_visible(false);
+    }
+    
+    //(button width = 37, button space = 3, page button start = 20, page button space = 10)
+    var sDivPagingWidth = (37*4+3+3)+(20+20)+(objDs.pageCount*20)+((objDs.pageCount-1)*10);
+    this.divPaging.setOffsetWidth(sDivPagingWidth);
+    this.divPaging.setOffsetLeft(parseInt((sThisWidth-sDivPagingWidth)/2));
+    
+    //페이징처리 버튼 생성
+    var btnLeft = 37+3+37+20;
+    var btnTop = 5;
+    var btnWidth = 25;
+    var btnHeight = 21;
+    
+    for(var i=0; i<objDs.pageCount; i++) {
+        var objButton = new Button();
+        var objBtnId    = "btn"+i;
+        objButton.init(objBtnId,btnLeft,btnTop,btnWidth,btnHeight,null,null);       
+        objButton.set_text(i+1);
+        objButton.set_cssclass(this.btnCssName);
+        objButton.set_enable(false);
+        objButton.addEventHandler("onclick",this.divPagingNumber_onclick, this);
+        
+        this.divPaging.addChild(objBtnId,objButton);
+        objButton.show();
+        
+        btnLeft = btnLeft + 30;
+    }
+};
+
+/*****************************************************************************
+* 함 수 명 칭 : fn_page
+* 함 수 설 명 : 버튼이 클릭 된 후, start / end page no setting
+* 파 라 미 터 : btnText - 버튼 ID (숫자 or 전/후/맨앞/맨뒤 페이지)
+* 리 턴 내 용 : 
+*****************************************************************************/
+this.fn_page = function (btnText)
+{	
+    var objNum = this.iNowPageNo;
+    if(btnText=='First'){
+        this.iStartPageNo = 1;
+        this.iEndPageNo   = 1 + (this.iMaxPageNo-1);
+        objNum = this.iStartPageNo;
+    }else if(btnText=='Prev'){
+		this.iStartPageNo = this.iStartPageNo - this.iMaxPageNo;
+        this.iEndPageNo   = this.iStartPageNo + (this.iMaxPageNo-1);
+        
+        objNum = this.iStartPageNo;
+    }else if(btnText=='Last'){
+        this.iEndPageNo = this.iPageBlock;
+        objNum = this.iEndPageNo;
+        if (objNum%this.iMaxPageNo == 0){
+            this.iStartPageNo = this.iEndPageNo - (this.iMaxPageNo-1);
+        }else{
+            this.iStartPageNo = parseInt(this.iPageBlock/this.iMaxPageNo)*this.iMaxPageNo+ 1;
+        }
+        
+    }else if(btnText=='Next'){
+		this.iStartPageNo = this.iStartPageNo + this.iMaxPageNo;
+        this.iEndPageNo   = this.iStartPageNo + (this.iMaxPageNo-1);
+        if(this.iStartPageNo > this.iPageBlock){
+                    this.iEndPageNo = this.iPageBlock;
+        objNum = this.iEndPageNo;
+        if (objNum%this.iMaxPageNo == 0){
+            this.iStartPageNo = this.iEndPageNo - (this.iMaxPageNo-1);
+        }else{
+            this.iStartPageNo = parseInt(this.iPageBlock/this.iMaxPageNo)*this.iMaxPageNo+ 1;
+        }
+        }else{ 
+        objNum = this.iStartPageNo;
+		}
+		
+    }else{
+        objNum = Number(btnText);       
+        if (objNum%this.iMaxPageNo == 0){
+	
+            this.iEndPageNo   = objNum;
+            this.iStartPageNo = this.iEndPageNo - (this.iMaxPageNo-1);
+        }else{
+		
+            this.iStartPageNo = parseInt(objNum/this.iMaxPageNo)*this.iMaxPageNo+1;
+            this.iEndPageNo  = this.iStartPageNo + (this.iMaxPageNo-1);
+        }
+        
+        if (this.iEndPageNo > this.iPageBlock){
+            this.iEndPageNo = this.iPageBlock;
+        }   
+    }
+
+     this.iNowPageNo = objNum;
+     this.parent.parent.fn_searchPaging(objNum);
+};
+
+/*****************************************************************************
+* 함 수 명 칭 : fn_callAfter
+* 함 수 설 명 : transaction 조회 후, 전달된 전체 row수와 page block 개수가 저장된 변수 세팅
+* 파 라 미 터 : arrRt (page block, total row count)
+* 리 턴 내 용 : 
+*****************************************************************************/
+this.fn_callAfter = function (arrRt)
+{
+    this.iPageBlock     = arrRt[0];
+    this.iTotalCount        = arrRt[1];
+    
+    this.divCount.form.edtNow.set_value(this.iNowPageNo);
+    this.divCount.form.stTotal.set_text("/ " + this.iPageBlock);
+    this.fn_setPageNo();
+};
+
+/*****************************************************************************
+* 함 수 명 칭 : fn_SetPageNo
+* 함 수 설 명 : Page번호 Setting 및 버튼 활성화
+* 파 라 미 터 : 
+* 리 턴 내 용 : 
+*****************************************************************************/
+this.fn_setPageNo = function()
+{   
+    var sPage   = this.iStartPageNo;
+    var nPageNo =  this.iNowPageNo; // 현재 페이지번호
+
+    // 이전버튼 처리
+    if (this.divCount.form.edtNow.value == 1) {
+        this.divPaging.form.btnPrev.set_enable(false);
+        this.divPaging.form.btnFirst.set_enable(false);
+    } else {
+        this.divPaging.form.btnPrev.set_enable(true);
+        this.divPaging.form.btnFirst.set_enable(true);
+    }
+
+    // 마지막 버튼 처리
+    if(this.divCount.form.edtNow.value == this.iPageBlock){
+        this.divPaging.form.btnNext.set_enable(false);
+        this.divPaging.form.btnLast.set_enable(false);
+    } else {
+        this.divPaging.form.btnNext.set_enable(true);
+        this.divPaging.form.btnLast.set_enable(true);
+    }
+    
+    for (var i = 0; i < this.iMaxPageNo; i++){
+        //현재 선택된 페이지는 다시 선택되지 않도록 제어
+        if(sPage==nPageNo){
+            this.divPaging.form.all["btn" + i].set_enable(false);
+        }else{
+            this.divPaging.form.all["btn" + i].set_enable(true);
+        }
+        
+        // 페이지 번호 처리
+        this.divPaging.form.all["btn" + i].set_text(sPage);     
+        
+        // 남은 페이지보다 버튼의 수가 많은 경우 비활성화
+        if (this.iTotalCount > ((sPage - 1) * this.iUnitSelRowNo)) {
+            this.divPaging.form.all["btn" + i].set_visible(true);
+        }else{
+            this.divPaging.form.all["btn" + i].set_visible(false);
+        }
+        
+        sPage++;
+    }
+};
+this.divPaging_btnFirst_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var objName = obj.name.split('btn');
+    this.fn_page (objName[1]);  
+};
+
+this.divPaging_btnPrev_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var objName = obj.name.split('btn');
+    this.fn_page (objName[1]);  
+};
+
+this.divPaging_btnNext_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var objName = obj.name.split('btn');
+    this.fn_page (objName[1]);
+};
+
+this.divPaging_btnLast_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var objName = obj.name.split('btn');
+    this.fn_page (objName[1]);  
+};
+]]></Script>
+  </Form>
+</FDL>

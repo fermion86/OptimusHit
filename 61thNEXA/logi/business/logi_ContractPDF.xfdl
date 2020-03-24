@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="logi_ContractPDF" width="1280" height="780" titletext="New Form" onload="logi_ContractPDF_onload">
+    <Layouts>
+      <Layout height="780" mobileorientation="landscape" width="1280">
+        <Plugin id="Plugin00" taborder="0" left="3" top="13" height="743" right="178"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[this.logi_ContractPDF_onload = function (obj:Form, e:nexacro.LoadEventInfo)
+{
+	var contractNum = this.parent.contractNo;
+
+	trace("a" + contractNum);
+	this.Plugin00.setProperty("src",
+		"http://localhost:8282/60thNexaBackEnd/logi/business/pdfPrint.do?contractNo=" + contractNum
+	);
+	// 자바단에서 프로젝트 우클릭 - properties - Java build Path - Source - Add Folder
+	// '59regacyBackEnd/src/main/resources/properties'를 체크해 추가해야 동작한다.
+	trace("b");
+	this.Plugin00.show();
+	trace("c");
+};
+]]></Script>
+  </Form>
+</FDL>

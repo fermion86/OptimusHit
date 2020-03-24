@@ -1,0 +1,488 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="acc_slipApproveForm" width="1280" height="780" titletext="New Form" onload="acc_slipApproveForm_onload">
+    <Layouts>
+      <Layout height="780" mobileorientation="landscape" width="1280">
+        <Calendar id="fromDate_cal" taborder="0" left="41.80%" top="59" right="43.52%" height="29" font="12pt &quot;a두리둥실&quot;"/>
+        <Calendar id="endDate_cal" taborder="1" left="60.94%" top="59" right="24.38%" height="29" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="slipSearch_btn" taborder="2" text="조회" left="77.97%" top="60" right="12.66%" height="30" onclick="slipSearch_btn_onclick" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="Static00" taborder="3" text="~" left="58.36%" top="56" right="38.13%" height="33" verticalAlign="middle" font="12pt &quot;a두리둥실&quot;"/>
+        <Grid id="journalList_grid" taborder="4" left="10.47%" top="356" right="11.09%" height="188" autofittype="col" binddataset="ds_journal" oncelldblclick="journalList_grid_oncelldblclick" font="12pt &quot;a두리둥실&quot;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="146"/>
+                <Column size="104"/>
+                <Column size="122"/>
+                <Column size="103"/>
+                <Column size="96"/>
+                <Column size="107"/>
+                <Column size="88"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="분개일련번호" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="대차구분" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" text="계정코드" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" text="계정명" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" text="적요" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="5" text="거래처코드" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="6" text="거래처명" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="7" text="금액" font="12pt/normal &quot;a두리둥실&quot;" displaytype="text"/>
+              </Band>
+              <Band id="body">
+                <Cell edittype="none" text="bind:JOURNAL_NO" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" edittype="none" text="bind:BALANCE_DIVISION" combodataset="ds_journalDevision" combocodecol="CODE" combodatacol="VALUE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" edittype="none" text="bind:ACCOUNT_INNER_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" edittype="none" text="bind:ACCOUNT_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" edittype="none" text="bind:SUMMARY_COMMENT" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="5" text="bind:CUSTOMER_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="6" text="bind:CUSTOMER_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="7" edittype="none" font="12pt/normal &quot;a두리둥실&quot;" text="if(bind:BALANCE_DIVISION==&quot;대변&quot;){bind:BALANCE_DIVISION}else if( bind:BALANCE_DIVISION==&quot;차변&quot;)bind:BALANCE_DIVISION"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="batch_btn" taborder="5" text="승인내역저장" left="78.91%" top="100" right="11.88%" height="25" onclick="batch_btn_onclick" font="12pt &quot;a두리둥실&quot;"/>
+        <Grid id="slipList_grid" taborder="6" left="10.47%" top="134" right="10.70%" height="154" binddataset="ds_slip" autofittype="col" oncellclick="slipList_grid_oncellclick" onheadclick="slipList_grid_onheadclick" font="12pt/normal &quot;a두리둥실&quot;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="40"/>
+                <Column size="182"/>
+                <Column size="138"/>
+                <Column size="111"/>
+                <Column size="87"/>
+                <Column size="102"/>
+                <Column size="115"/>
+                <Column size="105"/>
+                <Column size="125"/>
+                <Column size="137"/>
+                <Column size="107"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell celltype="none" displaytype="checkbox" edittype="checkbox" font="12pt/normal &quot;a두리둥실&quot;" text="◆"/>
+                <Cell col="1" text="전표일련번호" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" text="회계기수번호" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" text="결의부서명" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" text="전표유형" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="5" text="품의내역" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="6" text="작성자코드" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="7" text="작성날짜" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="8" text="승인자코드" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="9" text="승인날짜" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="10" text="승인여부" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="checkbox" edittype="checkbox" text="bind:CHK" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="bind:SLIP_NO" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" text="bind:ACCOUNT_PERIOD_NO" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" text="bind:DEPT_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" displaytype="normal" edittype="none" text="bind:SLIP_TYPE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="5" edittype="none" text="bind:EXPENSE_REPORT" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="6" text="bind:REPORTING_EMP_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="7" displaytype="normal" edittype="none" text="bind:REPORTING_DATE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="8" edittype="none" text="bind:APPROVAL_EMP_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="9" edittype="none" text="bind:APPROVAL_DATE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="10" edittype="none" text="bind:SLIP_STATUS" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="credit_grid" taborder="7" left="14.22%" top="572" right="51.02%" height="180" binddataset="ds_credit" autofittype="col" font="12pt/normal &quot;a두리둥실&quot;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="215"/>
+                <Column size="215"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+                <Row size="24" band="summ"/>
+              </Rows>
+              <Band id="head" font="12pt/normal &quot;a두리둥실&quot;">
+                <Cell colspan="2" text="차변" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell row="1" text="금액" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell row="1" col="1" text="계정명" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:LEFT_DEBTOR_PRICE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="bind:ACCOUNT_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="summary">
+                <Cell text="합계" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="debit_grid" taborder="8" binddataset="ds_debit" left="51.25%" top="574" right="13.91%" height="180" autofittype="col" font="12pt &quot;a두리둥실&quot;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="215"/>
+                <Column size="215"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+                <Row size="24" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell colspan="2" text="대변" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell row="1" text="금액" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell row="1" col="1" text="계정명" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:RIGHT_CREDITS_PRICE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="bind:ACCOUNT_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="summary">
+                <Cell text="합계" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Combo id="status_combo" taborder="9" left="29.69%" top="58" right="59.69%" height="30" innerdataset="@ds_status" codecolumn="CODE" datacolumn="VALUE" index="1" value="미결" text="미결" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="Static04" taborder="10" text="대차차액" left="53.59%" top="307" right="32.50%" height="24" textAlign="center" verticalAlign="middle" font="15pt &quot;a두리둥실&quot;"/>
+        <MaskEdit id="balanceDifference_mEdit" taborder="11" left="68.59%" top="302" right="12.11%" height="34" enable="false" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="slip_stc" taborder="12" text="전표승인관리" onclick="Static00_onclick" left="134" top="9" right="150" height="45" border="3px solid darkgray" font="18pt/normal &quot;a두리둥실&quot;" textAlign="center"/>
+        <Button id="cancle_btn" taborder="13" text="선택취소" left="68.13%" top="100" right="22.58%" height="25" onclick="cancle_btn_onclick" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="Static01" taborder="14" text="분개내역조회" left="10.16%" top="301" right="78.91%" height="40" border="3px solid darkgray" font="15pt &quot;a두리둥실&quot;" textAlign="center"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_slip">
+        <ColumnInfo>
+          <Column id="SLIP_NO" type="STRING" size="256"/>
+          <Column id="ACCOUNT_PERIOD_NO" type="STRING" size="256"/>
+          <Column id="DEPT_CODE" type="STRING" size="256"/>
+          <Column id="SLIP_TYPE" type="STRING" size="256"/>
+          <Column id="EXPENSE_REPORT" type="STRING" size="256"/>
+          <Column id="AUTHORIZATION_STATUS" type="STRING" size="256"/>
+          <Column id="REPORTING_EMP_CODE" type="STRING" size="256"/>
+          <Column id="REPORTING_DATE" type="STRING" size="256"/>
+          <Column id="APPROVAL_EMP_CODE" type="STRING" size="256"/>
+          <Column id="APPROVAL_DATE" type="STRING" size="256"/>
+          <Column id="SLIP_DESCRIPTION" type="STRING" size="256"/>
+          <Column id="SLIP_STATUS" type="STRING" size="256"/>
+          <Column id="CHK" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_journal">
+        <ColumnInfo>
+          <Column id="JOURNAL_NO" type="STRING" size="256"/>
+          <Column id="SLIP_NO" type="STRING" size="256"/>
+          <Column id="BALANCE_DIVISION" type="STRING" size="256"/>
+          <Column id="ACCOUNT_INNER_CODE" type="STRING" size="256"/>
+          <Column id="ACCOUNT_NAME" type="STRING" size="256"/>
+          <Column id="SUMMARY_NUMBER" type="STRING" size="256"/>
+          <Column id="SUMMARY_COMMENT" type="STRING" size="256"/>
+          <Column id="CUSTOMER_CODE" type="STRING" size="256"/>
+          <Column id="CUSTOMER_NAME" type="STRING" size="256"/>
+          <Column id="LEFT_DEBTOR_PRICE" type="STRING" size="256"/>
+          <Column id="RIGHT_CREDITS_PRICE" type="STRING" size="256"/>
+          <Column id="JOURNAL_DESCRIPTION" type="STRING" size="256"/>
+          <Column id="SLIP_APPROVAL_DATE" type="STRING" size="256"/>
+          <Column id="PRICE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_debit">
+        <ColumnInfo>
+          <Column id="RIGHT_CREDITS_PRICE" type="STRING" size="256"/>
+          <Column id="ACCOUNT_NAME" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_credit">
+        <ColumnInfo>
+          <Column id="LEFT_DEBTOR_PRICE" type="STRING" size="256"/>
+          <Column id="ACCOUNT_NAME" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_status">
+        <ColumnInfo>
+          <Column id="CODE" type="STRING" size="256"/>
+          <Column id="VALUE" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="CODE">승인</Col>
+            <Col id="VALUE">승인</Col>
+          </Row>
+          <Row>
+            <Col id="CODE">미결</Col>
+            <Col id="VALUE">미결</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_journalDetail">
+        <ColumnInfo>
+          <Column id="JOURNAL_DETAIL_NO" type="STRING" size="256"/>
+          <Column id="JOURNAL_NO" type="STRING" size="256"/>
+          <Column id="ITEM" type="STRING" size="256"/>
+          <Column id="VALUE" type="STRING" size="256"/>
+          <Column id="JOURNAL_DETAIL_DESCRIPTION" type="STRING" size="256"/>
+          <Column id="ACCOUNT_INNER_CODE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_journalDetailForm">
+        <ColumnInfo>
+          <Column id="ACCOUNT_CODE" type="STRING" size="256"/>
+          <Column id="ACCOUNT_CONTROL_CODE" type="STRING" size="256"/>
+          <Column id="ACCOUNT_CONTROL_NAME" type="STRING" size="256"/>
+          <Column id="ACCOUNT_CONTROL_TYPE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_journalDevision">
+        <ColumnInfo>
+          <Column id="CODE" type="STRING" size="256"/>
+          <Column id="VALUE" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="CODE">대변</Col>
+            <Col id="VALUE">대변</Col>
+          </Row>
+          <Row>
+            <Col id="CODE">차변</Col>
+            <Col id="VALUE">차변</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_journalDetailCopy">
+        <ColumnInfo>
+          <Column id="JOURNAL_DETAIL_NO" type="STRING" size="256"/>
+          <Column id="JOURNAL_NO" type="STRING" size="256"/>
+          <Column id="ITEM" type="STRING" size="256"/>
+          <Column id="VALUE" type="STRING" size="256"/>
+          <Column id="JOURNAL_DETAIL_DESCRIPTION" type="STRING" size="256"/>
+          <Column id="ACCOUNT_INNER_CODE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findSlipList</Col>
+            <Col id="URL">dataURL::acc/slip/findSlipListByCondition.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">ds_slip=gds_slip ds_journal=gds_journal ds_journalDetail=gds_journalDetail</Col>
+            <Col id="callbackFunc">gfnCallbackFunc</Col>
+            <Col id="argument"/>
+          </Row>
+          <Row>
+            <Col id="serviceID">modifyApprovalSlipList</Col>
+            <Col id="URL">dataURL::acc/slip/modifyApprovalSlipList.do</Col>
+            <Col id="outData"/>
+            <Col id="inData">gds_slip=ds_slip:U</Col>
+            <Col id="argument"/>
+            <Col id="callbackFunc">gfnCallbackFunc</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[/********************************************************************************                                                                            
+ 전표승인화면
+ @Path		회계
+ @Description	전표,분개,분개상세 조회 및 승인을 위한 창
+ @Author	  	조윤희
+ @Create           2019. 02. 26
+ ********************************************************************************/
+include "scripts::commonTransaction.xjs";
+include "scripts::commonOpen.xjs";
+
+var s_today = nexacro.getApplication().today().toString();
+var v_today = s_today.substr(0, 4) + "-" + s_today.substr(4, 2) + "-" + s_today.substr(6, 2);
+this.acc_slipApproveForm_onload = function (obj:Form, e:nexacro.LoadEventInfo)
+{
+	//alert(v_today);
+	var argument = "startDate=" + v_today + " endDate=" + v_today + " slipStatus=" + "미결";
+	this.dsService.setColumn(0, 4, argument);
+	this.gfnService("findSlipList", false);
+	this.ds_journal.filter("JOURNAL_NO==0");
+};
+
+
+// 전표 조회 버튼 이벤트 
+this.slipSearch_btn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	// 조회버튼
+	var v_startDate = this.fromDate_cal.value;
+	var v_endDate = this.endDate_cal.value;
+
+	if (v_startDate == null || v_endDate == null) 
+	{
+		alert("조회날짜가 비었습니다");
+		return;
+	}
+	else 
+	{
+		v_startDate = this.fromDate_cal.value.toString();
+		v_endDate = this.endDate_cal.value.toString();
+	}
+
+	var startDate = v_startDate.substr(0, 4) + "-" + v_startDate.substr(4, 2) + "-" + v_startDate.substr(6, 2);
+	var endDate = v_endDate.substr(0, 4) + "-" + v_endDate.substr(4, 2) + "-" + v_endDate.substr(6, 2);
+
+	if (endDate < startDate) 
+	{
+		alert("조회기간 설정을 다시 해주십시오");
+	}
+
+	var argument = "startDate=" + startDate + " endDate=" + endDate + " slipStatus=" + this.status_combo.value;
+	this.dsService.setColumn(0, 4, argument);
+	this.gfnService("findSlipList", false);
+};
+
+// 그리드 셀 클릭 이벤트
+this.slipList_grid_oncellclick = function (obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	// 전표그리드 클릭 시
+	var slipNo = this.ds_slip.getColumn(e.row, "SLIP_NO");
+	this.ds_journal.filter("SLIP_NO=='" + slipNo + "'");  // 분개 데이터 셋을 전표 번호로 필터링
+	var journalTotalCount = this.ds_journal.getRowCount();
+	
+	// 분개의 개수가 0개라면
+	if (journalTotalCount == 0) 
+	{	// 0으로 필터
+		this.ds_credit.filter("LEFT_DEBTOR_PRICE==0");
+		this.ds_debit.filter("RIGHT_CREDITS_PRICE==0");
+	}
+	else // 분개의 개수가 0이 아닐경우 for 문을 돌리면서 셋팅
+	{	
+		for (var i = 0; i < journalTotalCount; i++) 
+		{	// 상태 값을 체크
+			var balanceDivision = this.ds_journal.getColumn(i, "BALANCE_DIVISION");
+
+			if (balanceDivision == "차변") // 차변일경우
+			{
+				this.ds_credit.copyData(this.ds_journal, true); // 필터링된 데이터 셋만 복사
+				this.ds_credit.filter("LEFT_DEBTOR_PRICE!=0"); // 차변 데이터 셋에 0이 아닌 애들을 복사
+			}
+			else // 대변일 경우
+			{
+				this.ds_debit.copyData(this.ds_journal, true); // 필터링된 데이터 셋만 복사
+				this.ds_debit.filter("RIGHT_CREDITS_PRICE!=0"); // 대변 데이터 셋에 0이 아닌 애들을 복사
+			}
+		}
+	}
+
+	var leftPrice = this.ds_journal.getCaseSum("BALANCE_DIVISION=='차변'", "LEFT_DEBTOR_PRICE");
+	var rightPrice = this.ds_journal.getCaseSum("BALANCE_DIVISION=='대변'", "RIGHT_CREDITS_PRICE");
+	totalSum = Math.abs(leftPrice - rightPrice);
+
+	if(totalSum==0)
+		this.balanceDifference_mEdit.set_value(totalSum);
+	else
+		alert("대변 차변합이 0이 아닙니다 확인 부탁드릴게요");
+};
+
+
+// 전표 그리드의 헤드 부분 클릭 이벤트 [ 체크 설정 ]
+this.slipList_grid_onheadclick = function (obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	if (e.cell == 0) 
+	{
+		trace(e.cell);
+
+		if (obj.getCellProperty("head", 0, 'text') == 1) 
+		{
+			obj.setCellProperty("head", 0, 'text', 0);
+
+			for (var i = 0; i < this.ds_slip.rowcount; i++) 
+			{
+				this.ds_slip.setColumn(i, "CHK", 0);
+			}
+		}
+		else 
+		{
+			obj.setCellProperty("head", 0, 'text', 1);
+
+			for (var i = 0; i < this.ds_slip.rowcount; i++) 
+			{
+				this.ds_slip.setColumn(i, "CHK", 1);
+			}
+		}
+	}
+};
+
+
+// 분개 그리드 더블 클릭
+this.journalList_grid_oncelldblclick = function (obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	// 분개상세 나올수 있게
+	var journalNo = this.ds_journal.getColumn(e.row, "JOURNAL_NO");
+
+	this.gfnOpen("journalDetail", "acc_slip::acc_journalDetailDialog.xfdl", "", {
+		mode : 'journalDetail',
+		journalNo : journalNo
+	});
+};
+
+
+// 일괄처리 버튼 이벤트 [ 승인 내역 저장 ]
+this.batch_btn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	// 승인내역저장
+	if (confirm("저장하시겠습니까?")) 
+	{
+		var rowCountSlip = this.ds_slip.getRowCount();
+
+		for (var i = 0; i < rowCountSlip; i++) 
+		{
+			if (this.ds_slip.getColumn(i, "CHK") == 1 && this.ds_slip.getColumn(i, "SLIP_STATUS") == "미결") 
+			{
+				this.ds_slip.setColumn(i, "APPROVAL_EMP_CODE", nexacro.getApplication().g_empCode);
+				this.ds_slip.setColumn(i, "APPROVAL_DATE", v_today);
+				this.ds_slip.setColumn(i, "SLIP_STATUS", "승인");
+			}
+			else 
+			{
+				this.ds_slip.setColumn(i, "APPROVAL_EMP_CODE", "미결");
+				this.ds_slip.setColumn(i, "APPROVAL_DATE", "미결");
+				this.ds_slip.setColumn(i, "SLIP_STATUS", "미결");
+			}
+		}
+
+		this.gfnService("modifyApprovalSlipList", false);
+	}
+};
+
+
+// 승인 취소 버튼 이벤트 
+this.cancle_btn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	// 선택취소
+	var rowCountSlip = this.ds_slip.getRowCount();
+
+	for (var i = 0; i < rowCountSlip; i++) 
+	{
+		if (this.ds_slip.getColumn(i, "CHK") == 1) 
+		{
+			this.ds_slip.setColumn(i, "CHK", 0);
+			this.ds_slip.setCellProperty("head", 0, 'text', 0);
+		}
+	}
+};
+]]></Script>
+  </Form>
+</FDL>

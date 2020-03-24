@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="hr_salMgnForm" width="1200" height="780" titletext="New Form" onload="hr_salMgnForm_onload">
+    <Layouts>
+      <Layout height="780" mobileorientation="landscape" width="1200">
+        <Button id="salMgnlBatch_btn" taborder="0" text="저장" left="1047" top="71" height="40" width="120" onclick="salMgnlBatch_btn_onclick" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="salMgnForm_stc" taborder="1" text="수당 관리" onclick="Static00_onclick" left="14" top="9" right="29" height="55" border="3px solid darkgray" font="18pt/normal &quot;a두리둥실&quot;" textAlign="center"/>
+        <Static id="overTimesalMgn_stc" taborder="2" text="# 연장수당" onclick="Static00_onclick" left="10" top="139" height="50" border="3px solid darkgray" font="16pt &quot;a두리둥실&quot;" textAlign="left" width="200"/>
+        <Grid id="salMgnAdd_grd" taborder="3" left="1.08%" top="196" right="2.33%" height="220" binddataset="ds_overtimeSal" autofittype="col" oncellclick="salMgnAdd_grd_oncellclick" font="12pt &quot;a두리둥실&quot;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="217"/>
+                <Column size="260"/>
+                <Column size="196"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="OVERTIME_SAL_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="OVERTIME_SAL_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" text="OVERTIME_SAL_RATE" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:OVERTIME_SAL_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" edittype="none" text="bind:OVERTIME_SAL_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" edittype="masknumber" text="bind:OVERTIME_SAL_RATE" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="etcSalMgn_stc" taborder="4" text="# 기타수당" onclick="Static00_onclick" left="14" top="463" height="50" border="3px solid darkgray" font="16pt &quot;a두리둥실&quot;" textAlign="left" width="200"/>
+        <Grid id="etcSalAdd_grd" taborder="5" left="1.00%" top="516" right="2.25%" height="250" binddataset="ds_etcSal" autofittype="col" oncellclick="etcSalAdd_grd_oncellclick" autoenter="none" font="12pt &quot;a두리둥실&quot;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="ETC_SAL_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="ETC_SAL_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" text="ETC_SAL_PRICE" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:ETC_SAL_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" edittype="none" text="bind:ETC_SAL_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" edittype="masknumber" text="bind:ETC_SAL_PRICE" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="salMgnDel_btn" taborder="6" text="삭제" left="1047" top="149" width="120" height="40" onclick="salMgnDel_btn_onclick" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="salMgnAdd_btn" taborder="7" text="추가" left="911" top="149" width="120" height="40" onclick="salMgnAdd_btn_onclick" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="etcSalAdd_btn" taborder="8" text="추가" left="911" top="469" width="120" height="40" onclick="etcSalAdd_btn_onclick" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="etcSalDel_btn" taborder="9" text="삭제" left="1047" top="469" width="120" height="40" onclick="etcSalDel_btn_onclick" font="12pt &quot;a두리둥실&quot;"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_etcSal">
+        <ColumnInfo>
+          <Column id="ETC_SAL_CODE" type="STRING" size="256"/>
+          <Column id="ETC_SAL_NAME" type="STRING" size="256"/>
+          <Column id="ETC_SAL_PRICE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_overtimeSal">
+        <ColumnInfo>
+          <Column id="OVERTIME_SAL_CODE" type="STRING" size="256"/>
+          <Column id="OVERTIME_SAL_NAME" type="STRING" size="256"/>
+          <Column id="OVERTIME_SAL_RATE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[/********************************************************************************                                                                            
+ 수당관리 화면
+ @Path		인사
+ @Description	수당관리 폼
+ @Author	  	허용석
+ @Create           2019. 02. 18.
+ ********************************************************************************/
+
+this.hr_salMgnForm_onload = function (obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.transaction("findSudangList",
+		"dataURL::hr/circumstance/findSudangList.do",
+		"",
+		"ds_etcSal=ds_etcSal ds_overtimeSal=ds_overtimeSal",
+		"",
+		"callback",
+		false);
+};
+
+this.salMgnAdd_btn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	if (nexacro.getApplication().confirm("평일수당을 추가하시겠습니까?", "평일/휴일수당선택", "question")) 
+	{
+		this.ds_overtimeSal.filter("OVERTIME_SAL_CODE.toString().length==6");
+		this.makeCode(this.ds_overtimeSal, "OVERTIME_SAL_CODE");
+	}
+	else 
+	{
+		this.ds_overtimeSal.filter("");
+
+		this.makeCode(this.ds_overtimeSal, "OVERTIME_SAL_CODE");
+	}
+};
+
+this.salMgnDel_btn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	var delRow = this.ds_overtimeSal.rowposition;
+	this.ds_overtimeSal.deleteRow(delRow);
+};
+
+this.etcSalAdd_btn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	this.makeCode(this.ds_etcSal, "ETC_SAL_CODE");
+	this.etcSalAdd_grd.setCellProperty("Body", 1, "edittype", "text");
+};
+
+this.etcSalDel_btn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	var delRow = this.ds_etcSal.rowposition;
+	this.ds_etcSal.deleteRow(delRow);
+};
+this.makeCode = function (dataset, codeColumn)
+{
+	var lastRow = parseInt(dataset.rowcount) - 1;
+	trace(lastRow);
+	var code = dataset.getColumn(lastRow, codeColumn);
+	trace(code);
+
+	var codeString = code.substring(0, code.indexOf(0));
+	trace(codeString);
+	var codeNumber = code.substring(code.indexOf(0));
+	trace((parseInt(codeNumber) + 1).toString().padLeft(3, 0));
+	var newCode = codeString.concat((parseInt(codeNumber) + 1).toString().padLeft(3, 0));
+	trace(newCode);
+	var newRow = dataset.addRow();
+	trace(newRow);
+	dataset.setColumn(newRow, codeColumn, newCode);
+};
+
+this.etcSalAdd_grd_oncellclick = function (obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	this.cellCheck(this.ds_etcSal, e.row, obj);
+};
+
+this.salMgnAdd_grd_oncellclick = function (obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	this.cellCheck(this.ds_overtimeSal, e.row, obj);
+};
+
+this.cellCheck = function (dataset, row, grid)
+{
+	trace(dataset.getRowType(row));
+
+	if (dataset.getRowType(row) != 2) 
+	{
+		trace("수정불가능");
+		grid.setCellProperty("Body", 1, "edittype", "none");
+	}
+	else if (dataset.getRowType(row) == 2) 
+	{
+		grid.setCellProperty("Body", 1, "edittype", "text");
+		trace("수정가능");
+	}
+};
+this.salMgnlBatch_btn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	this.transaction(
+		"batchSudang",
+		"dataURL::hr/circumstance/batchSudangProcess.do",
+		"ds_overtimeSal=ds_overtimeSal:u ds_etcSal=ds_etcSal:u",
+		"",
+		"",
+		"callback"
+	);
+};
+]]></Script>
+  </Form>
+</FDL>

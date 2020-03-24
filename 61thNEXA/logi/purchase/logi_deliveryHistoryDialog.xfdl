@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="logi_deliveryHistoryDialog" width="1020" height="720" titletext="New Form" onload="logi_deliveryHistoryDialog_onload">
+    <Layouts>
+      <Layout height="720" mobileorientation="landscape" width="1020">
+        <Grid id="deliveryHistory_grid" taborder="0" binddataset="ds_deliveryResult" left="14" top="71" width="985" height="609" autofittype="col" font="12pt &quot;a두리둥실&quot;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="164"/>
+                <Column size="229"/>
+                <Column size="189"/>
+                <Column size="138"/>
+                <Column size="100"/>
+                <Column size="136"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="작업지시번호" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="제품코드" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" text="제품명" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" text="출고수량" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" text="단위" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="5" text="출고일" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:CONTRACT_DETAIL_NO" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="bind:ITEM_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" text="bind:ITEM_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" text="bind:DELIVERY_AMOUNT" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" text="bind:UNIT_OF_DELIVERY_RESULT" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="5" text="bind:DELIVERY_DATE" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="deliveryHistory_stc" taborder="1" text="재고이력조회" left="14" top="9" right="10" height="45" border="3px solid darkgray" font="18pt/normal &quot;a두리둥실&quot;" textAlign="center"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_deliveryResult">
+        <ColumnInfo>
+          <Column id="DELIVERY_NO" type="STRING" size="256"/>
+          <Column id="CONTRACT_DETAIL_NO" type="STRING" size="256"/>
+          <Column id="WAREHOUSE_CODE" type="STRING" size="256"/>
+          <Column id="ITEM_CODE" type="STRING" size="256"/>
+          <Column id="ITEM_NAME" type="STRING" size="256"/>
+          <Column id="UNIT_OF_DELIVERY_RESULT" type="STRING" size="256"/>
+          <Column id="DELIVERY_DATE" type="STRING" size="256"/>
+          <Column id="DELIVERY_AMOUNT" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+          <Column id="CUSTOMER_CODE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[// 데이터 셋 체크 이거 결과값은 있는데 출력이 안됨 DS 셋팅이 안넘어옴
+// 반제품,제품 재고이력조회 온로드 
+this.logi_deliveryHistoryDialog_onload = function (obj:Form, e:nexacro.LoadEventInfo)
+{
+	nexacro.getApplication().trace(this.parent.itemCode);
+	this.ds_deliveryResult.filter("ITEM_CODE=='" + this.parent.itemCode + "'");
+
+	this.transaction(
+		"findDeliveryResultList",
+		"dataURL::logi/business/findDeliveryResultList.do",
+		"",
+		"ds_deliveryResult=ds_deliveryResult",
+		"",
+		"callback"
+	);
+};
+
+
+
+// 콜백
+this.callback = function (trid, ErrorCode, ErrorMsg)
+{
+	if (trid == "findDeliveryResultList") 
+	{
+		if (ErrorCode < 0) 
+		{
+			nexacro.getApplication().alert("온로드 실패");
+		}
+		else 
+		{
+		}
+	}
+};
+]]></Script>
+  </Form>
+</FDL>

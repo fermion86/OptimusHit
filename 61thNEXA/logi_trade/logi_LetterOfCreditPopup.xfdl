@@ -1,0 +1,304 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="logi_LetterOfCreditPopup" width="650" height="650" titletext="New Form" onload="logi_LetterOfCreditPopup_onload">
+    <Layouts>
+      <Layout height="650" mobileorientation="landscape" width="650">
+        <GroupBox id="GroupBox00" text="L/C 등록" taborder="0" left="1.54%" top="21" right="2.00%" height="570" font="18pt/normal &quot;a두리둥실&quot;"/>
+        <Static id="사업장" taborder="1" text="L/C No" left="4.00%" top="104" height="30" width="140" color="black" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="LcNo" taborder="2" oneditclick="businessCode_oneditclick" enable="false" left="25.54%" top="104" height="30" width="150" textAlign="center" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="사업장00" taborder="3" text="수출수주일련번호" left="4.00%" top="139" height="30" width="140" color="black" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="사업장01" taborder="4" text="발행일" left="4.00%" top="174" height="30" width="140" color="black" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="사업장05" taborder="5" text="개설자" left="4.00%" top="279" height="30" width="140" color="black" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="사업장03" taborder="6" text="수혜자" left="4.00%" top="314" height="30" width="140" color="black" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="사업장06" taborder="7" text="개설은행" left="51.08%" top="279" height="30" width="140" color="black" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="사업장07" taborder="8" text="통지은행" left="51.08%" top="314" height="30" width="140" color="black" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="사업장02" taborder="9" text="선적마감일" left="51.08%" top="174" height="30" width="140" color="black" font="12pt &quot;a두리둥실&quot;"/>
+        <Calendar id="shippingDeadline" taborder="10" left="72.31%" top="174" height="30" width="144" color="midnightblue" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="사업장11" taborder="11" text="서류제출 마감일" left="51.08%" top="209" height="30" width="140" color="black" font="12pt &quot;a두리둥실&quot;"/>
+        <Calendar id="documentSubDeadline" taborder="12" left="72.31%" top="209" height="30" width="144" color="midnightblue" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="saveBtn" taborder="13" text="일괄저장" onclick="lcRegisterBtn_onclick" left="82.00%" top="55" right="4.77%" height="28" color="darkblue" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="사업장10" taborder="14" text="품목명" left="4.00%" top="209" height="30" width="140" color="black" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="사업장12" taborder="15" text="수출금액" left="4.00%" top="244" height="30" width="140" color="black" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="사업장04" taborder="16" text="출발항" left="51.08%" top="104" height="30" width="140" color="black" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="사업장13" taborder="17" text="도착항" left="51.08%" top="139" height="30" width="140" color="black" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="사업장09" taborder="18" text="L/C 마감일" left="51.08%" top="244" height="30" width="140" color="black" font="12pt &quot;a두리둥실&quot;"/>
+        <Calendar id="lcDeadline" taborder="19" left="72.31%" top="244" height="30" width="144" color="midnightblue" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="사업장08" taborder="20" text="선적구분" left="51.08%" top="349" height="30" width="140" color="black" font="12pt &quot;a두리둥실&quot;"/>
+        <Calendar id="issueDate" taborder="21" left="25.54%" top="175" height="29" width="150" color="midnightblue" font="12pt &quot;a두리둥실&quot;"/>
+        <Combo id="koreaPort" taborder="22" left="72.31%" top="104" height="30" width="144" innerdataset="@ds_koreaPort" datacolumn="DETAIL_CODE_NAME" codecolumn="DETAIL_CODE" color="midnightblue" font="12pt &quot;a두리둥실&quot;"/>
+        <Combo id="globalPort" taborder="23" left="72.31%" top="139" height="30" width="144" innerdataset="@ds_globalPort" datacolumn="DETAIL_CODE_NAME" codecolumn="DETAIL_CODE" color="midnightblue" font="12pt &quot;a두리둥실&quot;"/>
+        <Combo id="openBank" taborder="24" left="72.31%" top="279" height="30" width="144" innerdataset="@ds_koreaBank" datacolumn="DETAIL_CODE_NAME" codecolumn="DETAIL_CODE" color="midnightblue" font="12pt &quot;a두리둥실&quot;"/>
+        <Combo id="notifyBank" taborder="25" left="72.31%" top="314" height="30" width="144" innerdataset="@ds_globalBank" datacolumn="DETAIL_CODE_NAME" codecolumn="DETAIL_CODE" color="midnightblue" font="12pt &quot;a두리둥실&quot;"/>
+        <Combo id="shippingType" taborder="26" left="72.31%" top="349" height="30" width="144" innerdataset="@ds_portType" datacolumn="VALUE" codecolumn="CODE" color="midnightblue" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="tradeContractNo" taborder="27" left="25.54%" top="139" width="150" height="30" enable="false" textAlign="center" font="12pt &quot;a두리둥실&quot;"/>
+        <MaskEdit id="exportTotal" taborder="28" left="25.54%" top="244" height="30" width="150" mask="###,###,###,###" color="midnightblue" textAlign="center" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="itemName" taborder="29" left="25.54%" top="209" height="30" width="150" color="midnightblue" textAlign="center" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="openerCompany" taborder="30" enable="false" left="25.54%" top="279" width="150" height="30" value="(주)지선컴퍼니" textAlign="center" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="benecifiary" taborder="31" enable="true" left="25.54%" top="314" width="150" height="30" color="midnightblue" textAlign="center" font="12pt &quot;a두리둥실&quot;"/>
+      </Layout>
+    </Layouts>
+    <InitValue>
+      <Edit id="LcNo" enable="false"/>
+    </InitValue>
+    <Bind>
+      <BindItem id="item0" compid="koreaPort" propid="innerdataset" datasetid="gds_codeDetail" columnid=""/>
+    </Bind>
+    <Script type="xscript5.1"><![CDATA[/********************************************************************************                                                                            
+ L/C등록 팝업
+ @Path		물류
+ @Description	L/C등록작성 팝업
+ @Author	   정민찬
+ @Create           2019. 12. 06.
+ ********************************************************************************/
+
+include "scripts::commonScripts.xjs"
+
+
+this.squenceNo = "";
+var newContractNo = "";
+this.logi_LetterOfCreditPopup_onload = function (obj:Form, e:nexacro.LoadEventInfo)
+{
+	nexacro.getApplication().gds_codeDetail.filter("");
+
+	this.transaction("findCodeDetailList",
+		"dataURL::sys/findCodeDetailList.do",
+		"",
+		"gds_codeDetail=gds_codeDetail",
+		"",
+		"callback");
+
+
+
+
+	nexacro.getApplication().gds_codeDetail.filter("DIVISION_CODE_NO=='LOGI05'");
+	this.ds_koreaBank = this.ds_koreaBank.copyData(nexacro.getApplication().gds_codeDetail, true);
+
+	nexacro.getApplication().gds_codeDetail.filter("DIVISION_CODE_NO=='LOGI06'");
+	this.ds_globalBank = this.ds_globalBank.copyData(nexacro.getApplication().gds_codeDetail, true);
+
+	nexacro.getApplication().gds_codeDetail.filter("DIVISION_CODE_NO=='LOGI07'");
+	this.ds_koreaPort = this.ds_koreaPort.copyData(nexacro.getApplication().gds_codeDetail, true);
+
+	nexacro.getApplication().gds_codeDetail.filter("DIVISION_CODE_NO=='LOGI08'");
+	this.ds_globalPort = this.ds_globalPort.copyData(nexacro.getApplication().gds_codeDetail, true);
+
+
+
+	var strParam1 = this.parent.param1;
+	var strParam2 = this.parent.param2;
+	var strParam3 = this.parent.param3;
+	var strParam4 = this.parent.param4;
+	var strParam5 = this.parent.param5;
+	var strParam6 = this.parent.param6;
+
+
+	var shippingDeadlineDay = "";
+	var documentSubDeadlineDay = "";
+	var lcDeadlineDay = "";
+
+	shippingDeadlineDay = this.gfn_addMonth(strParam3, 3); //공통함수 사용하여 +3개월세팅
+	documentSubDeadlineDay = this.gfn_addMonth(strParam3, 2); //+2개월
+	lcDeadlineDay = this.gfn_addMonth(strParam3, 1); //+1개월
+
+	var ea = parseInt(strParam5);
+	var price = parseInt(strParam6);
+	var totalSum = (ea) * (price);
+
+
+	// 수출수주 param에서 받아온 값, 각각 에디트에 세팅
+	this.tradeContractNo.set_value(strParam1);
+	this.benecifiary.set_value(strParam2);
+	this.issueDate.set_value(strParam3);
+	this.shippingDeadline.set_value(shippingDeadlineDay);
+	this.documentSubDeadline.set_value(documentSubDeadlineDay);
+	this.lcDeadline.set_value(lcDeadlineDay);
+	this.itemName.set_value(strParam4);
+	this.exportTotal.set_value(totalSum);
+
+
+
+	this.gfnService("findSequenceNo", false);
+	var serialCode = this.squenceNo;
+	newContractNo = "LC-NO" + serialCode;
+	this.LcNo.set_value(newContractNo);
+};
+
+// 콜백 함수
+// 수출수주 부모장에서 날린 콜백함수명, strPopupID
+this.fn_popupCallback2 = function (strPopupID, strReturn)
+{
+	if (strReturn == undefined) 
+	{
+		return;
+	}
+
+	if (strPopupID == "lcPopup") 
+	{
+		this.alert("Return Value: " + strReturn);
+	}
+};
+
+// 일괄저장 버튼
+this.lcRegisterBtn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	alert(this.tradeContractNo.value);
+	this.ds_letterOfCredit.addRow();
+
+	this.ds_letterOfCredit.setColumn(this.ds_letterOfCredit.rowposition, "EX_CONTRACT_NO", this.tradeContractNo.value);
+	this.ds_letterOfCredit.setColumn(this.ds_letterOfCredit.rowposition, "LETTER_OF_CREDIT_NO", this.LcNo.value);
+	this.ds_letterOfCredit.setColumn(this.ds_letterOfCredit.rowposition, "DATE_OF_ISSUE", this.issueDate.value);
+	this.ds_letterOfCredit.setColumn(this.ds_letterOfCredit.rowposition, "EXPORT_AMOUNT", this.exportTotal.value);
+	this.ds_letterOfCredit.setColumn(this.ds_letterOfCredit.rowposition, "PORT_OF_DEPARTURE", this.koreaPort.value);
+	this.ds_letterOfCredit.setColumn(this.ds_letterOfCredit.rowposition, "PORT_OF_ARRIVAL", this.globalPort.value);
+	this.ds_letterOfCredit.setColumn(this.ds_letterOfCredit.rowposition, "SHIPPING_DEADLINE", this.shippingDeadline.value);
+	this.ds_letterOfCredit.setColumn(this.ds_letterOfCredit.rowposition, "DOCUMENTS_SUBMISSION_DEADLINE", this.documentSubDeadline.value);
+	this.ds_letterOfCredit.setColumn(this.ds_letterOfCredit.rowposition, "LETTER_OF_CREDIT_DEADLINE", this.lcDeadline.value);
+	this.ds_letterOfCredit.setColumn(this.ds_letterOfCredit.rowposition, "OPENING_BANK", this.openBank.value);
+	this.ds_letterOfCredit.setColumn(this.ds_letterOfCredit.rowposition, "NOTIFYING_BANK", this.notifyBank.value);
+	this.ds_letterOfCredit.setColumn(this.ds_letterOfCredit.rowposition, "OPENER", this.openerCompany.value);
+	this.ds_letterOfCredit.setColumn(this.ds_letterOfCredit.rowposition, "BENEFICIARY", this.benecifiary.value);
+	this.ds_letterOfCredit.setColumn(this.ds_letterOfCredit.rowposition, "SHIPPING_TYPE", this.shippingType.value);
+	this.ds_letterOfCredit.setColumn(this.ds_letterOfCredit.rowposition, "ITEM_NAME", this.itemName.value);
+
+
+	this.transaction("registerLetterOfCredit",
+		"dataURL::logi/trade/registerLetterOfCredit.do",
+		"ds_letterOfCredit=ds_letterOfCredit:u",
+		"",
+		"",
+		"callback");
+
+	this.close();
+};]]></Script>
+    <Objects>
+      <Dataset id="ds_letterOfCredit">
+        <ColumnInfo>
+          <Column id="EX_CONTRACT_NO" type="STRING" size="256"/>
+          <Column id="LETTER_OF_CREDIT_NO" type="STRING" size="256"/>
+          <Column id="DATE_OF_ISSUE" type="STRING" size="256"/>
+          <Column id="EXPORT_AMOUNT" type="STRING" size="256"/>
+          <Column id="PORT_OF_DEPARTURE" type="STRING" size="256"/>
+          <Column id="PORT_OF_ARRIVAL" type="STRING" size="256"/>
+          <Column id="SHIPPING_DEADLINE" type="STRING" size="256"/>
+          <Column id="DOCUMENTS_SUBMISSION_DEADLINE" type="STRING" size="256"/>
+          <Column id="LETTER_OF_CREDIT_DEADLINE" type="STRING" size="256"/>
+          <Column id="OPENING_BANK" type="STRING" size="256"/>
+          <Column id="NOTIFYING_BANK" type="STRING" size="256"/>
+          <Column id="OPENER" type="STRING" size="256"/>
+          <Column id="BENEFICIARY" type="STRING" size="256"/>
+          <Column id="SHIPPING_TYPE" type="STRING" size="256"/>
+          <Column id="ITEM_NAME" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_tradeContract">
+        <ColumnInfo>
+          <Column id="EX_CONTRACT_NO" type="STRING" size="256"/>
+          <Column id="ESTIMATE_NO" type="STRING" size="256"/>
+          <Column id="CONTRACT_TYPE" type="STRING" size="256"/>
+          <Column id="CUSTOMER_CODE" type="STRING" size="256"/>
+          <Column id="CONTRACT_DATE" type="STRING" size="256"/>
+          <Column id="CONTRACT_REQUESTER" type="STRING" size="256"/>
+          <Column id="PERSON_CODE_IN_CHARGE" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+          <Column id="DELIVERY_RESULT_STATUS" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_tradeContractDetail">
+        <ColumnInfo>
+          <Column id="EX_CONTRACT_DETAIL_NO" type="STRING" size="256"/>
+          <Column id="EX_CONTRACT_NO" type="STRING" size="256"/>
+          <Column id="ITEM_CODE" type="STRING" size="256"/>
+          <Column id="ITEM_NAME" type="STRING" size="256"/>
+          <Column id="UNIT_OF_CONTRACT" type="STRING" size="256"/>
+          <Column id="DUE_DATE_OF_CONTRACT" type="STRING" size="256"/>
+          <Column id="CONTRACT_AMOUNT" type="STRING" size="256"/>
+          <Column id="UNIT_PRICE_OF_CONTRACT" type="STRING" size="256"/>
+          <Column id="SUM_PRICE_OF_CONTRACT" type="STRING" size="256"/>
+          <Column id="MPS_APPLY_STATUS" type="STRING" size="256"/>
+          <Column id="DELIVERY_STATUS" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findSequenceNo</Col>
+            <Col id="URL">dataURL::sys/findSequenceNo.do</Col>
+            <Col id="inData">[Undefined]</Col>
+            <Col id="outData"/>
+            <Col id="argument">findSeq=LC_SEQ</Col>
+            <Col id="callbackFunc">gfnCallbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">registerContract</Col>
+            <Col id="URL">dataURL::logi/trade/registerExContract.do</Col>
+            <Col id="inData">ds_tradeContract=ds_tradeContract:u ds_tradeContractDetail=ds_tradeContractDetail:u</Col>
+            <Col id="outData">ds_tradeContract=ds_tradeContract ds_tradeContractDetail=ds_tradeContractDetail</Col>
+            <Col id="argument">[Undefined]</Col>
+            <Col id="callbackFunc">gfnCallbackFunc</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_portType">
+        <ColumnInfo>
+          <Column id="CODE" type="STRING" size="256"/>
+          <Column id="VALUE" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="VALUE">혼적</Col>
+            <Col id="CODE">Min</Col>
+          </Row>
+          <Row>
+            <Col id="VALUE">분할</Col>
+            <Col id="CODE">Installment </Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_koreaBank">
+        <ColumnInfo>
+          <Column id="DIVISION_CODE_NO" type="STRING" size="256"/>
+          <Column id="DETAIL_CODE" type="STRING" size="256"/>
+          <Column id="DETAIL_CODE_NAME" type="STRING" size="256"/>
+          <Column id="CODE_USE_CHECK" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_globalBank">
+        <ColumnInfo>
+          <Column id="DIVISION_CODE_NO" type="STRING" size="256"/>
+          <Column id="DETAIL_CODE" type="STRING" size="256"/>
+          <Column id="DETAIL_CODE_NAME" type="STRING" size="256"/>
+          <Column id="CODE_USE_CHECK" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_koreaPort">
+        <ColumnInfo>
+          <Column id="DIVISION_CODE_NO" type="STRING" size="256"/>
+          <Column id="DETAIL_CODE" type="STRING" size="256"/>
+          <Column id="DETAIL_CODE_NAME" type="STRING" size="256"/>
+          <Column id="CODE_USE_CHECK" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_globalPort">
+        <ColumnInfo>
+          <Column id="DIVISION_CODE_NO" type="STRING" size="256"/>
+          <Column id="DETAIL_CODE" type="STRING" size="256"/>
+          <Column id="DETAIL_CODE_NAME" type="STRING" size="256"/>
+          <Column id="CODE_USE_CHECK" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

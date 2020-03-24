@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="sys_deptManagerForm" width="540" height="570" titletext="New Form" onload="sys_deptManagerForm_onload">
+    <Layouts>
+      <Layout height="570" mobileorientation="landscape" width="540">
+        <Grid id="dept_grid" taborder="0" left="3.70%" top="116" right="3.52%" height="434" binddataset="ds_dept" autosizingtype="col" autofittype="col" autoenter="none" font="12pt &quot;a두리둥실&quot;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="40"/>
+                <Column size="40"/>
+                <Column size="40"/>
+                <Column size="40"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="부서코드" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="부서명" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" text="내선번호" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" text="사업장코드" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell edittype="normal" text="bind:DEPT_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" edittype="normal" text="bind:DEPT_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" edittype="normal" text="bind:DEPT_TEL" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" edittype="normal" text="bind:BUSINESS_PLACE_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static01" taborder="1" text="부서 관리" onclick="Static00_onclick" left="20" top="8" right="14" height="45" border="3px solid darkgray" font="18pt/normal &quot;a두리둥실&quot;" textAlign="center"/>
+        <Button id="add_btn" taborder="2" text="추가" left="54.26%" top="64" right="32.04%" height="36" onclick="add_btn_onclick" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="delete_btn" taborder="3" text="삭제" left="68.89%" top="64" right="17.04%" height="36" onclick="delete_btn_onclick" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="save_btn" taborder="4" text="저장" left="84.26%" top="64" right="2.41%" height="36" onclick="save_btn_onclick" font="12pt &quot;a두리둥실&quot;"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_dept">
+        <ColumnInfo>
+          <Column id="DEPT_CODE" type="STRING" size="256"/>
+          <Column id="DEPT_NAME" type="STRING" size="256"/>
+          <Column id="DEPT_TEL" type="STRING" size="256"/>
+          <Column id="BUSINESS_PLACE_CODE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[/********************************************************************************                                                                            
+ 부서검색
+ @Path		공통
+ @Description	부서 CRUD
+ @Author	  	강순용
+ @Create           2019. 02. 15.
+ ********************************************************************************/
+
+this.sys_deptManagerForm_onload = function (obj:Form, e:nexacro.LoadEventInfo)
+{
+	obj.transaction("findBusinessPlaceList",
+		"dataURL::sys/findAllDeptList.do",
+		"",
+		"ds_dept=gds_department",
+		"",
+		"callback");
+};
+
+this.add_btn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	this.ds_dept.addRow();
+};
+
+
+this.delete_btn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	if (confirm("삭제하시겠습니까?")) 
+	{
+		this.ds_dept.deleteRow(this.ds_dept.rowposition);
+	}
+};
+
+this.save_btn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	if (confirm("변경사항을 저장하시겠습니까?")) 
+	{
+		this.transaction("batchDept", "dataURL::sys/batchDept.do", "gds_department=ds_dept:u", "", "", "callback"
+		);
+	}
+};
+]]></Script>
+  </Form>
+</FDL>

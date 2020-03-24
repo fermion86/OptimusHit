@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="hr_AppointmentCodeDialog" width="400" height="400" titletext="New Form" onload="hr_AppointmentCodeDialog_onload">
+    <Layouts>
+      <Layout height="400" mobileorientation="landscape" width="400">
+        <Grid id="appointmentCode_grid" taborder="0" left="5.00%" top="16" right="5.00%" height="318" binddataset="gds_codeDetail" autofittype="col" oncelldblclick="appointmentCode_grid_oncelldblclick" font="12px/normal &quot;a두리둥실&quot;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="40"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="NO" font="12px/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="코드" font="12px/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" text="코드명" font="12px/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell font="12px/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="bind:DETAIL_CODE" font="12px/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" text="bind:DETAIL_CODE_NAME" font="12px/normal &quot;a두리둥실&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="closeAppointmentCode_btn" taborder="1" text="닫기" left="37.50%" top="349" right="37.50%" height="32" visible="false" onclick="closeAppointmentCode_btn_onclick" font="12px/normal &quot;a두리둥실&quot;"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[/********************************************************************************                                                                            
+ 인사발령 관련 코드 호출 다이얼로그
+ @Path		인사
+ @Description	인사발령 관련 코드 호출 다이얼로그
+ @Author	  	심승현
+ @Create           2019. 02. 14.
+ ********************************************************************************/
+// 폼 온로드
+this.hr_AppointmentCodeDialog_onload = function (obj:Form, e:nexacro.LoadEventInfo)
+{
+	// 로그인 하면 글로벌데이터셋 호출되어있음
+	// 나중에 트랜잭션 삭제
+	nexacro.getApplication().transaction("findCodeDetailList",
+		"dataURL::sys/findCodeDetailList.do",
+		"",
+		"gds_codeDetail=gds_codeDetail",
+		"",
+		"callback",
+		false);
+
+	alert("dialog this.parent.code    :" + this.parent.code);
+	nexacro.getApplication().gds_codeDetail.filter("DIVISION_CODE_NO=='" + this.parent.code + "'");
+};
+
+
+
+
+this.appointmentCode_grid_oncelldblclick = function (obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	// alert("e.row"+e.row);
+	var selAppointmentCode = nexacro.getApplication().gds_codeDetail.getColumn(e.row, "DETAIL_CODE");
+
+	// alert("opener"+this.parent.row);
+	if (this.parent.cell == 2) 
+	{
+		this.opener.ds_personalAppointmentDetail.setColumn(this.parent.row, "APPOINTMENT_HISTORY", selAppointmentCode);
+	}
+	else if (this.parent.cell == 6) 
+	{
+		this.opener.ds_personalAppointmentDetail.setColumn(this.parent.row, "APPOINTMENT_INFORMATION", selAppointmentCode);
+		// this.opener.findInformation(selAppointmentCode);
+	}
+	this.close();
+};
+
+this.closeAppointmentCode_btn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	this.close();
+};
+]]></Script>
+  </Form>
+</FDL>

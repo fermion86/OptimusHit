@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="businessDialog" width="300" height="250" titletext="New Form" onload="businessDialog_onload">
+    <Layouts>
+      <Layout height="250" mobileorientation="landscape" width="300">
+        <Grid id="grd_businessPlace" taborder="0" left="5.00%" top="58" right="5.00%" height="180" binddataset="ds_businessPlace" autofittype="col" oncelldblclick="grd_businessPlace_oncelldblclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="사업장코드"/>
+                <Cell col="1" text="사업장명"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:BUSINESS_PLACE_CODE"/>
+                <Cell col="1" text="bind:BUSINESS_PLACE_NAME"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="sys_bisinessPlace_stc" taborder="1" text="사업장코드" onclick="Static00_onclick" left="14" top="9" right="14" height="45" border="3px solid darkgray" font="bold 16pt 함초롬돋움,돋움" textAlign="center"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_businessPlace">
+        <ColumnInfo>
+          <Column id="BUSINESS_PLACE_CODE" type="STRING" size="256"/>
+          <Column id="BUSINESS_PLACE_NAME" type="STRING" size="256"/>
+          <Column id="BUSINESS_PLACE_TEL" type="STRING" size="256"/>
+          <Column id="COMPANY_CODE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[/********************************************************************************                                                                            
+ 사업장검색 다이알로그
+ @Path		공통
+ @Description	로그인등의 사업장검색 다이알로그
+ ********************************************************************************/
+
+this.businessDialog_onload = function (obj:Form, e:nexacro.LoadEventInfo)
+{
+	obj.transaction("jpaBusinessPlaceList",
+		"dataURL::sys/jpaBusinessPlaceList.do",
+		"",
+		"ds_businessPlace=ds_businessPlace",
+		"",
+		"callback");
+};
+
+var dialogName = "";
+
+this.grd_businessPlace_oncelldblclick = function (obj:Grid, e:GridClickEventInfo)
+{
+	dialogName = this.parent.dialogName; //부모창에서 보낸 값 받음 --조윤희--
+	openerFormName = this.opener.titletext;
+
+	var selBusinessPlaceCode = this.ds_businessPlace.getColumn(e.row, "BUSINESS_PLACE_CODE");
+	var selBusinessPlaceName = this.ds_businessPlace.getColumn(e.row, "BUSINESS_PLACE_NAME");
+
+	
+	trace(dialogName);
+
+
+	if (dialogName == "businessPlace") 
+	{
+		// dialog 이름으로 if 걸어서  각각 받고 싶은 데이터 받아가세요~~ --조윤희--
+		this.close(selBusinessPlaceCode + "/" + selBusinessPlaceName);
+		return;
+	}
+
+	if (openerFormName == "InventoryTransferRegistrationForm" || openerFormName == "InventoryTransferCurrentSituationForm") 
+	{
+		// 강동근
+		this.opener.getBusinessPlace(selBusinessPlaceCode, selBusinessPlaceName);
+		this.close();
+	}
+	else 
+	{
+		trace("이거 확인좀" + this.ds_businessPlace.getColumn(row, "BUSINESS_PLACE_NAME"));
+		this.opener.businessPlaceCode = selBusinessPlaceCode;
+		var row = this.ds_businessPlace.findRow("BUSINESS_PLACE_CODE", selBusinessPlaceCode);
+		this.opener.edt_businessPlaceName.set_value(this.ds_businessPlace.getColumn(row, "BUSINESS_PLACE_NAME"));
+		this.close();
+	}
+};]]></Script>
+  </Form>
+</FDL>

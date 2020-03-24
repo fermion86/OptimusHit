@@ -1,0 +1,265 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="hr_UnApprovedDailyAttdDialog" width="1200" height="780" titletext="New Form" onload="hr_UnApprovedDailyAttdDialog_onload">
+    <Layouts>
+      <Layout height="780" mobileorientation="landscape" width="1200">
+        <GroupBox id="GroupBox01" text="일근태 외 미승인 목록" taborder="0" left="0.75%" top="454" right="2.17%" height="321" font="16px/normal &quot;a두리둥실&quot;"/>
+        <GroupBox id="GroupBox00" text="일근태 미승인 목록" taborder="1" left="0.75%" top="110" right="2.17%" height="321" font="16px/normal &quot;a두리둥실&quot;"/>
+        <Static id="Static00" taborder="2" text="일근태 / 근태 외 미승인 목록" onclick="Static00_onclick" left="0.50%" top="9" right="2.00%" height="45" font="18px/normal &quot;a두리둥실&quot;" textAlign="center"/>
+        <Static id="Static01" taborder="3" text="기준일" left="35.33%" top="65" right="56.50%" height="40" font="12px/normal &quot;a두리둥실&quot;"/>
+        <Calendar id="unApprovalDate_cal" taborder="4" left="44.17%" top="65" height="40" font="12px/normal &quot;a두리둥실&quot;" dateformat="yyyy-MM-dd" width="200"/>
+        <Button id="approval_btn" taborder="5" text="일괄승인" left="67.92%" top="65" right="24.00%" height="40" onclick="approval_btn_onclick" font="12px/normal &quot;a두리둥실&quot;"/>
+        <Button id="save_btn" taborder="6" text="저장" left="77.25%" top="65" right="14.67%" height="40" onclick="save_btn_onclick" font="12px/normal &quot;a두리둥실&quot;"/>
+        <Button id="cancel_btn" taborder="7" text="취소" left="86.58%" top="65" right="5.33%" height="40" onclick="cancel_btn_onclick" font="12px/normal &quot;a두리둥실&quot;"/>
+        <Grid id="dailyAttd_grid" taborder="8" left="2.08%" top="140" right="3.33%" height="279" binddataset="ds_dailyAttd" autofittype="col" font="12px/normal &quot;a두리둥실&quot;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="사원번호" font="12px/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="사원명" font="12px/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" text="기준일" font="12px/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" text="근태구분" font="12px/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" text="시간" font="12px/normal &quot;a두리둥실&quot;"/>
+                <Cell col="5" text="금액" font="12px/normal &quot;a두리둥실&quot;"/>
+                <Cell col="6" text="승인상태" font="12px/normal &quot;a두리둥실&quot;"/>
+                <Cell col="7" text="사유" font="12px/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:EMP_CODE" font="12px/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="bind:EMP_NAME" font="12px/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" text="bind:BASIC_DAY" mask="####-##-##" font="12px/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" displaytype="combo" text="bind:ATTD_TYPE_CODE" combodataset="ds_dailyAttdType" combocodecol="DETAIL_CODE" combodatacol="DETAIL_CODE_NAME" font="12px/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" text="bind:TIME" mask="##:##" maskchar="0" font="12px/normal &quot;a두리둥실&quot;"/>
+                <Cell col="5" text="bind:COST" font="12px/normal &quot;a두리둥실&quot;"/>
+                <Cell col="6" text="bind:APPROVAL_STATUS" font="12px/normal &quot;a두리둥실&quot;"/>
+                <Cell col="7" text="bind:CAUSE" font="12px/normal &quot;a두리둥실&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="Grid00" taborder="9" left="2.25%" top="484" right="3.08%" height="279" binddataset="ds_dailyAttdRest" autofittype="col" font="12px/normal &quot;a두리둥실&quot;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="사원번호" font="12px/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="사원명" font="12px/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" text="근태 외 구분" font="12px/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" text="신청일자" font="12px/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" text="시작일" font="12px/normal &quot;a두리둥실&quot;"/>
+                <Cell col="5" text="종료일" font="12px/normal &quot;a두리둥실&quot;"/>
+                <Cell col="6" text="일수" font="12px/normal &quot;a두리둥실&quot;"/>
+                <Cell col="7" text="금액" font="12px/normal &quot;a두리둥실&quot;"/>
+                <Cell col="8" text="승인상태" font="12px/normal &quot;a두리둥실&quot;"/>
+                <Cell col="9" text="사유" font="12px/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:EMP_CODE" font="12px/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="bind:EMP_NAME" font="12px/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" displaytype="combo" text="bind:ATTD_REST_CODE" combodataset="ds_dailyAttdRestType" combocodecol="DETAIL_CODE" combodatacol="DETAIL_CODE_NAME" font="12px/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" text="bind:REQUEST_DATE" mask="####-##-##" font="12px/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" text="bind:START_DATE" mask="####-##-##" font="12px/normal &quot;a두리둥실&quot;"/>
+                <Cell col="5" text="bind:END_DATE" mask="####-##-##" font="12px/normal &quot;a두리둥실&quot;"/>
+                <Cell col="6" text="bind:DAYS" font="12px/normal &quot;a두리둥실&quot;"/>
+                <Cell col="7" text="bind:COST" font="12px/normal &quot;a두리둥실&quot;"/>
+                <Cell col="8" text="bind:APPROVAL_STATUS" font="12px/normal &quot;a두리둥실&quot;"/>
+                <Cell col="9" text="bind:CAUSE" font="12px/normal &quot;a두리둥실&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_codeDetail">
+        <ColumnInfo>
+          <Column id="DIVISION_CODE_NO" type="STRING" size="256"/>
+          <Column id="DETAIL_CODE" type="STRING" size="256"/>
+          <Column id="DETAIL_CODE_NAME" type="STRING" size="256"/>
+          <Column id="CODE_USE_CHECK" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_dailyAttdRestType">
+        <ColumnInfo>
+          <Column id="DETAIL_CODE" type="STRING" size="256"/>
+          <Column id="DETAIL_CODE_NAME" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_dailyAttdType">
+        <ColumnInfo>
+          <Column id="DETAIL_CODE" type="STRING" size="256"/>
+          <Column id="DETAIL_CODE_NAME" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_dailyAttd">
+        <ColumnInfo>
+          <Column id="BASIC_DAY" type="STRING" size="256"/>
+          <Column id="EMP_NAME" type="STRING" size="256"/>
+          <Column id="DAY_ATTD_SEQ" type="STRING" size="256"/>
+          <Column id="ATTD_TYPE_CODE" type="STRING" size="256"/>
+          <Column id="TIME" type="STRING" size="256"/>
+          <Column id="APPROVAL_STATUS" type="STRING" size="256"/>
+          <Column id="EMP_CODE" type="STRING" size="256"/>
+          <Column id="COST" type="STRING" size="256"/>
+          <Column id="CAUSE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_dailyAttdRest">
+        <ColumnInfo>
+          <Column id="EMP_CODE" type="STRING" size="256"/>
+          <Column id="EMP_NAME" type="STRING" size="256"/>
+          <Column id="REQUEST_DATE" type="STRING" size="256"/>
+          <Column id="START_DATE" type="STRING" size="256"/>
+          <Column id="END_DATE" type="STRING" size="256"/>
+          <Column id="DAYS" type="STRING" size="256"/>
+          <Column id="APPROVAL_STATUS" type="STRING" size="256"/>
+          <Column id="COST" type="STRING" size="256"/>
+          <Column id="ATTD_REST_CODE" type="STRING" size="256"/>
+          <Column id="CAUSE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[this.hr_UnApprovedDailyAttdDialog_onload = function (obj:Form, e:nexacro.LoadEventInfo)
+{
+	var today = nexacro.getApplication().today();
+	this.unApprovalDate_cal.set_value(today);
+
+	var approvalStatus = this.parent.approvalStatus;
+	var basicDay = this.parent.basicDay;
+	var deptCode = this.parent.deptCode;
+
+	this.transaction(
+		"findCodeList",
+		"dataURL::sys/findCodeDetailList.do",
+		"",
+		"ds_codeDetail=gds_codeDetail",
+		"",
+		"callbackFunction",
+		false
+	);
+
+	// 경조사,출장,교육,예비군,휴가,오전반차,오후반차,초과근무
+	this.ds_codeDetail.filter("DIVISION_CODE_NO=='HR17' || DETAIL_CODE_NAME=='오전반차' || DETAIL_CODE_NAME=='오후반차'");
+	this.ds_dailyAttdRestType.copyData(this.ds_codeDetail, true);
+	this.ds_codeDetail.filter("");
+	this.ds_codeDetail.filter("DIVISION_CODE_NO=='HR16'");
+	this.ds_dailyAttdType.copyData(this.ds_codeDetail, true);
+
+	this.transaction(
+		"findUnapprovedDailyAttd",
+		"dataURL::hr/attendance/findDailyAttdListByCondition.do",
+		"",
+		"ds_dailyAttd=ds_dailyAttd",
+		"approvalStatus='" + approvalStatus + "' basicDay='" + basicDay + "' deptCode='" + deptCode + "'",
+		"callbackFunction",
+		false
+	);
+
+	this.transaction(
+		"findUnapprovedDailyAttdRest",
+		"dataURL::hr/attendance/findAttdRestListByCondition.do",
+		"",
+		"ds_dailyAttdRest=ds_dailyAttdRest",
+		"approvalStatus='" + approvalStatus + "' basicDay='" + basicDay + "' deptCode='" + deptCode + "'",
+		"callbackFunction",
+		false
+	);
+};
+
+this.approval_btn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	if (confirm(this.unApprovalDate_cal.value + "일자 근태/근태외 데이터를 일괄승인하시겠습니까? ")) 
+	{
+		for (var i = 0; i < this.ds_dailyAttd.rowcount; i++) 
+		{
+			this.ds_dailyAttd.setColumn(i, "APPROVAL_STATUS", "Y");
+		}
+		for (var i = 0; i < this.ds_dailyAttdRest.rowcount; i++) 
+		{
+			this.ds_dailyAttdRest.setColumn(i, "APPROVAL_STATUS", "Y");
+		}
+	}
+};
+
+this.cancel_btn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	if (confirm(" 취소하시겠습니까? ")) 
+	{
+		this.close();
+	}
+};
+
+this.save_btn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	if (confirm("저장하시겠습니까? ")) 
+	{
+		this.transaction(
+			"batchDailyAttd",
+			"dataURL::hr/attendance/batchDailyAttd.do",
+			"ds_dailyAttd=ds_dailyAttd:u",
+			"",
+			"",
+			"callbackFunction",
+			false
+		);
+
+		this.transaction(
+			"batchDailyAttdRest",
+			"dataURL::hr/attendance/batchDailyAttdRest.do",
+			"ds_dailyAttdRest=ds_dailyAttdRest:u",
+			"",
+			"",
+			"callbackFunction",
+			false
+		);
+	}
+};
+
+this.callbackFunction = function (strSvcID, nErrorCode, strErrorMag)
+{
+	if (strSvcID == "batchDailyAttdRest") 
+	{
+		if (nErrorCode != 0) 
+		{
+			alert(strErrorMag);
+		}
+		else 
+		{
+			alert("완료되었습니다.");
+			this.close();
+		}
+	}
+};
+]]></Script>
+  </Form>
+</FDL>

@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="MaterialCheckDialog" width="1024" height="490" titletext="New Form" onload="MaterialCheckDialog_onload">
+    <Layouts>
+      <Layout height="490" mobileorientation="landscape" width="1024">
+        <Grid id="materialCheck_grid" taborder="0" binddataset="ds_materialCheckTemp" autofittype="col" left="11" top="18" width="1002" height="461" oncelldblclick="materialCheck_grid_oncelldblclick" font="12pt &quot;a두리둥실&quot;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="159"/>
+                <Column size="199"/>
+                <Column size="119"/>
+                <Column size="146"/>
+                <Column size="198"/>
+                <Column size="177"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="25"/>
+              </Rows>
+              <Band id="head">
+                <Cell displaytype="normal" text="제품코드" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" displaytype="normal" text="제품명" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" displaytype="normal" text="재고량" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" displaytype="normal" text="안전재고량" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" displaytype="normal" text="재고상태" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="5" displaytype="normal" text="안전재고여부" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="normal" text="bind:ITEM_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" displaytype="normal" text="bind:ITEM_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" displaytype="normal" text="bind:STOCKTAKING" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" displaytype="normal" text="bind:SAFETY_STOCKTAKING" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" displaytype="normal" text="bind:STOCK_STATUS" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="5" displaytype="normal" text="bind:SAFETY_STOCK_STATUS" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_materialCheckTemp">
+        <ColumnInfo>
+          <Column id="ITEM_CODE" type="STRING" size="256"/>
+          <Column id="ITEM_NAME" type="STRING" size="256"/>
+          <Column id="STOCKTAKING" type="STRING" size="256"/>
+          <Column id="SAFETY_STOCKTAKING" type="STRING" size="256"/>
+          <Column id="STOCK_STATUS" type="STRING" size="256"/>
+          <Column id="SAFETY_STOCK_STATUS" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[
+this.MaterialCheckDialog_onload = function (obj:Form, e:nexacro.LoadEventInfo)
+{
+	var i = this.ds_materialCheckTemp.copyData(this.parent.ds);
+};
+
+this.materialCheck_grid_oncelldblclick = function (obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	this.close();
+};
+]]></Script>
+  </Form>
+</FDL>

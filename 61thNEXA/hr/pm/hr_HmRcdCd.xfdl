@@ -1,0 +1,483 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="hr_HmRcdCd" width="1200" height="780" titletext="New Form" onload="hr_HmRcdCd_onload">
+    <Layouts>
+      <Layout height="780" mobileorientation="landscape" width="1200">
+        <Static id="Static00" taborder="0" text="인사기록카드" left="28" top="8" width="1142" height="52" font="18pt/normal &quot;a두리둥실&quot;" border="0px none, 0px none, 4px solid" color="black" onclick="Static00_onclick"/>
+        <GroupBox id="GroupBox00" taborder="1" text="사원조회" left="90" top="72" width="230" height="88" titlealign="topcenter" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="edt_search" taborder="2" left="137" top="100" width="98" height="21" text="사원이름" displaynulltext="사원이름" autoselect="true" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="btn_searchemp" taborder="3" left="239" top="101" width="41" height="20" onclick="btn_searchemp_onclick" icon="url('_resource_\_theme_\default\images\btn_WF_Grdexpand.png')" font="12pt &quot;a두리둥실&quot;"/>
+        <Grid id="Grid00" taborder="4" left="36" top="174" width="338" height="540" binddataset="ds_employeeInfo" autofittype="col" oncellclick="Grid00_oncellclick" font="12pt &quot;a두리둥실&quot;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="48"/>
+                <Column size="66"/>
+                <Column size="70"/>
+                <Column size="71"/>
+                <Column size="48"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+                <Row size="24" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="NO" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="사원코드" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" text="사원명" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" text="소속지부" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" text="성별" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell text="expr:currow+1" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="bind:EMP_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" text="bind:EMP_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" text="bind:ZIP_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" text="expr:comp.parent.fn_gender(GENDER)" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="summary">
+                <Cell font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" colspan="2" text="expr:&quot;총인원 : &quot;+dataset.rowcount+&quot;명&quot;" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Tab id="Tab00" taborder="5" tabindex="0" left="410" top="75" width="748" height="350" onchanged="Tab00_onchanged" border="2px solid" font="12pt &quot;a두리둥실&quot;">
+          <Tabpages>
+            <Tabpage id="Tabpage1" text="사원정보">
+              <Layouts>
+                <Layout>
+                  <ImageViewer id="empInfo_ImageViewer" taborder="0" left="88" top="15" width="226" height="256" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="Static00" taborder="1" text="성명" left="364" top="11" width="86" height="17" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="Static01" taborder="2" text="내외국인구분" left="364" top="43" width="86" height="17" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="Static02" taborder="3" text="주민등록번호" left="364" top="75" width="86" height="17" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="Static03" taborder="4" text="성별" left="364" top="139" width="86" height="17" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="Static04" taborder="5" text="생년월일" left="364" top="171" width="86" height="17" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="Static05" taborder="6" text="전화번호" left="364" top="203" width="86" height="17" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="Static06" taborder="7" text="비상연락처" left="364" top="235" width="86" height="17" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="Static07" taborder="8" text="최종학력" left="364" top="267" width="86" height="17" font="12pt &quot;a두리둥실&quot;"/>
+                  <Edit id="edt_name" taborder="9" left="490" top="11" width="139" height="17" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="Static08" taborder="10" text="주소" left="364" top="107" width="84" height="17" font="12pt &quot;a두리둥실&quot;"/>
+                  <MaskEdit id="edt_XxXx" taborder="11" left="490" top="235" width="139" height="17" font="12pt &quot;a두리둥실&quot;"/>
+                  <Radio id="Radio00" taborder="12" left="490" top="139" width="139" height="17" rowcount="1" text="" index="-1" innerdataset="ds_gender" codecolumn="chk" datacolumn="GENDER" font="12pt &quot;a두리둥실&quot;"/>
+                  <Edit id="edt_kr" taborder="13" left="490" top="43" width="139" height="17" font="12pt &quot;a두리둥실&quot;"/>
+                  <Edit id="Edit00" taborder="14" left="490" top="107" width="139" height="17" font="12pt &quot;a두리둥실&quot;"/>
+                  <Edit id="Edit01" taborder="15" left="490" top="203" width="139" height="17" font="12pt &quot;a두리둥실&quot;"/>
+                  <Edit id="Edit02" taborder="16" left="490" top="267" width="139" height="17" font="12pt &quot;a두리둥실&quot;"/>
+                  <Edit id="Edit03" taborder="17" left="490" top="75" width="139" height="17" font="12pt &quot;a두리둥실&quot;"/>
+                  <Edit id="Edit04" taborder="18" left="490" top="171" width="139" height="17" font="12pt &quot;a두리둥실&quot;"/>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+            <Tabpage id="Tabpage2" text="재직정보"/>
+          </Tabpages>
+        </Tab>
+        <Tab id="Tab01" taborder="6" tabindex="0" left="410" top="425" width="748" height="310" border="2px solid" font="12pt &quot;a두리둥실&quot;">
+          <Tabpages>
+            <Tabpage id="Tabpage1" text="인사 고가">
+              <Layouts>
+                <Layout>
+                  <Grid id="personnelAppaisal_grid" taborder="0" left="14" top="40" width="717" height="232" binddataset="ds_personnelAppaisal" autofittype="col" oncellclick="Tab01_Tabpage1_personnelAppaisal_grid_oncellclick" font="12pt &quot;a두리둥실&quot;">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="40"/>
+                          <Column size="100"/>
+                          <Column size="150"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="79"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="24" band="head"/>
+                          <Row size="24"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell text="NO" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="1" text="고과코드" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="2" text="고과명" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="3" text="평가시작일" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="4" text="평가종료일" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="5" text="고과일자" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="6" text="고과자" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="7" text="점수" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="8" text="등급" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="9" text="비고" font="12pt/normal &quot;a두리둥실&quot;"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell text="expr:currow+1" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="1" edittype="none" text="bind:PERSONNEL_APPRAISAL_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="2" edittype="none" text="bind:APPRAISAL_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="3" displaytype="normal" edittype="none" text="bind:EVALUATION_START_DATE" combodisplay="edit" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="4" displaytype="normal" edittype="none" text="bind:EVALUATION_END_DATE" combodisplay="edit" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="5" displaytype="normal" edittype="date" text="bind:APPRAISAL_DATE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="6" edittype="normal" text="bind:GRADER" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="7" displaytype="number" edittype="normal" text="bind:POINT" mask="expr:###" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="8" edittype="none" text="bind:GRADE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="9" edittype="normal" text="bind:NOTE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                  <Button id="btn_gogaAdd" taborder="1" text="추가" left="485" top="10" width="73" height="24" onclick="Tab01_Tabpage1_btn_gogaAdd_onclick" font="12pt &quot;a두리둥실&quot;"/>
+                  <Button id="btn_gogaDel" taborder="2" text="삭제" left="571" top="10" width="73" height="24" onclick="Tab01_Tabpage1_btn_gogaDel_onclick" font="12pt &quot;a두리둥실&quot;"/>
+                  <Button id="btn_gogaSave" taborder="3" text="저장" left="657" top="10" width="73" height="24" onclick="Tab01_Tabpage1_btn_gogaSave_onclick" font="12pt &quot;a두리둥실&quot;"/>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+            <Tabpage id="Tabpage2" text="자격 정보">
+              <Layouts>
+                <Layout>
+                  <Grid id="Grid00" taborder="0" left="2" top="6" width="740" height="261" binddataset="ds_licenseInfo" autofittype="col" oncellclick="Tab01_Tabpage2_Grid00_oncellclick" font="12pt &quot;a두리둥실&quot;">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="69"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="24" band="head"/>
+                          <Row size="24"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell text="NO" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="1" text="자격종류" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="2" text="취득일" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="3" text="만료일" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="4" text="자격증번호" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="5" text="발행기관" font="12pt/normal &quot;a두리둥실&quot;"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell text="expr:currow+1" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="1" text="bind:LICENSE_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="2" text="bind:START_DATE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="3" text="bind:END_DATE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="4" text="bind:LICENSE_NO" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="5" text="bind:LICENSE_CENTER" font="12pt/normal &quot;a두리둥실&quot;"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+          </Tabpages>
+        </Tab>
+        <Button id="Button01" taborder="7" text="부서별 검색" left="137" top="127" width="123" height="22" onclick="Button01_onclick" font="12pt &quot;a두리둥실&quot;"/>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item0" compid="Tab00.Tabpage1.form.Edit00" propid="value" datasetid="ds_employeeInfo" columnid="BASE_ADDRESS"/>
+      <BindItem id="item1" compid="Tab00.Tabpage1.form.Edit01" propid="value" datasetid="ds_employeeInfo" columnid="PHONE_NUMBER"/>
+      <BindItem id="item2" compid="Tab00.Tabpage1.form.Edit02" propid="value" datasetid="ds_employeeInfo" columnid="HIGHEST_EDUCATION_CODE"/>
+      <BindItem id="item3" compid="Tab00.Tabpage1.form.edt_name" propid="value" datasetid="ds_employeeInfo" columnid="EMP_NAME"/>
+      <BindItem id="item4" compid="Tab00.Tabpage1.form.edt_kr" propid="value" datasetid="ds_employeeInfo" columnid="NATIVE_TYPE_CODE"/>
+      <BindItem id="item5" compid="Tab00.Tabpage1.form.Edit03" propid="value" datasetid="ds_employeeInfo" columnid="RESIDENT_NUMBER"/>
+      <BindItem id="item6" compid="Tab00.Tabpage1.form.Edit04" propid="value" datasetid="ds_employeeInfo" columnid="BIRTH_DATE"/>
+      <BindItem id="item7" compid="Tab00.Tabpage1.form.Radio00" propid="value" datasetid="ds_employeeInfo" columnid="GENDER"/>
+    </Bind>
+    <Objects>
+      <Dataset id="ds_employeeInfo">
+        <ColumnInfo>
+          <Column id="CHK" type="STRING" size="256"/>
+          <Column id="EMP_CODE" type="STRING" size="256"/>
+          <Column id="EMP_NAME" type="STRING" size="256"/>
+          <Column id="RESIDENT_NUMBER" type="STRING" size="256"/>
+          <Column id="BIRTH_DATE" type="STRING" size="256"/>
+          <Column id="GENDER" type="STRING" size="256"/>
+          <Column id="TEL" type="STRING" size="256"/>
+          <Column id="PHONE_NUMBER" type="STRING" size="256"/>
+          <Column id="NATIVE_TYPE_CODE" type="STRING" size="256"/>
+          <Column id="EMAIL" type="STRING" size="256"/>
+          <Column id="HIGHEST_EDUCATION_CODE" type="STRING" size="256"/>
+          <Column id="BASE_ADDRESS" type="STRING" size="256"/>
+          <Column id="DETAIL_ADDRESS" type="STRING" size="256"/>
+          <Column id="ZIP_CODE" type="STRING" size="256"/>
+          <Column id="IMG_SRC" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findEmpInfoList</Col>
+            <Col id="URL">dataURL::hr/pm/findEmpInfoList.do</Col>
+            <Col id="outData">ds_employeeInfo=dsEmpInfo</Col>
+            <Col id="callbackFunc">callback</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">personnelAppraisalAll</Col>
+            <Col id="URL">dataURL::hr/appraisal/personnelAppraisalAll.do</Col>
+            <Col id="outData">ds_personnelAppaisal=ds_personnelAppaisal</Col>
+            <Col id="callbackFunc">callback</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findEmployeeInfoAll</Col>
+            <Col id="URL">dataURL::hr/pm/findEmployeeInfoAll.do</Col>
+            <Col id="outData">ds_empInfo=dsEmpInfo ds_licenseInfo=dsLicenseInfo ds_familyInfo=dsFamilyInfo</Col>
+            <Col id="callbackFunc">callback</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findCodeList</Col>
+            <Col id="URL">dataURL::sys/findCodeDetailList.do</Col>
+            <Col id="outData">ds_codeDetail=gds_codeDetail</Col>
+            <Col id="callbackFunc">callback</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_personnelAppaisal">
+        <ColumnInfo>
+          <Column id="PERSONNEL_APPRAISAL_CODE" type="STRING" size="256"/>
+          <Column id="EMP_CODE" type="STRING" size="256"/>
+          <Column id="EMP_NAME" type="STRING" size="256"/>
+          <Column id="APPRAISAL_NAME" type="STRING" size="256"/>
+          <Column id="EVALUATION_START_DATE" type="STRING" size="256"/>
+          <Column id="EVALUATION_END_DATE" type="STRING" size="256"/>
+          <Column id="APPRAISAL_DATE" type="STRING" size="256"/>
+          <Column id="GRADER" type="STRING" size="256"/>
+          <Column id="APPLICATION_RATE" type="STRING" size="256"/>
+          <Column id="POINT" type="STRING" size="256"/>
+          <Column id="GRADE" type="STRING" size="256"/>
+          <Column id="NOTE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_familyInfo">
+        <ColumnInfo>
+          <Column id="RELATIONSHIP" type="STRING" size="256"/>
+          <Column id="EMP_CODE" type="STRING" size="256"/>
+          <Column id="FAMILY_NAME" type="STRING" size="256"/>
+          <Column id="SUPPORTING" type="STRING" size="256"/>
+          <Column id="COHABITATION_STATUS" type="STRING" size="256"/>
+          <Column id="DISABILITY_CODE" type="STRING" size="256"/>
+          <Column id="HIGHEST_EDUCATION_CODE" type="STRING" size="256"/>
+          <Column id="JOB" type="STRING" size="256"/>
+          <Column id="COMPANY_NAME" type="STRING" size="256"/>
+          <Column id="TEL" type="STRING" size="256"/>
+          <Column id="FAMILY_BIRTH_DATE" type="STRING" size="256"/>
+          <Column id="FAMILY_SEQ" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_licenseInfo">
+        <ColumnInfo>
+          <Column id="LICENSE_NAME" type="STRING" size="256" description="자격종류"/>
+          <Column id="START_DATE" type="STRING" size="256" description="취득일"/>
+          <Column id="END_DATE" type="STRING" size="256" description="만료일"/>
+          <Column id="LICENSE_CENTER" type="STRING" size="256" description="발행기"/>
+          <Column id="LICENSE_NO" type="STRING" size="256" description="자격증번호"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_codeDetail">
+        <ColumnInfo>
+          <Column id="DIVISION_CODE_NO" type="STRING" size="256"/>
+          <Column id="DETAIL_CODE" type="STRING" size="256"/>
+          <Column id="DETAIL_CODE_NAME" type="STRING" size="256"/>
+          <Column id="CODE_USE_CHECK" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_test">
+        <ColumnInfo>
+          <Column id="DETAIL_CODE" type="STRING" size="256"/>
+          <Column id="DETAIL_CODE_NAME" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_gender">
+        <ColumnInfo>
+          <Column id="chk" type="STRING" size="256"/>
+          <Column id="GENDER" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="chk">M</Col>
+            <Col id="GENDER">남</Col>
+          </Row>
+          <Row>
+            <Col id="chk">F</Col>
+            <Col id="GENDER">여</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[include "scripts::commonScripts.xjs"
+
+this.hr_HmRcdCd_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.gfnService("findEmpInfoList", false);
+	this.gfnService("personnelAppraisalAll", false);
+	this.gfnService("findEmployeeInfoAll", false);
+	
+	this.ds_personnelAppaisal.filter("PERSONNEL_APPRAISAL_CODE==''");
+	var empInfoImg = this.ds_employeeInfo.getColumn(0, "IMG_SRC");
+	this.Tab00.Tabpage1.form.empInfo_ImageViewer.set_image('url("images::"' + empInfoImg + '"?thumbnailsize=226x256")');
+};
+
+
+this.Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	empInfoCode = this.ds_employeeInfo.getColumn(e.row, "EMP_CODE");
+	empInfoName = this.ds_employeeInfo.getColumn(e.row, "EMP_NAME");
+
+	this.ds_personnelAppaisal.filter("EMP_CODE=='" + empInfoCode + "'");
+	this.ds_licenseInfo.filter("EMP_CODE=='" + empInfoCode + "'"); 
+	var empInfoImg = this.ds_employeeInfo.getColumn(e.row, "IMG_SRC");
+	this.Tab00.Tabpage1.form.empInfo_ImageViewer.set_image('url("images::"' + empInfoImg + '"?thumbnailsize=226x256")');
+	trace("ds_employeeInfo===========================================",this.ds_employeeInfo.saveXML())
+	
+	this.Tab00.Tabpage1.form.Radio00.set_value(this.ds_employeeInfo.getColumn(e.row, "GENDER"));
+};
+
+
+this.Tab00_Tabpage1_Radio00_onitemchanged = function(obj:nexacro.Radio,e:nexacro.ItemChangeEventInfo)
+{
+// 	var gender = this.ds_employeeInfo.getColumn(0,"GENDER");
+// 	trace(this.ds_employeeInfo.getColumn(0,"GENDER"));
+// 	//trace(e.postvalue);
+// 	if(gender == "M"){
+// 
+// 	}
+};
+
+this.Button01_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.openPopup(this
+				  ,"popupDept"
+				  ,"hr_pm::hr_deptDialog.xfdl"
+				  ,null
+				  ,"fnPopupCallback"); 
+				  //호출하는 모달 프레임사이즈로 자동조절.
+				  
+};
+
+this.fnPopupCallback = function(sId, sVal){
+	switch(sId) {
+	case "popupDept":
+		trace("==============================ds_test:::",this.ds_test.saveXML());
+		var sParam = sVal.split("/");
+		this.ds_employeeInfo.filter("ZIP_CODE=='"+sParam[1]+"'");
+		break;
+	default:
+	}
+}
+
+
+this.btn_searchemp_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var empValue = this.edt_search.value;
+	if(empValue==''){
+		this.ds_employeeInfo.filter("");
+	}else{
+	this.ds_employeeInfo.filter("EMP_NAME=='"+empValue+"'");
+	}
+};
+
+
+//인사고과 추가버튼
+this.Tab01_Tabpage1_btn_gogaAdd_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var day = nexacro.getApplication().today();
+	var currDate = new Date();
+	var year = currDate.getFullYear().toString().padLeft(4, "0");
+	var appraisalCode = "APPR" + currDate.getFullYear().toString().padLeft(4, "0");
+	var apprCode = this.ds_personnelAppaisal.getColumn(e.row, "PERSONNEL_APPRAISAL_CODE");
+
+	if (appraisalCode == apprCode) 
+	{
+		alert("해당 사원에 대한 해당 연도 고과가 이미 존재합니다.");
+	}
+	else 
+	{
+		var rowNum = this.ds_personnelAppaisal.addRow();
+		this.ds_personnelAppaisal.setColumn(rowNum, "PERSONNEL_APPRAISAL_CODE", appraisalCode); //고과코드
+		this.ds_personnelAppaisal.setColumn(rowNum, "APPRAISAL_NAME", year + "년 인사고과"); //고과명
+		this.ds_personnelAppaisal.setColumn(rowNum, "EVALUATION_START_DATE", year + "0101"); //고과시작일
+		this.ds_personnelAppaisal.setColumn(rowNum, "EVALUATION_END_DATE", year + "1231"); //고과종료일
+		this.ds_personnelAppaisal.setColumn(rowNum, "APPRAISAL_DATE", day); //고과일자
+		this.ds_personnelAppaisal.setColumn(rowNum, "GRADER", nexacro.getApplication().g_empName); 
+		this.ds_personnelAppaisal.setColumn(rowNum, "APPLICATION_RATE", "100.00"); //반영율
+
+		this.ds_personnelAppaisal.setColumn(rowNum, "EMP_CODE", empInfoCode); //사원코드
+		this.ds_personnelAppaisal.setColumn(rowNum, "EMP_NAME", empInfoName); //사원명
+	}
+};
+
+
+
+// 인사고과 삭제버튼
+this.Tab01_Tabpage1_btn_gogaDel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	trace("Tab00_tabpage1_delAppraisal_btn_onclick 클릭");
+	this.ds_personnelAppaisal.deleteRow(this.ds_personnelAppaisal.rowposition);
+};
+
+
+//인사고과 저장버튼
+this.Tab01_Tabpage1_btn_gogaSave_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.transaction("batchAppraisal", "dataURL::hr/appraisal/batchAppraisal.do", "ds_personnelAppaisal=ds_personnelAppaisal:u", "", "", "callback", false
+	);
+
+	// this.reload();
+	alert("저장이완료되었습니다");
+};
+
+//인사고과 셀클릭이벤트
+
+var grade;
+var score;
+this.Tab01_Tabpage1_personnelAppaisal_grid_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	
+	score = this.Tab01.Tabpage1.form.personnelAppaisal_grid.getCellValue(e.row, e.cell);
+	if (e.cell == 7) 
+	{
+		if (score < 0 | score > 100) 
+		{
+			alert("잘못된 점수 입니다.");
+		}
+		else 
+		{
+			switch (score / 10) 
+			{
+				case 10:
+				case 9:
+					grade = "A등급";
+					break;
+				case 8:
+					grade = "B등급";
+					break;
+				case 7:
+					grade = "C등급";
+					break;
+				case 6:
+					grade = "D등급";
+					break;
+				default:
+					grade = "F등급";
+					break;
+			}
+			
+			this.ds_personnelAppaisal.setColumn(e.row, "GRADE", grade); //등급
+		}
+	}
+};
+]]></Script>
+  </Form>
+</FDL>

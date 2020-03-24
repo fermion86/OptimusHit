@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ADL version="2.0">
+  <Application id="App_Desktop" screenid="Desktop_screen" onload="application_onload">
+    <Layout>
+      <MainFrame id="mainframe" showtitlebar="true" showstatusbar="false" width="1440" height="900" titletext="61thERP">
+        <VFrameSet id="VFrameSet0" showcascadetitletext="false" separatesize="100,*" showtitleicon="false">
+          <Frames>
+            <ChildFrame id="ChildFrame0" formurl="base::topForm.xfdl" showcascadetitletext="false" dragmovetype="none" showtitlebar="false" showtitleicon="false"/>
+            <HFrameSet id="HFrameSet0" showcascadetitletext="false" separatesize="250,*" showtitleicon="false">
+              <Frames>
+                <ChildFrame id="ChildFrame1" formurl="base::menuForm.xfdl" showcascadetitletext="false" dragmovetype="none" showtitlebar="false" showtitleicon="false"/>
+                <ChildFrame id="ChildFrame2" formurl="base::mainForm.xfdl" dragmovetype="none" showtitlebar="false" showtitleicon="false"/>
+              </Frames>
+            </HFrameSet>
+          </Frames>
+        </VFrameSet>
+      </MainFrame>
+    </Layout>
+  </Application>
+  <Script type="xscript5.1"><![CDATA[this.application_onload = function (obj:Application, e:LoadEventInfo)
+{
+	// 현재 화면 해상도 읽기
+	var nMoniterIndex = system.getMonitorIndex(system.cursorx, system.cursory);
+	var strScreenRes = system.getScreenResolution(nMoniterIndex);
+	var arrScreen = strScreenRes.split(" ");
+
+	var nCenterX = new Number(arrScreen[0]);
+	var nCenterY = new Number(arrScreen[1]);
+	trace("화면 해상도 : 가로 " + nCenterX + ", 세로 " + nCenterY);
+
+	nexacro.getApplication().setVariable("gvScreenWidth", nCenterX);
+	nexacro.getApplication().setVariable("gvScreenHeight", nCenterY);
+
+	// 현재 화면 해상도에 맞춰서 화면 중앙에 뜨도록 좌표 설정
+
+	var nLoginWidth = 500;
+	var nLoginHeight = 400;
+	var nLeft = nCenterX / 2 - nLoginWidth / 2;
+	var nTop = nCenterY / 2 - nLoginHeight / 2;
+
+	nexacro.getApplication().mainframe.set_visible(false); 
+	nexacro.open("login", "base::loginForm.xfdl", nexacro.getApplication().mainframe, "",
+		"showtitlebar=true showstatusbar=false style.border='1px solid blue'",
+		nLeft, nTop, nLoginWidth, nLoginHeight);
+	
+};
+
+
+ // 메뉴 폼의 화면 이동 담당
+ this.gfn_Open = function (sID, sURL, sTitle)
+ {
+ 	var menuTreePath = nexacro.getApplication().mainframe.VFrameSet0.HFrameSet0.ChildFrame2;
+ 
+ 	menuTreePath.set_formurl(sURL);
+ 	menuTreePath.set_titletext(sTitle);
+ };
+
+/********************************************************************************                                                                            
+ 오늘 날짜
+ @Path      공통
+ @Description   오늘 날짜 불러오는 함수
+ ********************************************************************************/
+this.today = function ()
+{
+	var date = new Date();
+	var year = date.getFullYear().toString().padLeft(4, "0");
+	var month = (date.getMonth() + 1).toString().padLeft(2, "0");
+	var day = date.getDate().toString().padLeft(2, "0");
+	var today = year + month + day;
+
+	return today;
+};
+
+/********************************************************************************                                                                            
+ 오늘 날짜 작데기버전
+ @Path      공통
+ @Description   오늘 날짜 불러오는 함수
+ ********************************************************************************/
+this.todayBar = function ()
+{
+	var date = new Date();
+	var year = date.getFullYear().toString().padLeft(4, "0");
+	var month = (date.getMonth() + 1).toString().padLeft(2, "0");
+	var day = date.getDate().toString().padLeft(2, "0");
+	var today = year + month + day;
+
+	var s_today = today.toString();
+
+	var today = s_today.substr(0, 4) + "-" + s_today.substr(4, 2) + "-" + s_today.substr(6, 2);
+
+	return today;
+};
+/********************************************************************************                                                                            
+ 달력 일자 수정시 사용될 함수
+ @Path      공통
+ @Description   달력 수정시 fromDate가 toDate보다 더 미래의 날짜가 되지 않게 해줌
+ ********************************************************************************/
+this.changeCalendar = function (obj:Calendar, e:nexacro.EditClickEventInfo)
+ {
+ 	var fromDate_cal = obj.parent.all["fromDate_cal"];
+ 	var toDate_cal = obj.parent.all["toDate_cal"];
+ 
+ 	var fromDate = fromDate_cal.value;
+ 
+ 	var toDate = toDate_cal.value;
+ 	if (obj.id == "fromDate_cal") 
+ 	{
+ 		if (toDate < fromDate) 
+ 		{
+ 			fromDate_cal.set_value(toDate);
+ 		}
+ 	}
+ 	else if (obj.id == "toDate_cal") 
+ 	{
+ 		if (toDate < fromDate) 
+ 		{
+ 			toDate_cal.set_value(fromDate);
+ 		}
+ 	}
+ };
+
+/********************************************************************************                                                                            
+ 기초데이터
+ @Path      공통
+ @Description   시스템 초기화시 기초데이터 불러오는 함수
+ ********************************************************************************/
+ this.basicTransaction = function ()
+ {
+//  	nexacro.getApplication().transaction("findEmployeeList",
+//  		"dataURL::hr/emp/findEmployeeList.do",
+//  		"",
+//  		"gds_employee=gds_employee",
+//  		"",
+//  		"callback");
+//  	nexacro.getApplication().transaction("findCodeDetailList",
+//  		"dataURL::sys/findCodeDetailList.do",
+//  		"",
+//  		"gds_codeDetail=gds_codeDetail",
+//  		"",
+//  		"callback");
+ };
+
+]]></Script>
+</ADL>

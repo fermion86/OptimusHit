@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="logi_EstimateDialog" width="640" height="480" titletext="New Form">
+    <Layouts>
+      <Layout height="480" mobileorientation="landscape" width="640">
+        <GroupBox id="GroupBox00" text="견적 목록" taborder="0" left="5.63%" top="18" right="5.47%" height="442" onlbuttondown="GroupBox00_onlbuttondown" background="transparent" border="2px solid rgba(51,51,51,1)" color="black" font="20pt/normal &quot;a두리둥실&quot;"/>
+        <Grid id="grd_estimateDialog" taborder="1" binddataset="ds_estimate" autofittype="col" left="55" top="68" width="530" height="362" onexpandup="grd_estimateDialog_onexpandup" onchar="grd_estimateDialog_onchar" oncelldblclick="grd_estimateDialog_oncelldblclick" font="12pt &quot;a두리둥실&quot;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="25"/>
+              </Rows>
+              <Band id="head">
+                <Cell displaytype="normal" text="견적일련번호" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" displaytype="normal" text="거래처명" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" displaytype="normal" text="견적일자" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" displaytype="normal" text="견적유효일자" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" displaytype="normal" text="견적요청자" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="5" displaytype="normal" text="담당자" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="normal" text="bind:ESTIMATE_NO" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" displaytype="normal" text="bind:CUSTOMER_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" displaytype="normal" text="bind:ESTIMATE_DATE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" displaytype="normal" text="bind:EFFECTIVE_DATE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" displaytype="normal" text="bind:ESTIMATE_REQUESTER" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="5" displaytype="normal" text="bind:PERSON_CODE_IN_CHARGE" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_estimate">
+        <ColumnInfo>
+          <Column id="ESTIMATE_NO" type="STRING" size="256"/>
+          <Column id="CUSTOMER_CODE" type="STRING" size="256"/>
+          <Column id="ESTIMATE_DATE" type="STRING" size="256"/>
+          <Column id="CONTRACT_STATUS" type="STRING" size="256"/>
+          <Column id="ESTIMATE_REQUESTER" type="STRING" size="256"/>
+          <Column id="EFFECTIVE_DATE" type="STRING" size="256"/>
+          <Column id="PERSON_CODE_IN_CHARGE" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_estimateDetail">
+        <ColumnInfo>
+          <Column id="ESTIMATE_DETAIL_NO" type="STRING" size="256"/>
+          <Column id="ESTIMATE_NO" type="STRING" size="256"/>
+          <Column id="ITEM_CODE" type="STRING" size="256"/>
+          <Column id="ITEM_NAME" type="STRING" size="256"/>
+          <Column id="UNIT_OF_ESTIMATE" type="STRING" size="256"/>
+          <Column id="DUE_DATE_OF_ESTIMATE" type="STRING" size="256"/>
+          <Column id="ESTIMATE_AMOUNT" type="STRING" size="256"/>
+          <Column id="UNIT_PRICE_OF_ESTIMATE" type="STRING" size="256"/>
+          <Column id="SUM_PRICE_OF_ESTIMATE" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findEstimateDialog</Col>
+            <Col id="URL">dataURL::logi/business/findEstimateDialog.do</Col>
+            <Col id="outData">ds_estimate=ds_estimate</Col>
+            <Col id="callbackFunc">gfnCallbackFunc(findEstimateDialog,ErrorCode,ErrorMsg)</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[/*
+ 파일명 : logi_EstimateDialog.xfdl
+ 설  명 : 수주등록할 때 참조하는 견적 Dialog
+ 
+ 수정일       수정자   수정내용
+ ----------   -------  --------------------------------------------------
+ 2019.12.05   조윤경    공통함수 적용
+ */
+
+/************************************************************************************************
+ * 공통 라이브러리 INCLUDE 영역 (필수)
+ ************************************************************************************************/
+include "scripts::commonTransaction.xjs";
+
+/*----------------------------------------------------------------------------------------------
+ * 설명      :  logi_EstimateDialog_onload
+ *---------------------------------------------------------------------------------------------*/
+this.logi_EstimateDialog_onload = function (obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.gfnService("findEstimateDialog", false);
+};
+
+
+
+
+/*----------------------------------------------------------------------------------------------
+ * 설명      :  grd_estimateDialog_oncelldblclick - 견적내역 선택
+ *---------------------------------------------------------------------------------------------*/
+var dialogName = "";
+this.grd_estimateDialog_oncelldblclick = function (obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	var customerCode = this.ds_estimate.getColumn(e.row, "CUSTOMER_CODE");
+	var estimateNo = this.ds_estimate.getColumn(e.row, "ESTIMATE_NO");
+	var personCodeInCharge = this.ds_estimate.getColumn(e.row, "PERSON_CODE_IN_CHARGE");
+	var estimateRequester = this.ds_estimate.getColumn(e.row, "ESTIMATE_REQUESTER");
+
+	var day = nexacro.getApplication().today();
+
+	this.opener.fn_addEstimateDetail(estimateNo); //견적상세추가 - opener에 선언되어있음
+	this.close(customerCode + "/" + estimateNo + "/" + personCodeInCharge + "/" + estimateRequester);
+};
+]]></Script>
+  </Form>
+</FDL>

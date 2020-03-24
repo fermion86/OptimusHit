@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="hr_positionDialog" width="300" height="400" titletext="New Form" onload="hr_positionDialog_onload">
+    <Layouts>
+      <Layout height="400" mobileorientation="landscape" width="300">
+        <Grid id="position_grid" taborder="0" left="6.00%" top="59" right="7.00%" height="319" binddataset="ds_position" autofittype="col" oncelldblclick="position_grid_oncelldblclick" font="12px/normal &quot;a두리둥실&quot;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="직위코드" font="12px/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="직위" font="12px/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:DETAIL_CODE" font="12px/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="bind:DETAIL_CODE_NAME" font="12px/normal &quot;a두리둥실&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static00" taborder="1" text="직위" left="2.67%" top="8" right="4.00%" height="37" font="18px/normal &quot;a두리둥실&quot;" textAlign="center"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_codeDetail">
+        <ColumnInfo>
+          <Column id="DIVISION_CODE_NO" type="STRING" size="256"/>
+          <Column id="DETAIL_CODE" type="STRING" size="256"/>
+          <Column id="DETAIL_CODE_NAME" type="STRING" size="256"/>
+          <Column id="CODE_USE_CHECK" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_position">
+        <ColumnInfo>
+          <Column id="DETAIL_CODE" type="STRING" size="256"/>
+          <Column id="DETAIL_CODE_NAME" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[
+this.hr_positionDialog_onload = function (obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.transaction(
+		"findCodeList",
+		"dataURL::sys/findCodeDetailList.do",
+		"",
+		"ds_codeDetail=gds_codeDetail",
+		"",
+		"callbackFunction",
+		false
+	);
+
+	this.ds_codeDetail.filter("DIVISION_CODE_NO=='SYS06'");
+	this.ds_position.copyData(this.ds_codeDetail, true);
+};
+
+this.position_grid_oncelldblclick = function (obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	var detailCode = this.ds_position.getColumn(e.row, "DETAIL_CODE");
+	var detailCodeN = this.ds_position.getColumn(e.row, "DETAIL_CODE_NAME");
+
+	this.close(detailCode + "/" + detailCodeN);
+};
+]]></Script>
+  </Form>
+</FDL>

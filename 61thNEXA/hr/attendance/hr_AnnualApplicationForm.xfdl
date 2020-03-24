@@ -1,0 +1,626 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="hr_AnnualApplicationForm" width="1200" height="780" titletext="New Form" onload="hr_AnnualApplicationForm_onload">
+    <Layouts>
+      <Layout height="780" mobileorientation="landscape" width="1200">
+        <GroupBox id="GroupBox00" taborder="0" left="4.25%" top="71" width="35.50%" height="232" onlbuttondown="GroupBox00_onlbuttondown" text="연차정보" color="black" font="16pt/normal &quot;a두리둥실&quot;"/>
+        <GroupBox id="GroupBox01" text="연차신청" taborder="1" left="43.00%" top="71" width="49.50%" height="232" color="black" font="16pt/normal &quot;a두리둥실&quot;"/>
+        <Static id="standardYear_stc" taborder="2" text="기준년도" left="6.58%" top="101" right="83.67%" height="24" onclick="Static00_onclick" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="empName_stc" taborder="3" text="사원명" onclick="Static00_onclick" left="6.58%" top="127" right="83.67%" height="24" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="deptName_stc" taborder="4" text="부서" onclick="Static00_onclick" left="6.58%" top="155" right="83.67%" height="24" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="lengthOfService_stc" taborder="5" text="근속년수" onclick="Static00_onclick" left="6.58%" top="183" right="83.67%" height="24" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="usableDays_stc" taborder="6" text="사용가능일수" onclick="Static00_onclick" left="6.58%" top="211" right="83.67%" height="24" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="restDays_stc" taborder="7" text="잔여일수" onclick="Static00_onclick" left="6.58%" top="238" right="83.67%" height="24" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="usedDays_stc" taborder="8" text="사용한일수" onclick="Static00_onclick" left="6.58%" top="267" right="83.67%" height="24" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="standardYear_edt" taborder="9" enable="false" left="18.00%" top="100" width="135" height="25" oneditclick="standardYear_oneditclick" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="nextYear_btn" taborder="10" text="다음년도" left="30.92%" top="12.56%" right="61.50%" height="24" onclick="nextYear_btn_onclick" wordWrap="char" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="empName_edt" taborder="11" enable="false" left="18.00%" top="127" width="180" height="25" oneditclick="empName_oneditclick" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="deptName_edt" taborder="12" enable="false" left="18.00%" top="154" width="180" height="25" oneditclick="deptName_edt_oneditclick" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="lengthOfService_edt" taborder="13" enable="false" left="18.00%" top="182" width="156" height="25" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="usableDays_edt" taborder="14" oneditclick="standardYear_oneditclick" enable="false" left="18.00%" top="211" width="156" height="25" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="restDays_edt" taborder="15" oneditclick="standardYear_oneditclick" enable="false" left="18.00%" top="238" width="156" height="25" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="usedDays_edt" taborder="16" oneditclick="standardYear_oneditclick" enable="false" left="18.00%" top="267" width="156" height="25" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="year_stc" taborder="17" text="년" onclick="Static00_onclick" left="32.00%" top="182" right="65.00%" height="24" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="day_stc" taborder="18" text="일" onclick="Static00_onclick" left="32.00%" top="210" right="65.00%" height="24" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="day1_stc" taborder="19" text="일" onclick="Static00_onclick" left="32.00%" top="238" right="65.00%" height="24" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="day2_stc" taborder="20" text="일" onclick="Static00_onclick" left="32.00%" top="267" right="65.00%" height="24" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="Static21" taborder="21" text="신청 기간 설정시 연차정보의 기준년도를&#13;&#10;참고하여 잔여일수 확인 후 신청 할 것!" left="63.92%" top="18" width="28.67%" height="54" background="cornsilk" color="rgba(255,0,0,1)" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="period_stc" taborder="22" text="신청기간" onclick="Static00_onclick" left="45.33%" top="101" right="44.92%" height="24" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="dayNum_stc" taborder="23" text="일수" onclick="Static00_onclick" left="45.33%" top="130" right="44.92%" height="24" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="selAnnualType_stc" taborder="24" text="구분" onclick="Static00_onclick" left="45.33%" top="158" right="44.92%" height="24" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="cause_stc" taborder="25" text="사유" onclick="Static00_onclick" left="45.33%" top="187" right="44.92%" height="24" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="detailCause_stc" taborder="26" text="상세사유" onclick="Static00_onclick" left="45.33%" top="218" right="44.92%" height="24" font="12pt &quot;a두리둥실&quot;"/>
+        <Calendar id="startDate_cal" taborder="27" dateformat="yyyy-MM-dd" left="56.25%" top="91" width="140" height="33" canchange="startDate_canchange" oneditclick="startDate_cal_oneditclick" font="12pt &quot;a두리둥실&quot;" readonly="false"/>
+        <Calendar id="endDate_cal" taborder="28" dateformat="yyyy-MM-dd" left="73.67%" top="92" width="140" height="33" onchanged="endDate_cal_onchanged" font="12pt &quot;a두리둥실&quot;" readonly="false"/>
+        <Static id="Static16" taborder="29" text="부터" onclick="Static00_onclick" left="69.25%" top="101" right="27.00%" height="22" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="Static17" taborder="30" text="까지" onclick="Static00_onclick" left="86.33%" top="102" right="9.92%" height="22" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="days_edt" taborder="31" enable="false" left="56.33%" top="130" width="156" height="24" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="day3_stc" taborder="32" text="일" onclick="Static00_onclick" left="70.00%" top="131" right="27.00%" height="24" font="12pt &quot;a두리둥실&quot;"/>
+        <Combo id="selAnnualType_combo" taborder="33" innerdataset="ds_annualType" codecolumn="code" datacolumn="value" left="56.33%" top="158" width="156" height="24" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="cause_edt" taborder="34" left="56.33%" top="186" width="291" height="24" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="detailCause_edt" taborder="35" left="56.33%" top="218" width="291" height="70" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="apply_btn" taborder="36" text="신청" left="82.67%" top="192" right="9.67%" height="86" onclick="apply_btn_onclick" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="search_stc" taborder="37" text="조회기간" onclick="Static00_onclick" left="6.42%" top="378" right="83.83%" height="24" font="12pt &quot;a두리둥실&quot;"/>
+        <Calendar id="fromDate_cal" taborder="38" dateformat="yyyy-MM-dd" canchange="startDate_canchange" left="17.25%" top="378" width="140" height="33" font="12pt &quot;a두리둥실&quot;" readonly="false"/>
+        <Static id="Static20" taborder="39" text="부터" onclick="Static00_onclick" left="30.92%" top="379" right="65.42%" height="32" font="12pt &quot;a두리둥실&quot;"/>
+        <Calendar id="toDate_cal" taborder="40" dateformat="yyyy-MM-dd" canchange="endDate_canchange" left="36.00%" top="378" width="140" height="33" font="12pt &quot;a두리둥실&quot;" readonly="false"/>
+        <Static id="Static28" taborder="41" text="까지" onclick="Static00_onclick" left="49.17%" top="378" right="47.17%" height="32" font="12pt &quot;a두리둥실&quot;"/>
+        <Grid id="Grid00" taborder="42" left="4.58%" top="416" right="6.92%" height="312" binddataset="ds_dayAnnual" oncelldblclick="Grid00_oncelldblclick" oncellclick="Grid00_oncellclick" autofittype="col" font="12pt &quot;a두리둥실&quot;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="74"/>
+                <Column size="88"/>
+                <Column size="118"/>
+                <Column size="111"/>
+                <Column size="82"/>
+                <Column size="87"/>
+                <Column size="92"/>
+                <Column size="190"/>
+                <Column size="81"/>
+                <Column size="72"/>
+                <Column size="69"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="취소선택" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="사원코드" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" text="사원명" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" text="기준년도" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" text="시작일" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="5" text="종료일" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="6" text="사유" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="7" text="상세사유" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="8" text="구분" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="9" text="일수" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="10" text="승인여부" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="checkbox" edittype="checkbox" text="bind:CHK" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="bind:EMP_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" text="bind:EMP_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" text="bind:STANDARD_YEAR" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" text="bind:START_DATE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="5" text="bind:END_DATE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="6" edittype="normal" text="bind:CAUSE_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="7" edittype="normal" text="bind:DETAIL_CAUSE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="8" text="bind:ANNUAL_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="9" text="bind:DAYS" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="10" text="bind:APPROVAL_STATUS" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="annualApplication_stc" taborder="43" text="휴가/연차신청" left="4.33%" top="24" right="36.58%" height="45" onclick="annualApplication_stc_onclick" font="18pt/normal &quot;a두리둥실&quot;"/>
+        <Static id="annualApplicationSearch_stc" taborder="44" text="연차 현황 조회" onclick="annualApplication_stc_onclick" left="4.33%" top="320" right="7.25%" height="45" font="16pt/normal &quot;a두리둥실&quot;"/>
+        <Button id="search_btn" taborder="45" text="조회" left="54.08%" top="375" right="41.08%" height="33" onclick="search_btn_onclick" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="delet_btn" taborder="46" text="신청취소" left="78.75%" top="375" right="13.92%" height="33" onclick="delet_btn_onclick" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="save_btn" taborder="47" text="저장" left="87.33%" top="375" right="8.00%" height="33" onclick="save_btn_onclick" font="12pt &quot;a두리둥실&quot;"/>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item0" compid="standardYear_edt" propid="value" datasetid="ds_annual" columnid="STANDARD_YEAR"/>
+      <BindItem id="item1" compid="lengthOfService_edt" propid="value" datasetid="ds_annual" columnid="LENGTH_OF_SERVICE"/>
+      <BindItem id="item2" compid="usableDays_edt" propid="value" datasetid="ds_annual" columnid="USABLE_DAYS"/>
+      <BindItem id="item3" compid="restDays_edt" propid="value" datasetid="ds_annual" columnid="REST_DAYS"/>
+      <BindItem id="item4" compid="usedDays_edt" propid="value" datasetid="ds_annual" columnid="USED_DAYS"/>
+    </Bind>
+    <Objects>
+      <Dataset id="ds_dayAnnual">
+        <ColumnInfo>
+          <Column id="DAY_ANNUAL_SEQ" type="STRING" size="256"/>
+          <Column id="EMP_CODE" type="STRING" size="256"/>
+          <Column id="START_DATE" type="STRING" size="256"/>
+          <Column id="END_DATE" type="STRING" size="256"/>
+          <Column id="CAUSE_CODE" type="STRING" size="256"/>
+          <Column id="DETAIL_CAUSE" type="STRING" size="256"/>
+          <Column id="STANDARD_YEAR" type="STRING" size="256"/>
+          <Column id="ANNUAL_CODE" type="STRING" size="256"/>
+          <Column id="DAYS" type="STRING" size="256"/>
+          <Column id="APPROVAL_STATUS" type="STRING" size="256"/>
+          <Column id="EMP_NAME" type="STRING" size="256"/>
+          <Column id="CHK" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_annual">
+        <ColumnInfo>
+          <Column id="STANDARD_YEAR" type="STRING" size="256"/>
+          <Column id="EMP_CODE" type="STRING" size="256"/>
+          <Column id="USED_DAYS" type="STRING" size="256"/>
+          <Column id="REST_DAYS" type="STRING" size="256"/>
+          <Column id="USABLE_DAYS" type="STRING" size="256"/>
+          <Column id="LENGTH_OF_SERVICE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_dailyAttdRest">
+        <ColumnInfo>
+          <Column id="ATTD_REST_SEQ" type="STRING" size="256"/>
+          <Column id="EMP_CODE" type="STRING" size="256"/>
+          <Column id="ATTD_REST_CODE" type="STRING" size="256"/>
+          <Column id="REQUEST_DATE" type="STRING" size="256"/>
+          <Column id="START_DATE" type="STRING" size="256"/>
+          <Column id="END_DATE" type="STRING" size="256"/>
+          <Column id="DAYS" type="STRING" size="256"/>
+          <Column id="COST" type="STRING" size="256"/>
+          <Column id="CAUSE" type="STRING" size="256"/>
+          <Column id="APPROVAL_STATUS" type="STRING" size="256"/>
+          <Column id="EMP_NAME" type="STRING" size="256"/>
+          <Column id="OTHER_SUDANG" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_annualType">
+        <ColumnInfo>
+          <Column id="code" type="STRING" size="256"/>
+          <Column id="value" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="code">AQC013</Col>
+            <Col id="value">연차</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_dailyAttd">
+        <ColumnInfo>
+          <Column id="DAY_ATTD_SEQ" type="STRING" size="256"/>
+          <Column id="EMP_CODE" type="STRING" size="256"/>
+          <Column id="BASIC_DAY" type="STRING" size="256"/>
+          <Column id="ATTD_TYPE_CODE" type="STRING" size="256"/>
+          <Column id="TIME" type="STRING" size="256"/>
+          <Column id="APPROVAL_STATUS" type="STRING" size="256"/>
+          <Column id="COST" type="STRING" size="256"/>
+          <Column id="CAUSE" type="STRING" size="256"/>
+          <Column id="EMP_NAME" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_empCode">
+        <ColumnInfo>
+          <Column id="DETAIL_CODE" type="STRING" size="256"/>
+          <Column id="DETAIL_CODE_NAME" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[/********************************************************************************                                                                            
+ 휴가/연차신청  화면
+ @Path		인사
+ @Description	휴가/연차신청을 하기 위한  폼
+ @Author	  	김민서
+ @Create           2019. 02. 12.
+ ********************************************************************************/
+var turn = 1;
+var presentYear;
+// 로딩하면
+this.hr_AnnualApplicationForm_onload = function (obj:Form, e:nexacro.LoadEventInfo)
+{
+	var today = nexacro.getApplication().today();
+	var FullDate = new Date();
+	presentYear = FullDate.getFullYear().toString().padLeft(4, "0"); //현재 년도
+	trace(presentYear);
+	trace(nexacro.getApplication().g_empCode);
+	this.ds_annual.filter(""); //일단 안보이게 필터
+	this.ds_dayAnnual.filter(""); //일단 안보이게 필터
+
+	// 연차정보에서 사원명이랑 부서
+	this.transaction("findCodeDetailList",
+		"dataURL::sys/findCodeDetailList.do",
+		"",
+		"gds_codeDetail=gds_codeDetail",
+		"",
+		"callback"
+	);
+
+	nexacro.getApplication().gds_codeDetail.filter("DETAIL_CODE==" + 'application.g_deptCode');
+	this.empName_edt.set_value(nexacro.getApplication().g_empName);
+	this.deptName_edt.set_value(nexacro.getApplication().gds_codeDetail.getColumn(e.row, "DETAIL_CODE_NAME"));
+
+
+	// 연차정보 구해오기(사용가능일수 , 사용 한 일 수 , 근속년수 )
+	this.transaction("findAnnualLeaveList",
+		"dataURL::hr/circumstance/findAnnualLeaveList.do",
+		"",
+		"ds_annual=ds_annualLeave",
+		"",
+		"callback",
+		false);
+
+	this.ds_annual.filter("STANDARD_YEAR=='" + presentYear + "' && EMP_CODE=='" + nexacro.getApplication().g_empCode + "'");
+	this.ds_annual.set_rowposition(0); //그리드는 자동으로 선택이 되어있지만 editbox 에는 rowposition 지정을 해놔야 들어가는듯?
+
+	// 해당 사원의 연차 정보를 얻음 (현재년도 , 다음년도 연차신청 현황)
+	this.transaction("findAnnualMgt",
+		"dataURL::hr/attendance/findAnnualMgt.do",
+		"",
+		"ds_dayAnnual=ds_dayAnnual",
+		"empCode='" + nexacro.getApplication().g_empCode + "' standardYear=" + presentYear + "",
+		"callback");
+
+	this.ds_dayAnnual.filter("EMP_CODE==0"); //일단 안보이게 필터(연차 현황조회)
+
+	// 해당 사원의 근태 외 신청 확인!
+	this.transaction("findAttdRestList",
+		"dataURL::hr/attendance/findAttdRestList.do",
+		"",
+		"ds_dailyAttdRest=ds_dailyAttdRest",
+		"empCode='" + nexacro.getApplication().g_empCode + "'fromDate='" + today + "'toDate='" + today + "'",
+		"callback");
+
+
+	this.startDate_cal.set_value(nexacro.getApplication().today()); //신청시작날짜를 오늘로 고정했음
+};
+
+// 다음년도 누를 때
+this.nextYear_btn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	if (turn == 1) 
+	{
+		// alert("presentYear"+presentYear);
+		var nextYear = parseInt(presentYear) + 1;
+		// alert("nextYear"+nextYear);
+		this.ds_annual.filter("");
+		// trace("여기 실행[1]"+dsAnnual.getRowCount()+"#####"+nextYear);
+		this.ds_annual.filter("STANDARD_YEAR=='" + nextYear + "' && EMP_CODE==''" + nexacro.getApplication().g_empCode + "''");
+		if (this.ds_annual.getRowCount() == 0) 
+		{
+			alert("연차정보 등록내용이 존재 하지 않습니다.");
+			turn = 0;
+		}
+		this.ds_annual.set_rowposition(0);
+		// trace("여기 실행[2]"+dsAnnual.getRowCount());
+		this.nextYear_btn.set_text("이전 연도");
+		// alert(turn);
+		turn = 0;
+		return;
+	}
+	if (turn == 0) 
+	{
+		this.ds_annual.filter("");
+		this.ds_annual.filter("STANDARD_YEAR=='" + presentYear + "' && EMP_CODE=='" + nexacro.getApplication().g_empCode + "'");
+		this.ds_annual.set_rowposition(0);
+		this.nextYear_btn.set_text("다음 연도");
+		turn = 1;
+
+		// alert(turn);
+		return;
+	}
+};
+
+// 기간 설정 후 연차현황조회시
+this.search_btn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	this.days_edt.set_value("");
+	if (this.fromDate_cal.value == null || this.toDate_cal.value == null) 
+	{
+		alert(" 조회할 기간을 모두 선택해주세요 :( ");
+	}
+	else 
+	{
+		if (this.fromDate_cal.value > this.toDate_cal.value) 
+		{
+			alert(" 조회기간이 잘못되었습니다 :( ");
+			this.fromDate_cal.set_value("");
+			this.toDate_cal.set_value("");
+		}
+		else 
+		{
+			this.ds_dayAnnual.filter("");
+			this.ds_dayAnnual.filter("START_DATE>=" + this.fromDate_cal.value + " && START_DATE<=" + this.toDate_cal.value);
+
+			// alert(dsDayAnnual.getRowCount());
+			if (this.ds_dayAnnual.getRowCount() == 0) 
+			{
+				alert(" 해당기간에는 데이터가 존재하지 않습니다. ");
+				this.fromDate_cal.set_value("");
+				this.toDate_cal.set_value("");
+			}
+		}
+	}
+};
+// ////////////////////////////
+// 신청 시작 날짜 변경 전에
+this.startDate_canchange = function (obj:Calendar, e:nexacro.ChangeEventInfo)
+{
+	this.ds_dailyAttd.filter("");
+	this.ds_dailyAttdRest.filter("");
+
+	// postvalue = event 발생 이후 component가 가질 value Property 입니다.
+	this.ds_dailyAttd.filter("BASIC_DAY=='" + e.postvalue + "'"); ///////////////////////////
+	this.ds_dailyAttdRest.filter("START_DATE<=" + e.postvalue + " &&" + e.postvalue + "<=END_DATE"); ////////////////////
+	this.ds_dayAnnual.filter("START_DATE<=" + e.postvalue + " &&" + e.postvalue + "<=END_DATE"); //alert("postvalueaaaa::"+(e.postvalue));
+	if (this.ds_dailyAttd.getRowCount() != 0 || this.ds_dailyAttdRest.getRowCount() != 0 || this.ds_dayAnnual.getRowCount() != 0) 
+	{
+		this.ds_dailyAttd.filter("");
+		alert("현재날짜에는 데이터가 입력되어있습니다. 다른날짜를 선택해주세요 :( ");
+		return false;
+	}
+};
+
+// 신청 끝날 변경 시(연차정보 잔여일수랑 비교)
+this.endDate_cal_onchanged = function (obj:Calendar, e:nexacro.ChangeEventInfo)
+{
+	if (this.startDate_cal.value == null) 
+	{
+		alert(" 연차신청 시작일을 선택해주세요 :) ");
+	}
+	else 
+	{
+		if (this.startDate_cal.value > e.postvalue) 
+		{
+			alert(" 날짜선택이 잘못되었습니다. ");
+			return false;
+		}
+		else 
+		{
+			this.ds_dailyAttd.filter("");
+			this.ds_dailyAttdRest.filter("");
+
+			this.ds_dailyAttd.filter("BASIC_DAY=='" + e.postvalue + "'"); //////////////////////////////
+			this.ds_dailyAttdRest.filter("START_DATE<=" + e.postvalue + " &&" + e.postvalue + "<=END_DATE"); //////////////////////
+			this.ds_dayAnnual.filter("START_DATE<=" + e.postvalue + " &&" + e.postvalue + "<=END_DATE"); /////////////////
+
+			if (this.ds_dailyAttd.getRowCount() != 0 || this.ds_dailyAttdRest.getRowCount() != 0 || this.ds_dayAnnual.getRowCount() != 0) 
+			{
+				alert("현재날짜에는 데이터가 입력되어있습니다. 다른날짜를 선택해주세요 :( ");
+				return false;
+			}
+			else 
+			{
+				var fromDate = new Date();
+				var toDate = new Date();
+				var calDate;
+				var day = 1000 * 60 * 60 * 24;
+
+				fromDate.setFullYear(this.startDate_cal.getYear());
+				fromDate.setMonth(this.startDate_cal.getMonth() - 1);
+				fromDate.setDate(this.startDate_cal.getDay());
+
+				toDate.setFullYear(this.endDate_cal.getYear());
+				toDate.setMonth(this.endDate_cal.getMonth() - 1);
+				toDate.setDate(this.endDate_cal.getDay());
+
+				calDate = fromDate.getTime() - toDate.getTime();
+
+				applicationDays = (Math.abs(calDate / day));
+
+				alert((parseInt(applicationDays) + 1) + "일");
+
+				if (nexacro.toNumber(this.restDays_edt.value) < nexacro.toNumber((parseInt(applicationDays) + 1))) 
+				{
+					alert(" 신청일수는 잔여일수를 넘길 수 없습니다. ");
+					this.days.set_value("");
+					this.endDate_cal.set_value("");
+					return false;
+				}
+				else 
+				{
+					this.days_edt.set_value((parseInt(applicationDays) + 1));
+				}
+			}
+		}
+	}
+};
+
+// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// 신청 시
+this.apply_btn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	var v_standardYear = presentYear;
+	var v_empCode = nexacro.getApplication().g_empCode;
+	var v_selAnnualType = this.selAnnualType_combo.value;
+	var v_days = parseInt(this.days_edt.value);
+	var v_cause = this.cause_edt.value;
+	var v_detailCause = this.detailCause_edt.value;
+
+	var v_usedDays = parseInt(this.usedDays_edt.value);
+	var v_restDays = String(parseInt(this.restDays_edt.value) - v_days);
+	var annualDays = String(v_usedDays + v_days);
+	this.transaction(
+		"findDailyAttdList",
+		"dataURL::hr/attendance/findDailyAttdList.do",
+		"",
+		"ds_dailyAttd=dsDailyAttd",
+		"empCode='" + nexacro.getApplication().g_empCode + "' fromDate='" + this.startDate_cal.value + "' toDate='" + this.endDate_cal.value + "'",
+		"callback",
+		false
+	); //해당 사원의 일 근태 정보를 얻어 온다.!
+
+
+	if (parseInt(v_restDays) < 0) 
+	{
+		alert(" 신청연차일수가 잔여일수보다 초과하여 연차를 신청할수 없습니다. ");
+		return false;
+	}
+
+	if (this.startDate_cal.value == "" || this.endDate_cal.value == "" || v_cause == "" || v_detailCause == "" || v_selAnnualType.value == "") 
+	{
+		alert(" 아직 입력하지않은 정보가 있습니다. 정보를 모두 입력해주세요 :( ");
+	}
+	else 
+	{
+		if (confirm(" 현재 내용으로 연차신청을 하시겠습니까? ")) 
+		{
+			this.usedDays_edt.value = parseInt(this.usedDays_edt.value) - parseInt(this.restDays_edt.value);
+			this.ds_dayAnnual.addRow();
+			this.ds_dayAnnual.setColumn(this.ds_dayAnnual.rowposition, "EMP_CODE", nexacro.getApplication().g_empCode);
+			this.ds_dayAnnual.setColumn(this.ds_dayAnnual.rowposition, "EMP_NAME", nexacro.getApplication().g_empName);
+			this.ds_dayAnnual.setColumn(this.ds_dayAnnual.rowposition, "START_DATE", this.startDate_cal.value);
+			this.ds_dayAnnual.setColumn(this.ds_dayAnnual.rowposition, "END_DATE", this.endDate_cal.value);
+			this.ds_dayAnnual.setColumn(this.ds_dayAnnual.rowposition, "CAUSE_CODE", v_cause);
+			this.ds_dayAnnual.setColumn(this.ds_dayAnnual.rowposition, "DETAIL_CAUSE", v_detailCause);
+			this.ds_dayAnnual.setColumn(this.ds_dayAnnual.rowposition, "STANDARD_YEAR", v_standardYear);
+			this.ds_dayAnnual.setColumn(this.ds_dayAnnual.rowposition, "ANNUAL_CODE", v_selAnnualType);
+			this.ds_dayAnnual.setColumn(this.ds_dayAnnual.rowposition, "DAYS", v_days);
+			this.ds_dayAnnual.setColumn(this.ds_dayAnnual.rowposition, "APPROVAL_STATUS", "N");
+
+			this.transaction(
+				"addDayAnnual",
+				"dataURL::hr/attendance/addDayAnnual.do",
+				"ds_dayAnnual=ds_dayAnnual:u",
+				"ds_dayAnnual=ds_dayAnnual",
+				"",
+				"callback", false
+			);
+
+			this.transaction(
+				"editAnnualLeaveMgt",
+				"dataURL::hr/circumstance/editAnnualLeaveMgt.do",
+				"",
+				"ds_annual=ds_annualLeave",
+				"standardYear='" + v_standardYear + "' empCode='" + v_empCode + "' days='" + annualDays + "' restDays='" + v_restDays + "'",
+				"callback", false
+			);
+			this.ds_annual.filter("STANDARD_YEAR=='" + presentYear + "' && EMP_CODE=='" + nexacro.getApplication().g_empCode + "'");
+			this.ds_annual.set_rowposition(0); //그리드는 자동으로 선택이 되어있지만 editbox 에는 rowposition 지정을 해놔야 들어가는듯?
+		}
+	}
+};
+
+this.callback = function (trid, ErrorCode, ErrorMsg)
+{
+	if (trid == "addDayAnnual") 
+	{
+		if (ErrorCode < 0) 
+		{
+			alert(ErrorMsg);
+		}
+		else if (trid = "addDayAnnual") 
+		{
+			alert(" 성공적으로 연차신청을 하였습니다 :) ");
+			this.days_edt.set_value("");
+			this.startDate_cal.set_value("");
+			this.endDate_cal.set_value("");
+			this.cause_edt.set_value("");
+			this.detailCause_edt.set_value("");
+			this.ds_dayAnnual.filter("EMP_CODE==0");
+			// this.reloed();
+		}
+	}
+};
+
+
+// 삭제
+this.delet_btn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	// alert("check : "+this.ds_dayAnnual.getColumn(e.row,"CHK"));
+
+	var CHK_NO = this.ds_dayAnnual.getRowCount();
+	var delDay = 0;
+	for (i = (CHK_NO - 1); i >= 0; i--) 
+	{
+		// 그리드에서 제일 뒷행부터 삭제해야 삭제될 행이 안밀리기때문에 뒤에서부터 작업한다
+		// alert("cRow : "+i);
+		// alert("CRcheck : "+this.ds_dayAnnual.getColumn(i,"CHK"));
+
+		if (this.ds_dayAnnual.getColumn(i, "CHK") == 1) 
+		{
+			// 체크박스 체크한것만 적용
+
+			if (this.ds_dayAnnual.getColumn(i, "APPROVAL_STATUS") == 'N') 
+			{
+				// 휴가 승인이 되지않은 것만 적용
+				// alert("delRow : "+i);
+				var day = this.ds_dayAnnual.getColumn(i, "DAYS");
+				if (day > 0) 
+				{
+					delDay = delDay + parseInt(day); //alert("충전할일수 : "+delDay);
+				}
+
+
+
+				this.ds_dayAnnual.deleteRow(i);
+			}
+			else 
+			{
+				alert(" 승인이 완료된 신청서는 삭제할 수 없습니다.  ");
+				return;
+			}
+		}
+		// else{alert(" 채크안됨 ");}
+	}
+
+	var rDays = this.restDays_edt.value;
+	var uDays = this.usedDays_edt.value;
+	var addDays = parseInt(rDays) + delDay;
+	var addRestDays = parseInt(uDays) - delDay;
+
+	this.transaction(
+		"editAnnualLeaveMgt",
+		"dataURL::hr/circumstance/editAnnualLeaveMgt.do",
+		"",
+		"ds_annual=ds_annualLeave",
+		"standardYear='" + presentYear + "' empCode='" + nexacro.getApplication().g_empCode + "' days='" + addRestDays + "' restDays='" + addDays + "'",
+		"callback", false
+	);
+};
+
+
+// 수정
+
+this.Grid00_oncellclick = function (obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	if (this.ds_dayAnnual.getColumn(e.row, "APPROVAL_STATUS") == "N") 
+	{
+		if (e.col == 6 || e.col == 7) 
+		{
+			var nCellIdx = this.Grid00.currentcell;
+			// alert(nCellIdx);
+			this.Grid00.setCellProperty("Body", nCellIdx, "edittype", "normal");
+			this.Grid00.setCellPos(nCellIdx);
+		}
+		else if (e.col == 0) 
+		{
+		}
+		else 
+		{
+			alert(" 사유와 상세사유만 수정 가능합니다.  ");
+		}
+	}
+	else 
+	{
+		this.Grid00.setCellProperty("Body", 6, "edittype", "none");
+		this.Grid00.setCellProperty("Body", 7, "edittype", "none");
+
+
+		alert(" 승인이 완료된 신청서는 수정/삭제  할 수 없습니다.  ");
+		this.ds_dayAnnual.setColumn(this.ds_dayAnnual.rowposition, "CHK", 0);
+	}
+};
+
+
+// 저장
+
+this.save_btn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	if (confirm("저장 하시겠습니까 ?")) 
+	{
+		this.transaction("batchDayAnnual",
+			"dataURL::hr/attendance/batchDayAnnual.do",
+			"ds_dayAnnual=ds_dayAnnual:u",
+			"ds_dayAnnual=ds_dayAnnual",
+			"",
+			"callbackFunction",
+			false
+		);
+		this.reload();
+	}
+};
+
+this.callbackFunction = function (strSvcID, nErrorCode, strErrorMag)
+{
+	if (strSvcID == "batchDayAnnual") 
+	{
+		if (nErrorCode != 0) 
+		{
+			alert(strErrorMag);
+		}
+		else 
+		{
+			alert("완료되었습니다.");
+		}
+	}
+};
+	]]></Script>
+  </Form>
+</FDL>

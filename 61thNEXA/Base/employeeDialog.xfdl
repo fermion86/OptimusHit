@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="employeeDialog" width="370" height="380" titletext="New Form" onload="employeeDialog_onload">
+    <Layouts>
+      <Layout height="380" mobileorientation="landscape" width="370">
+        <Grid id="employeeList_gird" taborder="0" left="4.59%" top="62" right="2.43%" height="299" binddataset="ds_EmpInfo" autofittype="col" oncelldblclick="employee_gird_oncelldblclick" font="12pt &quot;a두리둥실&quot;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="사원코드"/>
+                <Cell col="1" text="사원이름"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:EMP_CODE"/>
+                <Cell col="1" text="bind:EMP_NAME"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="sys_customer_stc" taborder="1" text="사원코드" onclick="Static00_onclick" left="14" top="9" right="11" height="45" border="3px solid darkgray" font="15pt/normal &quot;a두리둥실&quot;" textAlign="center"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_EmpInfo">
+        <ColumnInfo>
+          <Column id="CHE" type="STRING" size="256"/>
+          <Column id="EMP_CODE" type="STRING" size="256"/>
+          <Column id="EMP_NAME" type="STRING" size="256"/>
+          <Column id="RESIDENT_NUMBER" type="STRING" size="256"/>
+          <Column id="BIRTH_DATE" type="STRING" size="256"/>
+          <Column id="GENDER" type="STRING" size="256"/>
+          <Column id="IMG_SRC" type="STRING" size="256"/>
+          <Column id="ZIP_CODE" type="STRING" size="256"/>
+          <Column id="BASE_ADDRESS" type="STRING" size="256"/>
+          <Column id="DETAIL_ADDRESS" type="STRING" size="256"/>
+          <Column id="EMAIL" type="STRING" size="256"/>
+          <Column id="PHONE_NUMBER" type="STRING" size="256"/>
+          <Column id="HIGEST_EDUCATION_CODE" type="STRING" size="256"/>
+          <Column id="NATIVE_TYPE_CODE" type="STRING" size="256"/>
+          <Column id="DISABILITY_CODE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[this.employeeDialog_onload = function (obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.transaction("findEmployeeList",
+		"dataURL::hr/pm/findEmpInfoList.do",
+		"",
+		"ds_EmpInfo=dsEmpInfo",
+		"",
+		"callback",
+		false
+	);
+};
+
+
+this.employee_gird_oncelldblclick = function (obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	var n = this.opener.Row;
+	var f = this.opener.flag;
+	var stringf = new String(f);
+
+
+	var empCode = this.ds_EmpInfo.getColumn(e.row, "EMP_CODE");
+	var empName = this.ds_EmpInfo.getColumn(e.row, "EMP_NAME");
+
+	alert(n);
+	alert(stringf);
+
+	// 사원명 검색하는 경우 / 사원 value 입력하는 경우
+	if (f == "list") 
+	{
+		this.opener.EmpName_div.Edit00.set_value(empName);
+	}
+	else 
+	{	// 이건머여 아에 없구만
+		this.opener.ds_sangBal.setColumn(n, "EMP_CODE", empCode);
+		this.opener.ds_sangBal.setColumn(n, "EMP_NAME", empName);
+	}
+
+	this.close();
+
+	return;
+};
+
+
+this.callback = function (trid, ErrorCode, ErrorMsg)
+{
+	if (trid == "sangBalList") 
+	{
+		if (ErrorCode < 0) 
+		{
+			// alert("실패");
+		}
+		else 
+		{
+			// alert("성공");
+		}
+	}
+};
+]]></Script>
+  </Form>
+</FDL>

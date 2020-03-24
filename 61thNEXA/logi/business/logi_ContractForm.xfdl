@@ -1,0 +1,415 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="logi_ContractForm" width="1280" height="780" titletext="New Form" oninit="logi_ContractForm_oninit">
+    <Layouts>
+      <Layout height="780" mobileorientation="landscape" width="1280">
+        <GroupBox id="GroupBox00" text="수주등록" taborder="0" left="4.53%" top="3" right="3.98%" height="773" background="transparent" border="2px solid rgba(51,51,51,1)" color="black" font="18pt/normal &quot;a두리둥실&quot;"/>
+        <Calendar id="fromDate_cal" taborder="1" dateformat="yyyy-MM-dd" oneditclick="Calendar00_oneditclick" left="7.50%" top="60" right="81.09%" height="44" value="null" expr="expr:application.today()" onchanged="Calendar_onchange" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="st_bar" taborder="2" text="~" left="20.39%" top="62" right="75.63%" height="41" border="0px solid darkgray" color="black" font="12pt &quot;a두리둥실&quot;"/>
+        <Calendar id="toDate_cal" taborder="3" dateformat="yyyy-MM-dd" oneditclick="Calendar00_oneditclick" left="22.97%" top="60" right="65.63%" height="44" expr="expr:application.today()" onchanged="Calendar_onchange" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="btn_checkContract" taborder="4" onclick="btn_checkEstimate_onclick" left="34.69%" top="59" right="56.09%" height="45" text="수주 조회" background="rgba(255,255,255,1)" color="black" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="btn_estimateInfo" taborder="5" text="수주 추가" onclick="btn_addEstimate_onclick" left="59.14%" top="59" right="31.48%" height="45" background="rgba(255,255,255,1)" color="black" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="btn_deleteContract" taborder="6" text="삭제" onclick="btn_delEstimate_onclick" left="69.22%" top="59" right="21.09%" height="45" background="rgba(255,255,255,1)" color="black" font="12pt &quot;a두리둥실&quot;"/>
+        <Grid id="grd_contract" taborder="7" binddataset="ds_contract" left="7.50%" top="127" right="10.23%" height="281" oncellclick="grd_contract_onrbuttonup" background="transparent" font="12pt &quot;a두리둥실&quot;" autofittype="col" readonly="true">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="140"/>
+                <Column size="130"/>
+                <Column size="130"/>
+                <Column size="130"/>
+                <Column size="130"/>
+                <Column size="130"/>
+                <Column size="130"/>
+                <Column size="130"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="25"/>
+              </Rows>
+              <Band id="head">
+                <Cell displaytype="normal" text="수주일련번호" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" displaytype="normal" text="견적일련번호" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" displaytype="normal" text="수주유형구분" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" displaytype="normal" text="거래처" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" displaytype="normal" text="수주일자" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="5" displaytype="normal" text="수주요청자" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="6" displaytype="normal" text="수주담당자" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="7" displaytype="normal" text="납품여부" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="normal" text="bind:CONTRACT_NO" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" displaytype="normal" text="bind:ESTIMATE_NO" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" displaytype="normal" text="bind:CONTRACT_TYPE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" displaytype="normal" edittype="combo" text="bind:CUSTOMER_CODE" combodataset="gds_customer" combocodecol="bind:CUSTOMER_CODE" combodatacol="CUSTOMER_NAME" combodisplayrowcount="5" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" displaytype="normal" edittype="date" text="bind:CONTRACT_DATE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="5" displaytype="normal" edittype="text" text="bind:CONTRACT_REQUESTER" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="6" displaytype="normal" text="bind:PERSON_CODE_IN_CHARGE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="7" displaytype="normal" text="bind:DELIVERY_RESULT_STATUS" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="grd_contractDetail" taborder="8" binddataset="ds_contractDetail" left="7.50%" top="438" right="10.23%" height="305" autosizingtype="none" oncelldblclick="grd_contractDetail_oncelldblclick" background="transparent" font="12pt &quot;a두리둥실&quot;" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="164"/>
+                <Column size="141"/>
+                <Column size="107"/>
+                <Column size="153"/>
+                <Column size="36"/>
+                <Column size="70"/>
+                <Column size="52"/>
+                <Column size="95"/>
+                <Column size="112"/>
+                <Column size="91"/>
+                <Column size="63"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="25"/>
+              </Rows>
+              <Band id="head">
+                <Cell displaytype="normal" text="수주상세일련번호" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" displaytype="normal" text="수주일련번호" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" displaytype="normal" text="품목코드" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" displaytype="normal" text="품목명" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" displaytype="normal" text="단위" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="5" displaytype="normal" text="납기일" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="6" displaytype="normal" text="수량" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="7" displaytype="normal" text="단가" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="8" displaytype="normal" text="합계액" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="9" displaytype="normal" text="MPS적용여부" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="10" displaytype="normal" text="납품여부" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="normal" text="bind:CONTRACT_DETAIL_NO" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" displaytype="normal" text="bind:CONTRACT_NO" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" displaytype="normal" text="bind:ITEM_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" displaytype="normal" text="bind:ITEM_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" displaytype="normal" text="bind:UNIT_OF_CONTRACT" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="5" displaytype="normal" text="bind:DUE_DATE_OF_CONTRACT" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="6" displaytype="normal" text="bind:CONTRACT_AMOUNT" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="7" displaytype="normal" text="bind:UNIT_PRICE_OF_CONTRACT" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="8" displaytype="normal" text="bind:SUM_PRICE_OF_CONTRACT" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="9" displaytype="normal" text="bind:MPS_APPLY_STATUS" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="10" displaytype="normal" text="bind:DELIVERY_STATUS" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btn_batchContract" taborder="9" text="저장" onclick="btn_batchEstimate_onclick" left="80.00%" top="59" right="10.23%" height="45" background="rgba(255,255,255,1)" color="black" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="btn_printContract" taborder="10" text="수주내역서 출력" left="44.53%" top="60" right="46.09%" height="43" onclick="btn_printContract_onclick" background="rgba(255,255,255,1)" color="black" font="12pt &quot;a두리둥실&quot;"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_contract">
+        <ColumnInfo>
+          <Column id="CONTRACT_NO" type="STRING" size="256"/>
+          <Column id="ESTIMATE_NO" type="STRING" size="256"/>
+          <Column id="CONTRACT_TYPE" type="STRING" size="256"/>
+          <Column id="CUSTOMER_CODE" type="STRING" size="256"/>
+          <Column id="CONTRACT_DATE" type="STRING" size="256"/>
+          <Column id="CONTRACT_REQUESTER" type="STRING" size="256"/>
+          <Column id="PERSON_CODE_IN_CHARGE" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+          <Column id="DELIVERY_RESULT_STATUS" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_contractDetail">
+        <ColumnInfo>
+          <Column id="CONTRACT_DETAIL_NO" type="STRING" size="256"/>
+          <Column id="CONTRACT_NO" type="STRING" size="256"/>
+          <Column id="ITEM_CODE" type="STRING" size="256"/>
+          <Column id="ITEM_NAME" type="STRING" size="256"/>
+          <Column id="UNIT_OF_CONTRACT" type="STRING" size="256"/>
+          <Column id="DUE_DATE_OF_CONTRACT" type="STRING" size="256"/>
+          <Column id="CONTRACT_AMOUNT" type="STRING" size="256"/>
+          <Column id="UNIT_PRICE_OF_CONTRACT" type="STRING" size="256"/>
+          <Column id="SUM_PRICE_OF_CONTRACT" type="STRING" size="256"/>
+          <Column id="MPS_APPLY_STATUS" type="STRING" size="256"/>
+          <Column id="DELIVERY_STATUS" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_estimate">
+        <ColumnInfo>
+          <Column id="ESTIMATE_NO" type="STRING" size="256"/>
+          <Column id="CUSTOMER_CODE" type="STRING" size="256"/>
+          <Column id="ESTIMATE_DATE" type="STRING" size="256"/>
+          <Column id="CONTRACT_STATUS" type="STRING" size="256"/>
+          <Column id="ESTIMATE_REQUESTER" type="STRING" size="256"/>
+          <Column id="EFFECTIVE_DATE" type="STRING" size="256"/>
+          <Column id="PERSON_CODE_IN_CHARGE" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_estimateDetail">
+        <ColumnInfo>
+          <Column id="ESTIMATE_DETAIL_NO" type="STRING" size="256"/>
+          <Column id="ESTIMATE_NO" type="STRING" size="256"/>
+          <Column id="ITEM_CODE" type="STRING" size="256"/>
+          <Column id="ITEM_NAME" type="STRING" size="256"/>
+          <Column id="UNIT_OF_ESTIMATE" type="STRING" size="256"/>
+          <Column id="DUE_DATE_OF_ESTIMATE" type="STRING" size="256"/>
+          <Column id="ESTIMATE_AMOUNT" type="STRING" size="256"/>
+          <Column id="UNIT_PRICE_OF_ESTIMATE" type="STRING" size="256"/>
+          <Column id="SUM_PRICE_OF_ESTIMATE" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findEstimateDialog</Col>
+            <Col id="URL">dataURL::logi/business/findEstimateDialog.do</Col>
+            <Col id="outData">ds_estimate=ds_estimate</Col>
+            <Col id="callbackFunc">gfnCallbackFunc</Col>
+            <Col id="argument">fromDate='regContract' toDate=application.today()</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findContractList</Col>
+            <Col id="URL">dataURL::logi/business/findContractList.do</Col>
+            <Col id="outData">ds_contract=ds_contract</Col>
+            <Col id="callbackFunc">gfnCallbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findSequenceNo</Col>
+            <Col id="URL">dataURL::sys/findSequenceNo.do</Col>
+            <Col id="callbackFunc">gfnCallbackFunc</Col>
+            <Col id="argument">findSeq=SERIAL_SEQ</Col>
+            <Col id="outData"/>
+          </Row>
+          <Row>
+            <Col id="serviceID">registerContract</Col>
+            <Col id="URL">dataURL::logi/business/registerContract.do</Col>
+            <Col id="inData">ds_contract=ds_contract:u ds_contractDetail=ds_contractDetail:u</Col>
+            <Col id="outData">ds_contract=ds_contract ds_contractDetail=ds_contractDetail</Col>
+            <Col id="callbackFunc">gfnCallbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findEstimateDetailList</Col>
+            <Col id="URL">dataURL::logi/business/findEstimateDetailList.do</Col>
+            <Col id="outData">ds_estimateDetail=ds_estimateDetail</Col>
+            <Col id="callbackFunc">gfnCallbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findContractDetailList</Col>
+            <Col id="URL">dataURL::logi/business/findContractDetailList.do</Col>
+            <Col id="outData">ds_contractDetail=ds_contractDetail</Col>
+            <Col id="callbackFunc">gfnCallbackFunc</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[include "scripts::commonTransaction.xjs";
+include "scripts::commonOpen.xjs";
+
+
+var personCodeInCharge;
+var estimateRequester;
+
+// init 이벤트 [ 첨봄 ] 
+this.logi_ContractForm_oninit = function (obj:Form, e:nexacro.EventInfo)
+{
+	// 트렌젝션 : 견적 다이얼로그 [ 아직 이유 모름 ]
+	this.gfnService("findEstimateDialog", false);
+
+	var nRow = this.ds_contract.rowposition;
+	var scode = this.ds_contract.getColumn(nRow, "CONTRACT_NO");
+	this.ds_contractDetail.filter(" CONTRACT_NO=='" + scode + "'");
+};
+
+
+
+var saveOrFind = 'save';
+// 수주조회 버튼 이벤트 
+this.btn_checkEstimate_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	saveOrFind = 'find';
+	this.ds_contractDetail.filter("");
+	var argument = "fromDate='" + this.fromDate_cal.value + "' toDate='" + this.toDate_cal.value + "'";
+	this.dsService.setColumn(1, 4, argument);
+	// 트렌젝션 : 수주 조회 & 수주 상세 조회 
+	this.gfnService("findContractList", false);
+};
+
+
+
+
+// 수주내역 PDF 출력 [ 엑셀뷰어 설정 아직 안함 ]
+this.btn_printContract_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	var headerIndex = this.grd_contract.getCellCount("Head");
+	var rowCount = this.ds_contract.getRowCount();
+	var rowValue = [];
+	var containValue = [];
+	var gridValue = "";
+	for (var targetRow = -1; targetRow < rowCount; targetRow++) 
+	{
+		for (var targetItem = 0; targetItem < headerIndex; targetItem++) 
+		{
+			rowValue[targetItem] = this.grd_contract.getCellValue(targetRow, targetItem);
+		}
+		gridValue = gridValue + rowValue + "//";
+	}
+	var containValue = gridValue.substr(0, gridValue.length - 2);
+
+	this.transaction("excelCsvDownload",
+		"dataURL::sys/excelCsvDownload.do",
+		"",
+		"",
+		"containValue='" + containValue + "'",
+		"callback");
+};
+
+
+
+this.squenceNo = "";
+var newContractNo = "";
+// 수주추가 버튼 이벤트 
+this.btn_addEstimate_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	if (saveOrFind == 'find') 
+	{
+		this.ds_contract.deleteAll();
+		this.ds_contractDetail.deleteAll();
+	}
+	saveOrFind = 'save';
+	
+	// 공통 함수로 다이얼로그 호출
+	this.gfnOpen("modeless", "logi_business::logi_EstimateDialog.xfdl", "fn_popupCallback");
+	this.gfnService("findSequenceNo", false);
+
+	var serialCode = this.squenceNo;
+	newContractNo = "CONT" + serialCode;
+};
+
+
+// 콜백함수
+this.fn_popupCallback = function (strPopupID, strReturn)
+{
+	if (strPopupID == "modeless") 
+	{
+		globalEstimateNo = strReturn.split("/")[1];
+		alert(globalEstimateNo);
+		// strReturn이 undefined이라는 것은 견적상세 선택을 하지않고 수동으로 입력한다는 뜻임
+		if (strReturn != undefined) 
+		{
+			var rowNum = this.ds_contract.addRow();
+			var row = this.ds_contract.rowposition;
+			this.ds_contract.setColumn(rowNum, "CONTRACT_NO", newContractNo);
+			this.ds_contract.setColumn(rowNum, "CONTRACT_DATE", nexacro.getApplication().today());
+			this.ds_contract.setColumn(rowNum, "CONTRACT_TYPE", "CT-01");
+
+			var arr = strReturn.split("/");
+			this.ds_contract.setColumn(row, "CUSTOMER_CODE", arr[0]);
+			this.ds_contract.setColumn(row, "ESTIMATE_NO", arr[1]);
+			this.ds_contract.setColumn(row, "PERSON_CODE_IN_CHARGE", arr[2]);
+			this.ds_contract.setColumn(row, "CONTRACT_REQUESTER", arr[3]);
+			this.ds_contract.setColumn(row, "DELIVERY_RESULT_STATUS", "N");
+		}
+	}
+	else if (strPopupID == "item") 
+	{
+		var arr = strReturn.split("/");
+
+		var row = this.ds_contractDetail.rowposition;
+		this.ds_contractDetail.setColumn(row, "ITEM_CODE", arr[0]);
+		this.ds_contractDetail.setColumn(row, "ITEM_NAME", arr[1]);
+		this.ds_contractDetail.setColumn(row, "UNIT_OF_CONTRACT", arr[2]);
+		this.ds_contractDetail.setColumn(row, "UNIT_PRICE_OF_CONTRACT", arr[3]);
+	}
+};
+
+
+// 수주 내용 삭제 버튼 이벤트
+this.btn_delEstimate_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	//trace(this.ds_contract.getColumn(this.position, "DELIVERY_RESULT_STATUS"));
+
+	if(this.ds_contract.getColumn(this.position, "DELIVERY_RESULT_STATUS") == "Y"){
+		alert("납품이 완료된 수주내역은 삭제할 수 없습니다");
+	}else{
+		this.ds_contractDetail.deleteAll();
+		this.ds_contract.deleteRow(this.ds_contract.rowposition);
+	}
+};
+
+
+var position = "";
+// 수주 내역 그리드 셀 클릭 이벤트 
+this.grd_contract_onrbuttonup = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	//trace(e.row);
+	position = e.row; // 행 위치를 저장해두고 사용
+	var contractNo = this.ds_contract.getColumn(e.row, "CONTRACT_NO");
+
+	if (saveOrFind == 'find') 
+	{
+		this.ds_contractDetail.filter("");
+		var argument = "contractNo='" + contractNo + "'";
+		this.dsService.setColumn(5, 4, argument);
+		this.gfnService("findContractDetailList", false);
+	}
+	else 
+	{
+		this.ds_contractDetail.filter("CONTRACT_NO=='" + contractNo + "'");
+	}
+};
+
+
+
+// 수주내용 저장 버튼 이벤트
+this.btn_batchEstimate_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	var saveRow = this.ds_contract.getRowCount();
+
+	if (saveRow == 0) 
+	{
+		this.reload();
+		alert("저장할 내용이 없습니다.");
+	}
+	else 
+	{
+		if (confirm("수주를 저장하시겠습니까?")) 
+		{
+			this.gfnService("registerContract", false);
+		}
+	}
+};
+
+
+// 수주 상세 그리드 더블클릭 이벤트
+this.grd_contractDetail_oncelldblclick = function (obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	var contractNo = this.ds_contractDetail.getColumn(e.row, "CONTRACT_NO");
+	var contractRow = this.ds_contract.findRow("CONTRACT_NO", contractNo);
+	var status = this.ds_contract.getColumn(contractRow, "DELIVERY_RESULT_STATUS");
+
+	if (status == "Y") 
+	{
+		alert("납품이 되었으면 수정할수 없습니다");
+	}
+	else 
+	{
+		if (e.cell == 2) 
+		{
+			// expand가 1번째이면
+			this.gfnOpen("item", "logi_purchase::logi_ItemDialog.xfdl", "fn_popupCallback");
+			this.grd_contract.showEditor();
+		}
+	}
+};
+]]></Script>
+  </Form>
+</FDL>

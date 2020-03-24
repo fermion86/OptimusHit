@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="acc_accountant" width="1280" height="780" titletext="New Form">
+    <Layouts>
+      <Layout height="780" mobileorientation="landscape" width="1280">
+        <Static id="Static00" taborder="0" text="거래처원장" onclick="Static00_onclick" left="64" top="9" right="59" height="45" border="3px solid darkgray" font="18pt/normal &quot;a두리둥실&quot;" textAlign="center"/>
+        <Static id="term_stc" taborder="1" text="기간" left="49.30%" top="71" right="43.13%" height="40" font="12pt &quot;a두리둥실&quot;"/>
+        <Calendar id="startDate_cal" taborder="2" left="54.69%" top="71" height="40" width="163" font="12pt &quot;a두리둥실&quot;" dateformat="yyyy-MM-dd"/>
+        <Calendar id="endDate_cal" taborder="3" left="70.94%" top="71" height="40" width="160" font="12pt &quot;a두리둥실&quot;" dateformat="yyyy-MM-dd"/>
+        <Button id="serch_btn" taborder="4" text="조회" left="84.69%" top="71" right="6.41%" height="40" onclick="serch_btn_onclick" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="accountSubject_stc" taborder="5" text="계정과목" left="5.94%" top="71" right="86.41%" height="40" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="customer_stc" taborder="6" text="거래처" left="26.41%" top="71" right="66.02%" height="40" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="customerName_edt" taborder="7" left="33.44%" top="71" right="56.02%" height="40" enable="false" textAlign="center" font="12pt &quot;a두리둥실&quot;"/>
+        <Grid id="Grid00" taborder="8" binddataset="ds_accountant" autofittype="col" left="5.00%" top="141" right="4.77%" height="585" font="12pt &quot;a두리둥실&quot;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="거래처" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="등록번호" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" text="대표자명" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" text="전기이월" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" text="차변" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="5" text="대변" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="6" text="잔액" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:CUSTOMER_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="bind:BUSINESS_LICENSE_NUMBER" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" text="bind:CUSTOMER_CEO" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" text="bind:AMOUNT" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" text="bind:LEFT_DEBTOR_PRICE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="5" text="bind:RIGHT_CREDITS_PRICE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="6" text="bind:BALANCE" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="Button00" taborder="9" text="▼" left="43.75%" top="71" height="40" width="50" onclick="Button00_onclick" font="12pt &quot;a두리둥실&quot;"/>
+        <Combo id="selAccName" taborder="10" left="12.66%" top="71" right="74.77%" height="39" usecontextmenu="false" innerdataset="@ds_selAccName" onitemchanged="Combo00_onitemchanged" codecolumn="CODE" datacolumn="VALUE" text="외상매입금" value="외상매입금" font="12pt &quot;a두리둥실&quot;"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_accountant">
+        <ColumnInfo>
+          <Column id="CUSTOMER_NAME" type="STRING" size="256"/>
+          <Column id="BUSINESS_LICENSE_NUMBER" type="STRING" size="256"/>
+          <Column id="CUSTOMER_CEO" type="STRING" size="256"/>
+          <Column id="AMOUNT" type="STRING" size="256"/>
+          <Column id="LEFT_DEBTOR_PRICE" type="STRING" size="256"/>
+          <Column id="RIGHT_CREDITS_PRICE" type="STRING" size="256"/>
+          <Column id="BALANCE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_selAccName">
+        <ColumnInfo>
+          <Column id="CODE" type="STRING" size="256"/>
+          <Column id="VALUE" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="CODE">외상매입금</Col>
+            <Col id="VALUE">외상매입금</Col>
+          </Row>
+          <Row>
+            <Col id="CODE">외상매출금</Col>
+            <Col id="VALUE">외상매출금</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="dsService">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">AccountantList</Col>
+            <Col id="URL">dataURL::acc/accBookMgt/AccountantList.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">ds_accountant=ds_accountant</Col>
+            <Col id="callbackFunc">gfnCallbackFunc</Col>
+            <Col id="argument"/>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[/********************************************************************************                                                                            
+ 급여 공제항목 관리 화면
+ @Path			회계
+ @Description	거래처 원장 조회폼
+ @Author	  		한우리
+ @Create         2019. 08. 08
+ ********************************************************************************/
+include "scripts::commonTransaction.xjs";
+this.dialogName = "";
+
+// 콤보박스 버튼에 이벤트
+this.Button00_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	this.dialogName = "CustomerDialog"; // id 값
+	nexacro.open("CustomerDialog", "base::customerDialog.xfdl", this.getOwnerFrame(), null, null, 750, 150);
+	// 다이얼로그 호출 함수 [ customerDialog.xfdl ]
+};
+
+this.setVal = function (Code, FormName, Name)
+{
+	if (FormName == "CustomerDialog") 
+	{
+		this.customerName_edt.set_value(Name);
+	}
+};
+
+
+// 조회 버튼 이벤트 
+this.serch_btn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	if (this.endDate_cal.value < this.startDate_cal.value) 
+	{
+		alert("기간확인!!!");
+	}
+
+	var argument = "selAccName='" + this.selAccName.value + "' customerName='" + this.customerName_edt.value + "' startDate='" + this.startDate_cal.value + "' endDate='" + this.endDate_cal.value + "'";
+	this.dsService.setColumn(0, 4, argument);
+	this.gfnService("AccountantList");
+};]]></Script>
+  </Form>
+</FDL>

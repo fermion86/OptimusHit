@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="hr_EducationCodeDialog" width="300" height="400" titletext="New Form" onload="hr_EducationCodeDialog_onload">
+    <Layouts>
+      <Layout height="400" mobileorientation="landscape" width="300">
+        <Grid id="educationGrid" taborder="0" left="6.00%" top="56" right="6.67%" height="321" binddataset="ds_dept" autofittype="col" oncelldblclick="dept_grid_oncelldblclick" font="12px/normal &quot;a두리둥실&quot;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="코드" font="12px/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="코드명" font="12px/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:DETAIL_CODE" font="12px/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="bind:DETAIL_CODE_NAME" font="12px/normal &quot;a두리둥실&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static00" taborder="1" text="교육관리" left="2.67%" top="8" right="4.00%" height="37" font="18px/normal &quot;a두리둥실&quot;" textAlign="center"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_codeDetail">
+        <ColumnInfo>
+          <Column id="DIVISION_CODE_NO" type="STRING" size="256"/>
+          <Column id="DETAIL_CODE" type="STRING" size="256"/>
+          <Column id="DETAIL_CODE_NAME" type="STRING" size="256"/>
+          <Column id="CODE_USE_CHECK" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_dept">
+        <ColumnInfo>
+          <Column id="DETAIL_CODE" type="STRING" size="256"/>
+          <Column id="DETAIL_CODE_NAME" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[// 코드 수정필요
+var opName;
+this.hr_EducationCodeDialog_onload = function (obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.opName = this.opener.name;
+	// alert(this.opName);
+
+	switch (this.opName) 
+	{
+		case "hr_EducationRegistration":
+			if (this.opener.Tab00.tabpage1) 
+			{
+				trace("tabpage1 onLoad 조건문진입");
+				this.transaction(
+					"findCodeList",
+					"dataURL::sys/findCodeDetailList.do",
+					"",
+					"ds_codeDetail=gds_codeDetail",
+					"",
+					"callbackFunction",
+					false
+				);
+				this.ds_codeDetail.filter("DIVISION_CODE_NO=='HR31'");
+				this.ds_dept.copyData(this.ds_codeDetail, true);
+			}
+			else if (this.opener.Tab00.tabpage2) 
+			{
+				trace("tabpage2 onLoad 조건문진입");
+			}
+			/*
+			 this.transaction(
+			 "findCodeList" ,
+			 "dataURL::sys/findCodeDetailList.do",
+			 "",
+			 "ds_codeDetail=gds_codeDetail",
+			 "",
+			 "callbackFunction",
+			 false
+			 )
+			 this.ds_codeDetail.filter("DIVISION_CODE_NO=='HR31'")
+			 this.ds_dept.copyData(this.ds_codeDetail,true)
+			 */
+			break;
+		default:
+			"호출하는 폼을 추가해주세요.";
+	}
+	// 스위치문 종료
+};
+
+
+this.dept_grid_oncelldblclick = function (obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	switch (this.opName) 
+	{
+		case "hr_EducationRegistration":
+			if (this.opener.Tab00.tabpage1) 
+			{
+				trace("tabpage1 onCelldblclick 조건문진입");
+				var nRow = this.opener.educationAddRow;
+				var setCode = this.ds_dept.getColumn(e.row, "DETAIL_CODE");
+				var setName = this.ds_dept.getColumn(e.row, "DETAIL_CODE_NAME");
+				this.opener.ds_educationTraining.setColumn(nRow, "DETAIL_CODE", setCode);
+				this.opener.ds_educationTraining.setColumn(nRow, "DETAIL_CODE_NAME", setName);
+			}
+			else if (this.opener.Tab00.tabpage2) 
+			{
+				trace("tabpage2 onCelldblclick 조건문진입");
+			}
+
+
+
+			break;
+		default:
+			trace("호출하는 폼을 추가해주세요.");
+	}
+	// 스위치문 종료
+
+
+	this.close();
+};]]></Script>
+  </Form>
+</FDL>

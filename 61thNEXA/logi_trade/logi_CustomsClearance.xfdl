@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="logi_CustomsClearance" width="1200" height="780" titletext="New Form">
+    <Layouts>
+      <Layout height="780" mobileorientation="landscape" width="1200">
+        <GroupBox id="GroupBox00" text="수출입 통관관리" taborder="0" left="0.75%" top="3" right="1.92%" height="773" background="transparent" border="2px solid rgba(51,51,51,1)" color="black" font="18pt/normal &quot;a두리둥실&quot;"/>
+        <Tab id="Tab00" taborder="1" left="27" top="70" width="1134" height="704" tabindex="0" scrollbars="autoboth" font="12pt &quot;a두리둥실&quot;">
+          <Tabpages>
+            <Tabpage id="tabpage1" text="수출입 통관내역">
+              <Layouts>
+                <Layout>
+                  <Button id="btn_registWarehousing" taborder="30" text="수입통관품목 등록" onclick="Tab00_tabpage1_btn_registWarehousing_onclick" left="964" top="307" width="156" height="39" font="12pt &quot;a두리둥실&quot;"/>
+                  <Grid id="grd_warehousing" taborder="31" autofittype="col" left="20" top="354" width="1108" height="293" binddataset="ds_warehousing" font="12pt &quot;a두리둥실&quot;">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="24" band="head"/>
+                          <Row size="24"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell text="품목번호" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="1" text="발주/생산번호" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="2" text="품목명" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="3" text="발주/생산 예정" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="4" text="입고수량" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="5" text="단위" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="6" text="업체" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="7" text="설명" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="8" text="입고일" font="12pt/normal &quot;a두리둥실&quot;"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell text="bind:ITEM_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="1" text="bind:ORDER_NO" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="2" text="bind:ITEM_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="3" text="bind:ORDER_AMOUNT" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="4" text="bind:WAREHOUSING_AMOUNT" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="5" text="bind:UNIT_WAREHOUSING" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="6" text="bind:CUSTOMER" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="7" text="bind:DESCRIPTION" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="8" text="bind:WAREHOUSING_DATE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                  <Button id="btn_registerMps00" taborder="32" text="수출통관 완료품목" enable="false" left="20" top="27" width="146" height="39" font="12pt &quot;a두리둥실&quot;"/>
+                  <Button id="btn_registerMps01" taborder="33" text="수출통관 미완료 품목" enable="false" left="560" top="27" width="156" height="39" font="12pt &quot;a두리둥실&quot;"/>
+                  <Button id="btn_registerMps02" taborder="34" text="수입통관 완료품목" enable="false" left="20" top="307" width="146" height="39" font="12pt &quot;a두리둥실&quot;"/>
+                  <Grid id="grd_orderInfo" taborder="36" binddataset="ds_orderInfo" autofittype="col" left="20" top="73" width="536" height="225" oncellclick="Tab00_tabpage1_grd_orderInfo_onbuttonup" font="12pt &quot;a두리둥실&quot;">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="131"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="30" band="head"/>
+                          <Row size="25"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell displaytype="normal" text="발주번호" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="1" displaytype="normal" text="업체" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="2" displaytype="normal" text="발주일자" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="3" displaytype="normal" text="담당자" font="12pt/normal &quot;a두리둥실&quot;"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell displaytype="normal" text="bind:ORDER_NO" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="1" displaytype="normal" text="bind:CUSTOMER_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="2" displaytype="normal" text="bind:ORDER_DATE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="3" displaytype="normal" text="bind:PERSON_CODE_IN_CHARGE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                  <Grid id="grd_orderDetail" taborder="37" binddataset="ds_orderDetail" autofittype="col" oncelldblclick="Tab00_tabpage1_grd_orderDetail_oncelldblclick" left="561" top="73" width="563" height="225" font="12pt &quot;a두리둥실&quot;">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="30" band="head"/>
+                          <Row size="25"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell displaytype="normal" text="품목명" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="1" displaytype="normal" text="단위" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="2" displaytype="normal" text="입고예정일" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="3" displaytype="normal" text="발주수량" font="12pt/normal &quot;a두리둥실&quot;"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell displaytype="normal" text="bind:ITEM_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="1" displaytype="normal" text="bind:UNIT_OF_ORDER" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="2" displaytype="normal" text="bind:DUE_DATE_OF_ORDER" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="3" displaytype="normal" text="bind:ORDER_AMOUNT" font="12pt/normal &quot;a두리둥실&quot;"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+          </Tabpages>
+        </Tab>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_orderInfo">
+        <ColumnInfo>
+          <Column id="ORDER_NO" type="STRING" size="256"/>
+          <Column id="CUSTOMER_CODE" type="STRING" size="256"/>
+          <Column id="ORDER_DATE" type="STRING" size="256"/>
+          <Column id="PERSON_CODE_IN_CHARGE" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+          <Column id="ORDER_INFO_STATUS" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_orderDetail">
+        <ColumnInfo>
+          <Column id="ORDER_DETAIL_NO" type="STRING" size="256"/>
+          <Column id="ORDER_NO" type="STRING" size="256"/>
+          <Column id="ITEM_CODE" type="STRING" size="256"/>
+          <Column id="ITEM_NAME" type="STRING" size="256"/>
+          <Column id="UNIT_OF_ORDER" type="STRING" size="256"/>
+          <Column id="DUE_DATE_OF_ORDER" type="STRING" size="256"/>
+          <Column id="DELIVERY_SCHEDULE_DATE" type="STRING" size="256"/>
+          <Column id="ORDER_AMOUNT" type="STRING" size="256"/>
+          <Column id="UNIT_PRICE_OF_ORDER" type="STRING" size="256"/>
+          <Column id="SUM_PRICE_OF_ORDER" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+          <Column id="MRP_GATHERING_NO" type="STRING" size="256"/>
+          <Column id="ORDER_DETAIL_STATUS" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_stock">
+        <ColumnInfo>
+          <Column id="WAREHOUSE_CODE" type="STRING" size="256"/>
+          <Column id="ITEM_CODE" type="STRING" size="256"/>
+          <Column id="DELIVERY_NO" type="STRING" size="256"/>
+          <Column id="PRODUCTION_RESULT_NO" type="STRING" size="256"/>
+          <Column id="INPUT_ITEM_NO" type="STRING" size="256"/>
+          <Column id="ITEM_NAME" type="STRING" size="256"/>
+          <Column id="UNIT_OF_STOCK" type="STRING" size="256"/>
+          <Column id="SAFETY_ALLOWANCE_AMOUNT" type="STRING" size="256"/>
+          <Column id="STOCK_AMOUNT" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_warehousing">
+        <ColumnInfo>
+          <Column id="ITEM_CODE" type="STRING" size="256"/>
+          <Column id="ORDER_NO" type="STRING" size="256"/>
+          <Column id="ITEM_NAME" type="STRING" size="256"/>
+          <Column id="ORDER_AMOUNT" type="STRING" size="256"/>
+          <Column id="WAREHOUSING_AMOUNT" type="STRING" size="256"/>
+          <Column id="UNIT_WAREHOUSING" type="STRING" size="256"/>
+          <Column id="CUSTOMER" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+          <Column id="WAREHOUSING_DATE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_materialPayment">
+        <ColumnInfo>
+          <Column id="ITEM_CODE" type="STRING" size="256"/>
+          <Column id="PAYMENT_DATE" type="STRING" size="256"/>
+          <Column id="WORK_INSTRUCTION_NO" type="STRING" size="256"/>
+          <Column id="ITEM_NAME" type="STRING" size="256"/>
+          <Column id="PAYMENT_AMOUNT" type="STRING" size="256"/>
+          <Column id="UNIT_PAYMENT" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+          <Column id="RELEASE_NO" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[// 무업 업무는 코드작성전]]></Script>
+  </Form>
+</FDL>

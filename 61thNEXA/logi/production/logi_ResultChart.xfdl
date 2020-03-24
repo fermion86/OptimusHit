@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="logi_ResultChart" width="1024" height="780" titletext="New Form">
+    <Layouts>
+      <Layout height="780" mobileorientation="landscape" width="1024">
+        <Grid id="Grid00" taborder="0" left="10" top="80" width="1009" height="681"/>
+        <Combo id="YearCombo" taborder="1" text="" left="863" top="100" width="137" height="40" innerdataset="Year" codecolumn="Year" datacolumn="Year" oncloseup="YearCombo_oncloseup" font="16px/normal &quot;a두리둥실&quot;"/>
+        <Static id="Static00" taborder="2" text="result chart" left="245" top="15" width="505" height="53" font="36pt/normal &quot;a두리둥실&quot;" textAlign="center"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_result">
+        <ColumnInfo>
+          <Column id="월별" type="STRING" size="256"/>
+          <Column id="완제품1" type="STRING" size="256"/>
+          <Column id="반제품1" type="STRING" size="256"/>
+          <Column id="완제품2" type="STRING" size="256"/>
+          <Column id="반제품2" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="월별">01월</Col>
+            <Col id="완제품1">0</Col>
+            <Col id="반제품1">0</Col>
+            <Col id="완제품2">0</Col>
+            <Col id="반제품2">0</Col>
+          </Row>
+          <Row>
+            <Col id="월별">02월</Col>
+            <Col id="완제품1">0</Col>
+            <Col id="반제품1">0</Col>
+            <Col id="완제품2">0</Col>
+            <Col id="반제품2">0</Col>
+          </Row>
+          <Row>
+            <Col id="월별">03월</Col>
+            <Col id="완제품1">0</Col>
+            <Col id="반제품1">0</Col>
+            <Col id="완제품2">0</Col>
+            <Col id="반제품2">0</Col>
+          </Row>
+          <Row>
+            <Col id="월별">04월</Col>
+            <Col id="완제품1">0</Col>
+            <Col id="반제품1">0</Col>
+            <Col id="완제품2">0</Col>
+            <Col id="반제품2">0</Col>
+          </Row>
+          <Row>
+            <Col id="월별">05월</Col>
+            <Col id="완제품1">0</Col>
+            <Col id="반제품1">0</Col>
+            <Col id="완제품2">0</Col>
+            <Col id="반제품2">0</Col>
+          </Row>
+          <Row>
+            <Col id="월별">06월</Col>
+            <Col id="완제품1">0</Col>
+            <Col id="반제품1">0</Col>
+            <Col id="완제품2">0</Col>
+            <Col id="반제품2">0</Col>
+          </Row>
+          <Row>
+            <Col id="월별">07월</Col>
+            <Col id="완제품1">0</Col>
+            <Col id="반제품1">0</Col>
+            <Col id="완제품2">0</Col>
+            <Col id="반제품2">0</Col>
+          </Row>
+          <Row>
+            <Col id="월별">08월</Col>
+            <Col id="완제품1">0</Col>
+            <Col id="반제품1">0</Col>
+            <Col id="완제품2">0</Col>
+            <Col id="반제품2">0</Col>
+          </Row>
+          <Row>
+            <Col id="월별">09월</Col>
+            <Col id="완제품1">0</Col>
+            <Col id="반제품1">0</Col>
+            <Col id="완제품2">0</Col>
+            <Col id="반제품2">0</Col>
+          </Row>
+          <Row>
+            <Col id="월별">10월</Col>
+            <Col id="완제품1">0</Col>
+            <Col id="반제품1">0</Col>
+            <Col id="완제품2">0</Col>
+            <Col id="반제품2">0</Col>
+          </Row>
+          <Row>
+            <Col id="월별">11월</Col>
+            <Col id="완제품1">0</Col>
+            <Col id="반제품1">0</Col>
+            <Col id="완제품2">0</Col>
+            <Col id="반제품2">0</Col>
+          </Row>
+          <Row>
+            <Col id="월별">12월</Col>
+            <Col id="완제품1">0</Col>
+            <Col id="반제품1">0</Col>
+            <Col id="완제품2">0</Col>
+            <Col id="반제품2">0</Col>
+          </Row>
+          <Row>
+            <Col id="월별">합계</Col>
+            <Col id="완제품1">0</Col>
+            <Col id="반제품1">0</Col>
+            <Col id="완제품2">0</Col>
+            <Col id="반제품2">0</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_chart_list">
+        <ColumnInfo>
+          <Column id="MON" type="STRING" size="256"/>
+          <Column id="AMOUNT" type="STRING" size="256"/>
+          <Column id="ITEM_CODE" type="STRING" size="256"/>
+          <Column id="ITEM_NAME" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="emp">
+        <ColumnInfo>
+          <Column id="EMP_NAME" type="STRING" size="256"/>
+          <Column id="EMP_CODE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="Year">
+        <ColumnInfo>
+          <Column id="Year" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="Year">2020</Col>
+          </Row>
+          <Row>
+            <Col id="Year">2019</Col>
+          </Row>
+          <Row>
+            <Col id="Year">2018</Col>
+          </Row>
+          <Row>
+            <Col id="Year">2017</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[// 차트 라이브러리 적용해야 출력됨
+this.YearCombo_oncloseup = function(obj:nexacro.Combo,e:nexacro.ComboCloseUpEventInfo)
+{
+	year=this.YearCombo.value.substr(2,3);
+
+		this.transaction(
+		"findChartList",
+		"dataURL::logi/production/findChartList.do",
+		"",
+		"ds_chart_list=ds_chart_list",
+		"year="+year,
+		"callback", false
+	);
+	var ChartRows;
+	var cnt;
+	var cnt2;
+	var ResultRows;
+	//this.ds_chart_list.filter("MON=='19-05'");
+	ChartRows = this.ds_chart_list.getRowCount();
+	for(a=0;a<ChartRows;a++){
+		cnt=this.ds_chart_list.getColumn(a, "MON").substring(3,5);
+		cnt2=cnt.replace(/(^0+)/, "");
+		if(this.ds_chart_list.getColumn(a, "ITEM_CODE")=='DK-01'){
+			this.ds_result.setColumn(cnt2-1,1,this.ds_chart_list.getColumn(a, "AMOUNT"));
+		}
+		else if(this.ds_chart_list.getColumn(a, "ITEM_CODE")=='DK-AP01'){
+			this.ds_result.setColumn(cnt2-1,2,this.ds_chart_list.getColumn(a, "AMOUNT"));
+		}
+		else if(this.ds_chart_list.getColumn(a, "ITEM_CODE")=='DK-02'){
+			this.ds_result.setColumn(cnt2-1,3,this.ds_chart_list.getColumn(a, "AMOUNT"));
+		}
+		else if(this.ds_chart_list.getColumn(a, "ITEM_CODE")=='DK-AP02'){
+			this.ds_result.setColumn(cnt2-1,4,this.ds_chart_list.getColumn(a, "AMOUNT"));
+		}
+		//itemCode = this.ds_unstocked.getColumn(i, "ITEM_CODE");
+	}
+	//this.ds_result.setColumn(warehousingRow,"ITEM_CODE",itemCode);
+	ResultRows = this.ds_result.getRowCount();
+	var dk1=0; var dkap1=0; var dk2=0; var dkap2=0;
+	this.ds_result.setColumn(12,1,dk1);
+	this.ds_result.setColumn(12,2,dkap1);
+	this.ds_result.setColumn(12,3,dk2);
+	this.ds_result.setColumn(12,4,dkap2);
+	for(a=0;a<ResultRows;a++){
+		dk1=dk1+parseInt(this.ds_result.getColumn(a, "완제품1"));
+		dkap1=dkap1+parseInt(this.ds_result.getColumn(a, "반제품1"));
+		dk2=dk2+parseInt(this.ds_result.getColumn(a, "완제품2"));
+		dkap2=dkap2+parseInt(this.ds_result.getColumn(a, "반제품2"));
+	}
+	this.ds_result.setColumn(12,1,dk1);
+	this.ds_result.setColumn(12,2,dkap1);
+	this.ds_result.setColumn(12,3,dk2);
+	this.ds_result.setColumn(12,4,dkap2);
+	
+			this.transaction(
+		"findEmp",
+		"dataURL::logi/production/findEmp.do",
+		"",
+		"emp=emp",
+		"",
+		"callback", false
+	);
+};
+]]></Script>
+  </Form>
+</FDL>

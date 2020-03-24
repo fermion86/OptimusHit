@@ -1,0 +1,645 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="hr_HmIfmElmDialog" width="1200" height="1000" titletext="New Form" onload="hr_HmIfmElmDialog_onload">
+    <Layouts>
+      <Layout height="1000" mobileorientation="landscape" width="1200">
+        <GroupBox id="GroupBox00" text="참고사항" taborder="0" left="0.92%" top="616" right="2.17%" bottom="126" background="transparent" color="black" borderRadius="0px" font="16pt/normal &quot;a두리둥실&quot;"/>
+        <Div id="EmpElm0_div" taborder="1" left="0.00%" top="0" right="15" height="45" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="EmpElm00_stc" taborder="2" text="사원 등록" onclick="Static00_onclick" left="1.92%" top="11" width="102" height="23" wordWrap="char" border="0px none rgba(128,128,128,1)" color="black" textAlign="center" verticalAlign="middle" font="18pt/normal &quot;a두리둥실&quot;"/>
+        <Edit id="EmpElm_edt" taborder="3" left="35.25%" top="60" width="200" height="35" enable="false" border="1px solid rgba(166,166,169,1)" padding="0px 3px 0px 3px" borderRadius="0px" textAlign="center" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="EmpElm01_stc" taborder="4" text="사원번호(*)" onclick="Static00_onclick" left="22.33%" top="60" width="86" height="35" wordWrap="char" border="0px none rgba(128,128,128,1)" color="black" textAlign="left" verticalAlign="middle" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="eMail_edt" taborder="5" left="35.25%" top="220" width="350" height="35" border="1px solid rgba(166,166,169,1)" padding="0px 3px 0px 3px" borderRadius="0px" textAlign="center" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="zipNo_edt" taborder="6" left="35.25%" top="260" width="110" height="35" border="1px solid rgba(166,166,169,1)" padding="0px 3px 0px 3px" borderRadius="0px" textAlign="center" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="EmpElm02_stc" taborder="7" text="주민등록번호(*)" onclick="Static00_onclick" left="22.33%" width="113" top="100" height="30" wordWrap="char" border="0px none rgba(128,128,128,1)" color="black" textAlign="left" verticalAlign="middle" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="EmpElm03_stc" taborder="8" text="최종학력" onclick="Static00_onclick" left="22.33%" top="140" width="90" height="30" wordWrap="char" border="0px none rgba(128,128,128,1)" color="black" textAlign="left" verticalAlign="middle" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="EmpElm04_stc" taborder="9" text="전화번호" onclick="Static00_onclick" left="22.33%" top="180" width="90" height="30" wordWrap="char" border="0px none rgba(128,128,128,1)" color="black" textAlign="left" verticalAlign="middle" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="EmpElm05_stc" taborder="10" text="이메일" onclick="Static00_onclick" left="22.33%" top="220" width="90" height="30" wordWrap="char" border="0px none rgba(128,128,128,1)" color="black" textAlign="left" verticalAlign="middle" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="EmpElm06_stc" taborder="11" text="우편번호" onclick="Static00_onclick" left="22.33%" top="260" width="90" height="30" wordWrap="char" border="0px none rgba(128,128,128,1)" color="black" textAlign="left" verticalAlign="middle" font="12pt &quot;a두리둥실&quot;"/>
+        <Div id="EmpElm3_div" taborder="12" left="2.00%" top="350" right="35" height="2" background="rgba(213,217,224,1)" font="12pt &quot;a두리둥실&quot;">
+          <Layouts>
+            <Layout width="1157" height="2"/>
+          </Layouts>
+        </Div>
+        <Edit id="detailAdres_edt" taborder="13" left="35.25%" top="300" width="705" height="35" border="1px solid rgba(166,166,169,1)" padding="0px 3px 0px 3px" borderRadius="0px" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="EmpElm07_stc" taborder="14" text="상세주소" onclick="Static00_onclick" left="22.33%" top="300" width="86" height="30" wordWrap="char" border="0px none rgba(128,128,128,1)" color="black" textAlign="left" verticalAlign="middle" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="EmpElm12_stc" taborder="15" text="입사일(*)" onclick="Static00_onclick" left="1.92%" top="360" width="80" height="35" wordWrap="char" border="0px none rgba(128,128,128,1)" color="black" textAlign="left" verticalAlign="middle" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="holder_edt" taborder="16" oneditclick="edt_EmpName12_oneditclick" left="10.83%" top="440" width="200" height="35" border="1px solid rgba(166,166,169,1)" borderRadius="0px" textAlign="center" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="EmpElm14_edt" taborder="17" left="10.75%" top="560" width="998" height="50" border="1px solid rgba(166,166,169,1)" borderRadius="0px" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="EmpElm13_stc" taborder="18" text="직위" onclick="Static00_onclick" left="1.92%" top="400" width="80" height="35" wordWrap="char" border="0px none rgba(128,128,128,1)" color="black" textAlign="left" verticalAlign="middle" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="EmpElm14_stc" taborder="19" text="예금주" onclick="Static00_onclick" left="1.92%" top="440" width="80" height="35" wordWrap="char" border="0px none rgba(128,128,128,1)" color="black" textAlign="left" verticalAlign="middle" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="EmpElm16_stc" taborder="20" text="첨부파일" onclick="Static00_onclick" left="1.92%" top="520" width="80" height="35" wordWrap="char" border="0px none rgba(128,128,128,1)" color="black" textAlign="left" verticalAlign="middle" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="EmpElm17_stc" taborder="21" text="비고" onclick="Static00_onclick" left="1.92%" top="560" width="80" height="35" wordWrap="char" border="0px none rgba(128,128,128,1)" color="black" textAlign="left" verticalAlign="middle" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="deptCode_edt" taborder="22" left="40.92%" top="400" width="140" height="35" border="1px solid rgba(166,166,169,1)" borderRadius="0px" textAlign="center" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="EmpElm18_stc" taborder="23" text="부서" onclick="Static00_onclick" left="32.58%" top="400" width="80" height="30" wordWrap="char" border="0px none rgba(128,128,128,1)" color="black" textAlign="left" verticalAlign="middle" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="EmpElm19_stc" taborder="24" text="은행(급여)" onclick="Static00_onclick" left="32.58%" top="440" width="113" height="30" wordWrap="char" border="0px none rgba(128,128,128,1)" color="black" textAlign="left" verticalAlign="middle" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="EmpElm20_stc" taborder="25" text="퇴사일자" onclick="Static00_onclick" left="32.58%" top="360" width="80" height="30" wordWrap="char" border="0px none rgba(128,128,128,1)" color="black" textAlign="left" verticalAlign="middle" font="12pt &quot;a두리둥실&quot;"/>
+        <Calendar id="hireDate_cal" taborder="26" left="10.83%" top="360" width="200" height="35" font="12pt &quot;a두리둥실&quot;"/>
+        <Calendar id="retireDate_cal" taborder="27" left="40.92%" top="360" width="200" height="35" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="bank_edt" taborder="28" left="41.00%" top="440" width="139" height="35" border="1px solid rgba(166,166,169,1)" borderRadius="0px" textAlign="center" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="EmpElm21_stc" taborder="29" text="직책" onclick="Static00_onclick" left="62.17%" top="400" width="80" height="30" wordWrap="char" border="0px none rgba(128,128,128,1)" color="black" textAlign="left" verticalAlign="middle" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="EmpElm22_stc" taborder="30" text="계좌(급여)" onclick="Static00_onclick" left="62.17%" top="440" width="80" height="30" wordWrap="char" border="0px none rgba(128,128,128,1)" color="black" textAlign="left" verticalAlign="middle" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="EmpElm23_stc" taborder="31" text="퇴사사유" onclick="Static00_onclick" left="62.17%" top="360" width="80" height="30" wordWrap="char" border="0px none rgba(128,128,128,1)" color="black" textAlign="left" verticalAlign="middle" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="accountCode_edt" taborder="32" left="70.58%" top="440" width="280" height="35" border="1px solid rgba(166,166,169,1)" borderRadius="0px" textAlign="center" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="schDept_btn" taborder="33" text="검색" left="52.17%" top="400" width="60" height="35" onclick="schDept_btn_onclick" background="rgba(140,132,130,1)" color="white" borderRadius="0px" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="cause_edt" taborder="34" left="70.58%" top="360" width="280" height="35" border="1px solid rgba(166,166,169,1)" borderRadius="0px" textAlign="center" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="EmpElm06_btn" taborder="35" text="등록" onclick="btn_EmpNameSearch06_onclick" left="46.50%" top="912" width="80" height="35" background="rgba(140,132,130,1)" color="white" borderRadius="0px" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="searchZip_btn" taborder="36" text="검색" left="44.00%" top="260" width="60" height="35" onclick="searchZip_btn_onclick" background="rgba(140,132,130,1)" color="white" borderRadius="0px" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="EmpElm08_btn" taborder="37" text="삭제" left="88.42%" top="480" width="50" height="35" background="rgba(140,132,130,1)" color="white" borderRadius="0px" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="EmpElm09_btn" taborder="38" text="삭제" left="88.42%" top="520" width="50" height="35" background="rgba(140,132,130,1)" color="white" borderRadius="0px" font="12pt &quot;a두리둥실&quot;"/>
+        <Combo id="highestEducation_edt" taborder="39" innerdataset="@ds_fe" codecolumn="Code" datacolumn="Fe" left="35.25%" top="140" height="35" width="150" index="-1" onitemchanged="highestEducation_edt_onitemchanged" padding="0px 3px 0px 3px" borderRadius="0px" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="lnmAdres_edt" taborder="40" top="260" width="536" height="35" left="593" border="1px solid rgba(166,166,169,1)" padding="0px 3px 0px 3px" borderRadius="0px" font="12pt &quot;a두리둥실&quot;"/>
+        <Tab id="Tab00" taborder="41" left="1.92%" top="648" right="3.17%" height="210" tabindex="0" scrollbars="autoboth" font="12pt &quot;a두리둥실&quot;">
+          <Tabpages>
+            <Tabpage id="tabpage1" text="재직정보">
+              <Layouts>
+                <Layout width="1135" height="179">
+                  <Button id="Button01" taborder="2" text="삭제" left="95.42%" top="3" height="25" width="40" font="12pt &quot;a두리둥실&quot;"/>
+                  <Grid id="workInfo_grid" taborder="0" left="1%" top="31" right="1%" binddataset="ds_workInfo" autofittype="col" bottom="10" font="12pt &quot;a두리둥실&quot;">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="93"/>
+                          <Column size="92"/>
+                          <Column size="112"/>
+                          <Column size="124"/>
+                          <Column size="78"/>
+                          <Column size="99"/>
+                          <Column size="89"/>
+                          <Column size="115"/>
+                          <Column size="97"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="24" band="head"/>
+                          <Row size="24"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell text="입사일" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="1" text="퇴사일" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="2" text="고용형태" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="3" text="퇴직사유" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="4" text="수습여부" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="5" text="수습만료일" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="6" text="프로젝트" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="7" text="직종" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="8" text="사원명" font="12pt/normal &quot;a두리둥실&quot;"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell displaytype="text" edittype="text" mask="####.##.##" textAlign="center" verticalAlign="middle" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="1" displaytype="text" edittype="text" mask="####.##.##" textAlign="center" verticalAlign="middle" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="2" displaytype="text" edittype="text" textAlign="center" verticalAlign="middle" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="3" displaytype="text" edittype="text" textAlign="center" verticalAlign="middle" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="4" displaytype="text" edittype="text" textAlign="center" verticalAlign="middle" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="5" displaytype="text" edittype="text" mask="####.##.##" textAlign="center" verticalAlign="middle" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="6" displaytype="text" edittype="text" textAlign="center" verticalAlign="middle" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="7" displaytype="text" edittype="text" textAlign="center" verticalAlign="middle" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="8" displaytype="text" edittype="text" textAlign="center" verticalAlign="middle" font="12pt/normal &quot;a두리둥실&quot;"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                  <Button id="Button01" taborder="2" text="삭제" left="95.42%" top="3" height="25" width="40"/>
+                  <Button id="addWorkInfo_btn" taborder="3" text="조회" left="91.13%" top="4" height="25" width="40" font="12pt &quot;a두리둥실&quot;"/>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+            <Tabpage id="tabpage2" text="자격정보">
+              <Layouts>
+                <Layout>
+                  <Grid id="Grid00" taborder="0" left="1%" top="31" right="1%" binddataset="ds_licenseInfo" autofittype="col" bottom="10" font="12pt &quot;a두리둥실&quot;">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="98"/>
+                          <Column size="131"/>
+                          <Column size="146"/>
+                          <Column size="130"/>
+                          <Column size="131"/>
+                          <Column size="152"/>
+                          <Column size="141"/>
+                          <Column size="148"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="24" band="head"/>
+                          <Row size="24"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell text="EMP_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="1" text="LICENSE_SEQ" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="2" text="LICENSE_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="3" text="START_DATE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="4" text="END_DATE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="5" text="LICENSE_CENTER" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="6" text="LICENSE_LEVEL" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="7" text="LICENSE_NO" font="12pt/normal &quot;a두리둥실&quot;"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="1" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="2" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="3" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="4" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="5" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="6" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="7" font="12pt/normal &quot;a두리둥실&quot;"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                  <Button id="Button00" taborder="1" text="추가" left="91.45%" top="3" height="25" width="40" onclick="Tab00_tabpage2_Button00_onclick" font="12pt &quot;a두리둥실&quot;"/>
+                  <Button id="Button01" taborder="2" text="삭제" left="95.42%" top="3" height="25" width="40" font="12pt &quot;a두리둥실&quot;"/>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+            <Tabpage id="tabpage3" text="학력정보">
+              <Layouts>
+                <Layout>
+                  <Grid id="Grid00" taborder="0" left="1%" top="31" right="1%" binddataset="ds_educationInfo" autofittype="col" bottom="10" font="12pt &quot;a두리둥실&quot;">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="136"/>
+                          <Column size="102"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="111"/>
+                          <Column size="147"/>
+                          <Column size="164"/>
+                          <Column size="94"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="24" band="head"/>
+                          <Row size="24"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell text="EDUCATION_SEQ" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="1" text="EMP_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="2" text="CAMPUS" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="3" text="MAJOR" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="4" text="SUB_MAJOR" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="5" text="ENTER_DATE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="6" text="GRADUATION_DATE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="7" text="GRADE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="1" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="2" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="3" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="4" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="5" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="6" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="7" font="12pt/normal &quot;a두리둥실&quot;"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                  <Button id="Button00" taborder="1" text="추가" left="91.45%" top="3" height="25" width="40" onclick="Tab00_tabpage3_Button00_onclick" font="12pt &quot;a두리둥실&quot;"/>
+                  <Button id="Button01" taborder="2" text="삭제" left="95.42%" top="3" height="25" width="40" font="12pt &quot;a두리둥실&quot;"/>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+            <Tabpage id="tabpage4" text="가족정보">
+              <Layouts>
+                <Layout>
+                  <Grid id="Grid00" taborder="0" binddataset="ds_familyInfo" left="1%" top="31" right="1%" autofittype="col" bottom="10" font="12pt &quot;a두리둥실&quot;">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="40"/>
+                          <Column size="60"/>
+                          <Column size="79"/>
+                          <Column size="66"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="24" band="head"/>
+                          <Row size="24"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell text="No" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="1" text="성명" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="2" text="생년원일" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="3" text="관계" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="4" text="부양여부" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="5" text="동거여부" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="6" text="병력사항" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="7" text="최종학력" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="8" text="직업" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="9" text="직장명" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="10" text="전화번호" font="12pt/normal &quot;a두리둥실&quot;"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell text="expr:currow+1" textAlign="center" verticalAlign="middle" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="1" displaytype="text" edittype="text" text="bind:FAMILY_NAME" textAlign="center" verticalAlign="middle" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="2" displaytype="text" edittype="text" text="bind:FAMILY_BIRTH_DATE" mask="####.##.##" textAlign="center" verticalAlign="middle" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="3" displaytype="combo" edittype="combo" text="bind:RELATIONSHIP" combodataset="ds_relationship" combocodecol="DETAIL_CODE" combodatacol="DETAIL_CODE_NAME" textAlign="center" verticalAlign="middle" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="4" displaytype="checkbox" edittype="checkbox" text="bind:SUPPORTING" textAlign="center" verticalAlign="middle" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="5" displaytype="checkbox" edittype="checkbox" text="bind:COHABITATION_STATUS" textAlign="center" verticalAlign="middle" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="6" text="bind:DISABILITY_CODE" textAlign="center" verticalAlign="middle" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="7" displaytype="combo" edittype="combo" text="bind:HIGHEST_EDUCATION_CODE" combodataset="ds_fe" combocodecol="Fe" combodatacol="Fe" textAlign="center" verticalAlign="middle" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="8" displaytype="text" edittype="text" text="bind:JOB" textAlign="center" verticalAlign="middle" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="9" displaytype="text" edittype="text" text="bind:COMPANY_NAME" textAlign="center" verticalAlign="middle" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="10" displaytype="text" edittype="text" text="bind:TEL" mask="###-####-####" textAlign="center" verticalAlign="middle" font="12pt/normal &quot;a두리둥실&quot;"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                  <Button id="familyAddBtn" taborder="1" text="추가" left="91.45%" top="3" height="25" width="40" onclick="Tab00_tabpage4_familyAddBtn_onclick" font="12pt &quot;a두리둥실&quot;"/>
+                  <Button id="familyRemoveBtn" taborder="2" text="삭제" left="95.42%" top="3" width="40" height="25" onclick="Tab00_tabpage4_familyRemoveBtn_onclick" font="12pt &quot;a두리둥실&quot;"/>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+          </Tabpages>
+        </Tab>
+        <Static id="EmpElm15_stc" taborder="42" text="사진" onclick="Static00_onclick" left="1.92%" top="480" width="80" height="35" wordWrap="char" border="0px none rgba(128,128,128,1)" color="black" textAlign="left" verticalAlign="middle" font="12pt &quot;a두리둥실&quot;"/>
+        <MaskEdit id="phone_edt" taborder="43" left="77.42%" top="180" width="200" height="35" mask="###-####-####" type="string" autoselect="true" oneditclick="phone_edt_oneditclick" padding="0px 3px 0px 3px" textAlign="center" font="12pt &quot;a두리둥실&quot;"/>
+        <Combo id="EmpElm00_Combo" taborder="44" innerdataset="@ds_ms" codecolumn="MS" datacolumn="Status" left="77.42%" top="100" height="35" width="150" padding="0px 3px 0px 3px" borderRadius="0px" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="EmpElm11_stc" taborder="45" text="핸드폰" onclick="Static00_onclick" left="67.42%" top="180" width="86" height="30" wordWrap="char" border="0px none rgba(128,128,128,1)" color="black" textAlign="left" verticalAlign="middle" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="EmpElm10_stc" taborder="46" text="전공" onclick="Static00_onclick" left="67.42%" top="140" width="80" height="30" wordWrap="char" border="0px none rgba(128,128,128,1)" color="black" textAlign="left" verticalAlign="middle" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="EmpElm09_stc" taborder="47" text="결혼여부" onclick="Static00_onclick" left="67.42%" top="100" width="80" height="30" wordWrap="char" border="0px none rgba(128,128,128,1)" color="black" textAlign="left" verticalAlign="middle" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="EmpElm08_edt" taborder="48" left="77.42%" top="140" width="200" height="35" border="1px solid rgba(166,166,169,1)" padding="0px 3px 0px 3px" borderRadius="0px" textAlign="center" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="EmpElm08_stc" taborder="49" text="사원명(*)" onclick="Static00_onclick" left="67.42%" top="60" width="80" height="30" wordWrap="char" border="0px none rgba(128,128,128,1)" color="black" textAlign="left" verticalAlign="middle" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="empName_edt" taborder="50" left="77.42%" top="60" width="200" height="35" border="1px solid rgba(166,166,169,1)" padding="0px 3px 0px 3px" borderRadius="0px" textAlign="center" font="12pt &quot;a두리둥실&quot;"/>
+        <ImageViewer id="imgView_Photo" taborder="51" top="65" left="20" width="220" height="270" font="12pt &quot;a두리둥실&quot;"/>
+        <MaskEdit id="tel_edt" taborder="52" type="string" mask="###-####-#####" left="35.25%" top="180" width="200" height="35" autoselect="true" padding="0px 3px 0px 3px" textAlign="center" font="12pt &quot;a두리둥실&quot;"/>
+        <MaskEdit id="rsidentNum_edt" taborder="53" type="string" mask="######-#{######}" left="35.25%" top="100" width="200" height="35" autoselect="true" padding="0px 3px 0px 3px" textAlign="center" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="searchBank_btn" taborder="54" text="검색" left="52.17%" top="440" width="60" height="35" onclick="searchBank_btn_onclick" background="rgba(140,132,130,1)" color="white" borderRadius="0px" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="position_edt" taborder="55" left="10.75%" top="400" width="140" height="35" border="1px solid rgba(166,166,169,1)" borderRadius="0px" textAlign="center" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="schPosition_btn" taborder="56" text="검색" left="22.00%" top="400" width="60" height="35" onclick="schPosition_btn_onclick" background="rgba(140,132,130,1)" color="white" borderRadius="0px" font="12pt &quot;a두리둥실&quot;"/>
+        <Combo id="EmpElm00_Combo00" taborder="57" innerdataset="@ds_Pos" codecolumn="POS_CODE" datacolumn="POSDETAIL_CODE" left="70.58%" top="400" width="150" height="35" padding="0px 3px 0px 3px" borderRadius="0px" font="12pt &quot;a두리둥실&quot;"/>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item0" compid="deptCode_edt" propid="value" datasetid="gds_dept" columnid=""/>
+      <BindItem id="item1" compid="position_edt" propid="value" datasetid="gds_position" columnid=""/>
+    </Bind>
+    <InitValue>
+      <ImageViewer id="imgView_Photo" stretch="fit"/>
+    </InitValue>
+    <Objects>
+      <Dataset id="ds_fe">
+        <ColumnInfo>
+          <Column id="Code" type="STRING" size="256"/>
+          <Column id="Fe" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="Code">Fe</Col>
+            <Col id="Fe">초졸</Col>
+          </Row>
+          <Row>
+            <Col id="Code">Fe</Col>
+            <Col id="Fe">중졸</Col>
+          </Row>
+          <Row>
+            <Col id="Code">Fe</Col>
+            <Col id="Fe">고졸</Col>
+          </Row>
+          <Row>
+            <Col id="Code">Fe</Col>
+            <Col id="Fe">대졸(전문대/대학)</Col>
+          </Row>
+          <Row>
+            <Col id="Code">Fe</Col>
+            <Col id="Fe">대졸(대학교)</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_ms">
+        <ColumnInfo>
+          <Column id="Ms" type="STRING" size="256"/>
+          <Column id="Status" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="Ms">Ms</Col>
+            <Col id="Status">미혼</Col>
+          </Row>
+          <Row>
+            <Col id="Ms">Ms</Col>
+            <Col id="Status">기혼</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_employeeinfo">
+        <ColumnInfo>
+          <Column id="CHK" type="STRING" size="256"/>
+          <Column id="EMP_CODE" type="STRING" size="256"/>
+          <Column id="EMP_NAME" type="STRING" size="256"/>
+          <Column id="RESIDENT_NUMBER" type="STRING" size="256"/>
+          <Column id="BIRTH_DATE" type="STRING" size="256"/>
+          <Column id="GENDER" type="STRING" size="256"/>
+          <Column id="TEL" type="STRING" size="256"/>
+          <Column id="PHONE_NUMBER" type="STRING" size="256"/>
+          <Column id="NATIVE_TYPE_CODE" type="STRING" size="256"/>
+          <Column id="EMAIL" type="STRING" size="256"/>
+          <Column id="HIGHEST_EDUCATION_CODE" type="STRING" size="256"/>
+          <Column id="BASE_ADDRESS" type="STRING" size="256"/>
+          <Column id="DETAIL_ADDRESS" type="STRING" size="256"/>
+          <Column id="ZIP_CODE" type="STRING" size="256"/>
+          <Column id="IMG_SRC" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_workInfo">
+        <ColumnInfo>
+          <Column id="EMP_CODE" type="STRING" size="256"/>
+          <Column id="HIRE_DATE" type="STRING" size="256"/>
+          <Column id="RETIRE_DATE" type="STRING" size="256"/>
+          <Column id="EMPLOYEEMENT_TYPE_CODE" type="STRING" size="256"/>
+          <Column id="RETIRE_CAUSE" type="STRING" size="256"/>
+          <Column id="PROBATION_STATUS" type="STRING" size="256"/>
+          <Column id="PROBATION_EXPIRE_DATE" type="STRING" size="256"/>
+          <Column id="PROJECT_CODE" type="STRING" size="256"/>
+          <Column id="JIKJONG_CODE" type="STRING" size="256"/>
+          <Column id="EMP_NAME" type="STRING" size="256"/>
+          <Column id="EX_PROJECT_CODE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_licenseInfo">
+        <ColumnInfo>
+          <Column id="EMP_CODE" type="STRING" size="256"/>
+          <Column id="LICENSE_SEQ" type="STRING" size="256"/>
+          <Column id="LICENSE_NAME" type="STRING" size="256"/>
+          <Column id="START_DATE" type="STRING" size="256"/>
+          <Column id="END_DATE" type="STRING" size="256"/>
+          <Column id="LICENSE_CENTER" type="STRING" size="256"/>
+          <Column id="LICENSE_LEVEL" type="STRING" size="256"/>
+          <Column id="LICENSE_NO" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_educationInfo">
+        <ColumnInfo>
+          <Column id="EDUCATION_SEQ" type="STRING" size="256"/>
+          <Column id="EMP_CODE" type="STRING" size="256"/>
+          <Column id="CAMPUS" type="STRING" size="256"/>
+          <Column id="MAJOR" type="STRING" size="256"/>
+          <Column id="SUB_MAJOR" type="STRING" size="256"/>
+          <Column id="ENTER_DATE" type="STRING" size="256"/>
+          <Column id="GRADUATION_DATE" type="STRING" size="256"/>
+          <Column id="GRADE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_familyInfo">
+        <ColumnInfo>
+          <Column id="RELATIONSHIP" type="STRING" size="256"/>
+          <Column id="EMP_CODE" type="STRING" size="256"/>
+          <Column id="FAMILY_NAME" type="STRING" size="256"/>
+          <Column id="SUPPORTING" type="STRING" size="256"/>
+          <Column id="COHABITATION_STATUS" type="STRING" size="256"/>
+          <Column id="DISABILITY_CODE" type="STRING" size="256"/>
+          <Column id="HIGHEST_EDUCATION_CODE" type="STRING" size="256"/>
+          <Column id="JOB" type="STRING" size="256"/>
+          <Column id="COMPANY_NAME" type="STRING" size="256"/>
+          <Column id="TEL" type="STRING" size="256"/>
+          <Column id="FAMILY_BIRTH_DATE" type="STRING" size="256"/>
+          <Column id="FAMILY_SEQ" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_codeDtail">
+        <ColumnInfo>
+          <Column id="DIVISION_CODE_NO" type="STRING" size="256"/>
+          <Column id="DETAIL_CODE" type="STRING" size="256"/>
+          <Column id="DETAIL_CODE_NAME" type="STRING" size="256"/>
+          <Column id="CODE_USE_CHECK" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_relationship">
+        <ColumnInfo>
+          <Column id="DETAIL_CODE" type="STRING" size="256"/>
+          <Column id="DETAIL_CODE_NAME" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_sequence">
+        <ColumnInfo>
+          <Column id="seqNo" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_Pos">
+        <ColumnInfo>
+          <Column id="POS_CODE" type="STRING" size="256"/>
+          <Column id="POSDETAIL_CODE" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="POS_CODE">P1</Col>
+            <Col id="POSDETAIL_CODE">파트장</Col>
+          </Row>
+          <Row>
+            <Col id="POS_CODE">P2</Col>
+            <Col id="POSDETAIL_CODE">팀장</Col>
+          </Row>
+          <Row>
+            <Col id="POS_CODE">P3</Col>
+            <Col id="POSDETAIL_CODE">실장</Col>
+          </Row>
+          <Row>
+            <Col id="POS_CODE">P4</Col>
+            <Col id="POSDETAIL_CODE">본부장</Col>
+          </Row>
+          <Row>
+            <Col id="POS_CODE">P5</Col>
+            <Col id="POSDETAIL_CODE">사업부장</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[/***********************************************************
+ 사원정보등록
+ @Path                  인사
+ @Description           사원정보를 등록하기 위한 폼
+ @Author                서정훈
+ @Create                2019. 02. 12.
+ ************************************************************/
+
+this.hr_HmIfmElmDialog_onload = function (obj:Form, e:nexacro.LoadEventInfo)
+{
+	if (this.parent.empCode != undefined) 
+	{
+		this.transaction("findEmpCode1",
+			"dataURL::hr/pm/findEmpCode.do",
+			"",
+			"ds_employeeinfo=dsEmpInfo",
+			"empCode=" + this.parent.empCode,
+			"callbackFunction",
+			false
+		);
+
+		// alert(this.parent.empCode);
+	}
+
+	this.squenceNo = "";
+
+	this.transaction("findSequence",
+		"dataURL::sys/findSequenceNo.do",
+		"",
+		"ds_sequence=ds_sequence",
+		"findSeq='SERIAL_SEQ'",
+		"callbackFunction",
+		false
+	);
+	this.EmpElm_edt.set_value(this.squenceNo);
+
+	// 코드정보
+	this.transaction("findCodeDetailList",
+		"dataURL::sys/findCodeDetailList.do",
+		"",
+		"ds_codeDtail=gds_codeDetail",
+		"",
+		"callbackFunction",
+		false
+	);
+};
+
+// 주소검색
+this.searchZip_btn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	var zipDiglog = new ChildFrame();
+	zipDiglog.set_showstatusbar(false);
+	zipDiglog.init("chf_popup1", "absolute", 0, 0, 536, 376, null, null, "base::zipCodeDialog.xfdl");
+	// alert("aa form url : " + this.getOwnerFrame().formurl);
+	zipDiglog.showModal(this.getOwnerFrame(), null, this, "fn_popupCallback");
+};
+
+this.fn_popupCallback = function (strPopupID, strReturn)
+{
+	if (strPopupID == "chf_popup1") 
+	{
+		var str = strReturn.split("/");
+		this.lnmAdres_edt.set_value(str[1]);
+		this.zipNo_edt.set_value(str[2]);
+	}
+	;
+};
+
+// 사진넣기
+this.FileUpload00_onitemchanged = function (obj:FileUpload, e:nexacro.FileUploadItemChangeEventInfo)
+{
+	this.imgView_Photo.set_image(e.newvalue);
+};
+
+// 가족정보 추가
+this.Tab00_tabpage4_familyAddBtn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	var nRow = this.ds_familyInfo.addRow();
+
+	this.ds_familyInfo.setColumn(this.ds_familyInfo.rowposition, "EMP_CODE");
+
+	// 가족관계
+	this.ds_codeDtail.filter("String(DETAIL_CODE).substr(0,3) == 'RLC'");
+	this.ds_relationship.copyData(this.ds_codeDtail, true);
+};
+
+// 직위검색
+this.schPosition_btn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	var positionDiglog = new ChildFrame();
+	positionDiglog.set_showstatusbar(false);
+	positionDiglog.init("chf_popup2", "absolute", 0, 10, 300, 400, null, null, "hr_pm::hr_positionDialog.xfdl");
+	positionDiglog.showModal(this.getOwnerFrame(), null, this, "fn_popupCallback2");
+};
+
+var positionCode;
+var positionCodeN;
+this.fn_popupCallback2 = function (strPopupID, strReturn)
+{
+	if (strPopupID == "chf_popup2") 
+	{
+		var str = strReturn.split("/");
+		positionCode = str[0];
+		positionCodeN = str[1];
+		this.position_edt.set_value(positionCodeN);
+	}
+	;
+};
+
+// 부서검색
+this.schDept_btn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	var deptDiglog = new ChildFrame();
+	deptDiglog.set_showstatusbar(false);
+	deptDiglog.init("chf_popup3", "absolute", 0, 10, 300, 400, null, null, "hr_pm::hr_deptDialog.xfdl");
+	deptDiglog.showModal(this.getOwnerFrame(), null, this, "fn_popupCallback3");
+};
+
+var deptCode;
+var deptCodeN;
+this.fn_popupCallback3 = function (strPopupID, strReturn)
+{
+	if (strPopupID == "chf_popup3") 
+	{
+		var str = strReturn.split("/");
+		deptCode = str[0];
+		deptCodeN = str[1];
+		this.deptCode_edt.set_value(deptCodeN);
+	}
+	;
+};
+
+// 은행선택
+this.searchBank_btn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	var bankDiglog = new ChildFrame();
+	bankDiglog.set_showstatusbar(false);
+	bankDiglog.init("chf_popup4", "absolute", 0, 10, 300, 400, null, null, "hr_pm::hr_bankDialog.xfdl");
+	bankDiglog.showModal(this.getOwnerFrame(), null, this, "fn_popupCallback4");
+};
+
+// 직책선택
+this.search_btn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	var bankDiglog = new ChildFrame();
+	bankDiglog.set_showstatusbar(false);
+	bankDiglog.init("chf_popup4", "absolute", 0, 10, 300, 400, null, null, "hr_pm::hr_bankDialog.xfdl");
+	bankDiglog.showModal(this.getOwnerFrame(), null, this, "fn_popupCallback4");
+};
+
+var bankCode;
+var bankCodeN;
+this.fn_popupCallback4 = function (strPopupID, strReturn)
+{
+	if (strPopupID == "chf_popup4") 
+	{
+		var str = strReturn.split("/");
+		bankCode = str[0];
+		bankCodeN = str[1];
+		this.bank_edt.set_value(bankCodeN);
+	}
+	;
+};
+
+// 재직정보 추가
+this.Tab00_tabpage1_addWorkInfo_btn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	var nRow = this.ds_workInfo.addRow();
+
+	this.ds_workInfo.setColumn(this.ds_workInfo.rowposition, "EMP_CODE");
+
+	// this.ds_workInfo.filter("String(DETAIL_CODE).substr(0,3) == 'RLC'");
+	// this.ds_relationship.copyData(this.ds_codeDtail,true);
+};
+
+// 자격증  추가
+this.Tab00_tabpage2_Button00_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	var nRow = this.ds_licenseInfo.addRow();
+
+	this.ds_licenseInfo.setColumn(this.ds_licenseInfo.rowposition, "EMP_CODE");
+};
+
+// 학력 추가
+this.Tab00_tabpage3_Button00_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	var nRow = this.ds_educationInfo.addRow();
+
+	this.ds_licenseInfo.setColumn(this.ds_licenseInfo.rowposition, "EMP_CODE");
+};
+]]></Script>
+  </Form>
+</FDL>

@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="acc_subManagementForm" width="1280" height="780" titletext="New Form" onload="acc_subManagementForm_onload">
+    <Layouts>
+      <Layout height="780" mobileorientation="landscape" width="1280">
+        <Static id="Static00" taborder="0" text="기초정보관리 &gt; 계정과목관리" onclick="Static00_onclick" left="134" top="9" right="150" height="45" border="3px solid darkgray" padding="1px 1px 1px 1px" textAlign="center" verticalAlign="middle" font="18pt/normal &quot;a두리둥실&quot;"/>
+        <Div id="Div00" taborder="1" left="42.97%" top="117" right="10.16%" height="372" background="rgba(255,255,255,1)" border="2px solid rgba(159,143,113,1), 0px none rgba(128,128,128,1), 0px none rgba(128,128,128,1), 0px none rgba(128,128,128,1)" font="10pt &quot;a두리둥실&quot;">
+          <Layouts>
+            <Layout>
+              <Static id="group_code_static" taborder="0" text="그룹코드" onclick="Static01_onclick" left="4.29%" top="23" right="74.1%" height="32" background="rgba(247,242,234,1)" border="1px solid rgba(128,128,128,1)" font="12pt/normal &quot;a두리둥실&quot;" textAlign="center"/>
+              <Static id="budgetary_control_static" taborder="11" text="예산통제" onclick="Static01_onclick" left="4.29%" top="303" right="74.1%" height="32" background="rgba(247,242,234,1)" border="1px solid rgba(128,128,128,1)" font="12pt/normal &quot;a두리둥실&quot;" textAlign="center"/>
+              <Static id="account_division_static" taborder="9" text="차대구분" onclick="Static01_onclick" left="4.29%" top="183" right="74.1%" height="32" background="rgba(247,242,234,1)" border="1px solid rgba(128,128,128,1)" font="12pt/normal &quot;a두리둥실&quot;" textAlign="center"/>
+              <Static id="account_character_static" taborder="7" text="계정구분" onclick="Static01_onclick" left="4.29%" top="143" right="74.1%" height="32" background="rgba(247,242,234,1)" border="1px solid rgba(128,128,128,1)" font="12pt/normal &quot;a두리둥실&quot;" textAlign="center"/>
+              <Static id="account_name_static" taborder="5" text="계정과목명" onclick="Static01_onclick" left="4.29%" top="103" right="74.1%" height="32" background="rgba(247,242,234,1)" border="1px solid rgba(128,128,128,1)" font="12pt/normal &quot;a두리둥실&quot;" textAlign="center"/>
+              <Static id="account_code_static" taborder="3" text="계정코드" onclick="Static01_onclick" left="4.29%" top="63" right="74.1%" height="32" background="rgba(247,242,234,1)" border="1px solid rgba(128,128,128,1)" font="12pt/normal &quot;a두리둥실&quot;" textAlign="center"/>
+              <Edit id="group_code_edt00" taborder="13" left="27.27%" top="23" right="45.8%" height="32" enable="false" oneditclick="Div00_group_code_edt00_oneditclick" font="10pt &quot;a두리둥실&quot;"/>
+              <Edit id="group_code_edt01" taborder="14" left="55.4%" top="23" right="4.97%" height="32" enable="false" font="10pt &quot;a두리둥실&quot;"/>
+              <Edit id="account_code_edt" taborder="15" left="27.27%" top="63" right="45.8%" height="32" enable="false" font="10pt &quot;a두리둥실&quot;"/>
+              <Edit id="account_name_edt" taborder="16" left="27.27%" top="103" right="4.97%" height="32" color="dimgray" font="10pt &quot;a두리둥실&quot;"/>
+              <Edit id="account_character_edt" taborder="17" left="27.27%" top="143" right="45.8%" height="32" enable="false" font="10pt &quot;a두리둥실&quot;"/>
+              <Edit id="account_division_edt" taborder="18" left="27.27%" top="183" right="45.8%" height="32" enable="false" font="10pt &quot;a두리둥실&quot;"/>
+              <Edit id="budgetary_control_edt" taborder="19" left="27.27%" top="303" right="4.97%" height="32" color="dimgray" font="10pt &quot;a두리둥실&quot;"/>
+              <Static id="related_account_static" taborder="20" text="관련계정" onclick="Static01_onclick" left="4.29%" top="223" right="74.1%" height="32" background="rgba(247,242,234,1)" border="1px solid rgba(128,128,128,1)" font="12pt/normal &quot;a두리둥실&quot;" textAlign="center"/>
+              <Edit id="related_account_edt" taborder="21" left="27.27%" top="223" right="4.97%" height="32" enable="false" font="10pt &quot;a두리둥실&quot;"/>
+              <Static id="statement_of_cash_flows_static" taborder="22" text="현금흐름표과목" onclick="Static01_onclick" left="4.29%" top="263" right="74.1%" height="32" background="rgba(247,242,234,1)" border="1px solid rgba(128,128,128,1)" font="12pt/normal &quot;a두리둥실&quot;" textAlign="center"/>
+              <Edit id="statement_of_cash_flows_edt" taborder="23" left="27.27%" top="263" right="4.97%" height="32" enable="false" font="10pt &quot;a두리둥실&quot;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Tab id="Tab00" taborder="2" left="10.08%" top="87" right="57.19%" height="664" tabindex="0" scrollbars="autoboth" canchange="Tab00_canchange" font="10pt &quot;a두리둥실&quot;">
+          <Tabpages>
+            <Tabpage id="tabpage1" text="그룹별">
+              <Layouts>
+                <Layout>
+                  <Grid id="Grid00" taborder="0" binddataset="ds_account" autofittype="col" treeusecheckbox="false" left="0.25%" top="1" right="0.25%" height="623" oncellclick="Tab00_tabpage1_Grid00_oncellclick" font="10pt &quot;a두리둥실&quot;">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="40"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="24" band="head"/>
+                          <Row size="24"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell text="2007 NEW 회계기준 적용"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell displaytype="tree" edittype="tree" text="expr:ACCOUNT_CODE==null?ACCOUNT_NAME:ACCOUNT_CODE+&quot;  &quot;+ACCOUNT_NAME" treelevel="bind:ACCOUNT_LEVEL"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+            <Tabpage id="tabpage2" text="계정별">
+              <Layouts>
+                <Layout>
+                  <Grid id="Grid00" taborder="0" binddataset="ds_account" autofittype="col" treeusecheckbox="false" left="0.25%" top="1" right="0.25%" height="638" font="10pt &quot;a두리둥실&quot;">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="50"/>
+                          <Column size="100"/>
+                          <Column size="100"/>
+                          <Column size="50"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="24" band="head"/>
+                          <Row size="24"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell text="계정"/>
+                          <Cell col="1" text="계정과목명"/>
+                          <Cell col="2" text="계정그룹"/>
+                          <Cell col="3" text="정렬코드"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell text="bind:ACCOUNT_CODE"/>
+                          <Cell col="1" text="bind:ACCOUNT_NAME"/>
+                          <Cell col="2" text="bind:GROUP_CODE"/>
+                          <Cell col="3" text="bind:PARENT_ACCOUNT_INNER_CODE"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+          </Tabpages>
+        </Tab>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item0" compid="Div00.form.group_code_edt00" propid="value" datasetid="ds_account" columnid="PARENT_ACCOUNT_INNER_CODE"/>
+      <BindItem id="item1" compid="Div00.form.account_code_edt" propid="value" datasetid="ds_account" columnid="ACCOUNT_CODE"/>
+      <BindItem id="item2" compid="Div00.form.account_name_edt" propid="value" datasetid="ds_account" columnid="ACCOUNT_NAME"/>
+      <BindItem id="item3" compid="Div00.form.account_character_edt" propid="value" datasetid="ds_account" columnid="ACCOUNT_CHARACTER"/>
+      <BindItem id="item4" compid="Div00.form.account_division_edt" propid="value" datasetid="ds_account" columnid="ACCOUNT_DIVISION"/>
+      <BindItem id="item5" compid="Div00.form.related_account_edt" propid="value" datasetid="ds_account" columnid="RELATED_ACCOUNT"/>
+      <BindItem id="item6" compid="Div00.form.statement_of_cash_flows_edt" propid="value" datasetid="ds_account" columnid="STATEMENT_OF_CASH_FLOWS"/>
+      <BindItem id="item7" compid="Div00.form.budgetary_control_edt" propid="value" datasetid="ds_account" columnid="BUDGETARY_CONTROL"/>
+      <BindItem id="item8" compid="Div00.form.group_code_edt01" propid="value" datasetid="ds_account" columnid="GROUP_CODE"/>
+    </Bind>
+    <Script type="xscript5.1"><![CDATA[/********************************************************************************                                                                            
+ 계정과목관리 화면
+ @Path			회계
+ @Description	계정과목을 관리하기 위한 폼 전체적으로 수정함.
+ @Author	  		이해동
+ @Create         2019. 07. 30.
+ ********************************************************************************/
+include "scripts::commonTransaction.xjs"
+this.acc_subManagementForm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+		this.gfnService("findAccountList");
+};
+
+// 탭이 변경될 때
+this.Tab00_canchange = function (obj:Tab, e:nexacro.TabIndexChangeEventInfo)
+{
+	if (this.ds_account.getColumn(0, "ACCOUNT_CODE") == null) 
+	{
+		this.ds_account.filter("ACCOUNT_CODE!=null");
+	}
+	else 
+	{
+		this.ds_account.filter("");
+	}
+};
+]]></Script>
+    <Objects>
+      <Dataset id="ds_account">
+        <ColumnInfo>
+          <Column id="ACCOUNT_LEVEL" type="INT" size="256"/>
+          <Column id="ACCOUNT_INNER_CODE" type="STRING" size="256"/>
+          <Column id="PARENT_ACCOUNT_INNER_CODE" type="STRING" size="256"/>
+          <Column id="ACCOUNT_CODE" type="STRING" size="256"/>
+          <Column id="ACCOUNT_NAME" type="STRING" size="256"/>
+          <Column id="ACCOUNT_CHARACTER" type="STRING" size="256"/>
+          <Column id="ACCOUNT_DIVISION" type="STRING" size="256"/>
+          <Column id="RELATED_ACCOUNT" type="STRING" size="256"/>
+          <Column id="STATEMENT_OF_CASH_FLOWS" type="STRING" size="256"/>
+          <Column id="BUDGETARY_CONTROL" type="STRING" size="256"/>
+          <Column id="GROUP_CODE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findAccountList</Col>
+            <Col id="URL">dataURL::acc/accSubMgt/findAccountList.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">ds_account=gds_account</Col>
+            <Col id="callbackFunc">CallbackFunc</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

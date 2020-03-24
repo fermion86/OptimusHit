@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="acc_rangeTrialBalanceForm" width="1280" height="780" titletext="New Form" onload="acc_rangeTrialBalanceForm_onload">
+    <Layouts>
+      <Layout height="780" mobileorientation="landscape" width="1280">
+        <Tab id="tab" taborder="0" left="5.63%" top="67" right="5.16%" height="683" tabindex="0" scrollbars="autoboth" font="12pt &quot;a두리둥실&quot;">
+          <Tabpages>
+            <Tabpage id="d_trial_balance" text="일계표">
+              <Layouts>
+                <Layout width="979" height="498">
+                  <Static id="term_stc00" taborder="5" text="기간" left="41.77%" top="14" right="48.69%" height="40" font="14pt/normal &quot;a두리둥실&quot;"/>
+                  <Calendar id="startDate_cal00" taborder="6" left="47.29%" top="14" right="35.73%" height="40" dateformat="yyyy-MM-dd" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="between_stc00" taborder="7" text="~" left="64.97%" top="14" right="30.30%" height="40" textAlign="center" verticalAlign="middle" font="14pt/normal &quot;a두리둥실&quot;"/>
+                  <Calendar id="endDate_cal00" taborder="8" left="70.05%" top="14" right="13.05%" height="40" dateformat="yyyy-MM-dd" font="12pt &quot;a두리둥실&quot;"/>
+                  <Grid id="Grid00" taborder="10" left="2.35%" top="70" right="2.25%" height="549" autofittype="col" binddataset="ds_rangeTrialBalance" font="12pt &quot;a두리둥실&quot;">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="40"/>
+                          <Column size="40"/>
+                          <Column size="40"/>
+                          <Column size="64"/>
+                          <Column size="40"/>
+                          <Column size="40"/>
+                          <Column size="40"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="24" band="head"/>
+                          <Row size="24" band="head"/>
+                          <Row size="24"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell colspan="3" text="차  변" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="3" rowspan="2" text="계정과목" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="4" colspan="3" text="대  변" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell row="1" text="계" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell row="1" col="1" text="대체" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell row="1" col="2" text="현금" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell row="1" col="4" text="현금" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell row="1" col="5" text="대체" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell row="1" col="6" text="계" font="12pt/normal &quot;a두리둥실&quot;"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell displaytype="number" edittype="none" text="bind:LEFT_DEBTOR_SUM" mask="expr:LEFT_DEBTOR_SUM!=0?'#,###':'0'" maskchar="0" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="1" displaytype="number" text="bind:LEFT_DEBTOR_REPLACEMENT" mask="expr:LEFT_DEBTOR_REPLACEMENT!=0?'#,###':'0'" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="2" displaytype="number" text="bind:LEFT_DEBTOR_MONEY" mask="expr:LEFT_DEBTOR_MONEY!=0?'#,###':'0'" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="3" text="bind:ACCOUNT_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="4" displaytype="number" text="bind:RIGHT_CREDITS_MONEY" mask="expr:RIGHT_CREDITS_MONEY!=0?'#,###':'0'" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="5" displaytype="number" text="bind:RIGHT_CREDITS_REPLACEMENT" mask="expr:RIGHT_CREDITS_REPLACEMENT!=0?'#,###':'0'" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="6" displaytype="number" text="bind:RIGHT_CREDITS_SUM" mask="expr:RIGHT_CREDITS_SUM!=0?'#,###':'0'" font="12pt/normal &quot;a두리둥실&quot;"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                  <Button id="serch_btn00" taborder="11" text="조회" onclick="serch_btn00_onclick" left="88.71%" top="14" right="2.29%" height="40" font="14pt/normal &quot;a두리둥실&quot;"/>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+            <Tabpage id="m_trial_balance" text="월계표">
+              <Layouts>
+                <Layout>
+                  <Static id="term_stc01" taborder="2" text="기간" left="68.87%" top="14" right="23.63%" height="40" font="12pt &quot;a두리둥실&quot;"/>
+                  <Calendar id="endDate_cal01" taborder="5" left="77.25%" top="14" right="11.99%" height="40" dateformat="yyyy-MM" editformat="yyyy-MM" font="12pt &quot;a두리둥실&quot;" type="spin"/>
+                  <Grid id="Grid01" taborder="7" autofittype="col" left="2.38%" top="70" right="2.29%" height="549" binddataset="ds_monthRangeTrialBalance" font="12pt &quot;a두리둥실&quot;">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="40"/>
+                          <Column size="40"/>
+                          <Column size="40"/>
+                          <Column size="64"/>
+                          <Column size="40"/>
+                          <Column size="40"/>
+                          <Column size="40"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="24" band="head"/>
+                          <Row size="24" band="head"/>
+                          <Row size="24"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell colspan="3" text="차  변" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="3" rowspan="2" text="계정과목" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="4" colspan="3" text="대  변" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell row="1" text="계" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell row="1" col="1" text="대체" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell row="1" col="2" text="현금" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell row="1" col="4" text="현금" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell row="1" col="5" text="대체" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell row="1" col="6" displaytype="number" text="계" mask="expr:RIGHT_CREDITS_SUM!=0?'#,###':'0'" font="12pt/normal &quot;a두리둥실&quot;"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell displaytype="number" text="bind:LEFT_DEBTOR_SUM" mask="expr:LEFT_DEBTOR_SUM!=0?'#,###':'0'" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="1" displaytype="number" text="bind:LEFT_DEBTOR_REPLACEMENT" mask="expr:LEFT_DEBTOR_REPLACEMENT!=0?'#,###':'0'" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="2" displaytype="number" text="bind:LEFT_DEBTOR_MONEY" mask="expr:LEFT_DEBTOR_MONEY!=0?'#,###':'0'" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="3" text="bind:ACCOUNT_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="4" displaytype="number" text="bind:RIGHT_CREDITS_MONEY" mask="expr:RIGHT_CREDITS_MONEY!=0?'#,###':'0'" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="5" displaytype="number" text="bind:RIGHT_CREDITS_REPLACEMENT" mask="expr:RIGHT_CREDITS_REPLACEMENT!=0?'#,###':'0'" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="6" displaytype="number" text="bind:RIGHT_CREDITS_SUM" mask="expr:RIGHT_CREDITS_SUM!=0?'#,###':'0'" font="12pt/normal &quot;a두리둥실&quot;"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                  <Button id="serch_btn01" taborder="8" text="조회" onclick="serch_btn01_onclick" left="88.62%" top="14" right="2.38%" height="40" font="12pt &quot;a두리둥실&quot;"/>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+          </Tabpages>
+        </Tab>
+        <Static id="Static" taborder="1" text="일월계표" onclick="Static00_onclick" left="64" top="9" right="59" height="45" border="3px solid darkgray" font="15pt/normal &quot;a두리둥실&quot;" textAlign="center"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[/********************************************************************************                                                                            
+ 일월계표화면
+ @Path		    회계
+ @Description	일월계표 조회
+ @Author	  	    한우리
+ @Create         2019. 07. 24
+ ********************************************************************************/
+
+// 일계표 조회 이벤트  
+this.serch_btn00_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	var startDate = this.tab.d_trial_balance.form.startDate_cal00.value;
+	startDate = startDate.substr(0, 4) + "-" + startDate.substr(4, 2) + "-" + startDate.substr(6, 2);
+	var endDate = this.tab.d_trial_balance.form.endDate_cal00.value;
+	endDate = endDate.substr(0, 4) + "-" + endDate.substr(4, 2) + "-" + endDate.substr(6, 2);
+// 	alert(startDate);
+// 	alert(endDate);
+	if (startDate == null || endDate == null) 
+	{
+		alert("조회날짜를 선택해주세요");
+		return;
+	}
+	else if (endDate < startDate) 
+	{
+		alert("기간을 확인해주세요");
+		return;
+	}
+
+	this.transaction("findRangeTrialBalanceList",
+		"dataURL::acc/slip/findRangeTrialBalanceList.do",
+		"",
+		"ds_rangeTrialBalance=ds_rangeTrialBalance",
+		"startDate='" + startDate + "' endDate='" + endDate + "'",
+		"callback",
+		false
+	);
+};
+
+
+// 월계표 조회 이벤트  
+this.serch_btn01_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	var monthDateE = this.tab.m_trial_balance.form.endDate_cal01.value;
+	monthDateE = monthDateE.substr(0, 4) + "-" + monthDateE.substr(4, 2);
+//	alert(monthDateE);
+	this.transaction("findRangeTrialBalanceList",
+		"dataURL::acc/slip/findRangeTrialBalanceList.do",
+		"",
+		"ds_monthRangeTrialBalance=ds_rangeTrialBalance",
+		"monthDateE='" + monthDateE + "'",
+		"callback",
+		false
+	);
+}
+
+]]></Script>
+    <Objects>
+      <Dataset id="ds_rangeTrialBalance">
+        <ColumnInfo>
+          <Column id="LEFT_DEBTOR_SUM" type="STRING" size="256"/>
+          <Column id="LEFT_DEBTOR_REPLACEMENT" type="STRING" size="256"/>
+          <Column id="LEFT_DEBTOR_MONEY" type="STRING" size="256"/>
+          <Column id="ACCOUNT_NAME" type="STRING" size="256"/>
+          <Column id="RIGHT_CREDITS_MONEY" type="STRING" size="256"/>
+          <Column id="RIGHT_CREDITS_REPLACEMENT" type="STRING" size="256"/>
+          <Column id="RIGHT_CREDITS_SUM" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_monthRangeTrialBalance">
+        <ColumnInfo>
+          <Column id="LEFT_DEBTOR_SUM" type="STRING" size="256"/>
+          <Column id="LEFT_DEBTOR_REPLACEMENT" type="STRING" size="256"/>
+          <Column id="LEFT_DEBTOR_MONEY" type="STRING" size="256"/>
+          <Column id="ACCOUNT_NAME" type="STRING" size="256"/>
+          <Column id="RIGHT_CREDITS_MONEY" type="STRING" size="256"/>
+          <Column id="RIGHT_CREDITS_REPLACEMENT" type="STRING" size="256"/>
+          <Column id="RIGHT_CREDITS_SUM" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

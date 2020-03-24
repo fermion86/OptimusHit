@@ -1,0 +1,271 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="logi_FactoryForm" width="1024" height="780" titletext="New Form" onload="logi_FactoryForm_onload">
+    <Layouts>
+      <Layout height="780" mobileorientation="landscape" width="1024">
+        <Static id="Static00" taborder="0" text="공장관리" left="4" top="7" width="1013" height="43" font="18pt/normal &quot;a두리둥실&quot;" textAlign="center" border="1px solid #002266" color="#002266"/>
+        <Grid id="Grid00" taborder="1" left="4" top="110" width="446" height="650" binddataset="ds_factory" font="12pt &quot;a두리둥실&quot;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="150"/>
+                <Column size="150"/>
+                <Column size="145"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="공 장 코 드" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="공　장　명" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" text="책　임　자" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:FACTORY_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="bind:FACTORY_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" text="bind:FACTORY_MANAGER_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btnAdd" taborder="2" text="추가" left="282" top="64" width="80" height="41" onclick="Button_onclick" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="btnDel" taborder="3" text="삭제" left="367" top="64" width="80" height="41" onclick="Button_onclick" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="Static02" taborder="4" text="공장상세정보" left="455" top="79" width="138" height="30" textAlign="center" font="12pt &quot;a두리둥실&quot;" color="#002266" background="#C6E8FF" onclick="Static02_onclick"/>
+        <Grid id="Grid01" taborder="5" left="455" top="109" width="562" height="652" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="Static01" taborder="6" text="1. 공　장　코　드" left="474" top="137" width="109" height="33" textAlign="left" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="Static03" taborder="7" text="2. 공　　장　　명" left="474" top="180" width="109" height="33" textAlign="left" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="Static04" taborder="8" text="3. 책　　임　　자" left="474" top="223" width="109" height="33" textAlign="left" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="Static05" taborder="9" text="4. 가　용　능　력" left="474" top="266" width="109" height="33" textAlign="left" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="Static06" taborder="10" text="5. 가　용　상　태" left="474" top="309" width="109" height="33" textAlign="left" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="Static07" taborder="11" text="6. 전　화　번　호" left="474" top="352" width="109" height="33" textAlign="left" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="Static08" taborder="12" text="7. 주　　　　　소" left="474" top="395" width="109" height="33" textAlign="left" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="edt_factory_code" taborder="13" left="588" top="137" width="417" height="33" enable="true" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="edt_factory_name" taborder="14" left="588" top="180" width="417" height="33" text="ㄴㅏㄷㅗ ㅅㅏㄹㅏㅇㅎㅐ" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="Edit02" taborder="15" left="588" top="223" width="417" height="33" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="Edit04" taborder="16" left="588" top="266" width="417" height="33" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="Edit05" taborder="17" left="588" top="352" width="417" height="33" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="btnSave" taborder="18" text="저장" left="937" top="64" width="80" height="41" onclick="btnSave_onclick" font="12pt &quot;a두리둥실&quot;"/>
+        <Radio id="rdo_available_status" taborder="19" left="588" top="309" width="417" height="33" rowcount="1" innerdataset="ds_status" codecolumn="CODE" datacolumn="NAME" tooltiptype="default" onitemchanged="rdoSangTae_onitemchanged" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="Edit03" taborder="20" left="588" top="394" width="417" height="33" font="12pt &quot;a두리둥실&quot;"/>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item0" compid="edt_factory_code" propid="value" datasetid="ds_factory" columnid="FACTORY_CODE"/>
+      <BindItem id="item1" compid="edt_factory_name" propid="value" datasetid="ds_factory" columnid="FACTORY_NAME"/>
+      <BindItem id="item2" compid="Edit02" propid="value" datasetid="ds_factory" columnid="FACTORY_MANAGER_CODE"/>
+      <BindItem id="item3" compid="Edit04" propid="value" datasetid="ds_factory" columnid="AVAILABLE_CAPACITY"/>
+      <BindItem id="item4" compid="Edit05" propid="value" datasetid="ds_factory" columnid="PHONE"/>
+      <BindItem id="item5" compid="rdo_available_status" propid="value" datasetid="ds_factory" columnid="AVAILABLE_STATUS"/>
+      <BindItem id="item6" compid="Edit03" propid="value" datasetid="ds_factory" columnid="ADRESS"/>
+    </Bind>
+    <Objects>
+      <Dataset id="ds_factory">
+        <ColumnInfo>
+          <Column id="FACTORY_CODE" type="STRING" size="256"/>
+          <Column id="FACTORY_NAME" type="STRING" size="256"/>
+          <Column id="FACTORY_MANAGER_CODE" type="STRING" size="256"/>
+          <Column id="AVAILABLE_CAPACITY" type="STRING" size="256"/>
+          <Column id="AVAILABLE_STATUS" type="STRING" size="256"/>
+          <Column id="PHONE" type="STRING" size="256"/>
+          <Column id="ADRESS" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_factoryPL">
+        <ColumnInfo>
+          <Column id="FACTORY_CODE" type="STRING" size="256"/>
+          <Column id="FACTORY_PRODUCTION_LINE_NO" type="STRING" size="256"/>
+          <Column id="PRODUCTION_LINE_CODE" type="STRING" size="256"/>
+          <Column id="AVAILABLE_STATUS" type="STRING" size="256"/>
+          <Column id="PRODUCT_CODE" type="STRING" size="256"/>
+          <Column id="JOB_GOAL_COUNT" type="STRING" size="256"/>
+          <Column id="PRODUCTION_COUNT" type="STRING" size="256"/>
+          <Column id="JOB_END_DATE" type="STRING" size="256"/>
+          <Column id="WORK_INSTRUCTION_NO" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_item">
+        <ColumnInfo>
+          <Column id="ITEM_CODE" type="STRING" size="256"/>
+          <Column id="ITEM_NAME" type="STRING" size="256"/>
+          <Column id="ITEM_GROUP_CODE" type="STRING" size="256"/>
+          <Column id="ITEM_CLASSIFICATION" type="STRING" size="256"/>
+          <Column id="UNIT_OF_STOCK" type="STRING" size="256"/>
+          <Column id="LOSS_RATE" type="STRING" size="256"/>
+          <Column id="LEAD_TIME" type="STRING" size="256"/>
+          <Column id="STANDARD_UNIT_PRICE" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_status">
+        <ColumnInfo>
+          <Column id="CODE" type="STRING" size="256"/>
+          <Column id="NAME" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="CODE">START</Col>
+            <Col id="NAME">가동중</Col>
+          </Row>
+          <Row>
+            <Col id="CODE">STOP</Col>
+            <Col id="NAME">가동중단</Col>
+          </Row>
+          <Row>
+            <Col id="CODE">READY</Col>
+            <Col id="NAME">대기중</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[/**
+*  SYSTEM FORM NAME
+*
+*  @MenuPath    공장관리
+*  @FileName    logi_FactoryForm.xfdl 
+*  @Creator     박소연
+*  @CreateDate  2020.02.25
+*  @Version     1.0
+*  @Desction    공장관리 
+* 
+************** 소스 수정 이력 *************************************************
+*    date          Modifier            Description
+*******************************************************************************
+*  2020.02.25      박소연             최초 생성 
+*  2020.02.25      이해동            스크립트 수정
+*******************************************************************************
+*/
+
+//공통 라이브러리 호출
+
+/*********************************************************
+ * 1.1 FORM 변수 선언 영역
+ ********************************************************/
+ var test = "전역변수 선언 영역";
+ 
+ 
+/*********************************************************
+* 1.2 FORM EVENT 영역(onload)
+********************************************************/
+this.logi_FactoryForm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+   this.fnTran("FactoryList");
+};
+
+
+/*********************************************************
+* 2. TRANSACTION 서비스 호출 처리
+ ********************************************************/
+/**
+ * fnTran : 조회 transaction (필수) --> 공통 조회에서 호출할 디폴트값 세팅 필요
+ * @param  {String} sTranId 트랜젝션 아이디
+ * @return {N/A}    N/A
+ * @example this.fnTran("ID");
+ */
+this.fnTran = function(sTranId){
+   var sUrl    = "",
+      sInDs    = "",
+      sOutDs    = "",
+      sParam    = "",
+      sCallBack = "";
+   
+   sCallBack = "fnCallback";
+   
+   switch(sTranId) {
+   case "FactoryList":
+      this.transaction(
+           "findFactoryList" //이게 콜백 받는 아이디
+         , "dataURL::logi/logiBase/findFactoryList.do"
+         , ""
+         , "ds_factory=ds_factory"   
+         , "itemCode='all'"
+         , sCallBack
+         , false
+      );
+      break;
+   case "Save":
+      alert("저장여기");
+//       this.transaction(
+//            "save"
+//          , ""
+//          , ""
+//          , ""   
+//          , ""
+//          , sCallBack
+//       );
+      break;
+   case "Test" :
+      this.transaction(
+           "test"
+         , "URL::lll/lll.do"
+         , ""
+         , "dsTest"
+         , ""
+         , sCallBack
+      );
+   default:
+      break;
+   }
+};
+
+
+/********************************************************
+ * 3.CALLBACK 콜백 처리부분
+ ********************************************************/
+/**
+* fnCallback : transaction callback
+* @param  : svcId   - 서비스 아이디 (공통 콜백에서 넘어옴)
+* @param  : errCd   - 에러코드 (공통 콜백에서 넘어옴)
+* @param  : errMsg   - 에러메세지 (공통 콜백에서 넘어옴)
+* @return : N/A
+* @example :  
+*/
+this.fnCallback = function(sId, errCd, errMsg)
+{
+   switch(sId) {
+   case "findFactoryList":
+      this.fnTran("Test");
+      break;
+   case "save" :
+      break;
+   case "test" : 
+      break;
+   default:
+      break;
+   }
+};
+
+/*********************************************************
+ * 4 각 COMPONENT 별 EVENT 영역
+  ********************************************************/
+/**
+* component_onclick : ~ 버튼 클릭
+*/
+this.rdoSangTae_onitemchanged = function(obj:nexacro.Radio,e:nexacro.ItemChangeEventInfo)
+{
+   alert(this.rdoSangTae.value);
+};
+
+this.Button_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+   switch(obj.name) {
+   case "btnAdd":
+      this.ds_factory.addRow();
+      break;
+   case "btnDel":
+      this.ds_factory.deleteRow(this.ds_factory.rowposition);
+      break;
+   case "btnSave":
+      this.fnTran("Save");
+      break;
+   default:
+      break;
+   }
+};
+
+/*********************************************************
+* 5 사용자 FUNCTION 영역
+********************************************************/
+]]></Script>
+  </Form>
+</FDL>

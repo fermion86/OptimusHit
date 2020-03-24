@@ -1,0 +1,330 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="logi_WarehousingDialog" width="1024" height="460" titletext="New Form" onload="logi_WarehousingDialog_onload">
+    <Layouts>
+      <Layout height="460" mobileorientation="landscape" width="1024">
+        <Static id="giveOrder_stc" taborder="0" text="미입고 내역" onclick="Static00_onclick" left="14" top="9" right="14" height="45" border="3px solid darkgray" font="18pt/normal &quot;a두리둥실&quot;" textAlign="center"/>
+        <Grid id="grd_unstocked" taborder="1" binddataset="ds_unstocked" autofittype="col" left="14" top="57" width="996" height="346" onheaddblclick="grd_unstocked_onheaddblclick" oncellclick="grd_unstocked_oncellclick" onheadclick="grd_unstocked_onheadclick" font="18pt/normal &quot;a두리둥실&quot;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="26"/>
+                <Column size="78"/>
+                <Column size="160"/>
+                <Column size="123"/>
+                <Column size="170"/>
+                <Column size="65"/>
+                <Column size="69"/>
+                <Column size="78"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="25"/>
+              </Rows>
+              <Band id="head">
+                <Cell displaytype="checkbox" edittype="checkbox" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" displaytype="normal" text="발주일자" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" displaytype="normal" text="발주번호" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" displaytype="normal" text="거래처명" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" displaytype="normal" text="품목명" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="5" text="발주수량" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="6" text="담당자" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="7" text="입고예정일" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="checkbox" edittype="checkbox" text="bind:CHK" textAlign="center" verticalAlign="middle" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" displaytype="normal" text="bind:ORDER_DATE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" displaytype="normal" text="bind:ORDER_NO" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" displaytype="normal" text="bind:CUSTOMER_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" displaytype="normal" text="bind:ITEM_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="5" text="bind:ORDER_AMOUNT" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="6" text="bind:EMP_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="7" text="bind:DUE_DATE_OF_ORDER" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btn_warehousing" taborder="2" text="입고등록" onclick="btn_warehousing_onclick" left="14" top="411" width="117" height="39" font="18pt/normal &quot;a두리둥실&quot;"/>
+        <Button id="btn_refresh" taborder="3" text="새로고침" left="893" top="411" width="117" height="39" onclick="btn_refresh_onclick" font="18pt/normal &quot;a두리둥실&quot;"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_unstocked">
+        <ColumnInfo>
+          <Column id="ORDER_DATE" type="STRING" size="256"/>
+          <Column id="ORDER_NO" type="STRING" size="256"/>
+          <Column id="CUSTOMER_CODE" type="STRING" size="256"/>
+          <Column id="CUSTOMER_NAME" type="STRING" size="256"/>
+          <Column id="ITEM_CODE" type="STRING" size="256"/>
+          <Column id="ITEM_NAME" type="STRING" size="256"/>
+          <Column id="UNIT_OF_ORDER" type="STRING" size="256"/>
+          <Column id="ORDER_AMOUNT" type="STRING" size="256"/>
+          <Column id="EMP_NAME" type="STRING" size="256"/>
+          <Column id="DUE_DATE_OF_ORDER" type="STRING" size="256"/>
+          <Column id="CHK" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_stock">
+        <ColumnInfo>
+          <Column id="WAREHOUSE_CODE" type="STRING" size="256"/>
+          <Column id="BUSINESS_PLACE_CODE" type="STRING" size="256"/>
+          <Column id="ITEM_CODE" type="STRING" size="256"/>
+          <Column id="DELIVERY_NO" type="STRING" size="256"/>
+          <Column id="PRODUCTION_RESULT_NO" type="STRING" size="256"/>
+          <Column id="INPUT_ITEM_NO" type="STRING" size="256"/>
+          <Column id="ITEM_NAME" type="STRING" size="256"/>
+          <Column id="UNIT_OF_STOCK" type="STRING" size="256"/>
+          <Column id="SAFETY_ALLOWANCE_AMOUNT" type="STRING" size="256"/>
+          <Column id="STOCK_AMOUNT" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_warehousing">
+        <ColumnInfo>
+          <Column id="ITEM_CODE" type="STRING" size="256"/>
+          <Column id="ORDER_NO" type="STRING" size="256"/>
+          <Column id="ITEM_NAME" type="STRING" size="256"/>
+          <Column id="ORDER_AMOUNT" type="STRING" size="256"/>
+          <Column id="WAREHOUSING_AMOUNT" type="STRING" size="256"/>
+          <Column id="UNIT_WAREHOUSING" type="STRING" size="256"/>
+          <Column id="CUSTOMER" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+          <Column id="WAREHOUSING_DATE" type="STRING" size="256"/>
+          <Column id="WAREHOUSING_NO" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_chkWarehousing">
+        <ColumnInfo>
+          <Column id="ITEM_CODE" type="STRING" size="256"/>
+          <Column id="ORDER_NO" type="STRING" size="256"/>
+          <Column id="ITEM_NAME" type="STRING" size="256"/>
+          <Column id="ORDER_AMOUNT" type="STRING" size="256"/>
+          <Column id="WAREHOUSING_AMOUNT" type="STRING" size="256"/>
+          <Column id="UNIT_WAREHOUSING" type="STRING" size="256"/>
+          <Column id="CUSTOMER" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+          <Column id="WAREHOUSING_DATE" type="STRING" size="256"/>
+          <Column id="WAREHOUSING_NO" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[/********************************************************************************                                                                            
+ 미입고 내역
+ @Path			  물류
+ @Description	  미입고 내역조회 및 입고등록
+ @Author	  	  박용기	feat.최성원
+ @Create           2019. 12. 09
+ ********************************************************************************/
+
+
+
+
+this.logi_WarehousingDialog_onload = function (obj:Form, e:nexacro.LoadEventInfo)
+{
+	// 미입고 발주목록
+	this.transaction(
+		"findUnstockedList",
+		"dataURL::logi/purchase/findUnstockedList.do",
+		"",
+		"ds_unstocked=ds_unstocked",
+		"",
+		"callback",
+		false
+	);
+};
+
+
+var today = nexacro.getApplication().today();
+
+var itemCode = "";
+var orderNo = "";
+var itemName = "";
+var orderAmount = "";
+var unitWarehousing = "";
+var custormer = "";
+
+
+// 입고 등록
+this.squenceNo = "";
+this.btn_warehousing_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	var rowCnt = this.ds_unstocked.getRowCount();
+	for (var i = 0; i < rowCnt; i++) 
+	{
+		if (this.ds_unstocked.getColumn(i, "CHK") == 1) 
+		{
+			var wareAddRow = this.ds_chkWarehousing.addRow();
+			var stockAddRow = this.ds_stock.addRow();
+
+			this.transaction(
+				"findSequenceNo",
+				"dataURL::sys/findSequenceNo.do", // 체크가 된 갯수만큼 시퀀스를 따옴
+				"",
+				"",
+				"findSeq='WH_SEQ'",
+				"callback",
+				false
+			);
+
+			var serialCode = this.squenceNo;
+			var newWarehousingNo = "WHN" + serialCode;
+			itemCode = this.ds_unstocked.getColumn(i, "ITEM_CODE");
+			orderNo = this.ds_unstocked.getColumn(i, "ORDER_NO");
+			itemName = this.ds_unstocked.getColumn(i, "ITEM_NAME"); //트랜잭션으로 받아온 데이터의 값을
+			orderAmount = this.ds_unstocked.getColumn(i, "ORDER_AMOUNT"); //구해서 변수에 담아둠
+			unitWarehousing = this.ds_unstocked.getColumn(i, "UNIT_OF_ORDER");
+			custormer = this.ds_unstocked.getColumn(i, "CUSTOMER_CODE");
+			unitOfOrder = this.ds_unstocked.getColumn(i, "UNIT_OF_ORDER");
+
+
+			// ------------ 밑에서부터 얻어온 값을 트랜잭션 태워보낼 데이터셋에 값 세팅------------
+
+			this.ds_chkWarehousing.setColumn(wareAddRow, "ITEM_CODE", itemCode); //변수에 담아둔 데이터 값을
+			this.ds_chkWarehousing.setColumn(wareAddRow, "ORDER_NO", orderNo); //트랜잭션 태울 새 데이터셋에
+			this.ds_chkWarehousing.setColumn(wareAddRow, "ITEM_NAME", itemName); //값을 넣어둠
+			this.ds_chkWarehousing.setColumn(wareAddRow, "ORDER_AMOUNT", orderAmount);
+			this.ds_chkWarehousing.setColumn(wareAddRow, "UNIT_WAREHOUSING", unitOfOrder);
+			this.ds_chkWarehousing.setColumn(wareAddRow, "CUSTOMER", custormer);
+			this.ds_chkWarehousing.setColumn(wareAddRow, "DESCRIPTION", "Y");
+			this.ds_chkWarehousing.setColumn(wareAddRow, "WAREHOUSING_DATE", today);
+			this.ds_chkWarehousing.setColumn(wareAddRow, "WAREHOUSING_NO", newWarehousingNo);
+			this.ds_chkWarehousing.setColumn(wareAddRow, "WAREHOUSING_AMOUNT", orderAmount);
+
+			this.ds_stock.setColumn(stockAddRow, "STOCK_AMOUNT", parseInt(orderAmount));
+			this.ds_stock.setColumn(stockAddRow, "BUSINESS_PLACE_CODE", nexacro.getApplication().g_businessCode);
+			this.ds_stock.setColumn(stockAddRow, "ITEM_CODE", itemCode);
+		}
+	}
+	// 체크 된 행의 갯수만큼  새로 생성된 row에
+	// for문이 실행되면서 값을 얻고 새 데이터셋에 값을 할당함
+	// 사용되는 테이블이 2개 (stock, warehousing)라서
+	// 2개의 데이터셋에 값 세팅해줌
+
+
+	if (confirm("입고를 등록하시겠습니까?")) 
+	{
+		this.transaction(
+			"registWarehousing",
+			"dataURL::logi/purchase/registWarehousing.do",
+			"ds_stock=ds_stock:u ds_warehousing=ds_chkWarehousing:u",
+			"",
+			"", // 확인을 누르면 트랜잭션이 실행되면서
+			"callback", // stock 테이블에는 기존 재고수량 + 입고하려는 재고수량이 되고
+			false// warehousing 테이블에는 넣어둔 값들이 insert가 됨
+		);
+	}
+	// stock(재고 테이블) warehousing(입고내역 테이블)
+	this.reload(); //모두 실행되면 새로고침 되어 미입고 내역을 다시 조회해줌
+};
+
+
+
+
+// 콜백
+this.callback = function (trid, ErrorCode, ErrorMsg)
+{
+	if (trid == "registWarehousing") 
+	{
+		if (ErrorCode != 0) 
+		{
+			alert(ErrorMsg);
+		}
+		else 
+		{
+			alert("입고등록 완료");
+		}
+	}
+};
+
+
+// 새로고침
+this.btn_refresh_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	if (confirm("새로고침 하시겠습니까?")) 
+	{
+		this.reload();
+	}
+};
+
+
+
+// 헤드부분 체크클릭시 전체선택, 전체해제
+this.grd_unstocked_onheadclick = function (obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	if (e.cell == 0) 
+	{
+		trace(e.cell);
+
+		if (obj.getCellProperty("head", 0, 'text') == 1) 
+		{
+			obj.setCellProperty("head", 0, 'text', 0);
+
+			for (var i = 0; i < this.ds_unstocked.rowcount; i++) 
+			{
+				this.ds_unstocked.setColumn(i, "CHK", 0);
+			}
+		}
+		else 
+		{
+			obj.setCellProperty("head", 0, 'text', 1);
+
+			for (var i = 0; i < this.ds_unstocked.rowcount; i++) 
+			{
+				this.ds_unstocked.setColumn(i, "CHK", 1);
+			}
+		}
+	}
+};
+
+
+// 헤드부분 땁클하면 오름차순, 내림차순 정렬
+this.grd_unstocked_onheaddblclick = function (obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	var objDs = this.objects[obj.binddataset];
+
+	for (var i = 0; i < obj.getCellCount("head"); i++) 
+	{
+		var sHeadText = obj.getCellText(-1, i);
+		var nLen = sHeadText.length - 1;
+
+		// In case of the clicked head cell
+		if (i == e.cell) 
+		{
+			var sColId = (obj.getCellProperty("body", e.col, "text")).toString().split(":");
+
+			// If the previous sort in ascending order, it will be sorted in descending order
+			if (sHeadText.substr(nLen) == "▲") 
+			{
+				obj.setCellProperty("head", i, "text", sHeadText.substr(0, nLen) + "▼");
+				objDs.set_keystring("S:-" + sColId[1]);
+			}
+			// If the previous sort in descending order, it will be sorted in ascending order
+			else if (sHeadText.substr(nLen) == "▼") 
+			{
+				obj.setCellProperty("head", i, "text", sHeadText.substr(0, nLen) + "▲");
+				objDs.set_keystring("S:+" + sColId[1]);
+			}
+			// If first sort, it will sort in ascending order
+			else 
+			{
+				obj.setCellProperty("head", i, "text", sHeadText + "▲");
+				objDs.set_keystring("S:+" + sColId[1]);
+			}
+		}
+		// In case of it's not the clicked head cell
+		else 
+		{
+			// Remove the arrow indication is displayed in the head cell which are arranged previously
+			if (sHeadText.substr(nLen) == "▲" || sHeadText.substr(nLen) == "▼") 
+			{
+				obj.setCellProperty("head", i, "text", sHeadText.substr(0, nLen));
+			}
+		}
+	}
+}
+	
+	
+;
+]]></Script>
+  </Form>
+</FDL>

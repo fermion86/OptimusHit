@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="loginForm" width="500" height="450" titletext="New Form" onload="loginForm_onload" onclick="loginForm_onclick" onbeforeclose="loginForm_onbeforeclose">
+    <Layouts>
+      <Layout height="450" mobileorientation="landscape" width="500">
+        <Edit id="edt_businessPlaceName" taborder="0" left="37.60%" top="155" right="17.20%" height="44" readonly="true" textAlign="center"/>
+        <Edit id="edt_deptName" taborder="1" left="37.60%" top="203" right="17.20%" height="44" readonly="true" textAlign="center"/>
+        <Edit id="edt_empCode" taborder="2" left="37.60%" top="251" right="17.20%" height="44" textAlign="center"/>
+        <Edit id="edt_password" taborder="3" left="37.60%" top="299" right="17.20%" height="44" password="true" textAlign="center"/>
+        <Static id="Static00" taborder="4" text="사업장명" left="14.00%" top="155" right="64.20%" height="44" onclick="Static00_onclick"/>
+        <Static id="Static01" taborder="5" text="부서명" left="14.00%" top="203" right="64.20%" height="44"/>
+        <Static id="Static02" taborder="6" text="사원번호" left="14.00%" top="251" right="64.20%" height="44"/>
+        <Static id="Static03" taborder="7" text="비밀번호" left="14.00%" top="299" right="64.20%" height="44"/>
+        <Static id="Static04" taborder="8" text="61th ERP" left="26.20%" top="25" right="26.20%" height="95" onclick="Static04_onclick" textAlign="center" verticalAlign="middle" font="24pt Dotum"/>
+        <Button id="btn_login" taborder="9" text="로그인" left="16.60%" top="359" right="16.60%" height="44" onclick="btn_login_onclick"/>
+        <Button id="btn_bisinessPlaceCodeDialog" taborder="10" text="검색" left="85.40%" top="156" right="5.40%" height="41" onclick="btn_bisinessPlaceCodeDialog_onclick"/>
+        <Button id="btn_deptCodeDialog" taborder="11" text="검색" left="85.40%" top="204" right="5.40%" height="41" onclick="btn_deptCodeDialog_onclick"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_businessPlace">
+        <ColumnInfo>
+          <Column id="BUSINESS_PLACE_CODE" type="STRING" size="256"/>
+          <Column id="BUSINESS_PLACE_NAME" type="STRING" size="256"/>
+          <Column id="BUSINESS_PLACE_TEL" type="STRING" size="256"/>
+          <Column id="COMPANY_CODE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_employee">
+        <ColumnInfo>
+          <Column id="EMP_CODE" type="STRING" size="256"/>
+          <Column id="EMP_NAME" type="STRING" size="256"/>
+          <Column id="PASSWORD" type="STRING" size="256"/>
+          <Column id="POSITION_CODE" type="STRING" size="256"/>
+          <Column id="AUTHORITY_CODE" type="STRING" size="256"/>
+          <Column id="DEPT_CODE" type="STRING" size="256"/>
+          <Column id="BUSINESS_CODE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">businessPlace</Col>
+            <Col id="URL">dataURL::sys/findBusinessPlaceList.do</Col>
+            <Col id="outData">gds_businessPlace=gds_businessPlace</Col>
+            <Col id="callbackFunc">callback</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">checkLogin</Col>
+            <Col id="URL">dataURL::sys/checkLogin.do</Col>
+            <Col id="outData">ds_employee=gds_employee</Col>
+            <Col id="callbackFunc">callback</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[/********************************************************************************                                                                            
+ 로그인 화면
+ @Path		공통
+ @Description	로그인을 하기 위한 폼
+ ********************************************************************************/
+
+include "scripts::commonOpen.xjs"
+include "scripts::commonTransaction.xjs"
+
+
+var businessPlaceCode;
+var deptCode;
+
+this.loginForm_onload = function (obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.gfnService("businessPlace", false);
+	this.edt_businessPlaceName.set_value("사업장선택");
+	this.edt_deptName.set_value("부서선택");
+};
+
+this.btn_bisinessPlaceCodeDialog_onclick = function (obj:Button, e:ClickEventInfo)
+{
+ 	this.gfnOpen("loginForm", "base::businessDialog.xfdl", {
+ 		mode : 'loginForm'
+ 	});	
+};
+
+this.btn_deptCodeDialog_onclick = function (obj:Button, e:ClickEventInfo)
+{
+	if (this.edt_businessPlaceName.value == "사업장선택") 
+	{
+		alert("사업장코드를 검색해주세요");
+	}
+	else 
+	{
+		this.gfnOpen("loginForm", "base::deptDialog.xfdl", {
+			mode : 'loginForm'
+		});
+	}
+};
+
+
+
+this.btn_login_onclick = function (obj:Button, e:ClickEventInfo)
+{
+	if (this.edt_empCode.text == "") 
+	{
+		alert("사원코드를 입력하세요");
+	}
+	else if (this.edt_password.text == "") 
+	{
+		alert("비밀번호를 입력하세요");
+	}
+	else if (this.edt_deptName.text == "부서선택") 
+	{
+		alert("부서를 선택해주세요");
+	}
+	else 
+	{
+		var argument = "businessPlaceCode='" + this.businessPlaceCode + "' deptCode='" + this.deptCode + "' empCode='" + this.edt_empCode.value + "' password='" + this.edt_password.value + "'";
+		this.dsService.setColumn(1, 4, argument);
+		this.gfnService("checkLogin", false);
+	}
+};
+
+this.callback = function (strSvcID, nErrorCode, strErrorMsg)
+{
+
+	if (strSvcID == "checkLogin") 
+	{
+		if (nErrorCode < 0 || nErrorCode == null || nErrorCode == "undefined" ) 
+		{
+			alert("로그인 실패" + strErrorMsg);
+		}
+		else 
+		{
+			alert("로그인성공");
+			nexacro.getApplication().g_authorityCode = this.ds_employee.getColumn(0, "AUTHORITY_CODE");
+			nexacro.getApplication().g_businessCode = this.ds_employee.getColumn(0, "BUSINESS_PLACE_CODE");
+			nexacro.getApplication().g_deptCode = this.ds_employee.getColumn(0, "DEPT_CODE");
+			nexacro.getApplication().g_positionCode = this.ds_employee.getColumn(0, "POSITION_CODE");
+			nexacro.getApplication().g_empCode = this.ds_employee.getColumn(0, "EMP_CODE");
+			nexacro.getApplication().g_empName = this.ds_employee.getColumn(0, "EMP_NAME");
+
+			var objFrameSet = nexacro.getApplication().mainframe.all["VFrameSet0"].all["ChildFrame0"].form;
+
+			objFrameSet.edt_authorityCode.set_value(nexacro.getApplication().g_authorityCode);
+			objFrameSet.edt_businessName.set_value(this.edt_businessPlaceName.value);
+			objFrameSet.edt_deptName.set_value(this.edt_deptName.value);
+			objFrameSet.edt_empCode.set_value(nexacro.getApplication().g_empCode);
+			objFrameSet.edt_empName.set_value(nexacro.getApplication().g_empName);
+
+			nexacro.getApplication().mainframe.set_visible(true);
+			this.close();
+		}
+	}
+};
+
+
+this.loginForm_onbeforeclose = function (obj:Form, e:nexacro.CloseEventInfo)
+{
+	// 어플리케이션에 정의된 트렌젝션 실행
+	nexacro.getApplication().basicTransaction();
+}
+;
+]]></Script>
+  </Form>
+</FDL>

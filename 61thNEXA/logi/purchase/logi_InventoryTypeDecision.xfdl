@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="logi_InventoryTypeDecision" width="300" height="300" titletext="New Form" onload="logi_InventoryTypeDecision_onload">
+    <Layouts>
+      <Layout height="300" mobileorientation="landscape" width="300">
+        <Static id="sys_bisinessPlace_stc" taborder="0" text="재고 단가 설정" onclick="Static00_onclick" left="14" top="9" right="14" height="45" border="3px solid darkgray" font="12pt &quot;a두리둥실&quot;" textAlign="center"/>
+        <GroupBox id="GroupBox00" taborder="1" left="3.67%" top="67" right="3.00%" height="182" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="dicisionBtn" taborder="2" text="결정" left="55.00%" top="257" right="25.67%" height="32" onclick="dicisionBtn_onclick" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="Button01" taborder="3" text="닫기" left="76.67%" top="257" right="3.67%" height="32" onclick="Button01_onclick" font="12pt &quot;a두리둥실&quot;"/>
+        <Radio id="typeDecisionRadio" taborder="4" left="16.67%" top="93" right="54.67%" height="139" innerdataset="@ds_InventoryTypeDecision" codecolumn="DETAIL_CODE" datacolumn="DETAIL_CODE_NAME" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="Static00" taborder="5" text="금년 기본값 적용" left="34.00%" top="91" right="22.00%" height="32" border="0px solid darkgray" textAlign="left" verticalAlign="middle" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="Static01" taborder="6" text="기본값에 5% 할인 적용" left="34.00%" top="125" right="22.00%" height="32" border="0px solid darkgray" textAlign="left" verticalAlign="middle" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="Static02" taborder="7" text="기본값에 10% 추가 적용" left="34.00%" top="160" right="16.67%" height="32" border="0px solid darkgray" textAlign="left" verticalAlign="middle" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="discountEdit" taborder="8" left="34.00%" top="202" right="48.67%" height="25" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="Static03" taborder="9" text="%" left="54.00%" top="202" right="36.00%" height="25" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="Static04" taborder="10" text="할인 적용" left="58.67%" top="198" right="6.00%" height="32" border="0px solid darkgray" textAlign="left" verticalAlign="middle" font="12pt &quot;a두리둥실&quot;"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_InventoryTypeDecision">
+        <ColumnInfo>
+          <Column id="DETAIL_CODE" type="STRING" size="256"/>
+          <Column id="DETAIL_CODE_NAME" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[
+this.logi_InventoryTypeDecision_onload = function (obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.transaction("findCodeDetailList", "dataURL::sys/findCodeDetailList.do", "", "gds_codeDetail=gds_codeDetail", "", "callback", false);
+
+	nexacro.getApplication().gds_codeDetail.filter("DIVISION_CODE_NO=='LOGI03'");
+	this.ds_InventoryTypeDecision.copyData(nexacro.getApplication().gds_codeDetail, true);
+	this.opener.ds_InventoryTypeDecision.copyData(nexacro.getApplication().gds_codeDetail, true);
+};
+
+this.dicisionBtn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	this.opener.v_selDecision = this.typeDecisionRadio.value;
+	if (this.typeDecisionRadio.value == "P40") 
+	{
+		this.opener.v_discount = this.discountEdit.value + "% 할인 적용";
+	}
+	;
+	this.close();
+};
+
+
+this.Button01_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	this.close();
+};
+]]></Script>
+  </Form>
+</FDL>

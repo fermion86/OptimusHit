@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="sys_codeManagerForm" width="1060" height="690" titletext="New Form" onload="sys_codeManagerForm_onload">
+    <Layouts>
+      <Layout height="690" mobileorientation="landscape" width="1060">
+        <Static id="codeDetail_stc" taborder="0" left="50.94%" top="91" right="6.79%" height="593" text="상세코드" onclick="detailCode_stc_onclick" color="black" textAlign="center" verticalAlign="top" font="16pt/normal &quot;a두리둥실&quot;"/>
+        <Static id="code_stc" taborder="1" left="8.30%" top="92" right="49.62%" height="592" onclick="Static00_onclick" text="기초코드" color="black" textAlign="center" verticalAlign="top" font="16pt/normal &quot;a두리둥실&quot;"/>
+        <Grid id="code_grid" taborder="2" left="10.47%" top="128" right="51.42%" height="531" binddataset="ds_code" autosizingtype="col" autofittype="col" oncellclick="code_grid_oncellclick" font="12pt &quot;a두리둥실&quot;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="40"/>
+                <Column size="40"/>
+                <Column size="40"/>
+                <Column size="40"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="코드" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="코드명" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" text="코드분류" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" text="수정여부" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="bind:CODE_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" text="bind:CODE_GROUP" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" text="bind:EDIT_STATUS" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="codeDetail_grid" taborder="3" left="53.11%" top="128" right="8.96%" height="531" binddataset="ds_codeDetail" autofittype="col" font="12pt &quot;a두리둥실&quot;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="40"/>
+                <Column size="40"/>
+                <Column size="40"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="상위코드" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="코드" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" text="코드명" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:DIVISION_CODE_NO" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="bind:DETAIL_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" text="bind:DETAIL_CODE_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static01" taborder="4" text="코드 관리" onclick="Static00_onclick" left="64" top="9" right="59" height="45" border="3px solid darkgray" font="18pt/normal &quot;a두리둥실&quot;" textAlign="center"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_code">
+        <ColumnInfo>
+          <Column id="CODE" type="STRING" size="256"/>
+          <Column id="CODE_NAME" type="STRING" size="256"/>
+          <Column id="EDIT_STATUS" type="STRING" size="256"/>
+          <Column id="CODE_GROUP" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_codeDetail">
+        <ColumnInfo>
+          <Column id="DIVISION_CODE_NO" type="STRING" size="256"/>
+          <Column id="DETAIL_CODE" type="STRING" size="256"/>
+          <Column id="DETAIL_CODE_NAME" type="STRING" size="256"/>
+          <Column id="CODE_USE_CHECK" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[/********************************************************************************                                                                            
+ 메인메뉴 화면
+ @Path		공통
+ @Description 코드or상세코드
+ @Author	  	강순용
+ @Create           2019. 02. 12.
+ ********************************************************************************/
+
+this.sys_codeManagerForm_onload = function (obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.transaction("findCodeList",
+		"dataURL::sys/findCodeList.do",
+		"",
+		"ds_code=ds_code",
+		"",
+		"callback", false
+	);
+
+	this.transaction("findCodeDetailList",
+		"dataURL::sys/findCodeDetailList.do",
+		"",
+		"ds_codeDetail=gds_codeDetail",
+		"",
+		"callback", false
+	);
+	this.ds_codeDetail.filter("DIVISION_CODE_NO == '0'");
+};
+
+
+this.code_grid_oncellclick = function (obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	var dtcode = this.ds_code.getColumn(e.row, "CODE");
+	alert(dtcode);
+	this.ds_codeDetail.filter("DIVISION_CODE_NO =='" + dtcode + "'");
+};
+	]]></Script>
+  </Form>
+</FDL>

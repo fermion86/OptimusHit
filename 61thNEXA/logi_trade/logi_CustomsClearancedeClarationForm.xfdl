@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="logi_CustomsClearancedeClarationForm" width="1024" height="780" titletext="New Form">
+    <Layouts>
+      <Layout height="780" mobileorientation="landscape" width="1024">
+        <GroupBox id="GroupBox00" text="수출입 통관신고" taborder="0" left="0.88%" top="3" right="-14.94%" height="773" background="transparent" border="2px solid rgba(51,51,51,1)" color="black" font="18pt/normal &quot;a두리둥실&quot;"/>
+        <Calendar id="fromDate_cal" taborder="1" dateformat="yyyy-MM-dd" oneditclick="Calendar00_oneditclick" left="4.59%" top="60" right="81.64%" height="44" value="null" expr="expr:application.today()" onchanged="Calendar_onchange" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="st_bar" taborder="2" text="~" left="18.85%" top="62" right="76.86%" height="41" border="0px solid darkgray" color="black" font="12pt &quot;a두리둥실&quot;"/>
+        <Calendar id="toDate_cal" taborder="3" dateformat="yyyy-MM-dd" oneditclick="Calendar00_oneditclick" left="23.54%" top="60" right="62.60%" height="44" expr="expr:application.today()" onchanged="Calendar_onchange" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="btn_checkContract" taborder="4" onclick="btn_checkEstimate_onclick" left="38.67%" top="59" right="50.10%" height="45" text="신고 내역조회" background="rgba(255,255,255,1)" color="black" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="btn_estimateInfo" taborder="5" text="통관 신고" onclick="btn_addEstimate_onclick" left="69.14%" top="59" right="19.63%" height="45" background="rgba(255,255,255,1)" color="black" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="btn_deleteContract" taborder="6" text="삭제" onclick="btn_delEstimate_onclick" left="81.84%" top="59" right="6.25%" height="45" background="rgba(255,255,255,1)" color="black" font="12pt &quot;a두리둥실&quot;"/>
+        <Grid id="grd_contract" taborder="7" left="4.59%" top="127" right="-6.84%" height="523" oncellclick="grd_contract_onrbuttonup" background="transparent" font="12pt &quot;a두리둥실&quot;">
+          <Formats>
+            <Format id="default"/>
+          </Formats>
+        </Grid>
+        <Button id="btn_batchContract" taborder="8" text="저장" onclick="btn_batchEstimate_onclick" left="95.21%" top="59" right="-7.13%" height="45" background="rgba(255,255,255,1)" color="black" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="btn_printContract" taborder="9" text="통관신고서 출력" left="50.88%" top="60" right="37.70%" height="43" onclick="btn_printContract_onclick" background="rgba(255,255,255,1)" color="black" font="12pt &quot;a두리둥실&quot;"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsService">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findEstimateDialog</Col>
+            <Col id="URL">dataURL::logi/business/findEstimateDialog.do</Col>
+            <Col id="outData">ds_estimate=ds_estimate</Col>
+            <Col id="callbackFunc">gfnCallbackFunc</Col>
+            <Col id="argument">fromDate='regContract' toDate=application.today()</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findContractList</Col>
+            <Col id="URL">dataURL::logi/business/findContractList.do</Col>
+            <Col id="outData">ds_contract=ds_contract</Col>
+            <Col id="callbackFunc">gfnCallbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findSequenceNo</Col>
+            <Col id="URL">dataURL::sys/findSequenceNo.do</Col>
+            <Col id="callbackFunc">gfnCallbackFunc</Col>
+            <Col id="argument">findSeq=SERIAL_SEQ</Col>
+            <Col id="outData"/>
+          </Row>
+          <Row>
+            <Col id="serviceID">registerContract</Col>
+            <Col id="URL">dataURL::logi/business/registerContract.do</Col>
+            <Col id="inData">ds_contract=ds_contract:u ds_contractDetail=ds_contractDetail:u</Col>
+            <Col id="outData">ds_contract=ds_contract ds_contractDetail=ds_contractDetail</Col>
+            <Col id="callbackFunc">gfnCallbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findEstimateDetailList</Col>
+            <Col id="URL">dataURL::logi/business/findEstimateDetailList.do</Col>
+            <Col id="outData">ds_estimateDetail=ds_estimateDetail</Col>
+            <Col id="callbackFunc">gfnCallbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findContractDetailList</Col>
+            <Col id="URL">dataURL::logi/business/findContractDetailList.do</Col>
+            <Col id="outData">ds_contractDetail=ds_contractDetail</Col>
+            <Col id="callbackFunc">gfnCallbackFunc</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[// 무업 업무는 코드작성전]]></Script>
+  </Form>
+</FDL>

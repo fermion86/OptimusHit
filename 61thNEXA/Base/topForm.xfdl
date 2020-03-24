@@ -1,0 +1,688 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="TopForm" width="1440" height="90" titletext="New Form">
+    <Layouts>
+      <Layout height="90" mobileorientation="landscape" width="1440">
+        <Static id="Static00" taborder="0" text="권한" left="0.31%" top="46" right="95.08%" height="33"/>
+        <Static id="Static01" taborder="1" text="사업장" left="13.36%" top="46" right="82.03%" height="33"/>
+        <Static id="Static02" taborder="2" text="부서" left="30.23%" top="46" right="65.70%" height="33"/>
+        <Static id="Static03" taborder="3" text="사원번호" left="43.91%" top="46" right="49.69%" height="33"/>
+        <Static id="Static04" taborder="4" text="사원명" left="59.69%" top="46" right="35.08%" height="33"/>
+        <Edit id="edt_authorityCode" taborder="5" left="4.92%" top="46" right="88.36%" height="33" enable="true" readonly="true" textAlign="center"/>
+        <Edit id="edt_businessName" taborder="6" left="17.97%" top="46" right="71.88%" height="33" enable="true" readonly="true" textAlign="center"/>
+        <Edit id="edt_deptName" taborder="7" left="34.30%" top="46" right="58.44%" height="33" enable="true" readonly="true" textAlign="center"/>
+        <Edit id="edt_empCode" taborder="8" left="50.31%" top="46" right="42.34%" height="33" enable="true" readonly="true" textAlign="center"/>
+        <Edit id="edt_empName" taborder="9" left="64.92%" top="46" right="27.73%" height="33" enable="true" readonly="true" textAlign="center"/>
+        <Menu id="Menu00" taborder="10" left="0.00%" top="0" right="0.69%" height="37" onmenuclick="Menu00_onmenuclick" innerdataset="@ds_menu" captioncolumn="MENU_NAME" idcolumn="MENU_CODE" levelcolumn="LEVEL" userdatacolumn="MENU_URL"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_menu">
+        <ColumnInfo>
+          <Column id="MENU_CODE" type="STRING" size="256"/>
+          <Column id="SUPER_MENU_CODE" type="STRING" size="256"/>
+          <Column id="MENU_NAME" type="STRING" size="256"/>
+          <Column id="MENU_URL" type="STRING" size="256"/>
+          <Column id="USING_STATUS" type="STRING" size="256"/>
+          <Column id="LEVEL" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="MENU_CODE">GENR01</Col>
+            <Col id="SUPER_MENU_CODE"/>
+            <Col id="MENU_NAME">MyMenu</Col>
+            <Col id="MENU_URL"/>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">GENR0101</Col>
+            <Col id="SUPER_MENU_CODE">GENR01</Col>
+            <Col id="MENU_NAME">일근태신청</Col>
+            <Col id="MENU_URL">HrAttendance::dailyAttendanceApplicationForm.xfdl</Col>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">GENR0102</Col>
+            <Col id="SUPER_MENU_CODE">GENR01</Col>
+            <Col id="MENU_NAME">근태외신청</Col>
+            <Col id="MENU_URL">HrAttendance::dailyAttdRestApplicationForm.xfdl</Col>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">GENR0103</Col>
+            <Col id="SUPER_MENU_CODE">GENR01</Col>
+            <Col id="MENU_NAME">휴가/연차신청</Col>
+            <Col id="MENU_URL">HrAttendance::annualApplicationForm.xfdl</Col>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">GENR0104</Col>
+            <Col id="SUPER_MENU_CODE">GENR01</Col>
+            <Col id="MENU_NAME">초과근무신청</Col>
+            <Col id="MENU_URL">HrAttendance::overNightApplicationForm.xfdl</Col>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">SYS01</Col>
+            <Col id="SUPER_MENU_CODE"/>
+            <Col id="MENU_NAME">시스템관리</Col>
+            <Col id="MENU_URL"/>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">SYS0101</Col>
+            <Col id="SUPER_MENU_CODE">SYS01</Col>
+            <Col id="MENU_NAME">회사등록정보</Col>
+            <Col id="MENU_URL"/>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">SYS010101</Col>
+            <Col id="SUPER_MENU_CODE">SYS0101</Col>
+            <Col id="MENU_NAME">회사관리</Col>
+            <Col id="MENU_URL">Base::companyInfoForm.xfdl</Col>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">SYS010102</Col>
+            <Col id="SUPER_MENU_CODE">SYS0101</Col>
+            <Col id="MENU_NAME">사원/부서관리</Col>
+            <Col id="MENU_URL">Base::empAndDeptManagementForm.xfdl</Col>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">SYS0102</Col>
+            <Col id="SUPER_MENU_CODE">SYS01</Col>
+            <Col id="MENU_NAME">관리자항목</Col>
+            <Col id="MENU_URL"/>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">SYS010201</Col>
+            <Col id="SUPER_MENU_CODE">SYS0102</Col>
+            <Col id="MENU_NAME">기초코드관리</Col>
+            <Col id="MENU_URL">Base::codeManagementForm.xfdl</Col>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">SYS010202</Col>
+            <Col id="SUPER_MENU_CODE">SYS0102</Col>
+            <Col id="MENU_NAME">사용자권한관리</Col>
+            <Col id="MENU_URL">Base::authorityManagementForm.xfdl</Col>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">INSA01</Col>
+            <Col id="SUPER_MENU_CODE"/>
+            <Col id="MENU_NAME">인사 / 급여관리</Col>
+            <Col id="MENU_URL"/>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">INSA0101</Col>
+            <Col id="SUPER_MENU_CODE">INSA01</Col>
+            <Col id="MENU_NAME">기초환경설정</Col>
+            <Col id="MENU_URL"/>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">INSA010101</Col>
+            <Col id="SUPER_MENU_CODE">INSA0101</Col>
+            <Col id="MENU_NAME">호봉테이블 관리</Col>
+            <Col id="MENU_URL">HrCircumstance::hobongManagementForm.xfdl</Col>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">INSA010102</Col>
+            <Col id="SUPER_MENU_CODE">INSA0101</Col>
+            <Col id="MENU_NAME">급/상여지급일자등록</Col>
+            <Col id="MENU_URL">HrCircumstance::payBonusDateForm.xfdl</Col>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">INSA010103</Col>
+            <Col id="SUPER_MENU_CODE">INSA0101</Col>
+            <Col id="MENU_NAME">지급공제항목등록</Col>
+            <Col id="MENU_URL">HrCircumstance::payDeductionItemForm.xfdl</Col>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">INSA010104</Col>
+            <Col id="SUPER_MENU_CODE">INSA0101</Col>
+            <Col id="MENU_NAME">사회보험환경등록</Col>
+            <Col id="MENU_URL">HrCircumstance::deductionTaxForm.xfdl</Col>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">INSA010105</Col>
+            <Col id="SUPER_MENU_CODE">INSA0101</Col>
+            <Col id="MENU_NAME">기본근무시간관리</Col>
+            <Col id="MENU_URL">HrCircumstance::basicWorktimeManagementForm.xfdl</Col>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">INSA010106</Col>
+            <Col id="SUPER_MENU_CODE">INSA0101</Col>
+            <Col id="MENU_NAME">휴일관리</Col>
+            <Col id="MENU_URL">HrCircumstance::holidayManagementForm.xfdl</Col>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">INSA010107</Col>
+            <Col id="SUPER_MENU_CODE">INSA0101</Col>
+            <Col id="MENU_NAME">휴가/연차관리</Col>
+            <Col id="MENU_URL">HrCircumstance::annualManagementForm.xfdl</Col>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">INSA0102</Col>
+            <Col id="SUPER_MENU_CODE">INSA01</Col>
+            <Col id="MENU_NAME">인사관리</Col>
+            <Col id="MENU_URL"/>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">INSA010201</Col>
+            <Col id="SUPER_MENU_CODE">INSA0102</Col>
+            <Col id="MENU_NAME">인사정보등록</Col>
+            <Col id="MENU_URL">HrPm::basicRegistrationForm.xfdl</Col>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">INSA010202</Col>
+            <Col id="SUPER_MENU_CODE">INSA0102</Col>
+            <Col id="MENU_NAME">인사기록카드</Col>
+            <Col id="MENU_URL">HrPm::detailRegistrationForm.xfdl</Col>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">INSA0103</Col>
+            <Col id="SUPER_MENU_CODE">INSA01</Col>
+            <Col id="MENU_NAME">근태관리</Col>
+            <Col id="MENU_URL"/>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">INSA010301</Col>
+            <Col id="SUPER_MENU_CODE">INSA0103</Col>
+            <Col id="MENU_NAME">일일근태관리</Col>
+            <Col id="MENU_URL">HrAttendance::dailyAttdManagementForm.xfdl</Col>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">INSA010302</Col>
+            <Col id="SUPER_MENU_CODE">INSA0103</Col>
+            <Col id="MENU_NAME">월간근태관리</Col>
+            <Col id="MENU_URL">HrAttendance::monthlyAttdManagementForm.xfdl</Col>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">INSA010303</Col>
+            <Col id="SUPER_MENU_CODE">INSA0103</Col>
+            <Col id="MENU_NAME">근태승인관리</Col>
+            <Col id="MENU_URL">HrAttendance::attendanceApprovalManagement.xfdl</Col>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">INSA0104</Col>
+            <Col id="SUPER_MENU_CODE">INSA01</Col>
+            <Col id="MENU_NAME">급여관리</Col>
+            <Col id="MENU_URL"/>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">INSA010401</Col>
+            <Col id="SUPER_MENU_CODE">INSA0104</Col>
+            <Col id="MENU_NAME">상용직급여입력및계산</Col>
+            <Col id="MENU_URL">HrPay::payInputCalculationForm.xfdl</Col>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">INSA010402</Col>
+            <Col id="SUPER_MENU_CODE">INSA0104</Col>
+            <Col id="MENU_NAME">수당관리</Col>
+            <Col id="MENU_URL">HrPay::salaryManagementForm.xfdl</Col>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">HR0202</Col>
+            <Col id="SUPER_MENU_CODE">HR02</Col>
+            <Col id="MENU_NAME">인사관리</Col>
+            <Col id="MENU_URL"/>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">HR020201</Col>
+            <Col id="SUPER_MENU_CODE">HR0202</Col>
+            <Col id="MENU_NAME">인사정보등록</Col>
+            <Col id="MENU_URL">HrPm::basicRegistrationForm.xfdl</Col>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">HR020202</Col>
+            <Col id="SUPER_MENU_CODE">HR0202</Col>
+            <Col id="MENU_NAME">인사기록카드</Col>
+            <Col id="MENU_URL">HrPm::detailRegistrationForm.xfdl</Col>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">HR0203</Col>
+            <Col id="SUPER_MENU_CODE">HR02</Col>
+            <Col id="MENU_NAME">근태관리</Col>
+            <Col id="MENU_URL"/>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">HR020301</Col>
+            <Col id="SUPER_MENU_CODE">HR0203</Col>
+            <Col id="MENU_NAME">일일근태관리</Col>
+            <Col id="MENU_URL">HrAttendance::dailyAttdManagementForm.xfdl</Col>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">HR020302</Col>
+            <Col id="SUPER_MENU_CODE">HR0203</Col>
+            <Col id="MENU_NAME">월간근태관리</Col>
+            <Col id="MENU_URL">HrAttendance::monthlyAttdManagementForm.xfdl</Col>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">HR020303</Col>
+            <Col id="SUPER_MENU_CODE">HR0203</Col>
+            <Col id="MENU_NAME">근태승인관리</Col>
+            <Col id="MENU_URL">HrAttendance::attendanceApprovalManagement.xfdl</Col>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">HR0204</Col>
+            <Col id="SUPER_MENU_CODE">HR02</Col>
+            <Col id="MENU_NAME">급여관리</Col>
+            <Col id="MENU_URL"/>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">HR020401</Col>
+            <Col id="SUPER_MENU_CODE">HR0204</Col>
+            <Col id="MENU_NAME">상용직급여입력및계산</Col>
+            <Col id="MENU_URL">HrPay::payInputCalculationForm.xfdl</Col>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">HR020402</Col>
+            <Col id="SUPER_MENU_CODE">HR0204</Col>
+            <Col id="MENU_NAME">수당관리</Col>
+            <Col id="MENU_URL">HrPay::salaryManagementForm.xfdl</Col>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">LOGI00</Col>
+            <Col id="SUPER_MENU_CODE"/>
+            <Col id="MENU_NAME">물류업무</Col>
+            <Col id="MENU_URL"/>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">LOGI01</Col>
+            <Col id="SUPER_MENU_CODE">LOGI00</Col>
+            <Col id="MENU_NAME">영업 관리</Col>
+            <Col id="MENU_URL"/>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">LOGI02</Col>
+            <Col id="SUPER_MENU_CODE">LOGI00</Col>
+            <Col id="MENU_NAME">자재구매 관리</Col>
+            <Col id="MENU_URL"/>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">LOGI0201</Col>
+            <Col id="SUPER_MENU_CODE">LOGI02</Col>
+            <Col id="MENU_NAME">자재명세서(BOM)</Col>
+            <Col id="MENU_URL">Purchase::BOM.xfdl</Col>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">LOGI0201</Col>
+            <Col id="SUPER_MENU_CODE">LOGI01</Col>
+            <Col id="MENU_NAME">견적 관리</Col>
+            <Col id="MENU_URL">Business::Estimate.xfdl</Col>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">LOGI0202</Col>
+            <Col id="SUPER_MENU_CODE">LOGI02</Col>
+            <Col id="MENU_NAME">발주 관리</Col>
+            <Col id="MENU_URL">Purchase::GiveOrder.xfdl</Col>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">LOGI0202</Col>
+            <Col id="SUPER_MENU_CODE">LOGI01</Col>
+            <Col id="MENU_NAME">수주 관리</Col>
+            <Col id="MENU_URL">Business::Contract.xfdl</Col>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">LOGI0203</Col>
+            <Col id="SUPER_MENU_CODE">LOGI02</Col>
+            <Col id="MENU_NAME">재고 관리</Col>
+            <Col id="MENU_URL">Purchase::Inventory.xfdl</Col>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">LOGI0203</Col>
+            <Col id="SUPER_MENU_CODE">LOGI01</Col>
+            <Col id="MENU_NAME">거래처 관리</Col>
+            <Col id="MENU_URL">Business::Customer.xfdl</Col>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">LOGI0204</Col>
+            <Col id="SUPER_MENU_CODE">LOGI02</Col>
+            <Col id="MENU_NAME">품목 관리</Col>
+            <Col id="MENU_URL">Purchase::Item.xfdl</Col>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">LOGI0204</Col>
+            <Col id="SUPER_MENU_CODE">LOGI01</Col>
+            <Col id="MENU_NAME">납품 계획</Col>
+            <Col id="MENU_URL">Business::Delivery.xfdl</Col>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">LOGI0205</Col>
+            <Col id="SUPER_MENU_CODE">LOGI01</Col>
+            <Col id="MENU_NAME">납품 결과확인</Col>
+            <Col id="MENU_URL">Business::DeliveryResultForm.xfdl</Col>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">LOGI0205</Col>
+            <Col id="SUPER_MENU_CODE">LOGI02</Col>
+            <Col id="MENU_NAME">입출고 관리</Col>
+            <Col id="MENU_URL">Purchase::WareHousing.xfdl</Col>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">LOGI03</Col>
+            <Col id="SUPER_MENU_CODE">LOGI00</Col>
+            <Col id="MENU_NAME">생산 관리</Col>
+            <Col id="MENU_URL"/>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">LOGI0301</Col>
+            <Col id="SUPER_MENU_CODE">LOGI03</Col>
+            <Col id="MENU_NAME">주생산계획 (MPS)</Col>
+            <Col id="MENU_URL">Production::MPS.xfdl</Col>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">LOGI0302</Col>
+            <Col id="SUPER_MENU_CODE">LOGI03</Col>
+            <Col id="MENU_NAME">소요량전개/취합 (MRP)</Col>
+            <Col id="MENU_URL">Production::MRP.xfdl</Col>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">LOGI0303</Col>
+            <Col id="SUPER_MENU_CODE">LOGI03</Col>
+            <Col id="MENU_NAME">작업지시</Col>
+            <Col id="MENU_URL">Production::WorkInstruction.xfdl</Col>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">LOGI0304</Col>
+            <Col id="SUPER_MENU_CODE">LOGI03</Col>
+            <Col id="MENU_NAME">생산실적 관리</Col>
+            <Col id="MENU_URL">Production::ProductionHandling.xfdl</Col>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">SYS01</Col>
+            <Col id="SUPER_MENU_CODE"/>
+            <Col id="MENU_NAME">시스템관리</Col>
+            <Col id="MENU_URL"/>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">SYS0101</Col>
+            <Col id="SUPER_MENU_CODE">SYS01</Col>
+            <Col id="MENU_NAME">회사기본정보</Col>
+            <Col id="MENU_URL"/>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">SYS010101</Col>
+            <Col id="SUPER_MENU_CODE">SYS0101</Col>
+            <Col id="MENU_NAME">회사관리</Col>
+            <Col id="MENU_URL">base::companyInfoForm.xfdl</Col>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">SYS010102</Col>
+            <Col id="SUPER_MENU_CODE">SYS0101</Col>
+            <Col id="MENU_NAME">사업장관리</Col>
+            <Col id="MENU_URL">base::businessPlaceInfoForm.xfdl</Col>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">SYS010103</Col>
+            <Col id="SUPER_MENU_CODE">SYS0101</Col>
+            <Col id="MENU_NAME">부서관리</Col>
+            <Col id="MENU_URL">base::DeptManagementForm.xfdl</Col>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">SYS010104</Col>
+            <Col id="SUPER_MENU_CODE">SYS0101</Col>
+            <Col id="MENU_NAME">사원관리</Col>
+            <Col id="MENU_URL">base::empManagementForm.xfdl</Col>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">SYS010105</Col>
+            <Col id="SUPER_MENU_CODE">SYS0101</Col>
+            <Col id="MENU_NAME">거래처 관리</Col>
+            <Col id="MENU_URL">Business::Customer.xfdl</Col>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">SYS0102</Col>
+            <Col id="SUPER_MENU_CODE">SYS01</Col>
+            <Col id="MENU_NAME">관리자항목</Col>
+            <Col id="MENU_URL"/>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+          <Row>
+            <Col id="MENU_CODE">SYS010201</Col>
+            <Col id="SUPER_MENU_CODE">SYS0102</Col>
+            <Col id="MENU_NAME">기초코드관리</Col>
+            <Col id="MENU_URL">base::sys_codeManagerForm.xfdl</Col>
+            <Col id="USING_STATUS">Y</Col>
+            <Col id="LEVEL"/>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_menuAuthority">
+        <ColumnInfo>
+          <Column id="MENU_CODE" type="STRING" size="256"/>
+          <Column id="AUTHORITY_CODE" type="STRING" size="256"/>
+          <Column id="MENU_NAME" type="STRING" size="256"/>
+          <Column id="AUTHORITY_NAME" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_pm">
+        <ColumnInfo>
+          <Column id="DATA_TIME" type="STRING" size="256"/>
+          <Column id="PM10VALUE" type="STRING" size="256"/>
+          <Column id="PM25VALUE" type="STRING" size="256"/>
+          <Column id="KHAI_VALUE" type="STRING" size="256"/>
+          <Column id="KHAI_GRADE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[/********************************************************************************                                                                            
+ 메인 상단 화면
+ @Path		공통
+ @Description	메인 상단 메뉴와 로그인 정보표시 폼
+ @Author	  	심승현
+ @Create           2019. 01. 31.
+ ********************************************************************************/
+var result;
+var sID;
+var sURL;
+var sTitle;
+this.topForm_onload = function (obj:Form, e:nexacro.LoadEventInfo)
+{
+};
+
+this.Menu00_onmenuclick = function (obj:Menu, e:nexacro.MenuClickEventInfo)
+{
+	sID = e.id;
+	trace(e.id);
+	sURL = e.userdata;
+	sTitle = this.ds_menu.getColumn(e.row, "MENU_NAME");
+	// alert(sTitle);
+	this.transaction("findMenuAuthorityList",
+		"dataURL::sys/findMenuAuthorityList.do",
+		"",
+		"ds_menuAuthority=gds_menuAuthority",
+		"authorityCode=" + nexacro.getApplication().g_authorityCode,
+		"callback", true);
+	// if(sURL.length<-1){
+	// return;
+	// }
+	// 
+	// var result = this.ds_menuAuthority.findRow("MENU_CODE", sID);
+	// 
+	// 
+	// 
+	// if(result==-1){
+	// //application.gfn_Open(sID,sURL,sTitle);
+	// var formPath=application.mainframe.VFrameSet0.HFrameSet0.ChildFrame2;
+	// formPath.alert("접근권한이 없습니다.");
+	// }
+	// else{
+	// 
+	// application.gfn_Open(sID,sURL,sTitle);
+	// }
+};
+
+
+
+this.callback = function (strSvcID, nErrorCode, strErrorMsg)
+{
+	if (strSvcID == "findMenuList") 
+	{
+		if (nErrorCode < 0) 
+		{
+			alert(strErrorMsg);
+		}
+		else 
+		{
+			// alert("성공");
+			trace("성공");
+		}
+	}
+	if (strSvcID == "findMenuAuthorityList") 
+	{
+		if (nErrorCode < 0) 
+		{
+			alert(strErrorMsg);
+		}
+		else 
+		{
+			trace("성공");
+			if (sURL.length < -1) 
+			{
+				return;
+			}
+
+			var result = this.ds_menuAuthority.findRow("MENU_CODE", sID);
+			if (result == -1) 
+			{
+				// application.gfn_Open(sID,sURL,sTitle);
+				var formPath = nexacro.getApplication().mainframe.VFrameSet0.HFrameSet0.ChildFrame2;
+				formPath.alert("접근권한이 없습니다.");
+			}
+			else 
+			{
+				nexacro.getApplication().gfn_Open(sID, sURL, sTitle);
+			}
+		}
+	}
+};
+
+]]></Script>
+  </Form>
+</FDL>

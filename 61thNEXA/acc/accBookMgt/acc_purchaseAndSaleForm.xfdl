@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="acc_purchaseAndSaleForm" width="1280" height="780" titletext="New Form">
+    <Layouts>
+      <Layout height="780" mobileorientation="landscape" width="1280">
+        <Calendar id="Calendar_startDate" taborder="0" left="738" top="105" width="150" height="40" oneditclick="Calendar_startDate_oneditclick" font="12pt &quot;a두리둥실&quot;" dateformat="yyyy-MM-dd"/>
+        <Calendar id="Calendar_endDate" taborder="1" left="926" top="105" width="150" height="40" font="12pt &quot;a두리둥실&quot;" dateformat="yyyy-MM-dd"/>
+        <Static id="Static01" taborder="2" text="~" left="906" top="105" width="18" height="40" color="black" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="Button_search" taborder="3" text="조회" onclick="Button_search_onclick" left="1109" top="105" width="76" height="40" font="12pt &quot;a두리둥실&quot;"/>
+        <Grid id="Grid_purchaseRevenue" taborder="4" autofittype="col" left="99" top="159" width="1091" height="538" binddataset="ds_purchaseAndSale" font="12pt &quot;a두리둥실&quot;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="116"/>
+                <Column size="124"/>
+                <Column size="104"/>
+                <Column size="96"/>
+                <Column size="81"/>
+                <Column size="121"/>
+                <Column size="107"/>
+                <Column size="78"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+                <Row size="24" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell rowspan="2" text="날짜" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" rowspan="2" text="거래처" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" colspan="3" text="매입" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="5" colspan="3" text="매출" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell row="1" col="2" displaytype="text" text="공급가액" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell row="1" col="3" text="세액" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell row="1" col="4" text="합계" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell row="1" col="5" text="공급가액" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell row="1" col="6" text="세액" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell row="1" col="7" text="합계" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:REPORTING_DATE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="bind:CUSTOMER_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" displaytype="normal" text="bind:LEFT_DEBTOR_PRICE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" displaytype="number" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" displaytype="number" text="expr:comp.parent.fn_sum(rowidx)" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="5" displaytype="number" text="bind:RIGHT_CREDITS_PRICE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="6" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="7" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="summary">
+                <Cell text="합계" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" displaytype="number" text="expr:dataset.getSum(&quot;parseInt(LEFT_DEBTOR_PRICE)&quot;)" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" text="expr:dataset.getSum(&quot;parseInt(세)&quot;)" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="5" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="6" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="7" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static02" taborder="5" text="매입 매출장" onclick="Static00_onclick" left="99" top="29" right="84" height="45" border="3px solid darkgray" textAlign="center" font="18pt/normal &quot;a두리둥실&quot;"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_purchaseAndSale">
+        <ColumnInfo>
+          <Column id="JOURNAL_NO" type="STRING" size="256"/>
+          <Column id="SLIP_NO" type="STRING" size="256"/>
+          <Column id="BALANCE_DIVISION" type="STRING" size="256"/>
+          <Column id="ACCOUNT_INNER_CODE" type="STRING" size="256"/>
+          <Column id="ACCOUNT_NAME" type="STRING" size="256"/>
+          <Column id="SUMMARY_NUMBER" type="STRING" size="256"/>
+          <Column id="SUMMARY_COMMENT" type="STRING" size="256"/>
+          <Column id="CUSTOMER_CODE" type="STRING" size="256"/>
+          <Column id="CUSTOMER_NAME" type="STRING" size="256"/>
+          <Column id="LEFT_DEBTOR_PRICE" type="STRING" size="256"/>
+          <Column id="RIGHT_CREDITS_PRICE" type="STRING" size="256"/>
+          <Column id="JOURNAL_DESCRIPTION" type="STRING" size="256"/>
+          <Column id="SLIP_APPROVAL_DATE" type="STRING" size="256"/>
+          <Column id="PRICE" type="STRING" size="256"/>
+          <Column id="REPORTING_DATE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findPurchaseAndSaleList</Col>
+            <Col id="URL">dataURL::acc/accBookMgt/PurchaseAndSaleList.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">ds_purchaseAndSale=ds_purchaseAndSale</Col>
+            <Col id="callbackFunc">gfnCallbackFunc</Col>
+            <Col id="argument"/>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[/********************************************************************************                                                                            
+ 매입 매출장
+ @Path			회계
+ @Description	매입 매출을 확인 하기 위한 폼				
+ @Author	  		정승훈
+ @Create         2019. 02. 27.
+ ********************************************************************************/
+include "scripts::commonTransaction.xjs";
+
+// 조회 버튼 이벤트 
+this.Button_search_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	var startDate = this.Calendar_startDate.value;
+	var endDate = this.Calendar_endDate.value;
+	var argument = "startDate='" + startDate + "' endDate='" + endDate + "'";
+	this.dsService.setColumn(0, 4, argument);
+	this.gfnService("findPurchaseAndSaleList");
+
+	alert(argument);
+
+// 	var sum = parseInt(this.ds_purchaseAndSale.getColumn(0, "LEFT_DEBTOR_PRICE"));
+// 
+// 	if (sum == 0) 
+// 	{
+// 		this.ds_purchaseAndSale.setColumn(3, "LEFT_DEBTOR_PRICE", "");
+// 	}
+};
+
+
+this.fn_sum = function (row)
+{
+	var sum = parseInt(this.ds_purchaseAndSale.getColumn(row, "LEFT_DEBTOR_PRICE")) + parseInt(this.ds_purchaseAndSale.getColumn(row, ""));
+	return sum;
+};
+]]></Script>
+  </Form>
+</FDL>

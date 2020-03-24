@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="hr_deptDialog" width="300" height="400" titletext="New Form" onload="hr_deptDialog_onload">
+    <Layouts>
+      <Layout height="400" mobileorientation="landscape" width="300">
+        <Grid id="dept_grid" taborder="0" left="6.00%" top="56" right="6.67%" height="321" binddataset="ds_dept" autofittype="col" oncelldblclick="dept_grid_oncelldblclick" font="12px/normal &quot;a두리둥실&quot;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="부서코드" font="12px/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="부서명" font="12px/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:DETAIL_CODE" font="12px/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="bind:DETAIL_CODE_NAME" font="12px/normal &quot;a두리둥실&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static00" taborder="1" text="부서" left="2.67%" top="8" right="4.00%" height="37" font="18px/normal &quot;a두리둥실&quot;" textAlign="center"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_codeDetail">
+        <ColumnInfo>
+          <Column id="DIVISION_CODE_NO" type="STRING" size="256"/>
+          <Column id="DETAIL_CODE" type="STRING" size="256"/>
+          <Column id="DETAIL_CODE_NAME" type="STRING" size="256"/>
+          <Column id="CODE_USE_CHECK" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_dept">
+        <ColumnInfo>
+          <Column id="DETAIL_CODE" type="STRING" size="256"/>
+          <Column id="DETAIL_CODE_NAME" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[
+this.hr_deptDialog_onload = function (obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.transaction(
+		"findCodeList",
+		"dataURL::sys/findCodeDetailList.do",
+		"",
+		"ds_codeDetail=gds_codeDetail",
+		"",
+		"callbackFunction",
+		false
+	);
+
+	this.ds_codeDetail.filter("DIVISION_CODE_NO=='SYS07'");
+	this.ds_dept.copyData(this.ds_codeDetail, true);
+};
+
+this.dept_grid_oncelldblclick = function (obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	var detailCode = this.ds_dept.getColumn(e.row, "DETAIL_CODE");
+	var detailCodeN = this.ds_dept.getColumn(e.row, "DETAIL_CODE_NAME");
+	this.opener.Edit00.set_value(detailCode);
+
+	//this.opener.ds_test.copyData(this.ds_dept);
+	this.opener.ds_test.clearData();
+	this.opener.ds_test.addRow();
+	this.opener.ds_test.setColumn(0,"DETAIL_CODE",detailCode);
+	this.opener.ds_test.setColumn(0,"DETAIL_CODE_NAME",detailCodeN);
+	//카피데이터로 모든 데이터 보낼 수 있고 
+	//셋칼럼으로 따로 세팅도 가능함
+	
+	//데이터셋 가공해서 한줄만 복사해도 됨 일단은 다 가네
+	//opener 이용해서 부모창에 컴포넌트, 데이터셋 다 접근 가능
+	//파라미터만 보내고 싶은 경우 특수 문자 넣어서 같이 보낸 다음
+	// split 함수로 잘라서 배열형태로 받으면 됨
+	this.close(detailCode + "/" + detailCodeN);
+};
+]]></Script>
+  </Form>
+</FDL>

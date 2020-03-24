@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="sys_companyRegistrationForm" width="570" height="730" titletext="New Form" onload="sys_companyRegistrationForm_onload">
+    <Layouts>
+      <Layout height="730" mobileorientation="landscape" width="570">
+        <Static id="Static00" taborder="0" text="회사 상세 정보" left="44" top="39" height="55" onclick="Static00_onclick" right="49" border="3px solid darkgray" font="18pt/normal &quot;a두리둥실&quot;" textAlign="center"/>
+        <Static id="Static01" taborder="1" text="회 사 명" left="11.88%" top="133" right="48.28%" height="52" font="16pt/normal &quot;a두리둥실&quot;"/>
+        <Static id="Static04" taborder="2" text="대 표 자 명" left="11.88%" top="277" right="48.28%" height="52" font="16pt/normal &quot;a두리둥실&quot;"/>
+        <Static id="Static06" taborder="3" text="사업자 등록번호" left="11.88%" top="205" right="48.28%" height="52" font="16pt/normal &quot;a두리둥실&quot;"/>
+        <Static id="Static08" taborder="4" text="사업장 소재지" left="11.88%" top="349" right="48.28%" height="52" font="16pt/normal &quot;a두리둥실&quot;"/>
+        <Static id="Static10" taborder="5" text="사 업 구 분" left="11.88%" top="421" right="48.28%" height="52" font="16pt/normal &quot;a두리둥실&quot;"/>
+        <Static id="Static12" taborder="6" text="회사 창립일" left="11.88%" top="493" right="48.28%" height="52" font="16pt/normal &quot;a두리둥실&quot;"/>
+        <Static id="Static14" taborder="7" text="내선번호" left="11.88%" top="565" right="48.28%" height="52" font="16pt/normal &quot;a두리둥실&quot;"/>
+        <Edit id="Edit00" taborder="8" oneditclick="Edit00_oneditclick" left="39.47%" top="133" right="19.47%" height="51" enable="false" color="black" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="Edit06" taborder="9" left="39.47%" top="565" right="19.47%" height="51" enable="false" color="black" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="Edit05" taborder="10" left="39.47%" top="493" right="19.47%" height="51" enable="false" color="black" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="Edit04" taborder="11" left="39.47%" top="421" right="19.47%" height="51" enable="false" color="black" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="Edit03" taborder="12" left="39.47%" top="349" right="19.47%" height="51" enable="false" color="black" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="Edit02" taborder="13" left="39.47%" top="205" right="19.47%" height="51" enable="false" color="black" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="Edit01" taborder="14" left="39.47%" top="277" right="19.47%" height="51" enable="false" color="black" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="update_btn" taborder="15" text="수 정" left="39.12%" top="650" height="40" onclick="update_btn_onclick" font="12pt &quot;a두리둥실&quot;" width="100"/>
+        <Button id="save_btn" taborder="16" text="저장" left="62.63%" top="650" height="40" onclick="save_btn_onclick" font="12pt &quot;a두리둥실&quot;" width="100"/>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item0" compid="Edit00" propid="value" datasetid="ds_company" columnid="COMPANY_NAME"/>
+      <BindItem id="item1" compid="Edit06" propid="value" datasetid="ds_company" columnid="COMPANY_TEL_NUMBER"/>
+      <BindItem id="item2" compid="Edit05" propid="value" datasetid="ds_company" columnid="COMPANY_OPEN_DATE"/>
+      <BindItem id="item3" compid="Edit04" propid="value" datasetid="ds_company" columnid="COMPANY_BUSINESS_CONDITIONS"/>
+      <BindItem id="item4" compid="Edit03" propid="value" datasetid="ds_company" columnid="COMPANY_BASIC_ADDRESS"/>
+      <BindItem id="item5" compid="Edit02" propid="value" datasetid="ds_company" columnid="BUSINESS_LICENSE_NUMBER"/>
+      <BindItem id="item6" compid="Edit01" propid="value" datasetid="ds_company" columnid="COMPANY_CEO_NAME"/>
+    </Bind>
+    <Objects>
+      <Dataset id="ds_company">
+        <ColumnInfo>
+          <Column id="COMPANY_CODE" type="STRING" size="256"/>
+          <Column id="COMPANY_NAME" type="STRING" size="256"/>
+          <Column id="COMPANY_DIVISION" type="STRING" size="256"/>
+          <Column id="BUSINESS_LICENSE_NUMBER" type="STRING" size="256"/>
+          <Column id="CORPORATION_LICENSE_NUMBER" type="STRING" size="256"/>
+          <Column id="COMPANY_CEO_NAME" type="STRING" size="256"/>
+          <Column id="COMPANY_BUSINESS_CONDITIONS" type="STRING" size="256"/>
+          <Column id="COMPANY_BUSINESS_ITEMS" type="STRING" size="256"/>
+          <Column id="COMPANY_ZIP_CODE" type="STRING" size="256"/>
+          <Column id="COMPANY_BASIC_ADDRESS" type="STRING" size="256"/>
+          <Column id="COMPANY_DETAIL_ADDRESS" type="STRING" size="256"/>
+          <Column id="COMPANY_TEL_NUMBER" type="STRING" size="256"/>
+          <Column id="COMPANY_FAX_NUMBER" type="STRING" size="256"/>
+          <Column id="COMPANY_ESTABLISHMENT_DATE" type="STRING" size="256"/>
+          <Column id="COMPANY_OPEN_DATE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[/********************************************************************************                                                                            
+ 메인메뉴 화면
+ @Path		공통
+ @Description 회사정보
+ @Author	  	강순용
+ @Create           2019. 02. 13.
+ ********************************************************************************/
+
+this.sys_companyRegistrationForm_onload = function (obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.transaction("findCompanyList",
+		"dataURL::sys/findCompanyList.do",
+		"",
+		"ds_company=ds_company",
+		"",
+		"callback"
+	);
+};
+
+this.update_btn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	this.Edit01.set_enable(true);
+	this.Edit03.set_enable(true);
+	this.Edit04.set_enable(true);
+	this.Edit05.set_enable(true);
+	this.Edit06.set_enable(true);
+};
+
+this.save_btn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	if (confirm("변경사항을 저장하시겠습니까?")) 
+	{
+		this.transaction("updateCompanyInfo",
+			"dataURL::sys/updateCompanyInfo.do",
+			"ds_company=ds_company:u",
+			"",
+			"",
+			"callback"
+		);
+	}
+};
+]]></Script>
+  </Form>
+</FDL>

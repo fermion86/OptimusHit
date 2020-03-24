@@ -1,0 +1,839 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="logi_InventoryTransferRegistrationForm" width="1024" height="780" titletext="New Form" onload="logi_InventoryTransferRegistrationForm_onload">
+    <Layouts>
+      <Layout height="780" mobileorientation="landscape" width="1024">
+        <Static id="Static00" taborder="0" text="재고 이동 등록" left="1.86%" top="24" right="1.86%" height="58" color="black" font="18pt/normal &quot;a두리둥실&quot;" border="1px solid darkblue" textAlign="center"/>
+        <GroupBox id="GroupBox00" text="등록란" taborder="1" left="1.37%" top="98" right="1.37%" height="622" font="16pt/normal &quot;a두리둥실&quot;"/>
+        <Static id="사업장" taborder="2" text="사업장" left="6.84%" top="181" right="82.62%" height="30" color="black" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="businessCode" taborder="3" left="17.09%" top="181" right="68.95%" height="30" enable="false" oneditclick="businessCode_oneditclick" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="사업장00" taborder="4" text="부서" left="6.84%" top="220" right="82.62%" height="30" color="black" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="deptCode" taborder="5" left="17.09%" top="220" right="68.95%" height="30" enable="false" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="사업장01" taborder="6" text="사원" left="6.84%" top="258" right="82.62%" height="30" color="black" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="empName" taborder="7" left="17.09%" top="258" right="68.95%" height="30" enable="false" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="사업장02" taborder="8" text="출고 일자" left="6.84%" top="528" right="82.62%" height="30" color="black" font="12pt &quot;a두리둥실&quot;"/>
+        <Calendar id="outDate" taborder="9" left="17.19%" top="528" right="68.95%" height="30" font="12pt &quot;a두리둥실&quot;"/>
+        <Calendar id="inDate" taborder="10" left="17.19%" top="565" right="68.95%" height="30" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="사업장03" taborder="11" text="담당자" left="6.84%" top="374" right="82.62%" height="30" color="black" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="exWarehouseManager" taborder="12" left="17.09%" top="374" right="68.95%" height="30" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="사업장04" taborder="13" text="출고사업장" left="6.84%" top="297" right="82.62%" height="30" color="black" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="findExSelBusiness" taborder="14" left="30.96%" top="297" right="65.43%" height="30" onclick="findExSelBusiness_onclick" icon="URL(&quot;_resource_\_theme_\default\images\btn_WF_Grdexpand.png&quot;)" textAlign="center" background="whitesmoke" color="whitesmoke" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="exBusinessPlaceCode" taborder="15" left="17.09%" top="297" right="68.95%" height="30" font="12pt &quot;a두리둥실&quot;"/>
+        <GroupBox id="GroupBox01" text="출고 정보" taborder="16" left="38.96%" top="176" right="6.84%" height="122" font="12pt &quot;a두리둥실&quot;"/>
+        <Grid id="Grid00" taborder="17" left="40.53%" top="200" right="8.11%" height="90" binddataset="ds_inventoryTrasferRegister" oncellclick="Grid00_oncellclick" font="12pt &quot;a두리둥실&quot;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="88"/>
+                <Column size="120"/>
+                <Column size="88"/>
+                <Column size="88"/>
+                <Column size="88"/>
+                <Column size="120"/>
+                <Column size="88"/>
+                <Column size="88"/>
+                <Column size="110"/>
+                <Column size="88"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="등록번호" textAlign="center" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="예상 출고 일자" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" text="출고사업장" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" text="출고창고" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" text="담당자" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="5" text="전화번호" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="6" text="이동수단" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="7" text="단가결정" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="8" text="할인율" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="9" text="승인상태" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:ITR_SEQ" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="bind:OUT_DATE" mask="####/##/##" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" displaytype="combo" text="bind:OUT_BUSINESS_CODE" combodataset="ds_businessPlace" combocodecol="BUSINESS_PLACE_CODE" combodatacol="BUSINESS_PLACE_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" text="bind:OUT_WAREHOUSE_CODE" combodataset="ds_codeDetail" combocodecol="DETAIL_CODE" combodatacol="DETAIL_CODE_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" text="bind:OUT_MANAGER_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="5" text="bind:OUT_PHONE_NUMBER" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="6" displaytype="combo" edittype="none" text="bind:TRASFER_CODE" combodataset="ds_codeDetail" combocodecol="DETAIL_CODE" combodatacol="DETAIL_CODE_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="7" displaytype="combo" text="bind:DECISION_CODE" combodataset="ds_codeDetail" combocodecol="DETAIL_CODE" combodatacol="DETAIL_CODE_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="8" text="bind:DISCOUNT" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="9" text="bind:OUT_STATUS" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="사업장05" taborder="18" text="출고창고" left="6.84%" top="335" right="82.62%" height="30" color="black" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="exWarehousePlaceCode" taborder="19" left="17.09%" top="335" right="68.95%" height="30" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="findExWarehouse" taborder="20" left="30.96%" top="335" right="65.43%" height="30" onclick="findExWarehouse_onclick" icon="URL(&quot;_resource_\_theme_\default\images\btn_WF_Grdexpand.png&quot;)" textAlign="center" background="whitesmoke" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="사업장06" taborder="21" text="입고사업장" left="6.84%" top="413" right="82.62%" height="30" color="black" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="inBusinessPlaceCode" taborder="22" left="17.09%" top="413" right="68.95%" height="30" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="findInSelBusiness" taborder="23" left="30.96%" top="413" right="65.43%" height="30" onclick="findInSelBusiness_onclick" icon="URL(&quot;_resource_\_theme_\default\images\btn_WF_Grdexpand.png&quot;)" textAlign="center" background="whitesmoke" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="findInWarehouse" taborder="24" left="30.96%" top="451" right="65.43%" height="30" onclick="findInWarehouse_onclick" icon="URL(&quot;_resource_\_theme_\default\images\btn_WF_Grdexpand.png&quot;)" textAlign="center" background="whitesmoke" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="inWarehousePlaceCode" taborder="25" left="17.19%" top="451" right="68.95%" height="30" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="사업장07" taborder="26" text="입고창고" left="6.84%" top="451" right="82.62%" height="30" color="black" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="사업장08" taborder="27" text="담당자" left="6.84%" top="490" right="82.62%" height="30" color="black" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="inWarehouseManager" taborder="28" left="17.09%" top="490" right="68.95%" height="30" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="사업장09" taborder="29" text="이동수단" left="6.84%" top="603" right="82.62%" height="30" color="black" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="transferCode" taborder="30" left="17.09%" top="603" right="68.95%" height="30" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="inventoryTransfer" taborder="31" left="30.96%" top="603" right="65.43%" height="30" onclick="inventoryTransfer_onclick" icon="URL(&quot;_resource_\_theme_\default\images\btn_WF_Grdexpand.png&quot;)" textAlign="center" background="whitesmoke" font="12pt &quot;a두리둥실&quot;"/>
+        <GroupBox id="GroupBox02" text="출고 품목" taborder="32" left="38.87%" top="436" right="6.84%" height="195" font="12pt &quot;a두리둥실&quot;"/>
+        <Grid id="registerGrid" taborder="33" left="40.63%" top="461" right="8.11%" height="160" binddataset="ds_inventoryTransfer" font="12pt &quot;a두리둥실&quot;" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="26"/>
+                <Column size="88"/>
+                <Column size="150"/>
+                <Column size="80"/>
+                <Column size="100"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+                <Row size="24" band="summ"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="No" textAlign="center" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="품번" textAlign="center" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" text="품명" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" text="수량" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" text="적용단가" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell text="expr:currow + 1" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="bind:ITEM_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" text="bind:ITEM_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" text="bind:REQUEST_AMOUNT" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" displaytype="currency" edittype="text" text="bind:DISCOUNT_UNIT_PRICE" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="summary">
+                <Cell colspan="3" text="Total" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" text="expr:dataset.getSum(&quot;parseInt(REQUEST_AMOUNT)&quot;)" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" displaytype="currency" edittype="text" text="expr:dataset.getSum(&quot;parseInt(DISCOUNT_UNIT_PRICE)&quot;)" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="typeDecision" taborder="34" text="단가설정" left="63.48%" top="147" right="26.86%" height="29" onclick="typeDecision_onclick" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="settingedDecision" taborder="35" text="단가적용" left="73.54%" top="147" right="16.80%" height="29" onclick="settingedDecision_onclick" enable="false" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="registerBtn" taborder="36" text="등록" left="83.89%" top="147" right="6.84%" height="29" onclick="registerBtn_onclick" enable="false" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="사업장11" taborder="37" text="입고 일자" left="6.84%" top="565" right="82.62%" height="30" color="black" font="12pt &quot;a두리둥실&quot;"/>
+        <GroupBox id="GroupBox03" text="입고 정보" taborder="38" left="38.87%" top="307" right="6.84%" height="122" font="12pt &quot;a두리둥실&quot;"/>
+        <Grid id="Grid02" taborder="39" left="40.43%" top="332" right="8.40%" height="90" binddataset="ds_inventoryTrasferRegister" oncellclick="Grid00_oncellclick" font="12pt &quot;a두리둥실&quot;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="88"/>
+                <Column size="120"/>
+                <Column size="88"/>
+                <Column size="88"/>
+                <Column size="88"/>
+                <Column size="120"/>
+                <Column size="88"/>
+                <Column size="88"/>
+                <Column size="110"/>
+                <Column size="88"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="등록번호" textAlign="center" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="예상 입고 일자" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" text="입고사업장" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" text="입고창고" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" text="담당자" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="5" text="전화번호" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="6" text="이동수단" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="7" text="단가결정" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="8" text="할인율" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="9" text="승인상태" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:ITR_SEQ" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="bind:IN_DATE" mask="####/##/##" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" displaytype="combo" text="bind:IN_BUSINESS_CODE" combodataset="ds_businessPlace" combocodecol="BUSINESS_PLACE_CODE" combodatacol="BUSINESS_PLACE_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" text="bind:IN_WAREHOUSE_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" text="bind:IN_MANAGER_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="5" text="bind:IN_PHONE_NUMBER" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="6" displaytype="combo" text="bind:TRASFER_CODE" combodataset="ds_codeDetail" combocodecol="DETAIL_CODE" combodatacol="DETAIL_CODE_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="7" displaytype="combo" text="bind:DECISION_CODE" combodataset="ds_codeDetail" combocodecol="DETAIL_CODE" combodatacol="DETAIL_CODE_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="8" text="bind:DISCOUNT" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="9" text="bind:IN_STATUS" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="deleteBtn" taborder="40" text="삭제" onclick="typeDecision_onclick" left="63.48%" top="112" right="26.86%" height="29" enable="false" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="excelBtn" taborder="41" text="엑셀" onclick="registerBtn_onclick" enable="false" left="83.89%" top="112" right="6.84%" height="29" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="findBtn" taborder="42" text="조회" left="33.11%" top="112" right="57.52%" height="29" onclick="findBtn_onclick" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="inUpdateBtn" taborder="43" text="입고승인" enable="false" left="53.13%" top="112" right="37.21%" height="29" onclick="inUpdateBtn_onclick" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="outUpdateBtn" taborder="44" text="출고승인" left="43.36%" top="112" right="47.27%" height="29" enable="false" onclick="outUpdateBtn_onclick" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="saveBtn" taborder="45" text="저장" enable="false" left="73.83%" top="112" right="16.80%" height="29" onclick="saveBtn_onclick" font="12pt &quot;a두리둥실&quot;"/>
+      </Layout>
+    </Layouts>
+    <InitValue>
+      <Edit id="businessCode" enable="false"/>
+    </InitValue>
+    <Objects>
+      <Dataset id="ds_businessPlace">
+        <ColumnInfo>
+          <Column id="BUSINESS_PLACE_CODE" type="STRING" size="256"/>
+          <Column id="BUSINESS_PLACE_NAME" type="STRING" size="256"/>
+          <Column id="BUSINESS_PLACE_TEL" type="STRING" size="256"/>
+          <Column id="COMPANY_CODE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_warehouseManager">
+        <ColumnInfo>
+          <Column id="MANAGER_EMP_NAME" type="STRING" size="256"/>
+          <Column id="MANAGER_EMP_CODE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_inventoryTransferPrice">
+        <ColumnInfo>
+          <Column id="DETAIL_CODE" type="STRING" size="256"/>
+          <Column id="PRICE" type="STRING" size="256"/>
+          <Column id="DETAIL_CODE_NAME" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_InventoryTypeDecision">
+        <ColumnInfo>
+          <Column id="DETAIL_CODE" type="STRING" size="256"/>
+          <Column id="DETAIL_CODE_NAME" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_stock">
+        <ColumnInfo>
+          <Column id="WAREHOUSE_CODE" type="STRING" size="256"/>
+          <Column id="ITEM_CODE" type="STRING" size="256"/>
+          <Column id="DELIVERY_NO" type="STRING" size="256"/>
+          <Column id="PRODUCTION_RESULT_NO" type="STRING" size="256"/>
+          <Column id="INPUT_ITEM_NO" type="STRING" size="256"/>
+          <Column id="ITEM_NAME" type="STRING" size="256"/>
+          <Column id="UNIT_OF_STOCK" type="STRING" size="256"/>
+          <Column id="SAFETY_ALLOWANCE_AMOUNT" type="STRING" size="256"/>
+          <Column id="STOCK_AMOUNT" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+          <Column id="BUSINESS_PLACE_CODE" type="STRING" size="256"/>
+          <Column id="STANDARD_UNIT_PRICE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_decisionPrice">
+        <ColumnInfo>
+          <Column id="BASIC_YEAR" type="STRING" size="256"/>
+          <Column id="DETAIL_CODE" type="STRING" size="256"/>
+          <Column id="BUSINESS_PLACE_CODE" type="STRING" size="256"/>
+          <Column id="DISCOUNT" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_decisionPriceCopy">
+        <ColumnInfo>
+          <Column id="BASIC_YEAR" type="STRING" size="256"/>
+          <Column id="DETAIL_CODE" type="STRING" size="256"/>
+          <Column id="DISCOUNT" type="STRING" size="256"/>
+          <Column id="BUSINESS_PLACE_CODE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_inventoryTransfer">
+        <ColumnInfo>
+          <Column id="ITEM_CODE" type="STRING" size="256"/>
+          <Column id="ITEM_NAME" type="STRING" size="256"/>
+          <Column id="SAFETY_ALLOWANCE_AMOUNT" type="STRING" size="256"/>
+          <Column id="STOCK_AMOUNT" type="STRING" size="256"/>
+          <Column id="REQUEST_AMOUNT" type="STRING" size="256"/>
+          <Column id="STANDARD_UNIT_PRICE" type="STRING" size="256"/>
+          <Column id="DISCOUNT_UNIT_PRICE" type="STRING" size="256"/>
+          <Column id="REGISTER_NUMBER" type="STRING" size="256"/>
+          <Column id="ITQ_SEQ" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_inventoryTrasferRegister">
+        <ColumnInfo>
+          <Column id="ITR_SEQ" type="STRING" size="256"/>
+          <Column id="OUT_DATE" type="STRING" size="256"/>
+          <Column id="OUT_BUSINESS_CODE" type="STRING" size="256"/>
+          <Column id="OUT_WAREHOUSE_CODE" type="STRING" size="256"/>
+          <Column id="OUT_PHONE_NUMBER" type="STRING" size="256"/>
+          <Column id="OUT_MANAGER_CODE" type="STRING" size="256"/>
+          <Column id="TRASFER_CODE" type="STRING" size="256"/>
+          <Column id="DECISION_CODE" type="STRING" size="256"/>
+          <Column id="IN_DATE" type="STRING" size="256"/>
+          <Column id="IN_BUSINESS_CODE" type="STRING" size="256"/>
+          <Column id="IN_WAREHOUSE_CODE" type="STRING" size="256"/>
+          <Column id="IN_MANAGER_CODE" type="STRING" size="256"/>
+          <Column id="IN_PHONE_NUMBER" type="STRING" size="256"/>
+          <Column id="REQUEST_EMP_CODE" type="STRING" size="256"/>
+          <Column id="REQUEST_DATE" type="STRING" size="256"/>
+          <Column id="OUT_STATUS" type="STRING" size="256"/>
+          <Column id="IN_STATUS" type="STRING" size="256"/>
+          <Column id="DISCOUNT" type="STRING" size="256"/>
+          <Column id="REGISTER_NUMBER" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_codeDetail">
+        <ColumnInfo>
+          <Column id="DIVISION_CODE_NO" type="STRING" size="256"/>
+          <Column id="DETAIL_CODE" type="STRING" size="256"/>
+          <Column id="DETAIL_CODE_NAME" type="STRING" size="256"/>
+          <Column id="CODE_USE_CHECK" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_code">
+        <ColumnInfo>
+          <Column id="CODE" type="STRING" size="256"/>
+          <Column id="CODE_NAME" type="STRING" size="256"/>
+          <Column id="EDIT_STATUS" type="STRING" size="256"/>
+          <Column id="CODE_GROUP" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[/********************************************************************************                                                                                                            						                                                                         
+ @Path		 물류
+ @Description 재고이동 등록
+ @Author	  	 강동근
+ @Create      2019. 07. 15.
+ ********************************************************************************/
+
+
+
+/*                   ** this.variables **
+ 
+ var v_exSelWarehouseManagetCode;      //출고창고 담당자코드
+ var v_inSelWarehouseManagetCode;      //입고창고 담당자코드
+ var v_exSelWarehousePlaceCode;        //출고창고코드
+ var v_inSelWarehousePlaceCode;        //입고고창고코드
+ var v_exSelBusinessPlaceCode;         //출고사업장코드
+ var v_inSelBusinessPlaceCode;         //입고사업장코드
+ var v_inventoryTransferPriceCode;     //이동코드
+ var v_inventoryTransferPrice;         //비용
+ var v_inventoryTransferDecription;    //비고
+ var v_selDecision; 				      //단가적용코드
+ var v_discount; 					  //할인 %
+ var v_exWarehouseManagerPhoneNumber;  //출고담당자 전번
+ var v_inWarehouseManagerPhoneNumber;  //입고담당자 전번
+ var v_exSelWarehouseManagetCode;  	  //출고창고 담당자코드
+ var v_inSelWarehouseManagetCode; 	  //입고창고 담당자코드
+ var v_exWarehouseManagerPhoneNumber;  //출고담당자 전번
+ var v_inWarehouseManagerPhoneNumber;  //입고담당자 전번
+ 
+ */
+
+this.logi_InventoryTransferRegistrationForm_onload = function (obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.exflag = null;
+	this.inflag = null;
+	this.exStatus = null;
+	this.inStatus = null;
+	this.exWarehouseflag = null;
+	this.inWarehouseflag = null;
+	this.exWarehouseStatus = null;
+	this.inWarehouseStatus = null;
+	this.v_exSelBusinessPlaceCode = null;
+	this.v_inSelBusinessPlaceCode = null;
+
+	this.v_discount = null;
+	this.v_selDecision = null;
+
+	this.transaction("businessPlace", "dataURL::sys/findBusinessPlaceList.do", "", "ds_businessPlace=gds_businessPlace", "", "callback", false);
+
+	this.transaction("businessPlace", "dataURL::logi/purchase/findDecisionPriceList.do", "", "ds_decisionPrice=dsDecisionPrice", "", "callback", false);
+
+	this.transaction("findCodeDetailList",
+		"dataURL::sys/findCodeDetailList.do",
+		"",
+		"ds_codeDetail=gds_codeDetail",
+		"",
+		"callback", false
+	);
+	this.ds_codeDetail.filter("DIVISION_CODE_NO=='LOGI03' || DIVISION_CODE_NO=='LOGI04'");
+
+	var bRow = this.ds_businessPlace.findRow("BUSINESS_PLACE_CODE", nexacro.getApplication().g_businessCode);
+	var v_businessPlaceName = this.ds_businessPlace.getColumn(bRow, 'BUSINESS_PLACE_NAME');
+	var dRow = nexacro.getApplication().gds_dept.findRow("DEPT_CODE", nexacro.getApplication().g_deptCode);
+	var v_deptName = nexacro.getApplication().gds_dept.getColumn(dRow, 'DEPT_NAME');
+
+	this.businessCode.set_value(v_businessPlaceName);
+	this.deptCode.set_value(v_deptName);
+	this.empName.set_value(nexacro.getApplication().g_empName);
+
+	this.ds_inventoryTransfer.clearData();
+	this.ds_inventoryTrasferRegister.clearData();
+};
+
+// 출고사업장 돋보기 버튼
+var exflag;
+var exStatus;
+var exBusinessPlaceCodeValue = this.exBusinessPlaceCode.value;
+this.findExSelBusiness_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	this.inStatus = "nomal";
+
+	switch (true) 
+	{
+		case this.exBusinessPlaceCode.value == null:
+			this.exStatus = "insert", this.exflag = "Y";
+			break;
+		case this.exBusinessPlaceCode.value != null:
+			this.exStatus = "update";
+			break;
+	}
+	this.searchBusiness();
+};
+
+// 입고사업장 돋보기 버튼
+var inflag;
+var inStatus;
+var inBusinessPlaceCodeValue = this.inBusinessPlaceCode.value;
+this.findInSelBusiness_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	this.exStatus = "nomal";
+
+	switch (true) 
+	{
+		case this.inBusinessPlaceCode.value == null:
+			this.inStatus = "insert", this.inflag = "Y";
+			break;
+		case this.inBusinessPlaceCode.value != null:
+			this.inStatus = "update";
+			break;
+	}
+	this.searchBusiness();
+};
+
+// 사업장찾기 Modal
+this.searchBusiness = function ()
+{
+	nexacro.open("modeless",
+		"base::businessDialog.xfdl",
+		this.getOwnerFrame(),
+		{
+		mode : 'modeless',
+		ds : this.ds_businessPlace
+	},
+		"showtitlebar=true showstatusbar=false openalign='center middle' showcascadetitletext=false titletext='businessPlace'"
+	);
+};
+
+var v_exSelBusinessPlaceCode;
+var v_inSelBusinessPlaceCode;
+this.getBusinessPlace = function (selBusinessPlaceCode, selBusinessPlaceName)
+{
+	if (this.exStatus == "insert" || this.exStatus == "update") 
+	{
+		if (this.exStatus == "update") 
+		{
+			this.v_exSelBusinessPlaceCode = selBusinessPlaceCode;
+			this.exBusinessPlaceCode.set_value(selBusinessPlaceName);
+			this.v_exSelWarehousePlaceCode = "";
+			this.exWarehousePlaceCode.set_value("");
+			this.v_exSelWarehouseManagetCode = "";
+			this.exWarehouseManager.set_value("");
+			alert("출고사업장이 변경되었습니다\n출고창고를 다시 선택해주세요.");
+			return;
+		}
+		this.v_exSelBusinessPlaceCode = selBusinessPlaceCode;
+		this.exBusinessPlaceCode.set_value(selBusinessPlaceName);
+	}
+	else if (this.inStatus == "insert" || this.inStatus == "update") 
+	{
+		if (this.inStatus == "update") 
+		{
+			this.v_inSelBusinessPlaceCode = selBusinessPlaceCode;
+			this.inBusinessPlaceCode.set_value(selBusinessPlaceName);
+			this.v_inSelWarehousePlaceCode = "";
+			this.inWarehousePlaceCode.set_value("");
+			this.v_inSelWarehouseManagetCode = "";
+			this.inWarehouseManager.set_value("");
+			alert("입고사업장이 변경되었습니다\n입고창고를 다시 선택해주세요.");
+			return;
+		}
+		this.v_inSelBusinessPlaceCode = selBusinessPlaceCode;
+		this.inBusinessPlaceCode.set_value(selBusinessPlaceName);
+	}
+};
+
+
+
+// 출고창고 찾기
+var exWarehouseflag;
+var exWarehouseStatus;
+var exWarehouseCodeValue = this.exWarehousePlaceCode.value;
+this.findExWarehouse_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	if (this.exflag != "Y") 
+	{
+		alert("출고사업장 먼저 선택해주세요");
+		return;
+	}
+	this.inWarehouseStatus = "nomal";
+
+	switch (true) 
+	{
+		case this.exWarehousePlaceCode.value == null:
+			this.exWarehouseStatus = "insert", this.exWarehouseflag = "Y";
+			break;
+		case this.exWarehousePlaceCode.value != null:
+			this.exWarehouseStatus = "update";
+			break;
+	}
+	this.searchWarehouse();
+};
+// 입고창고 찾기
+var inWarehouseflag;
+var inWarehouseStatus;
+var inWarehouseCodeValue = this.inWarehousePlaceCode.value;
+this.findInWarehouse_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	if (this.inflag != "Y") 
+	{
+		alert("입고사업장 먼저 선택해주세요");
+		return;
+	}
+	this.exWarehouseStatus = "nomal";
+
+	switch (true) 
+	{
+		case this.inWarehousePlaceCode.value == null:
+			this.inWarehouseStatus = "insert", this.inWarehouseflag = "Y";
+			break;
+		case this.inWarehousePlaceCode.value != null:
+			this.inWarehouseStatus = "update";
+			break;
+	}
+	this.searchWarehouse();
+};
+
+
+// 창고 찾기
+this.searchWarehouse = function ()
+{
+	nexacro.open("modeless",
+		"logi_purchase::logi_WarehouseDialog.xfdl",
+		this.getOwnerFrame(),
+		{
+		mode : 'modeless',
+		ds : this.ds_warehouse
+	},
+		"showtitlebar=true showstatusbar=false openalign='center middle' showcascadetitletext=false titletext='businessPlace'"
+	);
+};
+
+var v_exSelWarehousePlaceCode;
+var v_inSelWarehousePlaceCode;
+this.getWarehouseCode = function (selWarehousePlaceCode, selWarehousePlaceName)
+{
+	if (this.exWarehouseStatus == "insert" || this.exWarehouseStatus == "update") 
+	{
+		this.v_exSelWarehousePlaceCode = selWarehousePlaceCode;
+		this.exWarehousePlaceCode.set_value(selWarehousePlaceName);
+	}
+	else if (this.inWarehouseStatus == "insert" || this.inWarehouseStatus == "update") 
+	{
+		this.v_inSelWarehousePlaceCode = selWarehousePlaceCode;
+		this.inWarehousePlaceCode.set_value(selWarehousePlaceName);
+	}
+};
+
+var v_exSelWarehouseManagetCode;
+var v_inSelWarehouseManagetCode;
+var v_exWarehouseManagerPhoneNumber;
+var v_inWarehouseManagerPhoneNumber;
+this.getManagerCode = function (selWarehouseManagetCode, selWarehouseManagetName, selWarehouseManagerPhoneNumber)
+{
+	if (this.exWarehouseStatus == "insert" || this.exWarehouseStatus == "update") 
+	{
+		this.v_exSelWarehouseManagetCode = selWarehouseManagetCode;
+		this.v_exWarehouseManagerPhoneNumber = selWarehouseManagerPhoneNumber;
+		this.exWarehouseManager.set_value(selWarehouseManagetName);
+	}
+	else if (this.inWarehouseStatus == "insert" || this.inWarehouseStatus == "update") 
+	{
+		this.v_inSelWarehouseManagetCode = selWarehouseManagetCode;
+		this.v_inWarehouseManagerPhoneNumber = selWarehouseManagerPhoneNumber;
+		this.inWarehouseManager.set_value(selWarehouseManagetName);
+	}
+};
+
+var v_inventoryTransferPriceCode;
+var v_inventoryTransferPrice;
+var v_inventoryTransferDecription;
+this.inventoryTransfer_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	nexacro.open("modeless",
+		"logi_purchase::logi_InventoryTransferPriceDialog.xfdl",
+		this.getOwnerFrame(),
+		{
+		mode : 'modeless',
+		ds : this.ds_inventoryTransferPrice
+	},
+		"showtitlebar=true showstatusbar=false openalign='center middle' showcascadetitletext=false titletext='businessPlace'"
+	);
+};
+
+// 단가설정
+var v_selDecision;
+var v_discount;
+this.typeDecision_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	this.saveBtn.set_enable("false");
+	this.inUpdateBtn.set_enable("false");
+	this.outUpdateBtn.set_enable("false");
+	this.deleteBtn.set_enable("false");
+	this.excelBtn.set_enable("false");
+	this.ds_inventoryTrasferRegister.clearData();
+	this.ds_inventoryTransfer.clearData();
+	this.v_discount = null;
+	nexacro.open("modeless",
+		"logi_purchase::logi_InventoryTypeDecision.xfdl",
+		this.getOwnerFrame(),
+		{
+		mode : 'modeless',
+		ds : this.ds_InventoryTypeDecision
+	},
+		"showtitlebar=true showstatusbar=false openalign='center middle' showcascadetitletext=false titletext='businessPlace'"
+	);
+
+	this.settingedDecision.set_enable("true");
+};
+
+// 단가적용
+var registerRandomNumber;
+this.settingedDecision_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	if (this.exflag != "Y" || this.exWarehouseflag != "Y") 
+	{
+		alert("출고사업장 , 출고창고 모두 선택해주세요.");
+		return;
+	}
+	if (this.inflag != "Y" || this.inWarehouseflag != "Y") 
+	{
+		alert("입고사업장 , 입고창고 모두 선택해주세요.");
+		return;
+	}
+	if (this.outDate.value == null || this.inDate.value == null) 
+	{
+		alert("출고일자 , 입고일자 모두 선택해주세요.");
+		return;
+	}
+	if (this.inDate.value < this.outDate.value) 
+	{
+		alert("입고일자가 출고일자보다 빠를수 없습니다.");
+		return;
+	}
+	if (this.v_exSelBusinessPlaceCode == this.v_inSelBusinessPlaceCode) 
+	{
+		alert("같은사업장간의 이동은 안됩니다.");
+		return;
+	}
+	if (this.transferCode.value == null) 
+	{
+		alert("이동수단 선택해주세요.");
+		return;
+	}
+	if (this.v_selDecision == null) 
+	{
+		alert("단가설정 해주세요");
+		return;
+	}
+
+	this.ds_decisionPrice.filter("BUSINESS_PLACE_CODE=='" + this.v_exSelBusinessPlaceCode + "'");
+	this.ds_decisionPriceCopy.copyData(this.ds_decisionPrice, true);
+
+
+	if (this.v_discount == null) 
+	{
+		var index = this.ds_decisionPriceCopy.findRow("DETAIL_CODE", this.v_selDecision);
+		this.v_discount = this.ds_decisionPriceCopy.getColumn(index, "DISCOUNT");
+		switch (true) 
+		{
+			case this.v_selDecision == "P10":
+				this.v_discount = "기본값 적용";
+				break;
+			case this.v_selDecision == "P20":
+				this.v_discount = this.v_discount + "% 할인 적용";
+				break;
+			case this.v_selDecision == "P30":
+				this.v_discount = this.v_discount + "% 추가 적용";
+				break;
+		}
+	}
+	// server setting
+	var date = new Date();
+	var requestDate = "";
+	var year = date.getFullYear();
+	var month = date.getMonth() + 1;
+	if (month < 10) 
+	{
+		month = "0" + month;
+	}
+	var date = date.getDate();
+	date = requestDate.concat(year, month, date);
+	registerRandomNumber = Math.floor(Math.random() * 100000000000);
+
+	var addRow = this.ds_inventoryTrasferRegister.addRow();
+	this.ds_inventoryTrasferRegister.setColumn(addRow, "ITR_SEQ", "NEW");
+	this.ds_inventoryTrasferRegister.setColumn(addRow, "TRASFER_CODE", this.v_inventoryTransferPriceCode);
+	this.ds_inventoryTrasferRegister.setColumn(addRow, "REQUEST_EMP_CODE", nexacro.getApplication().g_empName);
+	this.ds_inventoryTrasferRegister.setColumn(addRow, "REQUEST_DATE", date);
+	this.ds_inventoryTrasferRegister.setColumn(addRow, "DECISION_CODE", this.v_selDecision);
+	this.ds_inventoryTrasferRegister.setColumn(addRow, "DISCOUNT", this.v_discount);
+	this.ds_inventoryTrasferRegister.setColumn(addRow, "REGISTER_NUMBER", registerRandomNumber);
+
+	this.ds_inventoryTrasferRegister.setColumn(addRow, "OUT_DATE", this.outDate.value);
+	this.ds_inventoryTrasferRegister.setColumn(addRow, "OUT_BUSINESS_CODE", this.v_exSelBusinessPlaceCode);
+	this.ds_inventoryTrasferRegister.setColumn(addRow, "OUT_WAREHOUSE_CODE", this.v_exSelWarehousePlaceCode);
+	this.ds_inventoryTrasferRegister.setColumn(addRow, "OUT_PHONE_NUMBER", this.v_exWarehouseManagerPhoneNumber);
+	this.ds_inventoryTrasferRegister.setColumn(addRow, "OUT_MANAGER_CODE", this.v_exSelWarehouseManagetCode);
+	this.ds_inventoryTrasferRegister.setColumn(addRow, "OUT_STATUS", "N");
+
+	this.ds_inventoryTrasferRegister.setColumn(addRow, "IN_DATE", this.inDate.value);
+	this.ds_inventoryTrasferRegister.setColumn(addRow, "IN_BUSINESS_CODE", this.v_inSelBusinessPlaceCode);
+	this.ds_inventoryTrasferRegister.setColumn(addRow, "IN_WAREHOUSE_CODE", this.v_inSelWarehousePlaceCode);
+	this.ds_inventoryTrasferRegister.setColumn(addRow, "IN_MANAGER_CODE", this.v_inSelWarehouseManagetCode);
+	this.ds_inventoryTrasferRegister.setColumn(addRow, "IN_PHONE_NUMBER", this.v_inWarehouseManagerPhoneNumber);
+	this.ds_inventoryTrasferRegister.setColumn(addRow, "IN_STATUS", "N");
+
+
+	nexacro.open("modeless",
+		"logi_purchase::logi_InventoryListDialog.xfdl",
+		this.getOwnerFrame(),
+		{
+		mode : 'modeless',
+		ds : this.ds_decisionPriceCopy
+	},
+		"showtitlebar=true showstatusbar=false openalign='center middle' showcascadetitletext=false titletext='businessPlace'"
+	);
+	this.registerBtn.set_enable("true");
+};
+
+
+this.registerBtn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	if (confirm("등록 하시겠습니까?")) 
+	{
+		this.transaction(
+			"batchInventoryTrasferInfo",
+			"dataURL::logi/purchase/batchInventoryTrasferInfo.do",
+			"dsInventoryTrasferStockInfo=ds_inventoryTransfer:U dsInventoryTrasferInfo=ds_inventoryTrasferRegister:U",
+			"",
+			"",
+			"callback",
+			false
+		);
+	}
+};
+
+
+// 조회버튼
+this.findBtn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	this.transaction("findInventoryTrasferInfoList", "dataURL::logi/purchase/findInventoryTrasferInfoList.do", "", "ds_inventoryTransfer=dsInventoryTrasferStockInfo ds_inventoryTrasferRegister=dsInventoryTrasferInfo", "", "callback", false);
+	this.ds_inventoryTransfer.filter("ITR_SEQ==0");
+	this.ds_inventoryTrasferRegister.filter("OUT_BUSINESS_CODE=='" + this.v_exSelBusinessPlaceCode + "' && OUT_WAREHOUSE_CODE=='" + this.v_exSelWarehousePlaceCode + "' && IN_BUSINESS_CODE=='" + this.v_inSelBusinessPlaceCode + "' && IN_WAREHOUSE_CODE=='" + this.v_inSelWarehousePlaceCode + "' && OUT_DATE>='" + this.outDate.value + "' && IN_DATE<='" + this.inDate.value + "'");
+
+
+
+	this.saveBtn.set_enable("true");
+	this.inUpdateBtn.set_enable("true");
+	this.outUpdateBtn.set_enable("true");
+	this.deleteBtn.set_enable("true");
+	this.excelBtn.set_enable("true");
+};
+
+this.Grid00_oncellclick = function (obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	this.ds_inventoryTransfer.filter("");
+	this.ds_inventoryTransfer.filter("ITQ_SEQ=='" + this.ds_inventoryTrasferRegister.getColumn(e.row, "ITR_SEQ") + "'");
+};
+
+// 출고승인
+this.outUpdateBtn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	if (this.ds_inventoryTrasferRegister.getColumn(this.Grid00.currentrow, "OUT_STATUS") == 'Y') 
+	{
+		alert("출고고승인 되어있습니다.");
+		return;
+	}
+	else 
+	{
+		this.ds_inventoryTrasferRegister.setColumn(this.Grid02.currentrow, "OUT_STATUS", "Y");
+	}
+};
+// 입고승인
+this.inUpdateBtn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	if (this.ds_inventoryTrasferRegister.getColumn(this.Grid02.currentrow, "IN_STATUS") == 'Y') 
+	{
+		alert("입고승인 되어있습니다.");
+		return;
+		if (this.ds_inventoryTrasferRegister.getColumn(this.Grid00.currentrow, "OUT_STATUS") != 'Y') 
+		{
+			alert("출고승인이 되지않은 항목은 입고승인 하지못합니다.");
+			return;
+		}
+	}
+	else 
+	{
+		this.ds_inventoryTrasferRegister.setColumn(this.Grid02.currentrow, "IN_STATUS", "Y");
+	}
+};
+// 저장
+this.saveBtn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	this.transaction(
+		"updateInventoryTrasferInfo",
+		"dataURL::logi/purchase/batchInventoryTrasferInfo.do",
+		"dsInventoryTrasferStockInfo=ds_inventoryTransfer:U dsInventoryTrasferInfo=ds_inventoryTrasferRegister:U",
+		"",
+		"",
+		"callback",
+		false
+	);
+};
+this.callback = function (strSvcID, nErrorCode, strErrorMag)
+{
+	if (strSvcID == "batchInventoryTrasferInfo") 
+	{
+		if (nErrorCode != 0) 
+		{
+			alert(strErrorMag);
+		}
+		else 
+		{
+			alert("등록번호 : " + this.ds_inventoryTrasferRegister.getColumn(0, "REGISTER_NUMBER") + "\n등록되었습니다.");
+			this.reload();
+		}
+	}
+	else if (strSvcID == "updateInventoryTrasferInfo") 
+	{
+		if (nErrorCode != 0) 
+		{
+			alert(strErrorMag);
+		}
+		else 
+		{
+			outCheck = this.ds_inventoryTrasferRegister.getColumn(this.Grid00.currentrow, "OUT_STATUS") == 'Y';
+			inCheck = this.ds_inventoryTrasferRegister.getColumn(this.Grid00.currentrow, "IN_STATUS") == 'Y';
+			if (outCheck && !inCheck) 
+			{
+				alert("출고되었습니다.");
+				this.reload();
+			}
+			else if (outCheck && inCheck) 
+			{
+				alert("입고되었습니다.");
+				this.reload();
+			}
+		}
+	}
+};
+]]></Script>
+  </Form>
+</FDL>

@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="logi_InventoryTransferPriceDialog" width="570" height="250" titletext="New Form" onload="logi_InventoryTransferPriceDialog_onload">
+    <Layouts>
+      <Layout height="250" mobileorientation="landscape" width="570">
+        <Static id="sys_bisinessPlace_stc" taborder="0" text="이동 수단 비용" onclick="Static00_onclick" left="14" top="9" right="15" height="45" border="3px solid darkgray" font="18pt/normal &quot;a두리둥실&quot;" textAlign="center"/>
+        <Grid id="inventoryTransferPriceGrid" taborder="1" autofittype="col" left="5.09%" top="58" right="5.26%" height="180" binddataset="ds_inventoryTransferPrice" oncelldblclick="inventoryTransferPriceGrid_oncelldblclick" font="18pt/normal &quot;a두리둥실&quot;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="이동코드" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="이동분류" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" text="비용" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" text="비고" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:DETAIL_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="bind:DETAIL_CODE_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" displaytype="number" edittype="none" text="bind:PRICE" mask="9,999,999" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" text="bind:DESCRIPTION" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_inventoryTransferPrice">
+        <ColumnInfo>
+          <Column id="DETAIL_CODE" type="STRING" size="256"/>
+          <Column id="PRICE" type="STRING" size="256"/>
+          <Column id="DETAIL_CODE_NAME" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[/********************************************************************************                                                                                                            						                                                                         
+ @Path		 물류
+ @Description 재고이동수단
+ @Author	  	 강동근
+ @Create      2019. 07. 16.
+ ********************************************************************************/
+this.logi_InventoryTransferPriceDialog_onload = function (obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.transaction("findInventoryTransferList",
+		"dataURL::logi/purchase/findInventoryTransferList.do",
+		"",
+		"ds_inventoryTransferPrice=dsInventoryTransferPrice",
+		"",
+		"callback",
+		false
+	);
+};
+
+this.inventoryTransferPriceGrid_oncelldblclick = function (obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	var inventoryTransferPriceName = this.ds_inventoryTransferPrice.getColumn(e.row, "DETAIL_CODE_NAME");
+	var inventoryTransferPriceCode = this.ds_inventoryTransferPrice.getColumn(e.row, "DETAIL_CODE");
+	var inventoryTransferPrice = this.ds_inventoryTransferPrice.getColumn(e.row, "PRICE");
+	var inventoryTransferDecription = this.ds_inventoryTransferPrice.getColumn(e.row, "DESCRIPTION");
+
+	this.opener.transferCode.set_value(inventoryTransferPriceName);
+
+	this.opener.v_inventoryTransferPriceCode = inventoryTransferPriceCode;
+	this.opener.v_inventoryTransferPrice = inventoryTransferPrice;
+	this.opener.v_inventoryTransferDecription = inventoryTransferDecription;
+
+	this.close();
+};
+]]></Script>
+  </Form>
+</FDL>

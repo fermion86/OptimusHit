@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="logi_WarehousingForm" width="1200" height="780" titletext="New Form" onload="logi_WarehousingForm_onload">
+    <Layouts>
+      <Layout height="780" mobileorientation="landscape" width="1200">
+        <GroupBox id="GroupBox00" text="입출고관리" taborder="0" left="1.50%" top="13" right="1.00%" height="753" background="transparent" border="2px solid rgba(51,51,51,1)" color="black" font="18pt/normal &quot;a두리둥실&quot;"/>
+        <Tab id="Tab00" taborder="1" left="36" top="70" width="1134" height="704" tabindex="0" scrollbars="autoboth" font="12pt &quot;a두리둥실&quot;">
+          <Tabpages>
+            <Tabpage id="tabpage1" text="입고처리 및 내역">
+              <Layouts>
+                <Layout>
+                  <Grid id="grd_warehousing" taborder="31" binddataset="ds_warehousing" autofittype="col" left="12" top="58" width="1108" height="595" onheadclick="grd_warehousing_onheadclick" font="12pt &quot;a두리둥실&quot;">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="30" band="head"/>
+                          <Row size="25"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell displaytype="normal" text="입고일" font="bold 11pt 한컴산뜻돋움"/>
+                          <Cell col="1" displaytype="normal" text="품목코드" font="bold 11pt 한컴산뜻돋움"/>
+                          <Cell col="2" displaytype="normal" text="발주번호" font="bold 11pt 한컴산뜻돋움"/>
+                          <Cell col="3" displaytype="normal" text="품목명" font="bold 11pt 한컴산뜻돋움"/>
+                          <Cell col="4" displaytype="normal" text="발주수량" font="bold 11pt 한컴산뜻돋움"/>
+                          <Cell col="5" displaytype="normal" text="입고수량" font="bold 11pt 한컴산뜻돋움"/>
+                          <Cell col="6" displaytype="normal" text="업체코드" font="bold 11pt 한컴산뜻돋움"/>
+                          <Cell col="7" displaytype="normal" text="입고완료여부" font="bold 11pt 한컴산뜻돋움"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell displaytype="normal" text="bind:WAREHOUSING_DATE" font="11pt 한컴산뜻돋움"/>
+                          <Cell col="1" displaytype="normal" text="bind:ITEM_CODE" font="11pt 한컴산뜻돋움"/>
+                          <Cell col="2" displaytype="normal" text="bind:ORDER_NO" font="11pt 한컴산뜻돋움"/>
+                          <Cell col="3" displaytype="normal" text="bind:ITEM_NAME" font="11pt 한컴산뜻돋움"/>
+                          <Cell col="4" displaytype="normal" text="bind:ORDER_AMOUNT" font="11pt 한컴산뜻돋움"/>
+                          <Cell col="5" displaytype="normal" text="bind:WAREHOUSING_AMOUNT" font="11pt 한컴산뜻돋움"/>
+                          <Cell col="6" displaytype="normal" text="bind:CUSTOMER" font="11pt 한컴산뜻돋움"/>
+                          <Cell col="7" displaytype="normal" text="bind:DESCRIPTION" font="11pt 한컴산뜻돋움"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                  <Button id="btn_registerMps02" taborder="34" text="입고내역" enable="false" left="12" top="11" width="117" height="39" font="12pt &quot;a두리둥실&quot;"/>
+                  <Button id="btn_warehousing" taborder="38" text="입고등록" enable="true" left="867" top="11" width="117" height="39" onclick="btn_warehousing_onclick" font="12pt &quot;a두리둥실&quot;"/>
+                  <Button id="btn_refresh" taborder="39" text="새로고침" enable="true" left="1003" top="11" width="117" height="39" onclick="Tab00_tabpage1_btn_refresh_onclick" font="12pt &quot;a두리둥실&quot;"/>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+          </Tabpages>
+        </Tab>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_orderInfo">
+        <ColumnInfo>
+          <Column id="ORDER_NO" type="STRING" size="256"/>
+          <Column id="CUSTOMER_CODE" type="STRING" size="256"/>
+          <Column id="ORDER_DATE" type="STRING" size="256"/>
+          <Column id="PERSON_CODE_IN_CHARGE" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+          <Column id="ORDER_INFO_STATUS" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_orderDetail">
+        <ColumnInfo>
+          <Column id="ORDER_DETAIL_NO" type="STRING" size="256"/>
+          <Column id="ORDER_NO" type="STRING" size="256"/>
+          <Column id="ITEM_CODE" type="STRING" size="256"/>
+          <Column id="ITEM_NAME" type="STRING" size="256"/>
+          <Column id="UNIT_OF_ORDER" type="STRING" size="256"/>
+          <Column id="DUE_DATE_OF_ORDER" type="STRING" size="256"/>
+          <Column id="DELIVERY_SCHEDULE_DATE" type="STRING" size="256"/>
+          <Column id="ORDER_AMOUNT" type="STRING" size="256"/>
+          <Column id="UNIT_PRICE_OF_ORDER" type="STRING" size="256"/>
+          <Column id="SUM_PRICE_OF_ORDER" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+          <Column id="MRP_GATHERING_NO" type="STRING" size="256"/>
+          <Column id="ORDER_DETAIL_STATUS" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_stock">
+        <ColumnInfo>
+          <Column id="WAREHOUSE_CODE" type="STRING" size="256"/>
+          <Column id="BUSINESS_PLACE_CODE" type="STRING" size="256"/>
+          <Column id="ITEM_CODE" type="STRING" size="256"/>
+          <Column id="DELIVERY_NO" type="STRING" size="256"/>
+          <Column id="PRODUCTION_RESULT_NO" type="STRING" size="256"/>
+          <Column id="INPUT_ITEM_NO" type="STRING" size="256"/>
+          <Column id="ITEM_NAME" type="STRING" size="256"/>
+          <Column id="UNIT_OF_STOCK" type="STRING" size="256"/>
+          <Column id="SAFETY_ALLOWANCE_AMOUNT" type="STRING" size="256"/>
+          <Column id="STOCK_AMOUNT" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_warehousing">
+        <ColumnInfo>
+          <Column id="ITEM_CODE" type="STRING" size="256"/>
+          <Column id="ORDER_NO" type="STRING" size="256"/>
+          <Column id="ITEM_NAME" type="STRING" size="256"/>
+          <Column id="ORDER_AMOUNT" type="STRING" size="256"/>
+          <Column id="WAREHOUSING_AMOUNT" type="STRING" size="256"/>
+          <Column id="UNIT_WAREHOUSING" type="STRING" size="256"/>
+          <Column id="CUSTOMER" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+          <Column id="WAREHOUSING_DATE" type="STRING" size="256"/>
+          <Column id="WAREHOUSING_NO" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_materialPayment">
+        <ColumnInfo>
+          <Column id="ITEM_CODE" type="STRING" size="256"/>
+          <Column id="PAYMENT_DATE" type="STRING" size="256"/>
+          <Column id="WORK_INSTRUCTION_NO" type="STRING" size="256"/>
+          <Column id="ITEM_NAME" type="STRING" size="256"/>
+          <Column id="PAYMENT_AMOUNT" type="STRING" size="256"/>
+          <Column id="UNIT_PAYMENT" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+          <Column id="RELEASE_NO" type="STRING" size="256"/>
+          <Column id="INPUT_ITEM_NO" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_unstocked">
+        <ColumnInfo>
+          <Column id="ORDER_DATE" type="STRING" size="256"/>
+          <Column id="ORDER_NO" type="STRING" size="256"/>
+          <Column id="CUSTOMER_CODE" type="STRING" size="256"/>
+          <Column id="CUSTOMER_NAME" type="STRING" size="256"/>
+          <Column id="ITEM_CODE" type="STRING" size="256"/>
+          <Column id="ITEM_NAME" type="STRING" size="256"/>
+          <Column id="UNIT_OF_ORDER" type="STRING" size="256"/>
+          <Column id="ORDER_AMOUNT" type="STRING" size="256"/>
+          <Column id="EMP_NAME" type="STRING" size="256"/>
+          <Column id="DUE_DATE_OF_ORDER" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[/********************************************************************************                                                                            
+ 미입고 내역
+ @Path			  물류
+ @Description	  미입고 내역조회 및 입고등록
+ @Author	  	  박용기	feat.최성원
+ @Create           2019. 12. 09
+ ********************************************************************************/
+
+
+
+include "scripts::commonScripts.xjs"
+
+var customerCode;
+var orderRow;
+var orderNo;
+var warehousingRow;
+var orderDetailRow;
+
+// 온로드
+
+
+this.logi_WarehousingForm_onload = function (obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.transaction(// 미입고내역 조회
+		"findWarehousingList",
+		"dataURL::logi/purchase/findWarehousingList.do",
+		"",
+		"ds_warehousing=ds_warehousing",
+		"",
+		"callback",
+		false
+	);
+};
+
+
+// 새로고침
+this.Tab00_tabpage1_btn_refresh_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	this.reload();
+};
+
+
+
+
+
+// 입고등록
+this.squenceNo = "";
+this.btn_warehousing_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	this.gfnOpen("warehousing", "logi_purchase::logi_WarehousingDialog.xfdl");
+};
+
+// 콜백
+this.callback = function (trid, ErrorCode, ErrorMsg)
+{
+	if (trid == "registWarehousing") 
+	{
+		alert(this.ErrorCode);
+	}
+};
+
+
+// 그리드 오름차순, 내림차순 정렬
+this.grd_warehousing_onheadclick = function (obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	var objDs = this.objects[obj.binddataset];
+
+	for (var i = 0; i < obj.getCellCount("head"); i++) 
+	{
+		var sHeadText = obj.getCellText(-1, i);
+		var nLen = sHeadText.length - 1;
+
+		// In case of the clicked head cell
+		if (i == e.cell) 
+		{
+			var sColId = (obj.getCellProperty("body", e.col, "text")).toString().split(":");
+
+			// If the previous sort in ascending order, it will be sorted in descending order
+			if (sHeadText.substr(nLen) == "▲") 
+			{
+				obj.setCellProperty("head", i, "text", sHeadText.substr(0, nLen) + "▼");
+				objDs.set_keystring("S:-" + sColId[1]);
+			}
+			// If the previous sort in descending order, it will be sorted in ascending order
+			else if (sHeadText.substr(nLen) == "▼") 
+			{
+				obj.setCellProperty("head", i, "text", sHeadText.substr(0, nLen) + "▲");
+				objDs.set_keystring("S:+" + sColId[1]);
+			}
+			// If first sort, it will sort in ascending order
+			else 
+			{
+				obj.setCellProperty("head", i, "text", sHeadText + "▲");
+				objDs.set_keystring("S:+" + sColId[1]);
+			}
+		}
+		// In case of it's not the clicked head cell
+		else 
+		{
+			// Remove the arrow indication is displayed in the head cell which are arranged previously
+			if (sHeadText.substr(nLen) == "▲" || sHeadText.substr(nLen) == "▼") 
+			{
+				obj.setCellProperty("head", i, "text", sHeadText.substr(0, nLen));
+			}
+		}
+	}
+}
+	
+	
+	
+	
+
+	
+;
+]]></Script>
+  </Form>
+</FDL>

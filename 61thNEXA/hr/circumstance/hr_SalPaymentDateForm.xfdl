@@ -1,0 +1,323 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="hr_SalPaymentDateForm" width="1200" height="780" titletext="New Form" onload="hr_SalPaymentDateForm_onload">
+    <Layouts>
+      <Layout height="780" mobileorientation="landscape" width="1200">
+        <Static id="Static00" taborder="0" text="급여 / 상여 지급일자 등록" onclick="Static00_onclick" left="14" top="9" right="29" height="45" border="3px solid darkgray" font="18pt/normal &quot;a두리둥실&quot;" textAlign="center"/>
+        <Button id="saveBtn" taborder="1" text="저장" onclick="saveBtn_onclick" left="80.08%" top="160" right="11.50%" height="45" color="black" font="12pt &quot;a두리둥실&quot;"/>
+        <Grid id="Grid01" taborder="2" binddataset="ds_salPaymentDate" autofittype="col" left="2.83%" top="223" right="10.08%" height="225" font="12pt &quot;a두리둥실&quot;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="지급일자" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="직종" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" text="대상자" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" text="동시발행" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" text="급여구분" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="5" text="급여형태" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="6" text="비고" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell edittype="date" text="bind:PAYMENT_DATE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" displaytype="combo" edittype="combo" text="bind:JIKJONG_CODE" combodataset="ds_jobFamily" combocodecol="DETAIL_CODE" combodatacol="DETAIL_CODE_NAME" combodisplay="edit" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" edittype="normal" text="bind:TARGET_CHOICE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" displaytype="combo" edittype="combo" text="bind:SAME_TIME_SELECTION" combodataset="ds_simultaneousPublicationSelection" combocodecol="DETAIL_CODE" combodatacol="DETAIL_CODE_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" displaytype="combo" edittype="combo" text="bind:PAY_TYPE" combodataset="ds_salBonusType" combocodecol="DETAIL_CODE" combodatacol="DETAIL_CODE_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="5" displaytype="combo" edittype="combo" text="bind:SALARY_TYPE_CODE" combodataset="ds_salaryType" combocodecol="DETAIL_CODE" combodatacol="DETAIL_CODE_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="6" edittype="normal" text="bind:NOTE" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="searchBtn" taborder="3" text="조회" left="51.83%" top="160" right="39.75%" height="45" onclick="searchBtn_onclick" color="black" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="addBtn" taborder="4" text="추가" onclick="addBtn_onclick" left="61.33%" top="160" right="30.33%" height="45" color="black" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="removeBtn" taborder="5" text="삭제" onclick="removeBtn_onclick" left="70.67%" top="160" right="20.92%" height="45" color="black" font="12pt &quot;a두리둥실&quot;"/>
+        <Combo id="month_combo" taborder="6" displaynulltext="선택하세요." innerdataset="ds_baseMonth" codecolumn="MONTH" datacolumn="MONTH" onitemchanged="month_onitemchanged" left="31.42%" top="160" right="57.17%" height="45" font="12pt &quot;a두리둥실&quot;"/>
+        <Combo id="year_combo" taborder="7" displaynulltext="선택하세요." innerdataset="ds_baseYear" codecolumn="YEAR" datacolumn="YEAR" onitemchanged="year_onitemchanged" left="13.58%" top="160" right="75.08%" height="45" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="Static01" taborder="8" text="귀속년월" left="4.17%" top="160" right="87.25%" height="44" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="Static02" taborder="9" text="년" left="25.67%" top="161" right="69.50%" height="44" onclick="Static02_onclick" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="Static03" taborder="10" text="월" onclick="Static02_onclick" left="43.83%" top="160" right="51.33%" height="44" font="12pt &quot;a두리둥실&quot;"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_salPaymentDate">
+        <ColumnInfo>
+          <Column id="PAYMENT_DATE" type="STRING" size="256"/>
+          <Column id="JIKJONG_CODE" type="STRING" size="256"/>
+          <Column id="TARGET_CHOICE" type="STRING" size="256"/>
+          <Column id="SAME_TIME_SELECTION" type="STRING" size="256"/>
+          <Column id="PAY_TYPE" type="STRING" size="256"/>
+          <Column id="SALARY_TYPE_CODE" type="STRING" size="256"/>
+          <Column id="NOTE" type="STRING" size="256"/>
+          <Column id="INPUTED_YEAR_MONTH" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_baseYear">
+        <ColumnInfo>
+          <Column id="YEAR" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="YEAR">2018</Col>
+          </Row>
+          <Row>
+            <Col id="YEAR">2019</Col>
+          </Row>
+          <Row>
+            <Col id="YEAR">2020</Col>
+          </Row>
+          <Row>
+            <Col id="YEAR">2021</Col>
+          </Row>
+          <Row>
+            <Col id="YEAR">2022</Col>
+          </Row>
+          <Row>
+            <Col id="YEAR">2023</Col>
+          </Row>
+          <Row>
+            <Col id="YEAR">2024</Col>
+          </Row>
+          <Row>
+            <Col id="YEAR">2025</Col>
+          </Row>
+          <Row>
+            <Col id="YEAR">2026</Col>
+          </Row>
+          <Row>
+            <Col id="YEAR">2027</Col>
+          </Row>
+          <Row>
+            <Col id="YEAR">2028</Col>
+          </Row>
+          <Row>
+            <Col id="YEAR">2029</Col>
+          </Row>
+          <Row>
+            <Col id="YEAR">2030</Col>
+          </Row>
+          <Row>
+            <Col id="YEAR">2031</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_baseMonth">
+        <ColumnInfo>
+          <Column id="MONTH" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="MONTH">01</Col>
+          </Row>
+          <Row>
+            <Col id="MONTH">02</Col>
+          </Row>
+          <Row>
+            <Col id="MONTH">03</Col>
+          </Row>
+          <Row>
+            <Col id="MONTH">04</Col>
+          </Row>
+          <Row>
+            <Col id="MONTH">05</Col>
+          </Row>
+          <Row>
+            <Col id="MONTH">06</Col>
+          </Row>
+          <Row>
+            <Col id="MONTH">07</Col>
+          </Row>
+          <Row>
+            <Col id="MONTH">08</Col>
+          </Row>
+          <Row>
+            <Col id="MONTH">09</Col>
+          </Row>
+          <Row>
+            <Col id="MONTH">10</Col>
+          </Row>
+          <Row>
+            <Col id="MONTH">11</Col>
+          </Row>
+          <Row>
+            <Col id="MONTH">12</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_salBonusType">
+        <ColumnInfo>
+          <Column id="DETAIL_CODE" type="STRING" size="256"/>
+          <Column id="DETAIL_CODE_NAME" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_jobFamily">
+        <ColumnInfo>
+          <Column id="DETAIL_CODE" type="STRING" size="256"/>
+          <Column id="DETAIL_CODE_NAME" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_simultaneousPublicationSelection">
+        <ColumnInfo>
+          <Column id="DETAIL_CODE" type="STRING" size="256"/>
+          <Column id="DETAIL_CODE_NAME" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_salaryType">
+        <ColumnInfo>
+          <Column id="DETAIL_CODE" type="STRING" size="256"/>
+          <Column id="DETAIL_CODE_NAME" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[/********************************************************************************                                                                            
+ 급여/상여 지급일자 등록 화면
+ @Path			인사
+ @Description	급여/상여 등록하기 위한 폼
+ @Author	  		정승훈
+ @Create         2019. 02. 15.
+ ********************************************************************************/
+
+var baseYear;
+var baseMonth;
+
+this.hr_SalPaymentDateForm_onload = function (obj:Form, e:nexacro.LoadEventInfo)
+{
+	// 코드 목록 얻어옴
+	this.transaction("findCodeList",
+		"dataURL::sys/findCodeList.do",
+		"",
+		"gds_code=ds_code",
+		"",
+		"callback",
+		false
+	);
+
+	this.transaction("findCodeDetailList",
+		"dataURL::sys/findCodeDetailList.do",
+		"",
+		"gds_codeDetail=gds_codeDetail",
+		"",
+		"callback",
+		false
+	);
+
+	nexacro.getApplication().gds_codeDetail.filter("");
+	// 동시분리
+	nexacro.getApplication().gds_codeDetail.filter("String(DETAIL_CODE).substr(0,3) == 'STS'");
+	this.ds_simultaneousPublicationSelection.copyData(nexacro.getApplication().gds_codeDetail, true);
+	// 급여상여급상여
+	nexacro.getApplication().gds_codeDetail.filter("");
+	nexacro.getApplication().gds_codeDetail.filter("String(DETAIL_CODE).substr(0,3) == 'SGC'");
+	this.ds_salBonusType.copyData(nexacro.getApplication().gds_codeDetail, true);
+	// 연봉 월급 주급
+	nexacro.getApplication().gds_codeDetail.filter("");
+	nexacro.getApplication().gds_codeDetail.filter("String(DETAIL_CODE).substr(0,3) == 'PAC'");
+	this.ds_salaryType.copyData(nexacro.getApplication().gds_codeDetail, true);
+	// alert(this.ds_salaryType.getRowCount());
+
+	// 사무직 생산직 일용직
+	nexacro.getApplication().gds_codeDetail.filter("");
+	nexacro.getApplication().gds_codeDetail.filter("String(DETAIL_CODE).substr(0,3) == 'JJC'");
+	this.ds_jobFamily.copyData(nexacro.getApplication().gds_codeDetail, true);
+};
+// 조회
+this.searchBtn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	baseYear = this.year_combo.value;
+	baseMonth = this.month_combo.value;
+	var baseYearMonth = baseYear + baseMonth;
+	alert(baseYearMonth);
+	if (baseYear == undefined || baseMonth == undefined) 
+	{
+		alert(" 귀속년월을 입력해주세요 :( ");
+	}
+	else 
+	{
+		this.ds_salPaymentDate.filter("");
+		this.transaction(
+			"findSalPaymentDateList",
+			"dataURL::hr/circumstance/findSalPaymentDateList.do",
+			"",
+			"ds_salPaymentDate=ds_salPaymentDate",
+			"inputedYearMonth=" + baseYearMonth,
+			"callback"
+		);
+	}
+};
+// 추가
+this.addBtn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	this.ds_salPaymentDate.addRow();
+	this.ds_salPaymentDate.setColumn(this.ds_salPaymentDate.rowposition, "INPUTED_YEAR_MONTH", (baseYear + baseMonth));
+};
+
+// 삭제
+this.removeBtn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	this.ds_salPaymentDate.deleteRow(this.ds_salPaymentDate.rowposition);
+};
+
+// 저장
+this.saveBtn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	if (confirm(" 저장 하시겠습니까? ")) 
+	{
+		this.transaction(
+			"batchSalPaymentDate",
+			"dataURL::hr/circumstance/batchSalPaymentDate.do",
+			"ds_salPaymentDate=ds_salPaymentDate:u",
+			"",
+			"",
+			"callback"
+		);
+	}
+};
+
+
+this.callback = function (trid, ErrorCode, ErrorMsg)
+{
+	if (trid == 'findSalPaymentDateList') 
+	{
+		if (ErrorCode != 0) 
+		{
+			alert(ErrorMsg);
+		}
+		else 
+		{
+			if (this.ds_salPaymentDate.getRowCount() == 0) 
+			{
+				alert(" 해당 귀속년월의 급/상여 지급일자 데이터가 존재하지 않습니다 :( ");
+			}
+		}
+	}
+
+
+	if (trid == 'batchSalPaymentDate') 
+	{
+		if (ErrorCode != 0) 
+		{
+			alert(ErrorMsg);
+		}
+		else 
+		{
+			alert("등록되었습니다. ");
+			this.reload();
+		}
+	}
+};
+]]></Script>
+  </Form>
+</FDL>

@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <GenInfo version="1.1">
+    <Rule>
+      <ENV rule_version="1.05"/>
+      <ADL rule_version="1.14"/>
+      <FDL rule_version="1.04"/>
+      <XCSS rule_version="1.03"/>
+      <Script rule_version="1.02"/>
+    </Rule>
+    <Info project="C:\Users\DK\Desktop\61thERP\" generated="C:\Users\DK\Documents\nexacro\17\outputs\61thERP\">
+      <File url="typedefinition.xml" checksum="20200323172814" errormsg=""/>
+      <File url="appvariables.xml" checksum="20200323205222" errormsg=""/>
+      <File url="environment.xml" checksum="20200225121759" errormsg=""/>
+      <File url="_resource_\_theme_\default\theme.xcss" checksum="20200225121800" errormsg=""/>
+      <File url="App_Desktop.xadl" checksum="20200225173522" errormsg=""/>
+      <File url="Base\businessDialog.xfdl" checksum="20200225140335" errormsg=""/>
+      <File url="Base\deptDialog.xfdl" checksum="20200225123350" errormsg=""/>
+      <File url="Base\loginForm.xfdl" checksum="20200225174245" errormsg=""/>
+      <File url="scripts\commonScripts.xjs" checksum="20200225123747" errormsg=""/>
+      <File url="scripts\commonOpen.xjs" checksum="20200310203318" errormsg=""/>
+      <File url="Base\topForm.xfdl" checksum="20200225170751" errormsg=""/>
+      <File url="Base\menuForm.xfdl" checksum="20200225204908" errormsg=""/>
+      <File url="Base\mainForm.xfdl" checksum="20200225131904" errormsg=""/>
+      <File url="scripts\commonTransaction.xjs" checksum="20200225173957" errormsg=""/>
+      <File url="hr\attendance\hr_DailyAttendanceApplicationForm.xfdl" checksum="20200323191329" errormsg=""/>
+      <File url="hr\attendance\hr_attdApprovalManagementForm.xfdl" checksum="20200228212416" errormsg=""/>
+      <File url="scripts\commonDate.xjs" checksum="20200227211719" errormsg=""/>
+      <File url="scripts\commonString.xjs" checksum="20200227212309" errormsg=""/>
+      <File url="scripts\commonUtil.xjs" checksum="20200227212458" errormsg=""/>
+      <File url="scripts\commonDataset.xjs" checksum="20200227213412" errormsg=""/>
+      <File url="hr\attendance\hr_DailyAttdManagementForm.xfdl" checksum="20200228214537" errormsg=""/>
+      <File url="acc\base\acc_subManagementForm.xfdl" checksum="20200302165819" errormsg=""/>
+      <File url="acc\slip\acc_slipRegistForm.xfdl" checksum="20200309113049" errormsg=""/>
+      <File url="logi\business\logi_EstimateForm.xfdl" checksum="20200312211731" errormsg=""/>
+      <File url="Base\customerDialog.xfdl" checksum="20200310192433" errormsg=""/>
+      <File url="acc\base\acc_accountDialog.xfdl" checksum="20200308150709" errormsg=""/>
+      <File url="Base\financialCustomerDialog.xfdl" checksum="20200308154036" errormsg=""/>
+      <File url="Base\employeeDialog.xfdl" checksum="20200308155908" errormsg=""/>
+      <File url="Base\warehouseDialog.xfdl" checksum="20200308160528" errormsg=""/>
+      <File url="acc\slip\acc_slipApproveForm.xfdl" checksum="20200308174700" errormsg=""/>
+      <File url="acc\slip\acc_journalDetailDialog.xfdl" checksum="20200308174300" errormsg=""/>
+      <File url="acc\slip\acc_rangeTrialBalanceForm.xfdl" checksum="20200308181647" errormsg=""/>
+      <File url="acc\statement\acc_financialStatementForm.xfdl" checksum="20200309121351" errormsg=""/>
+      <File url="acc\statement\acc_incomeStatementForm.xfdl" checksum="20200309121947" errormsg=""/>
+      <File url="acc\statement\acc_preFinancialStatementForm.xfdl" checksum="20200309123739" errormsg=""/>
+      <File url="acc\statement\acc_preIncomeStatementForm.xfdl" checksum="20200309123756" errormsg=""/>
+      <File url="acc\statement\acc_totalTrialBalanceForm.xfdl" checksum="20200309124826" errormsg=""/>
+      <File url="acc\accBookMgt\acc_journalForm.xfdl" checksum="20200309162028" errormsg=""/>
+      <File url="acc\accBookMgt\acc_accountant.xfdl" checksum="20200309162718" errormsg=""/>
+      <File url="acc\accBookMgt\acc_purchaseAndSaleForm.xfdl" checksum="20200309173841" errormsg=""/>
+      <File url="logi\purchase\logi_ItemDialog.xfdl" checksum="20200311193604" errormsg=""/>
+      <File url="Base\paging_comm.xfdl" checksum="20200310104812" errormsg=""/>
+      <File url="logi\business\logi_EstimateDialog.xfdl" checksum="20200311122941" errormsg=""/>
+      <File url="scripts\common61th.xjs" checksum="20200311110208" errormsg=""/>
+      <File url="logi\business\logi_ContractForm.xfdl" checksum="20200311124859" errormsg=""/>
+      <File url="logi\production\logi_MRPForm.xfdl" checksum="20200312201848" errormsg=""/>
+      <File url="logi\production\logi_MPSForm.xfdl" checksum="20200312212209" errormsg=""/>
+      <File url="Base\sys_autholrityManagementForm.xfdl" checksum="20200323141632" errormsg=""/>
+      <File url="Base\sys_businessPlaceForm.xfdl" checksum="20200323143016" errormsg=""/>
+      <File url="Base\sys_codeManagerForm.xfdl" checksum="20200323143354" errormsg=""/>
+      <File url="Base\sys_companyRegistrationForm.xfdl" checksum="20200323143745" errormsg=""/>
+      <File url="Base\sys_customerManagerForm.xfdl" checksum="20200323144215" errormsg=""/>
+      <File url="Base\sys_deptManagerForm.xfdl" checksum="20200323144609" errormsg=""/>
+      <File url="logi\business\logi_ContractPDF.xfdl" checksum="20200323151936" errormsg=""/>
+      <File url="logi\business\logi_Delivery.xfdl" checksum="20200323153027" errormsg=""/>
+      <File url="logi\business\logi_DeliveryResultForm.xfdl" checksum="20200323153925" errormsg=""/>
+      <File url="logi\business\logi_slipDialog.xfdl" checksum="20200323154538" errormsg=""/>
+      <File url="logi\business\logi_slipForm.xfdl" checksum="20200323155134" errormsg=""/>
+      <File url="logi\purchase\logi_BOMForm.xfdl" checksum="20200323160740" errormsg=""/>
+      <File url="logi\purchase\logi_deliveryHistoryDialog.xfdl" checksum="20200323161553" errormsg=""/>
+      <File url="logi\purchase\logi_GiveOrderForm.xfdl" checksum="20200323161936" errormsg=""/>
+      <File url="logi\purchase\logi_InventoryForm.xfdl" checksum="20200323162408" errormsg=""/>
+      <File url="logi\purchase\logi_InventoryTransferCurrentSituationForm.xfdl" checksum="20200323163523" errormsg=""/>
+      <File url="logi\purchase\logi_InventoryTransferPriceDialog.xfdl" checksum="20200323163650" errormsg=""/>
+      <File url="logi\purchase\logi_InventoryTransferRegistrationForm.xfdl" checksum="20200323164323" errormsg=""/>
+      <File url="logi\purchase\logi_InventoryTypeDecision.xfdl" checksum="20200323164548" errormsg=""/>
+      <File url="logi\purchase\logi_ItemForm.xfdl" checksum="20200323164756" errormsg=""/>
+      <File url="logi\purchase\logi_OrderGatheringDialog.xfdl" checksum="20200323165101" errormsg=""/>
+      <File url="logi\purchase\logi_WarehouseDialog.xfdl" checksum="20200323170331" errormsg=""/>
+      <File url="logi\purchase\logi_WarehousingDialog.xfdl" checksum="20200323170610" errormsg=""/>
+      <File url="logi\purchase\logi_WarehousingForm.xfdl" checksum="20200323171008" errormsg=""/>
+      <File url="logi\production\logi_ProductionHandling.xfdl" checksum="20200323171404" errormsg=""/>
+      <File url="logi\production\logi_WorkinstructionForm.xfdl" checksum="20200323171805" errormsg=""/>
+      <File url="logi\production\MaterialCheckDialog.xfdl" checksum="20200323172007" errormsg=""/>
+      <File url="logi\production\MrpDialog.xfdl" checksum="20200323172206" errormsg=""/>
+      <File url="logi\production\MrpGatheringDialog.xfdl" checksum="20200323172346" errormsg=""/>
+      <File url="logi\production\logi_ResultChart.xfdl" checksum="20200323172718" errormsg=""/>
+      <File url="logi_base\logi_FactoryDetailForm.xfdl" checksum="20200323173439" errormsg=""/>
+      <File url="logi_base\logi_FactoryForm.xfdl" checksum="20200323173744" errormsg=""/>
+      <File url="logi_trade\logi_CustomsClearance.xfdl" checksum="20200323174138" errormsg=""/>
+      <File url="logi_trade\logi_CustomsClearancedeClarationForm.xfdl" checksum="20200323174306" errormsg=""/>
+      <File url="logi_trade\logi_ExportContractForm.xfdl" checksum="20200323184934" errormsg=""/>
+      <File url="logi_trade\logi_LetterOfCreditPopup.xfdl" checksum="20200323185446" errormsg=""/>
+      <File url="logi_trade\logi_TradeOrderDocumentsForm.xfdl" checksum="20200323185919" errormsg=""/>
+      <File url="logi_trade\logi_TradeOrderForm.xfdl" checksum="20200323190315" errormsg=""/>
+      <File url="hr\pm\hr_deptDialog.xfdl" checksum="20200323191540" errormsg=""/>
+      <File url="hr\pm\hr_EducationRegistration.xfdl" checksum="20200323202543" errormsg=""/>
+      <File url="hr\pm\hr_HmlfmElm.xfdl" checksum="20200323192128" errormsg=""/>
+      <File url="hr\pm\hr_HmRcdCd.xfdl" checksum="20200323192632" errormsg=""/>
+      <File url="hr\appointment\hr_AppointmentCodeDialog.xfdl" checksum="20200323192931" errormsg=""/>
+      <File url="hr\appointment\hr_AppointmentDialog.xfdl" checksum="20200323193258" errormsg=""/>
+      <File url="hr\appointment\hr_AppointmentForm.xfdl" checksum="20200323193751" errormsg=""/>
+      <File url="hr\appointment\hr_PersonalAppointmenDialog.xfdl" checksum="20200323193952" errormsg=""/>
+      <File url="hr\appointment\hr_PersonalAppointmentForm.xfdl" checksum="20200323194631" errormsg=""/>
+      <File url="hr\appointment\hr_TempAppointmentDialog.xfdl" checksum="20200323194749" errormsg=""/>
+      <File url="hr\pay\hr_allowanceDialog.xfdl" checksum="20200323195010" errormsg=""/>
+      <File url="hr\pay\hr_payCalculateForm.xfdl" checksum="20200323195527" errormsg=""/>
+      <File url="hr\pay\hr_slipDialog.xfdl" checksum="20200323195801" errormsg=""/>
+      <File url="hr\pay\hr_slipForm.xfdl" checksum="20200323200409" errormsg=""/>
+      <File url="hr\pm\hr_bankDialog.xfdl" checksum="20200323201246" errormsg=""/>
+      <File url="hr\pm\hr_EducationCodeDialog.xfdl" checksum="20200323201748" errormsg=""/>
+      <File url="hr\pm\hr_EducationListDialog.xfdl" checksum="20200323201729" errormsg=""/>
+      <File url="hr\pm\hr_HmIfmElmDialog.xfdl" checksum="20200323203431" errormsg=""/>
+      <File url="hr\pm\hr_positionDialog.xfdl" checksum="20200323203644" errormsg=""/>
+      <File url="hr\attendance\hr_AnnualApplicationForm.xfdl" checksum="20200323204232" errormsg=""/>
+      <File url="hr\attendance\hr_DailyAttdRestApplicationForm.xfdl" checksum="20200323204656" errormsg=""/>
+      <File url="hr\attendance\hr_MonthlyAttdanceManagementForm.xfdl" checksum="20200323205019" errormsg=""/>
+      <File url="hr\attendance\hr_OverNightApplicationForm.xfdl" checksum="20200323205720" errormsg=""/>
+      <File url="hr\attendance\hr_UnApprovedDailyAttdDialog.xfdl" checksum="20200323210040" errormsg=""/>
+      <File url="hr\attendance\hr_UnCloseDailyAttdDialog.xfdl" checksum="20200323210417" errormsg=""/>
+      <File url="hr\circumstance\hr_annualLeaveManagementForm.xfdl" checksum="20200323210659" errormsg=""/>
+      <File url="hr\circumstance\hr_basicWorktimeManagementForm.xfdl" checksum="20200323210910" errormsg=""/>
+      <File url="hr\circumstance\hr_deductionTaxForm.xfdl" checksum="20200323211220" errormsg=""/>
+      <File url="hr\circumstance\hr_HolidayManagementForm.xfdl" checksum="20200323211722" errormsg=""/>
+      <File url="hr\circumstance\hr_PayDeductionForm.xfdl" checksum="20200323212248" errormsg=""/>
+      <File url="hr\circumstance\hr_payStepManagementForm.xfdl" checksum="20200323212601" errormsg=""/>
+      <File url="hr\circumstance\hr_salMgnForm.xfdl" checksum="20200323212941" errormsg=""/>
+      <File url="hr\circumstance\hr_SalPaymentDateForm.xfdl" checksum="20200323213340" errormsg=""/>
+    </Info>
+  </GenInfo>
+</root>

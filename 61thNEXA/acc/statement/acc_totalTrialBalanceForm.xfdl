@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="acc_totalTrialBalanceForm" width="1280" height="780" titletext="New Form">
+    <Layouts>
+      <Layout height="780" mobileorientation="landscape" width="1280">
+        <Static id="tb_stc" taborder="0" text="합계잔액시산표" onclick="Static00_onclick" left="134" top="9" right="150" height="45" border="3px solid darkgray" font="18pt/normal &quot;a두리둥실&quot;" textAlign="center"/>
+        <Calendar id="tb_cal" taborder="1" left="58.44%" top="62" right="25.63%" height="42" font="12pt &quot;a두리둥실&quot;" dateformat="yyyy-MM-dd"/>
+        <Button id="tbSearch_btn" taborder="2" text="조회" left="75.23%" top="62" right="18.98%" height="42" onclick="tbSearch_btn_onclick" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="tbOutput_btn" taborder="3" text="출력" left="82.19%" top="62" right="11.88%" height="42" onclick="tbOutput_btn_onclick" font="12pt &quot;a두리둥실&quot;"/>
+        <Grid id="tb_grid" taborder="4" left="10.86%" top="109" right="11.09%" height="636" autofittype="col" binddataset="ds_totalTrialBalance" font="12pt &quot;a두리둥실&quot;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="156"/>
+                <Column size="160"/>
+                <Column size="134"/>
+                <Column size="171"/>
+                <Column size="160"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell colspan="2" text="차변" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" rowspan="2" text="계정과목" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" colspan="2" text="대변" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell row="1" text="잔액" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell row="1" col="1" text="합계" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell row="1" col="3" text="합계" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell row="1" col="4" text="잔액" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:LEFT_DEBTOR_BALANCE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="bind:LEFT_DEBTOR_SUM" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" text="bind:ACCOUNT_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" text="bind:RIGHT_CREDITS_SUM" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" text="bind:RIGHT_CREDITS_BALANCE" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="tbSearch_stc" taborder="5" text="조회날짜" left="48.83%" top="62" right="42.34%" height="42" font="12pt &quot;a두리둥실&quot;"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_totalTrialBalance">
+        <ColumnInfo>
+          <Column id="LEFT_DEBTOR_BALANCE" type="STRING" size="256"/>
+          <Column id="LEFT_DEBTOR_SUM" type="STRING" size="256"/>
+          <Column id="ACCOUNT_NAME" type="STRING" size="256"/>
+          <Column id="RIGHT_CREDITS_SUM" type="STRING" size="256"/>
+          <Column id="RIGHT_CREDITS_BALANCE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findTotalTrialBalanceList</Col>
+            <Col id="URL">dataURL::statement/totalTrialBalance/findTotalTrialBalanceList.do</Col>
+            <Col id="inData"/>
+            <Col id="outData">ds_totalTrialBalance=ds_totalTrialBalance</Col>
+            <Col id="callbackFunc">gfnCallbackFunc</Col>
+            <Col id="argument"/>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[/********************************************************************************                                                                            
+ 합계잔액시산표화면
+ @Path		회계
+ @Description	합계잔액 계산을 위한 창
+ @Author	  	조윤희
+ @Create           2019. 02. 28
+ ********************************************************************************/
+include "scripts::commonTransaction.xjs";
+
+// 합계잔액시산표 조회 버튼 이벤트
+this.tbSearch_btn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	if (this.tb_cal.value <= 20181231) 
+	{
+		alert("전년도 자료는 조회하실 수 없습니다");
+		return;
+	}
+
+	var argument = "approvalDate='" + this.tb_cal.value + "'";
+	this.dsService.setColumn(0, 4, argument);
+	this.gfnService("findTotalTrialBalanceList");
+};
+
+// 엑셀 출력 버튼 이벤트
+this.tbOutput_btn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	if (confirm("합계잔액시산표를 출력하시겠습니까?")) 
+	{
+		this.exportObj = new ExcelExportObject();
+		var ret = this.exportObj.addExportItem(nexacro.ExportItemTypes.GRID,
+			this.tb_grid, "Sheet1!A1");
+		this.exportObj.set_exporturl("http://localhost:8282/nexacro-xeni/XExportImport");
+		this.exportObj.exportData();
+	}
+};
+]]></Script>
+  </Form>
+</FDL>

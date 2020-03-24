@@ -1,0 +1,341 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="logi_ProductionHandling" width="1200" height="780" titletext="New Form" onload="logi_ProductionHandling_onload">
+    <Layouts>
+      <Layout height="780" mobileorientation="landscape" width="1200">
+        <Grid id="workInstruction_grid" taborder="0" binddataset="ds_workInstruction" autofittype="col" left="36" top="88" width="1108" height="288" oncelldblclick="workInstruction_grid_oncelldblclick" oncellclick="workInstruction_grid_oncellclick" font="12pt/normal &quot;a두리둥실&quot;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="80"/>
+                <Column size="166"/>
+                <Column size="52"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="25"/>
+              </Rows>
+              <Band id="head">
+                <Cell displaytype="normal" text="작업지시번호" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" displaytype="normal" text="소요량취합번호" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" displaytype="normal" text="품목코드" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" displaytype="normal" text="품목명" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" displaytype="normal" text="단위" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="5" displaytype="normal" text="작업지시수량" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="6" displaytype="normal" text="작업지시일" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="7" displaytype="normal" text="작업지시상태" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="normal" text="bind:WORK_INSTRUCTION_NO" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" displaytype="normal" text="bind:MRP_GATHERING_NO" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" displaytype="normal" text="bind:ITEM_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" displaytype="normal" text="bind:ITEM_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" displaytype="normal" text="bind:UNIT_OF_WORK_INSTRUCTION" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="5" displaytype="normal" text="bind:WORK_INSTRUCTION_AMOUNT" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="6" displaytype="normal" text="bind:INSTRUCTION_DATE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="7" displaytype="normal" text="bind:WORK_INSTRUCTION_STATUS" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="prm_grid" taborder="1" binddataset="ds_prm" autofittype="col" left="36" top="454" width="1108" height="280" font="12pt &quot;a두리둥실&quot;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="30" band="head"/>
+                <Row size="25"/>
+              </Rows>
+              <Band id="head">
+                <Cell displaytype="normal" text="생산실적번호" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" displaytype="normal" text="작업지시번호" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" displaytype="normal" text="품목코드" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" displaytype="normal" text="품목명" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" displaytype="normal" text="단위" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="5" displaytype="normal" text="생산일자" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="6" displaytype="normal" text="생산수량" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell displaytype="normal" text="bind:PRODUCTION_RESULT_NO" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" displaytype="normal" text="bind:WORK_INSTRUCTION_NO" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" displaytype="normal" text="bind:ITEM_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" displaytype="normal" text="bind:ITEM_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" displaytype="normal" text="bind:UNIT_OF_PRODUCTION_RESULT" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="5" displaytype="normal" text="bind:PRODUCTION_DATE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="6" displaytype="normal" text="bind:PRODUCTION_AMOUNT" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="registerEstimate_btn" taborder="2" text="생산실적등록" onclick="btn_registerEstimate_onclick" left="1014" top="399" width="117" height="39" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="prm_stc" taborder="3" text="생산실적등록" onclick="Static00_onclick" left="14" top="9" right="29" height="45" border="3px solid darkgray" font="18pt/normal &quot;a두리둥실&quot;" textAlign="center"/>
+        <Button id="btn_registrationProductionResult" taborder="4" text="↓" onclick="btn_registrationProductionResult_onclick" left="547" top="396" width="117" height="39" font="12pt &quot;a두리둥실&quot;"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_workInstruction">
+        <ColumnInfo>
+          <Column id="WORK_INSTRUCTION_NO" type="STRING" size="256"/>
+          <Column id="MRP_GATHERING_NO" type="STRING" size="256"/>
+          <Column id="ITEM_CODE" type="STRING" size="256"/>
+          <Column id="ITEM_NAME" type="STRING" size="256"/>
+          <Column id="INSTRUCTION_DATE" type="STRING" size="256"/>
+          <Column id="UNIT_OF_WORK_INSTRUCTION" type="STRING" size="256"/>
+          <Column id="WORK_INSTRUCTION_AMOUNT" type="STRING" size="256"/>
+          <Column id="PRODUCTION_STATUS" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+          <Column id="WORK_INSTRUCTION_STATUS" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_stock">
+        <ColumnInfo>
+          <Column id="WAREHOUSE_CODE" type="STRING" size="256"/>
+          <Column id="ITEM_CODE" type="STRING" size="256"/>
+          <Column id="DELIVERY_NO" type="STRING" size="256"/>
+          <Column id="PRODUCTION_RESULT_NO" type="STRING" size="256"/>
+          <Column id="INPUT_ITEM_NO" type="STRING" size="256"/>
+          <Column id="ITEM_NAME" type="STRING" size="256"/>
+          <Column id="UNIT_OF_STOCK" type="STRING" size="256"/>
+          <Column id="SAFETY_ALLOWANCE_AMOUNT" type="STRING" size="256"/>
+          <Column id="STOCK_AMOUNT" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_warehousing">
+        <ColumnInfo>
+          <Column id="ITEM_CODE" type="STRING" size="256"/>
+          <Column id="ORDER_NO" type="STRING" size="256"/>
+          <Column id="ITEM_NAME" type="STRING" size="256"/>
+          <Column id="ORDER_AMOUNT" type="STRING" size="256"/>
+          <Column id="WAREHOUSING_AMOUNT" type="STRING" size="256"/>
+          <Column id="UNIT_WAREHOUSING" type="STRING" size="256"/>
+          <Column id="CUSTOMER" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+          <Column id="WAREHOUSING_DATE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_prm">
+        <ColumnInfo>
+          <Column id="PRODUCTION_RESULT_NO" type="STRING" size="256"/>
+          <Column id="WORK_INSTRUCTION_NO" type="STRING" size="256"/>
+          <Column id="PRODUCTION_DATE" type="STRING" size="256"/>
+          <Column id="PRODUCTION_AMOUNT" type="STRING" size="256"/>
+          <Column id="ITEM_CODE" type="STRING" size="256"/>
+          <Column id="ITEM_NAME" type="STRING" size="256"/>
+          <Column id="UNIT_OF_PRODUCTION_RESULT" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[
+this.logi_ProductionHandling_onload = function (obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.transaction(
+		"findWorkInstructionList",
+		"dataURL::logi/production/findWorkInstructionList2.do",
+		"",
+		"ds_workInstruction=ds_workInstruction",
+		"",
+		"callback",
+		false
+	);
+
+	this.transaction(
+		"findPrmList",
+		"dataURL::logi/production/findPrmList.do",
+		"",
+		"ds_prm=ds_prm",
+		"",
+		"callback",
+		false
+	);
+
+	this.transaction(
+		"findStockList",
+		"dataURL::logi/purchase/findStockList.do",
+		"",
+		"ds_stock=ds_stock",
+		"",
+		"callback",
+		false
+	);
+
+	this.transaction(
+		"findWarehousingList",
+		"dataURL::logi/purchase/findWarehousingList.do",
+		"",
+		"ds_warehousing=ds_warehousing",
+		"",
+		"callback",
+		false
+	);
+
+	// this.ds_prm.filter("PRODUCTION_RESULT_NO==null");
+	// this.ds_workInstruction.filter("PRODUCTION_STATUS=='N'");
+};
+
+this.squenceNo = "";
+var workInstructionNo = "";
+var itemCode = "";
+var itemName = "";
+var unitOfProductionResult = "";
+var productionAmount = "";
+var objDate = "";
+
+
+
+this.workInstruction_grid_oncellclick = function (obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	workInstructionNo = this.ds_workInstruction.getColumn(e.row, "WORK_INSTRUCTION_NO");
+	itemCode = this.ds_workInstruction.getColumn(e.row, "ITEM_CODE");
+	itemName = this.ds_workInstruction.getColumn(e.row, "ITEM_NAME");
+	unitOfProductionResult = this.ds_workInstruction.getColumn(e.row, "UNIT_OF_WORK_INSTRUCTION");
+	productionAmount = this.ds_workInstruction.getColumn(e.row, "WORK_INSTRUCTION_AMOUNT");
+	objDate = nexacro.getApplication().today();
+};
+
+this.btn_registrationProductionResult_onclick = function (obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	// var workInstructionNo = this.ds_workInstruction.getColumn(e.row,"WORK_INSTRUCTION_NO");
+	// var itemCode = this.ds_workInstruction.getColumn(e.row,"ITEM_CODE");
+	// var itemName = this.ds_workInstruction.getColumn(e.row,"ITEM_NAME");
+	// var unitOfProductionResult = this.ds_workInstruction.getColumn(e.row,"UNIT_OF_WORK_INSTRUCTION");
+	// var productionAmount = this.ds_workInstruction.getColumn(e.row,"WORK_INSTRUCTION_AMOUNT");
+	// var objDate = application.today();
+	var prmRow = this.ds_prm.addRow();
+
+	this.transaction("takeSerialCode",
+		"dataURL::sys/findSequenceNo.do", "", "", "findSeq='PRM_SEQ'", "codeCallback", false
+	);
+
+	var serialCode = this.squenceNo;
+	alert("시퀀스" + serialCode);
+	var prmNo = "PRM" + serialCode;
+	alert("생산실적번호" + prmNo);
+
+	this.ds_prm.setColumn(prmRow, "PRODUCTION_RESULT_NO", prmNo);
+	this.ds_prm.setColumn(prmRow, "WORK_INSTRUCTION_NO", workInstructionNo);
+	this.ds_prm.setColumn(prmRow, "PRODUCTION_DATE", objDate);
+	this.ds_prm.setColumn(prmRow, "PRODUCTION_AMOUNT", productionAmount);
+	this.ds_prm.setColumn(prmRow, "ITEM_CODE", itemCode);
+	this.ds_prm.setColumn(prmRow, "ITEM_NAME", itemName);
+	this.ds_prm.setColumn(prmRow, "UNIT_OF_PRODUCTION_RESULT", unitOfProductionResult);
+
+	var orderNo = this.ds_prm.getColumn(prmRow, "PRODUCTION_RESULT_NO");
+
+	// 갑자기 창고가 왜 나오지????????????????
+	var warehousingRow = this.ds_warehousing.addRow();
+	this.transaction("takeSerialCode",
+		"dataURL::sys/findSequenceNo.do", "", "", "findSeq='WH_SEQ'", "codeCallback", false
+	);
+
+	var whSQ = this.squenceNo;
+	// alert("wh시퀀스"+whSQ);
+	var whNo = "PMH" + whSQ;
+
+	this.ds_warehousing.setColumn(warehousingRow, "ITEM_CODE", itemCode);
+	this.ds_warehousing.setColumn(warehousingRow, "ORDER_NO", prmNo);
+	this.ds_warehousing.setColumn(warehousingRow, "ITEM_NAME", itemName);
+	this.ds_warehousing.setColumn(warehousingRow, "ORDER_AMOUNT", productionAmount);
+	this.ds_warehousing.setColumn(warehousingRow, "WAREHOUSING_AMOUNT", productionAmount);
+	this.ds_warehousing.setColumn(warehousingRow, "UNIT_WAREHOUSING", unitOfProductionResult);
+	this.ds_warehousing.setColumn(warehousingRow, "CUSTOMER", 'BRC-01');
+	this.ds_warehousing.setColumn(warehousingRow, "WAREHOUSING_DATE", objDate);
+	this.ds_warehousing.setColumn(warehousingRow, "DESCRIPTION", 'Y');
+	this.ds_warehousing.setColumn(warehousingRow, "WAREHOUSING_NO", whNo);
+
+	// 창고 ITEMCODE ROW 구함
+	var findStock = this.ds_stock.findRow("ITEM_CODE", itemCode);
+	// alert("findStock"+findStock);
+	// 창고 재고 들고옴
+	var amount0 = this.ds_stock.getColumn(itemCode, "STOCK_AMOUNT");
+	// alert("amount0"+amount0);
+	// 창고재고 + 생산한 재고
+	var setAmount = parseInt(amount0) + parseInt(productionAmount);
+
+	// alert("setAmount"+setAmount);
+	if (itemCode == 'DK-01') 
+	{
+		this.ds_stock.setColumn(findStock, "STOCK_AMOUNT", setAmount);
+	}
+	else if (itemCode == 'DK-02') 
+	{
+		this.ds_stock.setColumn(findStock, "STOCK_AMOUNT", setAmount);
+	}
+	else if (itemCode == 'DK-AP02') 
+	{
+		this.ds_stock.setColumn(findStock, "STOCK_AMOUNT", setAmount);
+	}
+	else if (itemCode == 'DK-AP01') 
+	{
+		this.ds_stock.setColumn(findStock, "STOCK_AMOUNT", setAmount);
+	}
+
+	this.ds_workInstruction.setColumn(e.row, "PRODUCTION_STATUS", 'Y');
+
+	this.ds_workInstruction.filter("PRODUCTION_STATUS!='Y'");
+};
+
+this.btn_registerEstimate_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	if (this.confirm("생산실적을 등록하시겠습니까?")) 
+	{
+		if (this.ds_workInstruction.getRowCount() >= 0) 
+		{
+			for (var i = 0; i <= this.ds_workInstruction.getRowCount(); i++) 
+			{
+				this.ds_workInstruction.setColumn(i, "WORK_INSTRUCTION_STATUS", 'Y');
+			}
+		}
+		var deptCode = nexacro.getApplication().g_deptCode;
+		var empCode = nexacro.getApplication().g_empCode;
+		var reportingDate = nexacro.getApplication().todayBar();
+		var businessCode = nexacro.getApplication().g_businessCode;
+		this.alert("생산실적 등록 트랜잭션!!");
+
+		this.transaction(
+			"registPrm",
+			"dataURL::logi/production/registPrm.do",
+			"ds_workInstruction=ds_workInstruction:u ds_prm=ds_prm:u ds_stock=ds_stock:u ds_warehousing=ds_warehousing:u",
+			"ds_prm=ds_prm",
+			"deptCode='" + deptCode + "' empCode='" + empCode + "' reportingDate='" + reportingDate + "' businessCode='" + businessCode + "'",
+			"callback",
+			false
+		);
+	}
+
+	this.ds_prm.filter("PRODUCTION_RESULT_NO==null");
+};
+
+function callback (strSvcID, nErrorCode, strErrorMassage)
+{
+	if (strSvcID == "registPrm") 
+	{
+		alert(strErrorMassage);
+	}
+	;
+}
+
+this.workInstruction_grid_oncelldblclick = function (obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	var workmanModalFrame = new ChildFrame();
+	workmanModalFrame.init("modalFrame", "absolute", 30, 30, 300, 300, null, null, "logi_base::logi_FactoryPLDialog.xfdl");
+	workmanModalFrame.showModal(
+		this.getOwnerFrame(), null, this, "fn_disposition_popupCallback");
+};
+]]></Script>
+  </Form>
+</FDL>

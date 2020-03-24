@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="acc_financialStatementForm" width="1280" height="780" titletext="New Form">
+    <Layouts>
+      <Layout height="780" mobileorientation="landscape" width="1280">
+        <Static id="financialState_stc" taborder="0" text="재무상태표" onclick="Static00_onclick" left="134" top="9" right="150" height="45" border="3px solid darkgray" font="18pt/normal &quot;a두리둥실&quot;" textAlign="center"/>
+        <Calendar id="financialState_cal" taborder="1" left="59.22%" top="79" right="25.94%" height="31" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="financialStateSearch_btn" taborder="2" text="조회" left="74.69%" top="79" right="18.44%" height="31" onclick="financialStateSearch_btn_onclick" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="financialStateOutput_btn" taborder="3" text="출력" left="81.41%" top="79" right="11.41%" height="31" onclick="financialStateOutput_btn_onclick" font="12pt &quot;a두리둥실&quot;"/>
+        <Grid id="curFinancialState_grid" taborder="4" left="10.47%" top="126" right="50.63%" height="534" autofittype="col" binddataset="ds_efinancialStatements" font="12pt &quot;a두리둥실&quot;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="121"/>
+                <Column size="87"/>
+                <Column size="93"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell rowspan="2" text="계정과목" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" colspan="2" text="당기" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell row="1" col="1" colspan="2" text="금액" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:ACCOUNT_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="bind:L_PRICE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" text="bind:R_PRICE" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="preFinancialState_grid00" taborder="5" autofittype="col" left="49.69%" top="126" right="11.80%" height="534" binddataset="ds_preEfinancialStatements" font="12pt &quot;a두리둥실&quot;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="121"/>
+                <Column size="87"/>
+                <Column size="93"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell rowspan="2" text="계정과목" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" colspan="2" text="전기" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell row="1" col="1" colspan="2" text="금액" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:ACCOUNT_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="bind:L_PRICE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" text="bind:R_PRICE" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="noti_stc" taborder="6" text="중소기업 회계기준에 의하여 작성됨." left="40.94%" top="658" right="42.19%" height="35" color="red" font="12pt &quot;a두리둥실&quot;"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_efinancialStatements">
+        <ColumnInfo>
+          <Column id="ACCOUNT_NAME" type="STRING" size="256"/>
+          <Column id="L_PRICE" type="STRING" size="256"/>
+          <Column id="R_PRICE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findFinancialStatements</Col>
+            <Col id="URL">dataURL::statement/financialStatement/findFinancialStatements.do</Col>
+            <Col id="outData">ds_efinancialStatements=ds_efinancialStatements</Col>
+            <Col id="inData"/>
+            <Col id="argument"/>
+            <Col id="callbackFunc">gfnCallbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findPreFinancialStatements</Col>
+            <Col id="URL">dataURL::statement/financialStatement/findFinancialStatements.do</Col>
+            <Col id="outData">ds_preEfinancialStatements=ds_efinancialStatements</Col>
+            <Col id="callbackFunc">gfnCallbackFunc</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_preEfinancialStatements">
+        <ColumnInfo>
+          <Column id="ACCOUNT_NAME" type="STRING" size="256"/>
+          <Column id="L_PRICE" type="STRING" size="256"/>
+          <Column id="R_PRICE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[/********************************************************************************                                                                            
+ 재무상태표화면
+ @Path		회계
+ @Description	결산을 위한 창
+ @Author	  	조윤희
+ @Create           2019. 02. 28
+ ********************************************************************************/
+include "scripts::commonTransaction.xjs";
+// 재무상태표 조회 버튼 이벤트
+this.financialStateSearch_btn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{	// 19년도를 기준으로 이전 년도 자료는 조회불가 
+	if (this.financialState_cal.value <= 20181231) 
+	{
+		alert("전년도 자료는 조회하실 수 없습니다");
+		return;
+	}
+
+	// 2019 기준으로 날짜 셋팅 // 2018 기준 날짜는 고정
+	var cur_argument = "startDate='20190101' endDate='" + this.financialState_cal.value + "'";
+	var pre_argument = "startDate='20180101' endDate='20181231'";
+
+
+	this.dsService.setColumn(0, 4, cur_argument);
+	this.gfnService("findFinancialStatements");
+
+	// alert(this.ds_efinancialStatements.getColumn(0, 1));
+
+	this.dsService.setColumn(1, 4, pre_argument);
+	this.gfnService("findPreFinancialStatements");
+
+	// alert(this.ds_preEfinancialStatements.getColumn(0, 1));
+};
+
+
+// 엑셀 출력 버튼 이벤트
+this.financialStateOutput_btn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	if (confirm("재무상태표를 출력하시겠습니까?")) 
+	{
+		this.exportObj = new ExcelExportObject();
+		var ret = this.exportObj.addExportItem(nexacro.ExportItemTypes.GRID, this.Grid00, "Sheet1!A1");
+		this.exportObj.set_exporturl("http://localhost:8282/nexacro-xeni/XExportImport"); // 출력 URL 체크하고 올바른 메서드 잡아주기 
+		this.exportObj.exportData();
+	}
+};
+]]></Script>
+  </Form>
+</FDL>

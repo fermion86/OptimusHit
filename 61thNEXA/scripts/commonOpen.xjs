@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Script version="1.0" type="xscript5.1"><![CDATA[/********************************************************************************
+ 공통 메뉴 클릭시 화면호출
+ @Path          scripts::commonOpen.xjs
+ @Description    모달이나 다이얼로그를 띄우는 스크립트
+ ********************************************************************************/
+
+// open메서드와 showmodal메서드의 가장 큰 차이점은 callbackFunction의 유무
+
+this.gfnOpen = function (sID, sURL, callbackFunc, param)
+{
+	if (sID == "loginForm") 
+	{
+		var oChildFrame = new ChildFrame();  //(sID, 100, 100, 100, 100, null, null, sURL);
+		oChildFrame.init(sID, 100, 100, 150, 150, null, null, sURL);
+	}
+	else
+	{
+		var oChildFrame = new ChildFrame(sID, 400, 300, 536, 376, null, null, sURL);
+	}
+	oChildFrame.showModal(sID, this.getOwnerFrame(), param, this, callbackFunc);
+		
+};
+]]></Script>

@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="logi_WarehouseDialog" width="300" height="252" titletext="New Form" onload="logi_WarehouseDialog_onload">
+    <Layouts>
+      <Layout height="252" mobileorientation="landscape" width="300">
+        <Static id="sys_bisinessPlace_stc" taborder="0" text="창고 목록" onclick="Static00_onclick" left="14" top="9" right="14" height="45" border="3px solid darkgray" font="16pt/normal &quot;a두리둥실&quot;" textAlign="center"/>
+        <Grid id="warehouseDialog" taborder="1" autofittype="col" left="5.00%" top="58" right="5.00%" height="180" binddataset="ds_warehouse" oncelldblclick="warehouseDialog_oncelldblclick" font="12pt &quot;a두리둥실&quot;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="창고코드" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="창고명" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:WAREHOUSE_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="bind:WAREHOUSE_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_warehouse">
+        <ColumnInfo>
+          <Column id="WAREHOUSE_CODE" type="STRING" size="256"/>
+          <Column id="WAREHOUSE_NAME" type="STRING" size="256"/>
+          <Column id="BUSINESS_PLACE_CODE" type="STRING" size="256"/>
+          <Column id="MANAGER_EMP_NAME" type="STRING" size="256"/>
+          <Column id="MANAGER_EMP_CODE" type="STRING" size="256"/>
+          <Column id="WAREHOUSE_USE_OR_NOT" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+          <Column id="PHONE_NUMBER" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[/********************************************************************************                                                                            
+ 창고검색 다이알로그
+ @Path		물류
+ @Description	창고코드,창고명
+ @Author	  	강동근
+ @Create           2019. 07. 14.
+ ********************************************************************************/
+ // 트렌젝션 안먹힘 확인좀
+var v_businessPlaceCode;
+this.logi_WarehouseDialog_onload = function (obj:Form, e:nexacro.LoadEventInfo)
+{
+	var exWarehouseStatus = this.opener.exWarehouseStatus;
+	var inWarehouseStatus = this.opener.inWarehouseStatus;
+
+	switch (true) 
+	{
+		case exWarehouseStatus == "insert" || exWarehouseStatus == "update":
+			v_businessPlaceCode = this.opener.v_exSelBusinessPlaceCode;
+			break;
+		case inWarehouseStatus == "insert" || inWarehouseStatus == "update":
+			v_businessPlaceCode = this.opener.v_inSelBusinessPlaceCode;
+			break;
+	}
+
+	obj.transaction("findBusinessPlaceList",
+		"dataURL::logi/purchase/findWarehouseList.do",
+		"",
+		"ds_warehouse=dsWarehouse",
+		"brcCode='" + v_businessPlaceCode + "'",
+		"callback",
+		false
+	);
+};
+
+this.warehouseDialog_oncelldblclick = function (obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	var t = this.ds_warehouse.getColumn(e.row, "BUSINESS_PLACE_CODE");
+
+	var selWarehousePlaceCode = this.ds_warehouse.getColumn(e.row, "WAREHOUSE_CODE");
+	var selWarehousePlaceName = this.ds_warehouse.getColumn(e.row, "WAREHOUSE_NAME");
+	this.opener.getWarehouseCode(selWarehousePlaceCode, selWarehousePlaceName);
+
+	var selWarehouseManagerName = this.ds_warehouse.getColumn(e.row, "MANAGER_EMP_NAME");
+	var selWarehouseManagerCode = this.ds_warehouse.getColumn(e.row, "MANAGER_EMP_CODE");
+	var selWarehouseManagerPhoneNumber = this.ds_warehouse.getColumn(e.row, "PHONE_NUMBER");
+	this.opener.getManagerCode(selWarehouseManagerCode, selWarehouseManagerName, selWarehouseManagerPhoneNumber);
+	this.close();
+};
+]]></Script>
+  </Form>
+</FDL>

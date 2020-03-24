@@ -1,0 +1,634 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="logi_ExportContractForm" width="1024" height="690" titletext="New Form" oninit="logi_ExportContractForm_oninit">
+    <Layouts>
+      <Layout height="690" mobileorientation="landscape" width="1024">
+        <GroupBox id="GroupBox00" taborder="0" left="0.98%" top="2" right="0.59%" height="671" text="수출 수주관리" font="18pt/normal &quot;a두리둥실&quot;"/>
+        <Tab id="Tab00" taborder="1" left="5.18%" top="140" right="3.13%" height="512" tabindex="0" scrollbars="autoboth" font="11pt/normal &quot;a두리둥실&quot;">
+          <Tabpages>
+            <Tabpage id="tabpage1" text="수주 목록">
+              <Layouts>
+                <Layout>
+                  <Grid id="grdExportContract" taborder="169" left="2.45%" top="80" right="2.54%" height="228" binddataset="ds_tradeContract" autofittype="col" oncellclick="Tab00_tabpage1_grdExportContract_oncellclick">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="24" band="head"/>
+                          <Row size="24"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell text="수주일련번호" font="12px/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="1" text="견적일련번호" font="12px/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="2" text="수주유형구분" font="12px/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="3" text="거래처" font="12px/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="4" text="수주일자" font="12px/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="5" text="수주요청자" font="12px/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="6" text="수주담당자" font="12px/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="7" text="납품여부" font="12px/normal &quot;a두리둥실&quot;"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell text="bind:EX_CONTRACT_NO" font="12px/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="1" text="bind:ESTIMATE_NO" font="12px/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="2" text="bind:CONTRACT_TYPE" font="12px/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="3" text="bind:CUSTOMER_CODE" font="12px/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="4" text="bind:CONTRACT_DATE" font="12px/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="5" text="bind:CONTRACT_REQUESTER" font="12px/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="6" text="bind:PERSON_CODE_IN_CHARGE" font="12px/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="7" text="bind:DELIVERY_RESULT_STATUS" font="12px/normal &quot;a두리둥실&quot;"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                  <Static id="ContractInsertMsg" taborder="170" text="수주 추가 내역입력 탭으로 이동하여, 내역을 입력해 주세요." left="3.2%" top="35" right="52.68%" height="31" border="1px none darkgray"/>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+            <Tabpage id="tabpage2" text="수주 상세내역">
+              <Layouts>
+                <Layout>
+                  <Grid id="Grid00" taborder="0" left="2.45%" top="80" right="2.54%" height="243" binddataset="ds_tradeContractDetail" autofittype="col" oncellclick="Tab00_tabpage2_Grid00_oncellclick">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="108"/>
+                          <Column size="102"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="57"/>
+                          <Column size="80"/>
+                          <Column size="57"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="24" band="head"/>
+                          <Row size="24"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell text="수주상세일련번호" font="12px/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="1" text="수주일련번호" font="12px/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="2" text="품목코드" font="12px/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="3" text="품목명" font="12px/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="4" text="단위" font="12px/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="5" text="납기일" font="12px/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="6" text="수량" font="12px/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="7" text="단가" font="12px/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="8" text="합계액" font="12px/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="9" text="MPS적용여부" font="12px/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="10" text="납품여부" font="12px/normal &quot;a두리둥실&quot;"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell text="bind:EX_CONTRACT_DETAIL_NO" font="12px/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="1" text="bind:EX_CONTRACT_NO" font="12px/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="2" text="bind:ITEM_CODE" font="12px/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="3" text="bind:ITEM_NAME" font="12px/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="4" text="bind:UNIT_OF_CONTRACT" font="12px/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="5" text="bind:DUE_DATE_OF_CONTRACT" font="12px/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="6" text="bind:CONTRACT_AMOUNT" font="12px/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="7" text="bind:UNIT_PRICE_OF_CONTRACT" font="12px/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="8" text="bind:SUM_PRICE_OF_CONTRACT" font="12px/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="9" text="bind:MPS_APPLY_STATUS" font="12px/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="10" text="bind:DELIVERY_STATUS" font="12px/normal &quot;a두리둥실&quot;"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                  <Static id="ContractInsertMsg" taborder="1" text="수주 추가 내역입력 탭으로 이동하여, 내역을 입력해 주세요." left="3.2%" top="35" right="52.68%" height="31" border="1px none darkgray"/>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+            <Tabpage id="tabpage3" text="수주 추가 내역입력" opacity="1">
+              <Layouts>
+                <Layout>
+                  <Static id="Static01" taborder="0" text="견적일련번호" left="3.83%" top="84" right="85.30%" height="33" background="aliceblue" color="darkblue" font="8pt 함초롬돋움,돋움"/>
+                  <Static id="Static02" taborder="1" text="수출 수주일련번호" left="3.83%" top="116" right="85.30%" height="33" background="aliceblue" color="darkblue" font="9pt 함초롬돋움,돋움"/>
+                  <Static id="Static03" taborder="2" text="수주유형타입" left="3.83%" top="180" right="85.30%" height="33" background="aliceblue" color="darkblue" font="9pt 함초롬돋움,돋움"/>
+                  <Static id="Static04" taborder="3" text="거래처코드" left="3.83%" top="212" right="85.30%" height="33" background="aliceblue" color="darkblue" font="9pt 함초롬돋움,돋움"/>
+                  <Static id="Static05" taborder="4" text="수주일자" left="3.83%" top="244" right="85.30%" height="33" background="aliceblue" color="darkblue" font="9pt 함초롬돋움,돋움"/>
+                  <Static id="Static06" taborder="5" text="수주담당자" left="3.83%" top="276" right="85.30%" height="33" background="aliceblue" color="darkblue" font="9pt 함초롬돋움,돋움"/>
+                  <Static id="Static07" taborder="6" left="21.71%" top="84" right="62.19%" height="33"/>
+                  <Static id="Static08" taborder="7" left="21.71%" top="116" right="62.19%" height="33"/>
+                  <Static id="Static09" taborder="8" left="21.71%" top="180" right="62.19%" height="33"/>
+                  <Static id="Static10" taborder="9" left="21.71%" top="212" right="62.19%" height="33"/>
+                  <Static id="Static11" taborder="10" left="21.71%" top="244" right="62.19%" height="33"/>
+                  <Static id="Static12" taborder="11" left="21.71%" top="276" right="62.19%" height="33"/>
+                  <Static id="Static13" taborder="12" text="수주요청자" left="34.29%" top="244" right="55.27%" height="33" background="aliceblue" color="darkblue" font="9pt 함초롬돋움,돋움"/>
+                  <Static id="Static14" taborder="13" text="설명" left="34.29%" top="116" right="55.27%" height="65" background="aliceblue" color="darkblue" font="8pt 함초롬돋움,돋움"/>
+                  <Static id="Static16" taborder="14" text="수출 상태" left="34.29%" top="180" right="55.27%" height="33" background="aliceblue" color="darkblue" font="9pt 함초롬돋움,돋움"/>
+                  <Static id="Static25" taborder="15" text="품목코드" left="61.62%" top="84" right="28.41%" height="33" background="aliceblue" color="darkblue" font="9pt 함초롬돋움,돋움"/>
+                  <Static id="Static26" taborder="16" text="품목명" left="61.62%" top="116" right="28.41%" height="33" background="aliceblue" color="darkblue" font="9pt 함초롬돋움,돋움"/>
+                  <Static id="Static27" taborder="17" text="단위" left="61.62%" top="148" right="28.41%" height="33" background="aliceblue" color="darkblue" font="8pt 함초롬돋움,돋움"/>
+                  <Static id="Static28" taborder="18" text="수주수량" left="61.62%" top="180" right="28.41%" height="33" background="aliceblue" color="darkblue" font="9pt 함초롬돋움,돋움"/>
+                  <Static id="Static29" taborder="19" text="수주단가" left="61.62%" top="212" right="28.41%" height="33" background="aliceblue" color="darkblue" font="9pt 함초롬돋움,돋움"/>
+                  <Static id="Static19" taborder="20" left="47.79%" top="244" right="38.38%" height="33"/>
+                  <Static id="Static20" taborder="21" left="47.79%" top="116" right="38.38%" height="65"/>
+                  <Static id="Static22" taborder="22" left="47.79%" top="180" right="38.38%" height="33"/>
+                  <Static id="Static24" taborder="23" left="47.79%" top="212" right="38.38%" height="33"/>
+                  <Static id="Static31" taborder="24" left="71.62%" top="84" right="13.43%" height="33"/>
+                  <Static id="Static32" taborder="25" left="71.62%" top="116" right="13.43%" height="33"/>
+                  <Static id="Static33" taborder="26" left="71.62%" top="148" right="13.43%" height="33"/>
+                  <Static id="Static34" taborder="27" left="71.62%" top="180" right="13.43%" height="33"/>
+                  <Static id="Static35" taborder="28" left="71.62%" top="212" right="13.43%" height="33"/>
+                  <Static id="Static36" taborder="29" left="71.62%" top="244" right="13.43%" height="33"/>
+                  <Static id="Static40" taborder="30" left="47.79%" top="276" right="38.38%" height="33"/>
+                  <Edit id="Edit00" taborder="31" left="15.12%" top="88" width="163" height="24" background="whitesmoke"/>
+                  <Edit id="Edit01" taborder="32" left="15.12%" top="120" width="163" height="24" background="whitesmoke"/>
+                  <Edit id="Edit02" taborder="33" left="15.12%" top="184" width="163" height="24" background="whitesmoke"/>
+                  <Edit id="Edit03" taborder="34" left="15.12%" top="248" width="163" height="24" background="whitesmoke"/>
+                  <Edit id="Edit04" taborder="35" left="15.12%" top="280" width="163" height="24" background="whitesmoke"/>
+                  <Combo id="Combo00" taborder="36" left="44.94%" top="185" width="136" height="24" background="whitesmoke"/>
+                  <Combo id="Combo02" taborder="37" left="44.94%" top="216" width="136" height="24" background="whitesmoke"/>
+                  <Edit id="Edit09" taborder="38" left="72.1%" top="152" width="148" height="24" background="whitesmoke"/>
+                  <Edit id="Edit05" taborder="39" left="44.94%" top="248" width="136" height="24" background="whitesmoke"/>
+                  <Edit id="Edit06" taborder="40" left="44.94%" top="120" width="136" height="56" background="whitesmoke"/>
+                  <Combo id="Combo09" taborder="41" left="15.12%" top="217" width="163" height="24" background="whitesmoke"/>
+                  <Static id="Static37" taborder="42" text="납품여부" left="34.29%" top="276" right="55.27%" height="33" background="aliceblue" color="darkblue" font="9pt 함초롬돋움,돋움"/>
+                  <Combo id="Combo03" taborder="43" left="44.94%" top="280" width="137" height="25" background="whitesmoke"/>
+                  <Static id="Static30" taborder="44" text="합계 총액" left="61.62%" top="244" right="28.41%" height="33" background="aliceblue" color="darkblue" font="9pt 함초롬돋움,돋움"/>
+                  <Static id="Static18" taborder="45" text="통관유형" left="34.29%" top="212" right="55.27%" height="33" background="aliceblue" color="darkblue" font="9pt 함초롬돋움,돋움"/>
+                  <Static id="Static00" taborder="46" text="수출 수주&#13;&#10;상세번호" left="3.83%" top="148" right="85.30%" height="33" background="aliceblue" color="darkblue" font="9pt 함초롬돋움,돋움"/>
+                  <Static id="Static15" taborder="47" left="21.71%" top="148" right="62.19%" height="33"/>
+                  <Edit id="Edit07" taborder="48" left="15.12%" top="152" width="163" height="24" background="whitesmoke"/>
+                  <Static id="Static21" taborder="49" text="납기일" left="34.29%" top="84" right="55.27%" height="33" background="aliceblue" color="darkblue" font="9pt 함초롬돋움,돋움"/>
+                  <Static id="Static43" taborder="50" left="44.41%" top="84" right="41.32%" height="33"/>
+                  <Edit id="Edit14" taborder="51" left="44.94%" top="88" width="136" height="24" background="whitesmoke"/>
+                  <Static id="Static46" taborder="52" text="MPS 적용상태" left="61.62%" top="276" right="28.41%" height="33" background="aliceblue" color="darkblue" font="8pt 함초롬돋움,돋움"/>
+                  <Static id="Static47" taborder="53" left="71.62%" top="276" right="13.43%" height="33"/>
+                  <Edit id="Edit15" taborder="54" left="72.1%" top="281" width="148" height="24" background="whitesmoke"/>
+                  <Edit id="Edit08" taborder="55" left="72.1%" top="120" width="148" height="24" background="whitesmoke"/>
+                  <Edit id="Edit10" taborder="56" left="72.1%" top="88" width="148" height="24" background="whitesmoke"/>
+                  <Edit id="Edit12" taborder="57" left="72.1%" top="184" width="148" height="24" background="whitesmoke"/>
+                  <MaskEdit id="MaskEdit00" taborder="58" mask="###,###,###,###" left="72.1%" top="218" right="14.1%" height="21" background="whitesmoke"/>
+                  <MaskEdit id="MaskEdit01" taborder="59" mask="###,###,###,###" autoselect="true" left="72.1%" top="250" right="14.1%" height="21" background="whitesmoke"/>
+                  <Div id="Div00" taborder="60" left="7.14%" top="52" height="299" text="수정을 원하시면, Click!" onclick="Tab00_tabpage3_Div00_onclick" background="white" font="bold 14pt Dotum" opacity="0.5" width="851"/>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+          </Tabpages>
+        </Tab>
+        <Calendar id="fromDateCal" taborder="2" left="5.18%" top="78" right="82.23%" height="29" font="12pt &quot;a두리둥실&quot;"/>
+        <Calendar id="toDateCal" taborder="3" left="20.02%" top="78" right="67.68%" height="29" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="Static00" taborder="4" text="~" left="17.97%" top="88" right="80.18%" height="29" border="1px none darkgray" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="Button00" taborder="5" text="조회" left="33.89%" top="78" right="59.77%" height="29" onclick="exportContractSearchBtn" background="rgba(197,175,148,1)" color="darkblue" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="Button01" taborder="6" text="수주 추가" left="69.63%" top="118" right="19.73%" height="29" onclick="Button01_onclick" background="rgba(197,175,148,1)" color="darkblue" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="Button02" taborder="7" text="일괄저장" left="89.36%" top="118" right="0.98%" height="29" onclick="Button02_onclick" background="rgba(197,175,148,1)" color="darkblue" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="Button03" taborder="8" text="수주 삭제" onclick="Button01_onclick" left="79.59%" top="118" right="10.16%" height="29" background="rgba(197,175,148,1)" color="darkblue" font="12pt &quot;a두리둥실&quot;"/>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item0" compid="Tab00.tabpage3.Edit00" propid="value" datasetid="ds_tradeContract" columnid="ESTIMATE_NO"/>
+      <BindItem id="item1" compid="Tab00.tabpage3.Edit01" propid="value" datasetid="ds_tradeContract" columnid="EX_CONTRACT_NO"/>
+      <BindItem id="item2" compid="Tab00.tabpage3.Edit02" propid="value" datasetid="ds_tradeContract" columnid="CONTRACT_TYPE"/>
+      <BindItem id="item3" compid="Tab00.tabpage3.Edit03" propid="value" datasetid="ds_tradeContract" columnid="CONTRACT_DATE"/>
+      <BindItem id="item4" compid="Tab00.tabpage3.Edit04" propid="value" datasetid="ds_tradeContract" columnid="PERSON_CODE_IN_CHARGE"/>
+      <BindItem id="item5" compid="Tab00.tabpage3.Combo00" propid="value" datasetid="ds_tradeContract" columnid="DELIVERY_RESULT_STATUS"/>
+      <BindItem id="item6" compid="Tab00.tabpage3.Combo02" propid="value" datasetid="ds_tradeContract" columnid="CONTRACT_TYPE"/>
+      <BindItem id="item7" compid="Tab00.tabpage3.Edit09" propid="value" datasetid="ds_tradeContractDetail" columnid="UNIT_OF_CONTRACT"/>
+      <BindItem id="item8" compid="Tab00.tabpage3.Edit05" propid="value" datasetid="ds_tradeContract" columnid="CONTRACT_REQUESTER"/>
+      <BindItem id="item9" compid="Tab00.tabpage3.Edit06" propid="value" datasetid="ds_tradeContract" columnid="DESCRIPTION"/>
+      <BindItem id="item10" compid="Tab00.tabpage3.Combo09" propid="value" datasetid="ds_tradeContract" columnid="CUSTOMER_CODE"/>
+      <BindItem id="item11" compid="Tab00.tabpage3.Combo03" propid="value" datasetid="ds_tradeContractDetail" columnid="DELIVERY_STATUS"/>
+      <BindItem id="item12" compid="Tab00.tabpage3.Edit07" propid="value" datasetid="ds_tradeContractDetail" columnid="EX_CONTRACT_DETAIL_NO"/>
+      <BindItem id="item13" compid="Tab00.tabpage3.Edit14" propid="value" datasetid="ds_tradeContractDetail" columnid="DUE_DATE_OF_CONTRACT"/>
+      <BindItem id="item14" compid="Tab00.tabpage3.Edit15" propid="value" datasetid="ds_tradeContractDetail" columnid="MPS_APPLY_STATUS"/>
+      <BindItem id="item15" compid="Tab00.tabpage3.Edit08" propid="value" datasetid="ds_tradeContractDetail" columnid="ITEM_NAME"/>
+      <BindItem id="item16" compid="Tab00.tabpage3.Edit10" propid="value" datasetid="ds_tradeContractDetail" columnid="ITEM_CODE"/>
+      <BindItem id="item17" compid="Tab00.tabpage3.Edit12" propid="value" datasetid="ds_tradeContractDetail" columnid="CONTRACT_AMOUNT"/>
+      <BindItem id="item18" compid="Tab00.tabpage3.MaskEdit00" propid="value" datasetid="ds_tradeContractDetail" columnid="UNIT_PRICE_OF_CONTRACT"/>
+      <BindItem id="item19" compid="Tab00.tabpage3.MaskEdit01" propid="value" datasetid="ds_tradeContractDetail" columnid="SUM_PRICE_OF_CONTRACT"/>
+    </Bind>
+    <Script type="xscript5.1"><![CDATA[/********************************************************************************                                                                            
+ 수출수주관리  팝업
+ @Path		물류
+ @Description	수출수주관리
+ @Author	     정민찬
+ @Create           2019. 12. 06.
+ ********************************************************************************/
+
+include "scripts::commonScripts.xjs"
+
+this.logi_ExportContractForm_oninit = function (obj:Form, e:nexacro.InitEventInfo)
+{
+	var today = this.gfn_today();
+	var aWeek = this.gfn_addDate(today, -7);
+
+	var argument = "fromDate='" + aWeek + "' toDate='" + today + "'";
+	this.dsService.setColumn(1, 4, argument);
+	this.gfnService("findContractList", false);
+
+
+
+	this.gfnService("findEstimateDialog", false);
+
+	var nRow = this.ds_tradeContract.rowposition;
+	var scode = this.ds_tradeContract.getColumn(nRow, "CONTRACT_NO");
+	this.ds_tradeContractDetail.filter(" CONTRACT_NO=='" + scode + "'");
+	this.Tab00.tabpage1.form.ContractInsertMsg.set_visible(false);
+	this.Tab00.tabpage2.form.ContractInsertMsg.set_visible(false);
+
+	this.Tab00.tabpage3.set_enable(false); //set
+	this.Tab00.tabpage3.form.Div00.style.set_opacity(100);
+	this.Tab00.tabpage3.form.Div00.style.set_color("white");
+	// set
+
+	// this.Tab00.tabpage3.set_visible(false);
+	// this.Tab00.tabpage3.Div00.set_enable(false);
+};
+
+
+var saveOrFind = 'save';
+this.exportContractSearchBtn = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	if (this.fromDateCal.value == null) 
+	{
+		this.fromDateCal.setFocus();
+		alert("캘린더에서 날짜를 선택해주세요.");
+	}
+	else if (this.toDateCal.value == null) 
+	{
+		this.toDateCal.setFocus();
+		alert("캘린더에서 날짜를 선택해주세요.");
+	}
+	else 
+	{
+		saveOrFind = 'find';
+		this.ds_tradeContract.filter("");
+		this.ds_tradeContractDetail.filter("");
+		var argument = "fromDate='" + this.fromDateCal.value + "' toDate='" + this.toDateCal.value + "'";
+		this.dsService.setColumn(1, 4, argument);
+		this.gfnService("findContractList", false);
+	}
+};
+
+
+
+// 엑셀파일 뷰어
+this.btn_printExportContract_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	var headerIndex = this.grd_contract.getCellCount("Head");
+	var rowCount = this.ds_tradeContract.getRowCount();
+	var rowValue = [];
+	var containValue = [];
+	var gridValue = "";
+	for (var targetRow = -1; targetRow < rowCount; targetRow++) 
+	{
+		for (var targetItem = 0; targetItem < headerIndex; targetItem++) 
+		{
+			rowValue[targetItem] = this.grd_contract.getCellValue(targetRow, targetItem);
+		}
+		gridValue = gridValue + rowValue + "//";
+	}
+	var containValue = gridValue.substr(0, gridValue.length - 2);
+
+	this.transaction("excelCsvDownload",
+		"dataURL::sys/excelCsvDownload.do",
+		"",
+		"",
+		"containValue='" + containValue + "'",
+		"callback");
+};
+
+
+this.squenceNo = "";
+var newContractNo = "";
+this.Button01_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	if (saveOrFind == 'find') 
+	{
+		this.ds_tradeContract.deleteAll();
+		this.ds_tradeContractDetail.deleteAll();
+	}
+	saveOrFind = 'save';
+	this.gfnOpen("modeless", "logi_trade::logi_PerchaseConfirmPopup.xfdl", "fn_popupCallback");
+	this.gfnService("findSequenceNo", false);
+
+	var serialCode = this.squenceNo;
+	newContractNo = "CONT-GB" + serialCode;
+
+	this.Tab00.tabpage3.set_enable(true);
+	this.Tab00.tabpage3.form.Div00.style.set_opacity(50);
+	this.Tab00.tabpage3.form.Div00.style.set_color("blue");
+
+
+	this.Tab00.tabpage1.form.grdExportContract.set_visible(false);
+	this.Tab00.tabpage2.form.Grid00.set_visible(false);
+	this.Tab00.tabpage1.form.ContractInsertMsg.set_visible(true);
+	this.Tab00.tabpage2.form.ContractInsertMsg.set_visible(true);
+
+	this.Tab00.set_tabindex(2);
+};
+
+
+// 삭제
+this.btn_delEstimate_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	this.ds_tradeContractDetail.deleteAll();
+	this.ds_tradeContract.deleteRow(this.ds_tradeContract.rowposition);
+};
+
+// 저장
+// ********************************************************************************/
+// logi_LetterOfCreditPopup 팝업띄우고 저장시 일괄저장
+// 데이터셋 칼럼을 logi_LetterOfCreditPopup 팝업에 param전송.
+// 
+// ********************************************************************************/
+
+
+this.Button02_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	var saveRow = this.ds_tradeContract.getRowCount();
+
+	// if (saveRow==0) {
+	// this.reload();
+	// alert("저장할 내용이 없습니다.");
+	// }else{
+
+	alert("L/C 등록 후 일괄저장을 누르시면, 수출수주와 L/C가 저장됩니다.");
+	var exportContractNo = this.ds_tradeContract.getColumn(e.row, "EX_CONTRACT_NO");
+	var exCustomerCode = this.ds_tradeContract.getColumn(e.row, "CUSTOMER_CODE");
+	var contractDate = this.ds_tradeContract.getColumn(e.row, "CONTRACT_DATE");
+	var itemName = this.ds_tradeContractDetail.getColumn(e.row, "ITEM_NAME");
+	var ea = this.ds_tradeContractDetail.getColumn(e.row, "CONTRACT_AMOUNT");
+	var price = this.ds_tradeContractDetail.getColumn(e.row, "UNIT_PRICE_OF_CONTRACT");
+
+	var objParam = {
+		param1 : exportContractNo,
+		param2 : exCustomerCode,
+		param3 : contractDate,
+		param4 : itemName,
+		param5 : ea,
+		param6 : price
+	};
+
+	this.gfnOpen("lcPopup", "logi_trade::logi_LetterOfCreditPopup.xfdl", "fn_popupCallback2", objParam);
+
+
+	this.Tab00.tabpage1.form.grdExportContract.set_visible(true);
+	this.Tab00.tabpage2.form.Grid00.set_visible(true);
+	this.Tab00.tabpage1.form.ContractInsertMsg.set_visible(false);
+	this.Tab00.tabpage2.form.ContractInsertMsg.set_visible(false);
+	this.gfnService("registerContract", false);
+
+	// this.reload();
+};
+
+
+
+// 견적상세
+this.test = function (estimateNo)
+{
+	var argument = "estimateNo='" + estimateNo + "'";
+	this.dsService.setColumn(4, 4, argument);
+	this.gfnService("findEstimateDetailList", false);
+	var itemCode;
+	var itemName;
+	var unitOfEstimate;
+	var dueDateOfEstimate;
+	var estimateAmount;
+	var unitPriceOfEstimate;
+	var sumPriceOfEstimate;
+	var num = 1;
+
+	trace(this.ds_estimateDetail.getRowCount());
+	for (var i = 0; i < this.ds_estimateDetail.getRowCount(); i++) 
+	{
+		trace("상세횟수" + i);
+		itemCode = this.ds_estimateDetail.getColumn(i, "ITEM_CODE");
+		itemName = this.ds_estimateDetail.getColumn(i, "ITEM_NAME");
+		unitOfEstimate = this.ds_estimateDetail.getColumn(i, "UNIT_OF_ESTIMATE");
+		dueDateOfEstimate = this.ds_estimateDetail.getColumn(i, "DUE_DATE_OF_ESTIMATE");
+		estimateAmount = this.ds_estimateDetail.getColumn(i, "ESTIMATE_AMOUNT");
+		unitPriceOfEstimate = this.ds_estimateDetail.getColumn(i, "UNIT_PRICE_OF_ESTIMATE");
+		var totalPrice = (estimateAmount * unitPriceOfEstimate);
+		// sumPriceOfEstimate = this.ds_estimateDetail.getColumn(i, "SUM_PRICE_OF_ESTIMATE");
+
+		estimateAmount * unitPriceOfEstimate;
+
+		var contractDetailRowNum = this.ds_tradeContractDetail.addRow();
+
+		this.ds_tradeContractDetail.setColumn(contractDetailRowNum, "EX_CONTRACT_DETAIL_NO", newContractNo + '-0' + (num++));
+		this.ds_tradeContractDetail.setColumn(contractDetailRowNum, "EX_CONTRACT_NO", newContractNo);
+		this.ds_tradeContractDetail.setColumn(contractDetailRowNum, "ITEM_CODE", itemCode);
+		this.ds_tradeContractDetail.setColumn(contractDetailRowNum, "ITEM_NAME", itemName);
+		this.ds_tradeContractDetail.setColumn(contractDetailRowNum, "UNIT_OF_CONTRACT", unitOfEstimate);
+		this.ds_tradeContractDetail.setColumn(contractDetailRowNum, "DUE_DATE_OF_CONTRACT", dueDateOfEstimate);
+		this.ds_tradeContractDetail.setColumn(contractDetailRowNum, "CONTRACT_AMOUNT", estimateAmount);
+		this.ds_tradeContractDetail.setColumn(contractDetailRowNum, "UNIT_PRICE_OF_CONTRACT", unitPriceOfEstimate);
+		this.ds_tradeContractDetail.setColumn(contractDetailRowNum, "SUM_PRICE_OF_CONTRACT", totalPrice);
+		this.ds_tradeContractDetail.setColumn(contractDetailRowNum, "MPS_APPLY_STATUS", "");
+		this.ds_tradeContractDetail.setColumn(contractDetailRowNum, "DELIVERY_STATUS", "N");
+	}
+};
+
+
+// 콜백
+this.fn_popupCallback = function (strPopupID, strReturn)
+{
+	if (strPopupID == "modeless") 
+	{
+		globalEstimateNo = strReturn.split("/")[1];
+
+		// strReturn이 undefined이라는 것은 견적상세 선택을 하지않고 수동으로 입력한다는 뜻임
+		if (strReturn != undefined) 
+		{
+			var rowNum = this.ds_tradeContract.addRow();
+			var row = this.ds_tradeContract.rowposition;
+			this.ds_tradeContract.setColumn(rowNum, "EX_CONTRACT_NO", newContractNo);
+			this.ds_tradeContract.setColumn(rowNum, "CONTRACT_DATE", nexacro.getApplication().today());
+			this.ds_tradeContract.setColumn(rowNum, "CONTRACT_TYPE", "CT-01");
+
+			var arr = strReturn.split("/");
+			this.ds_tradeContract.setColumn(row, "CUSTOMER_CODE", arr[0]);
+			this.ds_tradeContract.setColumn(row, "ESTIMATE_NO", arr[1]);
+			this.ds_tradeContract.setColumn(row, "PERSON_CODE_IN_CHARGE", arr[2]);
+			this.ds_tradeContract.setColumn(row, "CONTRACT_REQUESTER", arr[3]);
+			this.ds_tradeContract.setColumn(row, "DELIVERY_RESULT_STATUS", "N");
+		}
+	}
+	else if (strPopupID == "item") 
+	{
+		var arr = strReturn.split("/");
+		var row = this.ds_tradeContractDetail.rowposition;
+		this.ds_tradeContractDetail.setColumn(row, "ITEM_CODE", arr[0]);
+		this.ds_tradeContractDetail.setColumn(row, "ITEM_NAME", arr[1]);
+		this.ds_tradeContractDetail.setColumn(row, "UNIT_OF_CONTRACT", arr[2]);
+		this.ds_tradeContractDetail.setColumn(row, "UNIT_PRICE_OF_CONTRACT", arr[3]);
+	}
+};
+var contractNo;
+// 수주내역 상세 이벤트
+this.Tab00_tabpage1_grdExportContract_oncellclick = function (obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	// alert(this.grd_contract.getCellValue(e.row,0,0));
+	var contractNo = this.ds_tradeContract.getColumn(e.row, "EX_CONTRACT_NO");
+	if (contractNo != null) 
+	{
+		this.ds_tradeContractDetail.filter("");
+		var argument = "contractNo='" + contractNo + "'";
+		this.dsService.setColumn(5, 4, argument); //5에서 4번째 인덱스에 arg
+		this.gfnService("findContractDetailList", false);
+	}
+	else 
+	{
+		this.ds_tradeContractDetail.filter("EX_CONTRACT_NO=='" + contractNo + "'");
+	}
+	this.Tab00.set_tabindex(1);
+};
+
+// 캘린더 함수
+this.Calendar_onchange = function (obj:Calendar, e:nexacro.EditClickEventInfo)
+{
+	nexacro.getApplication().changeCalendar(obj, e);
+};
+
+
+// 조회한 수주 그리드 클릭시 이벤트
+this.Tab00_tabpage2_Grid00_oncellclick = function (obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	// alert(this.Grid00.getCellValue(e.row,0,0));
+	var contractNo = this.ds_tradeContract.getColumn(e.row, "EX_CONTRACT_NO");
+
+	if (saveOrFind == 'find') 
+	{
+		this.ds_tradeContractDetail.filter("");
+		var argument = "contractNo='" + contractNo + "'";
+		this.dsService.setColumn(5, 4, argument); //5에서 4번째 인덱스에 arg
+		this.gfnService("findContractDetailList", false);
+	}
+	else 
+	{
+		this.ds_tradeContractDetail.filter("EX_CONTRACT_NO=='" + contractNo + "'");
+	}
+};
+
+
+
+this.Tab00_tabpage3_Div00_onclick = function (obj:Div, e:nexacro.ClickEventInfo)
+{
+	this.Tab00.tabpage3.form.Div00.destroy();
+};
+]]></Script>
+    <Objects>
+      <Dataset id="ds_tradeContract">
+        <ColumnInfo>
+          <Column id="EX_CONTRACT_NO" type="STRING" size="256"/>
+          <Column id="ESTIMATE_NO" type="STRING" size="256"/>
+          <Column id="CONTRACT_TYPE" type="STRING" size="256"/>
+          <Column id="CUSTOMER_CODE" type="STRING" size="256"/>
+          <Column id="CONTRACT_DATE" type="STRING" size="256"/>
+          <Column id="CONTRACT_REQUESTER" type="STRING" size="256"/>
+          <Column id="PERSON_CODE_IN_CHARGE" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+          <Column id="DELIVERY_RESULT_STATUS" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_tradeContractDetail">
+        <ColumnInfo>
+          <Column id="EX_CONTRACT_DETAIL_NO" type="STRING" size="256"/>
+          <Column id="EX_CONTRACT_NO" type="STRING" size="256"/>
+          <Column id="ITEM_CODE" type="STRING" size="256"/>
+          <Column id="ITEM_NAME" type="STRING" size="256"/>
+          <Column id="UNIT_OF_CONTRACT" type="STRING" size="256"/>
+          <Column id="DUE_DATE_OF_CONTRACT" type="STRING" size="256"/>
+          <Column id="CONTRACT_AMOUNT" type="STRING" size="256"/>
+          <Column id="UNIT_PRICE_OF_CONTRACT" type="STRING" size="256"/>
+          <Column id="SUM_PRICE_OF_CONTRACT" type="STRING" size="256"/>
+          <Column id="MPS_APPLY_STATUS" type="STRING" size="256"/>
+          <Column id="DELIVERY_STATUS" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_estimate">
+        <ColumnInfo>
+          <Column id="ESTIMATE_NO" type="STRING" size="256"/>
+          <Column id="CUSTOMER_CODE" type="STRING" size="256"/>
+          <Column id="ESTIMATE_DATE" type="STRING" size="256"/>
+          <Column id="CONTRACT_STATUS" type="STRING" size="256"/>
+          <Column id="ESTIMATE_REQUESTER" type="STRING" size="256"/>
+          <Column id="EFFECTIVE_DATE" type="STRING" size="256"/>
+          <Column id="PERSON_CODE_IN_CHARGE" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_estimateDetail">
+        <ColumnInfo>
+          <Column id="ESTIMATE_DETAIL_NO" type="STRING" size="256"/>
+          <Column id="ESTIMATE_NO" type="STRING" size="256"/>
+          <Column id="ITEM_CODE" type="STRING" size="256"/>
+          <Column id="ITEM_NAME" type="STRING" size="256"/>
+          <Column id="UNIT_OF_ESTIMATE" type="STRING" size="256"/>
+          <Column id="DUE_DATE_OF_ESTIMATE" type="STRING" size="256"/>
+          <Column id="ESTIMATE_AMOUNT" type="STRING" size="256"/>
+          <Column id="UNIT_PRICE_OF_ESTIMATE" type="STRING" size="256"/>
+          <Column id="SUM_PRICE_OF_ESTIMATE" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findEstimateDialog</Col>
+            <Col id="URL">dataURL::logi/business/findEstimateDialog.do</Col>
+            <Col id="outData">ds_estimate=ds_estimate</Col>
+            <Col id="callbackFunc">gfnCallbackFunc</Col>
+            <Col id="argument">fromDate='regContract' toDate=application.today()</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findContractList</Col>
+            <Col id="URL">dataURL::logi/trade/findExportContractList.do</Col>
+            <Col id="outData">ds_tradeContract=ds_tradeContract</Col>
+            <Col id="callbackFunc">gfnCallbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findSequenceNo</Col>
+            <Col id="URL">dataURL::sys/findSequenceNo.do</Col>
+            <Col id="callbackFunc">gfnCallbackFunc</Col>
+            <Col id="argument">findSeq=SERIAL_SEQ</Col>
+            <Col id="outData"/>
+          </Row>
+          <Row>
+            <Col id="serviceID">registerContract</Col>
+            <Col id="URL">dataURL::logi/trade/registerExContract.do</Col>
+            <Col id="inData">ds_tradeContract=ds_tradeContract:u ds_tradeContractDetail=ds_tradeContractDetail:u</Col>
+            <Col id="outData">ds_tradeContract=ds_tradeContract ds_tradeContractDetail=ds_tradeContractDetail</Col>
+            <Col id="callbackFunc">gfnCallbackFunc</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findEstimateDetailList</Col>
+            <Col id="URL">dataURL::logi/business/findEstimateDetailList.do</Col>
+            <Col id="outData">ds_estimateDetail=ds_estimateDetail</Col>
+            <Col id="callbackFunc">gfnCallbackFunc</Col>
+            <Col id="inData">[Undefined]</Col>
+            <Col id="argument">[Undefined]</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findContractDetailList</Col>
+            <Col id="URL">dataURL::logi/trade/findExContractDetailList.do</Col>
+            <Col id="outData">ds_tradeContractDetail=ds_tradeContractDetail</Col>
+            <Col id="callbackFunc">gfnCallbackFunc</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

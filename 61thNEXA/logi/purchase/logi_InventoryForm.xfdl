@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="logi_InventoryForm" width="1200" height="780" titletext="New Form" onload="logi_InventoryForm_onload">
+    <Layouts>
+      <Layout height="780" mobileorientation="landscape" width="1200">
+        <Grid id="inventory_grid" taborder="0" binddataset="ds_stock" left="24" top="69" width="1156" height="680" autofittype="col" oncelldblclick="inventory_grid_oncelldblclick" onheadclick="inventory_grid_onheadclick" font="12pt &quot;a두리둥실&quot;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="78"/>
+                <Column size="112"/>
+                <Column size="149"/>
+                <Column size="73"/>
+                <Column size="95"/>
+                <Column size="167"/>
+                <Column size="133"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="사업장코드" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="품번" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" text="품명" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" text="단위" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" text="안전재고" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="5" text="자재" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="6" text="가용재고" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:BUSINESS_PLACE_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="bind:ITEM_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" text="bind:ITEM_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" text="bind:UNIT_OF_STOCK" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" text="bind:SAFETY_ALLOWANCE_AMOUNT" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="5" text="bind:STOCK_AMOUNT" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="6" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="inventory_stc" taborder="1" text="재고조회" onclick="Static00_onclick" left="24" top="9" right="19" height="45" border="3px solid darkblue" font="18pt/normal &quot;a두리둥실&quot;" textAlign="center"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_stock">
+        <ColumnInfo>
+          <Column id="WAREHOUSE_CODE" type="STRING" size="256"/>
+          <Column id="ITEM_CODE" type="STRING" size="256"/>
+          <Column id="DELIVERY_NO" type="STRING" size="256"/>
+          <Column id="PRODUCTION_RESULT_NO" type="STRING" size="256"/>
+          <Column id="INPUT_ITEM_NO" type="STRING" size="256"/>
+          <Column id="ITEM_NAME" type="STRING" size="256"/>
+          <Column id="UNIT_OF_STOCK" type="STRING" size="256"/>
+          <Column id="SAFETY_ALLOWANCE_AMOUNT" type="STRING" size="256"/>
+          <Column id="STOCK_AMOUNT" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+          <Column id="BUSINESS_PLACE_CODE" type="STRING" size="256"/>
+          <Column id="STANDARD_UNIT_PRICE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[
+// 재고 온로드
+this.logi_InventoryForm_onload = function (obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.transaction(
+		"findStockList",
+		"dataURL::logi/purchase/findStockList.do",
+		"",
+		"ds_stock=ds_stock",
+		"",
+		"callback",
+		false
+	);
+};
+
+// 재고이력조회
+this.inventory_grid_oncelldblclick = function (obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	var itemCode = this.ds_stock.getColumn(e.row, "ITEM_CODE");
+	var itemDsc = this.ds_stock.getColumn(e.row, "DESCRIPTION");
+	nexacro.getApplication().trace(itemDsc);
+	nexacro.getApplication().trace(itemCode);
+
+	if (itemDsc != '부품') 
+	{
+		// 반제품,제품일떄
+		nexacro.open(
+			"logi_deliveryHistoryDial",
+			"logi_purchase::logi_deliveryHistoryDialog.xfdl",
+			this.getOwnerFrame(),
+			{
+			itemCode : itemCode
+		},
+			"showtitlebar=true showstatusbar=false openalign='center middle' showcascadetitletext=false titletext='deliveryHistory'"
+		);
+	}
+	else 
+	{
+		// 부품일떄
+		nexacro.open(
+			"logi_InventoryHistoryDial",
+			"logi_purchase::logi_InventoryHistoryDialog.xfdl",
+			this.getOwnerFrame(),
+			{
+			itemCode : itemCode
+		},
+			"showtitlebar=true showstatusbar=false openalign='center middle' showcascadetitletext=false titletext='InventoryHistory'"
+		);
+	}
+};
+
+
+
+// 콜백
+this.callback = function (trid, ErrorCode, ErrorMsg)
+{
+	if (trid == "findStockList") 
+	{
+		if (ErrorCode < 0) 
+		{
+			nexacro.getApplication().alert("온로드 실패");
+		}
+		else 
+		{
+		}
+	}
+};
+
+
+// 헤드부분 클릭시 오름차순, 내림차순 정렬
+this.inventory_grid_onheadclick = function (obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	var objDs = this.objects[obj.binddataset];
+
+	for (var i = 0; i < obj.getCellCount("head"); i++) 
+	{
+		var sHeadText = obj.getCellText(-1, i);
+		var nLen = sHeadText.length - 1;
+
+		// In case of the clicked head cell
+		if (i == e.cell) 
+		{
+			var sColId = (obj.getCellProperty("body", e.col, "text")).toString().split(":");
+
+			// If the previous sort in ascending order, it will be sorted in descending order
+			if (sHeadText.substr(nLen) == "▲") 
+			{
+				obj.setCellProperty("head", i, "text", sHeadText.substr(0, nLen) + "▼");
+				objDs.set_keystring("S:-" + sColId[1]);
+			}
+			// If the previous sort in descending order, it will be sorted in ascending order
+			else if (sHeadText.substr(nLen) == "▼") 
+			{
+				obj.setCellProperty("head", i, "text", sHeadText.substr(0, nLen) + "▲");
+				objDs.set_keystring("S:+" + sColId[1]);
+			}
+			// If first sort, it will sort in ascending order
+			else 
+			{
+				obj.setCellProperty("head", i, "text", sHeadText + "▲");
+				objDs.set_keystring("S:+" + sColId[1]);
+			}
+		}
+		// In case of it's not the clicked head cell
+		else 
+		{
+			// Remove the arrow indication is displayed in the head cell which are arranged previously
+			if (sHeadText.substr(nLen) == "▲" || sHeadText.substr(nLen) == "▼") 
+			{
+				obj.setCellProperty("head", i, "text", sHeadText.substr(0, nLen));
+			}
+		}
+	}
+};
+]]></Script>
+  </Form>
+</FDL>

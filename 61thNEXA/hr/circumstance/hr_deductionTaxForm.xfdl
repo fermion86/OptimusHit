@@ -1,0 +1,401 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="hr_deductionTaxForm" width="1200" height="780" titletext="New Form" onload="hr_deductionTaxForm_onload">
+    <Layouts>
+      <Layout height="780" mobileorientation="landscape" width="1200">
+        <Static id="Static00" taborder="0" text="급여 공제항목 등록 / 조회" onclick="Static00_onclick" left="14" top="9" right="29" height="45" border="3px solid darkgray" font="18pt/normal &quot;a두리둥실&quot;" textAlign="center"/>
+        <GroupBox id="salaryDeductionItemSerch_gb" text="급여 공제항목 조회" taborder="1" left="1.25%" top="70" height="700" right="51.33%" titlealign="topcenter" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="baseYear_stc" taborder="2" text="기준연도" left="2.67%" top="94" right="87.42%" height="35" font="12pt &quot;a두리둥실&quot;"/>
+        <Combo id="baseYear_combo" taborder="3" left="13.25%" top="94" right="74.17%" height="35" index="-1" innerdataset="@gds_baseYear" codecolumn="YEAR" datacolumn="YEAR" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="serch_btn" taborder="4" text="조회" left="26.75%" top="96" height="35" onclick="serch_btn_onclick" width="80" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="delete_btn" taborder="5" text="삭제" left="33.75%" top="96" height="35" onclick="delete_btn_onclick" width="80" font="12pt &quot;a두리둥실&quot;"/>
+        <GroupBox id="healthInsurance_gb" text="건강보험" taborder="6" left="1.83%" top="324" right="51.75%" height="80" titlealign="topcenter" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="reference_stc" taborder="7" text="※ 장기요양보험 계산&#13;&#10;-.건강보험 50%(근로자부담)" left="2.00%" top="678" right="52.08%" height="75" textAlign="left" verticalAlign="middle" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="healthInsuranceBurdenRatio_stc" taborder="8" text="건강보험 부담률" left="7.75%" top="350" right="75.83%" height="35" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="healthInsuranceBurdenRatio_edt" taborder="9" left="24.50%" top="350" right="64.67%" height="35" inputtype="number" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="ratio1_stc" taborder="10" text="%" left="35.67%" top="350" right="58.42%" height="35" font="12pt &quot;a두리둥실&quot;"/>
+        <GroupBox id="employmentInsurance_gb" text="고용보험" taborder="11" left="1.83%" top="409" right="51.75%" height="80" titlealign="topcenter" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="employmentInsuranceBurdenRate_stc" taborder="12" text="고용보험 부담률" left="7.75%" top="435" right="75.83%" height="35" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="employmentInsuranceBurdenRate_edt" taborder="13" left="24.50%" top="435" right="64.67%" height="35" inputtype="number" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="ratio2_stc" taborder="14" text="%" left="35.67%" top="435" right="58.42%" height="35" font="12pt &quot;a두리둥실&quot;"/>
+        <GroupBox id="nationalPension_gb" text="국민연금" taborder="15" left="1.83%" top="497" right="51.75%" height="80" titlealign="topcenter" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="nationalPensionBurdenRate_stc" taborder="16" text="국민연금 부담률" left="7.75%" top="523" right="75.83%" height="35" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="nationalPensionBurdenRate_edt" taborder="17" left="24.50%" top="523" right="64.67%" height="35" inputtype="number" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="ratio3_stc" taborder="18" text="%" left="35.67%" top="523" right="58.42%" height="35" font="12pt &quot;a두리둥실&quot;"/>
+        <GroupBox id="LongtermCareInsurance_gb" text="장기요양보험" taborder="19" left="1.83%" top="585" right="51.75%" height="80" titlealign="topcenter" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="LongtermCareInsuranceBurdenRate_stc" taborder="20" text="장기요양보험 부담률" left="7.75%" top="611" right="75.83%" height="35" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="longtermCareInsuranceBurdenRate_edt" taborder="21" left="24.50%" top="611" right="64.67%" height="35" inputtype="number" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="ratio4_stc" taborder="22" text="%" left="35.67%" top="611" right="58.42%" height="35" font="12pt &quot;a두리둥실&quot;"/>
+        <GroupBox id="incomeTax_gb" text="소득세" taborder="23" left="1.83%" top="135" right="51.75%" height="182" titlealign="topcenter" font="12pt &quot;a두리둥실&quot;"/>
+        <Grid id="incomeTaxCopy_grid" taborder="24" left="3.00%" top="160" right="53.00%" height="150" autofittype="col" binddataset="ds_incomeTaxCopy" font="12pt &quot;a두리둥실&quot;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="40"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="NO" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="소득세율" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" text="최저급여" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" text="최고급여" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" text="누진공제" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="bind:INCOME_TAX_RATE" mask="@@%" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" displaytype="currency" text="bind:LOW_SAL" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" displaytype="currency" text="bind:HIGH_SAL" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" displaytype="currency" text="bind:PROGRESSIVE_DEDUCTION" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <GroupBox id="salaryDeductionItemSerch_gb00" text="급여 공제항목 등록" titlealign="topcenter" taborder="25" left="49.92%" top="70" right="2.58%" height="700" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="baseYear_stc00" taborder="26" text="기준연도" left="51.00%" top="94" right="39.17%" height="35" font="12pt &quot;a두리둥실&quot;"/>
+        <Combo id="addBaseYear_combo" taborder="27" left="61.50%" top="94" right="25.92%" height="35" innerdataset="@gds_baseYear" codecolumn="YEAR" datacolumn="YEAR" onitemchanged="addBaseYear_combo_onitemchanged" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="cancel_btn" taborder="28" text="취소" left="74.75%" top="94" height="35" onclick="cancel_btn_onclick" width="80" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="save_btn" taborder="29" text="저장" left="81.83%" top="94" height="35" onclick="save_btn_onclick" width="80" font="12pt &quot;a두리둥실&quot;"/>
+        <GroupBox id="healthInsurance_gb00" text="건강보험" titlealign="topcenter" taborder="30" left="50.50%" top="324" right="3.08%" height="80" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="reference_stc00" taborder="31" text="※ 주민세율 = 소득세 * 10%&#13;&#10;※ 주민세는 급여정산때 지방소득세로 계산됩니다. " left="50.67%" top="678" right="3.50%" height="75" textAlign="left" verticalAlign="middle" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="healthInsuranceBurdenRatio_stc00" taborder="32" text="건강보험 부담률" left="56.33%" top="350" right="27.08%" height="35" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="healthInsuranceBurdenRatio_edt00" taborder="33" left="73.25%" top="350" right="16.00%" height="35" inputtype="number" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="ratio1_stc00" taborder="34" text="%" left="84.42%" top="350" right="9.75%" height="35" font="12pt &quot;a두리둥실&quot;"/>
+        <GroupBox id="employmentInsurance_gb00" text="고용보험" titlealign="topcenter" taborder="35" left="50.50%" top="409" right="3.08%" height="80" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="employmentInsuranceBurdenRate_stc00" taborder="36" text="고용보험 부담률" left="56.33%" top="435" right="27.08%" height="35" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="employmentInsuranceBurdenRate_edt00" taborder="37" left="73.25%" top="435" right="16.00%" height="35" inputtype="number" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="ratio2_stc00" taborder="38" text="%" left="84.42%" top="435" right="9.75%" height="35" font="12pt &quot;a두리둥실&quot;"/>
+        <GroupBox id="nationalPension_gb00" text="국민연금" titlealign="topcenter" taborder="39" left="50.50%" top="497" right="3.08%" height="80" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="nationalPensionBurdenRate_stc00" taborder="40" text="국민연금 부담률" left="56.33%" top="523" right="27.08%" height="35" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="nationalPensionBurdenRate_edt00" taborder="41" left="73.25%" top="523" right="16.00%" height="35" inputtype="number" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="ratio3_stc00" taborder="42" text="%" left="84.42%" top="523" right="9.75%" height="35" font="12pt &quot;a두리둥실&quot;"/>
+        <GroupBox id="LongtermCareInsurance_gb00" text="장기요양보험" titlealign="topcenter" taborder="43" left="50.50%" top="585" right="3.08%" height="80" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="LongtermCareInsuranceBurdenRate_stc00" taborder="44" text="장기요양보험 부담률" left="56.33%" top="611" right="27.08%" height="35" font="12pt &quot;a두리둥실&quot;"/>
+        <Edit id="longtermCareInsuranceBurdenRate_edt00" taborder="45" left="73.25%" top="611" right="16.00%" height="35" inputtype="number" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="ratio4_stc00" taborder="46" text="%" left="84.42%" top="611" right="9.75%" height="35" font="12pt &quot;a두리둥실&quot;"/>
+        <GroupBox id="incomeTax_gb00" text="소득세" titlealign="topcenter" taborder="47" left="50.50%" top="135" right="3.08%" height="182" font="12pt &quot;a두리둥실&quot;"/>
+        <Grid id="incomeTax_grid" taborder="48" left="51.50%" top="160" right="4.25%" height="150" autofittype="col" binddataset="ds_incomeTax" font="12pt &quot;a두리둥실&quot;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="46"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="NO" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="소득세율" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" text="최저급여" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" text="최고급여" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" text="누진공제" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell text="expr:currow+1" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" edittype="text" text="bind:INCOME_TAX_RATE" mask="@@%" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" displaytype="currency" edittype="text" text="bind:LOW_SAL" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" displaytype="currency" edittype="text" text="bind:HIGH_SAL" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="4" displaytype="currency" edittype="text" text="bind:PROGRESSIVE_DEDUCTION" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="add_btn" taborder="49" text="소득세&#13;&#10;추가" left="89.00%" top="94" height="35" onclick="add_btn_onclick" width="80" color="red" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="Button00" taborder="50" text="EXEL다운" left="40.58%" top="96" height="35" onclick="Button00_onclick" width="80" font="12pt &quot;a두리둥실&quot;"/>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item0" compid="healthInsuranceBurdenRatio_edt" propid="value" datasetid="ds_deductionTaxCopy" columnid="HEALTH_INSUR_RATE"/>
+      <BindItem id="item1" compid="healthInsuranceBurdenRatio_edt00" propid="value" datasetid="ds_deductionTax" columnid="HEALTH_INSUR_RATE"/>
+      <BindItem id="item2" compid="employmentInsuranceBurdenRate_edt" propid="value" datasetid="ds_deductionTaxCopy" columnid="EMPLOYEEMENT_INSUR_RATE"/>
+      <BindItem id="item3" compid="employmentInsuranceBurdenRate_edt00" propid="value" datasetid="ds_deductionTax" columnid="EMPLOYEEMENT_INSUR_RATE"/>
+      <BindItem id="item4" compid="nationalPensionBurdenRate_edt" propid="value" datasetid="ds_deductionTaxCopy" columnid="NATIONAL_PEN_RATE"/>
+      <BindItem id="item5" compid="nationalPensionBurdenRate_edt00" propid="value" datasetid="ds_deductionTax" columnid="NATIONAL_PEN_RATE"/>
+      <BindItem id="item6" compid="longtermCareInsuranceBurdenRate_edt" propid="value" datasetid="ds_deductionTaxCopy" columnid="LONG_TERM_CARE_RATE"/>
+      <BindItem id="item7" compid="longtermCareInsuranceBurdenRate_edt00" propid="value" datasetid="ds_deductionTax" columnid="LONG_TERM_CARE_RATE"/>
+    </Bind>
+    <Objects>
+      <Dataset id="ds_deductionTaxCopy">
+        <ColumnInfo>
+          <Column id="INPUTED_YEAR" type="STRING" size="256"/>
+          <Column id="HEALTH_INSUR_RATE" type="STRING" size="256"/>
+          <Column id="NATIONAL_PEN_RATE" type="STRING" size="256"/>
+          <Column id="LONG_TERM_CARE_RATE" type="STRING" size="256"/>
+          <Column id="EMPLOYEEMENT_INSUR_RATE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_incomeTax">
+        <ColumnInfo>
+          <Column id="INCOME_TAX_RATE" type="STRING" size="256"/>
+          <Column id="INPUTED_YEAR" type="STRING" size="256"/>
+          <Column id="LOW_SAL" type="STRING" size="256"/>
+          <Column id="HIGH_SAL" type="STRING" size="256"/>
+          <Column id="PROGRESSIVE_DEDUCTION" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_incomeTaxCopy">
+        <ColumnInfo>
+          <Column id="INCOME_TAX_RATE" type="STRING" size="256"/>
+          <Column id="INPUTED_YEAR" type="STRING" size="256"/>
+          <Column id="LOW_SAL" type="STRING" size="256"/>
+          <Column id="HIGH_SAL" type="STRING" size="256"/>
+          <Column id="PROGRESSIVE_DEDUCTION" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_deductionTax">
+        <ColumnInfo>
+          <Column id="INPUTED_YEAR" type="STRING" size="256"/>
+          <Column id="HEALTH_INSUR_RATE" type="STRING" size="256"/>
+          <Column id="NATIONAL_PEN_RATE" type="STRING" size="256"/>
+          <Column id="LONG_TERM_CARE_RATE" type="STRING" size="256"/>
+          <Column id="EMPLOYEEMENT_INSUR_RATE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[/********************************************************************************                                                                            
+ 급여 공제항목 관리 화면
+ @Path			인사
+ @Description	급여 공제항목 등록/조회  폼
+ @Author	  		손창우
+ @Create         2019. 02. 15.
+ ********************************************************************************/
+this.hr_deductionTaxForm_onload = function (obj:Form, e:nexacro.LoadEventInfo)
+{
+	this.ds_deductionTax.filter("");
+	this.ds_incomeTax.filter("");
+	this.transaction("findDeductionInsuranceList",
+		"dataURL::hr/circumstance/findDeductionInsuranceList.do",
+		"",
+		"ds_deductionTax=dsDeductionTax ds_incomeTax=dsIncomeTax",
+		"",
+		"callbackFunction",
+		false);
+
+	this.ds_incomeTaxCopy.copyData(this.ds_incomeTax, true);
+	this.ds_deductionTaxCopy.copyData(this.ds_deductionTax, true);
+
+	this.ds_incomeTax.filter("INPUTED_YEAR==0");
+	this.ds_deductionTax.filter("INPUTED_YEAR==0");
+	this.ds_incomeTaxCopy.filter("INPUTED_YEAR==0");
+	this.ds_deductionTaxCopy.filter("INPUTED_YEAR==0");
+};
+
+
+this.serch_btn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	this.ds_incomeTaxCopy.filter("");
+	this.ds_deductionTaxCopy.filter("");
+	this.ds_incomeTaxCopy.filter("INPUTED_YEAR=='" + this.baseYear_combo.value + "'");
+	this.ds_deductionTaxCopy.filter("INPUTED_YEAR=='" + this.baseYear_combo.value + "'");
+	this.ds_deductionTaxCopy.set_rowposition(0);
+
+	if (this.baseYear_combo.value == undefined) 
+	{
+		alert("기준년도를 선택해주세요");
+	}
+	else if (this.ds_incomeTaxCopy.getRowCount() == 0) 
+	{
+		if (this.ds_deductionTaxCopy.getRowCount() == 0) 
+		{
+			alert("조회정보가 없습니다");
+			this.baseYear_combo.value = "";
+		}
+	}
+};
+
+
+this.delete_btn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	var objDate = new Date();
+	var presentYear = nexacro.toNumber(objDate.getFullYear());
+	var choiceYear = nexacro.toNumber(this.baseYear_combo.text);
+	var incomeRemovelen = this.ds_incomeTaxCopy.getRowCount();
+
+	if (this.baseYear_combo.value == undefined) 
+	{
+		alert("삭제하실 귀속연도를 선택해 주세요");
+	}
+	else 
+	{
+		if (presentYear < choiceYear) 
+		{
+			if (confirm(this.baseYear_combo.value + "년도 급여공제항목을 삭제하시겠습니까?")) 
+			{
+				for (i = incomeRemovelen; i >= 0; i--) 
+				{
+					this.ds_incomeTaxCopy.deleteRow(i);
+				}
+
+				this.ds_deductionTaxCopy.deleteRow(this.ds_deductionTaxCopy.rowposition);
+
+				this.transaction("removeDeductionTax", "dataURL::hr/circumstance/removeDeductionTax.do", "dsDeductionTax=ds_deductionTaxCopy:u dsIncomeTax=ds_incomeTaxCopy:u", "ds_deductionTax=dsDeductionTax ds_incomeTax=dsIncomeTax", "", "callbackFunction");
+			}
+		}
+		else 
+		{
+			alert("이전연도는 삭제할수 없습니다 \n정보기술팀으로 문의 주세요!");
+		}
+	}
+};
+
+
+this.addBaseYear_combo_onitemchanged = function (obj:Combo, e:nexacro.ItemChangeEventInfo)
+{
+	this.ds_incomeTax.filter("INPUTED_YEAR=='" + this.addBaseYear_combo.value + "'");
+	this.ds_deductionTax.filter("INPUTED_YEAR=='" + this.addBaseYear_combo.value + "'");
+
+	if (this.ds_incomeTax.getRowCount() != 0) 
+	{
+		this.ds_deductionTax.filter("");
+		this.ds_incomeTax.filter("");
+		this.ds_incomeTax.filter("INPUTED_YEAR==0");
+		this.ds_deductionTax.filter("INPUTED_YEAR==0");
+
+		this.healthInsuranceBurdenRatio_edt00.enable = false;
+		this.employmentInsuranceBurdenRate_edt00.enable = false;
+		this.nationalPensionBurdenRate_edt00.enable = false;
+		this.longtermCareInsuranceBurdenRate_edt00.enable = false;
+		this.addBaseYear_combo.value = null;
+		this.add_btn.enable = false;
+
+		alert(" 해당년도에는 데이터가 존재합니다.");
+	}
+	else 
+	{
+		if (this.ds_deductionTax.getRowCount() != 0) 
+		{
+			this.baseYear_combo.value = null;
+			this.healthInsuranceBurdenRatio_edt00.enable = false;
+			this.employmentInsuranceBurdenRate_edt00.enable = false;
+			this.nationalPensionBurdenRate_edt00.enable = false;
+			this.longtermCareInsuranceBurdenRate_edt00.enable = false;
+			this.add_btn.enable = false;
+			this.ds_deductionTax.filter("");
+			this.ds_incomeTax.filter("");
+			this.ds_incomeTax.filter("INPUTED_YEAR==0");
+			this.ds_deductionTax.filter("INPUTED_YEAR==0");
+			alert(" 해당년도에는 데이터가 존재합니다.");
+		}
+		else 
+		{
+			this.ds_deductionTax.addRow();
+			this.healthInsuranceBurdenRatio_edt00.enable = true;
+			this.employmentInsuranceBurdenRate_edt00.enable = true;
+			this.nationalPensionBurdenRate_edt00.enable = true;
+			this.longtermCareInsuranceBurdenRate_edt00.enable = true;
+			this.add_btn.enable = true;
+			alert(" 해당년도에는 데이터 입력이 가능합니다.");
+		}
+	}
+};
+
+this.cancel_btn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	this.reload();
+};
+
+this.save_btn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	if (this.addBaseYear_combo.text == "") 
+	{
+		alert(" 기준년도가 입력 되어 있지 않습니다. ");
+	}
+	else if (this.ds_incomeTax.getRowCount() == 0) 
+	{
+		alert("등록된 소득세율이 없습니다. ");
+	}
+	else if (this.healthInsuranceBurdenRatio_edt00.text == "") 
+	{
+		alert("등록된 건강보험 부담률이 없습니다. ");
+	}
+	else if (this.employmentInsuranceBurdenRate_edt00.text == "") 
+	{
+		alert("등록된 고용보험 부담률이 없습니다. ");
+	}
+	else if (this.nationalPensionBurdenRate_edt00.text == "") 
+	{
+		alert("등록된 국민연금 부담률이 없습니다. ");
+	}
+	else if (this.longtermCareInsuranceBurdenRate_edt00.text == "") 
+	{
+		alert("등록된 장기요양보험 부담률이 없습니다. ");
+	}
+
+	if (this.addBaseYear_combo.text != "" && 
+		this.ds_incomeTax.getRowCount() != 0 && 
+		this.healthInsuranceBurdenRatio_edt00.text != "" && 
+		this.employmentInsuranceBurdenRate_edt00.text != "" && 
+		this.nationalPensionBurdenRate_edt00.text != "" && 
+		this.longtermCareInsuranceBurdenRate_edt00.text != "") 
+	{
+		this.ds_deductionTax.setColumn(this.ds_deductionTax.rowposition, "INPUTED_YEAR", this.addBaseYear_combo.value);
+		this.ds_deductionTax.setColumn(this.ds_deductionTax.rowposition, "HEALTH_INSUR_RATE", this.healthInsuranceBurdenRatio_edt00.value);
+		this.ds_deductionTax.setColumn(this.ds_deductionTax.rowposition, "NATIONAL_PEN_RATE", this.nationalPensionBurdenRate_edt00.value);
+		this.ds_deductionTax.setColumn(this.ds_deductionTax.rowposition, "LONG_TERM_CARE_RATE", this.longtermCareInsuranceBurdenRate_edt00.value);
+		this.ds_deductionTax.setColumn(this.ds_deductionTax.rowposition, "EMPLOYEEMENT_INSUR_RATE", this.employmentInsuranceBurdenRate_edt00.value);
+
+		this.transaction(
+			"batchDeductionTax", "dataURL::hr/circumstance/batchDeductionTax.do", "dsDeductionTax=ds_deductionTax:u dsIncomeTax=ds_incomeTax:u", "ds_deductionTax=dsDeductionTax ds_incomeTax=dsIncomeTax", "", "callbackFunction", false);
+	}
+};
+
+this.add_btn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	this.ds_incomeTax.addRow(); //grid에 row 추가
+	this.ds_incomeTax.setColumn(this.ds_incomeTax.rowposition, "INPUTED_YEAR", this.addBaseYear_combo.value);
+};
+
+this.Button00_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	this.exportObj = new ExcelExportObject();
+	var ret = this.exportObj.addExportItem(nexacro.ExportItemTypes.GRID,
+		this.incomeTaxCopy_grid, "Sheet1!A1");
+	this.exportObj.set_exporturl("http://localhost:8282/nexacro-xeni/XExportImport");
+	this.exportObj.exportData();
+};
+
+this.callbackFunction = function (strSvcID, nErrorCode, strErrorMag)
+{
+	if (strSvcID == "batchDeductionTax") 
+	{
+		if (nErrorCode != 0) 
+		{
+			alert(strErrorMag);
+		}
+		else 
+		{
+			alert("완료되었습니다.");
+			this.reload();
+		}
+	}
+
+
+	if (strSvcID == "removeDeductionTax") 
+	{
+		if (nErrorCode != 0) 
+		{
+			alert("삭제할 내용이 없습니다");
+			this.reload();
+		}
+		else 
+		{
+			alert("완료되었습니다.");
+			this.reload();
+		}
+	}
+};
+]]></Script>
+  </Form>
+</FDL>

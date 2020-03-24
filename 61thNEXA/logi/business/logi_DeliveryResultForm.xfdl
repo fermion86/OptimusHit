@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="logi_DeliveryResultForm" width="1280" height="780" titletext="New Form" onload="logi_DeliveryResultForm_onload">
+    <Layouts>
+      <Layout height="780" mobileorientation="landscape" width="1280">
+        <Static id="prm_stc" taborder="0" text="납품완료목록확인" onclick="Static00_onclick" left="64" top="9" right="59" height="45" border="3px solid darkgray" font="18pt/normal &quot;a두리둥실&quot;" textAlign="center"/>
+        <Static id="contract_stc" taborder="1" text="수주목록" left="64" top="60" width="95" height="39" background="darkgray" border="1px solid rgba(177,181,185,0.7019607843137254)" borderRadius="0px" textAlign="center" verticalAlign="middle" font="12pt &quot;a두리둥실&quot;"/>
+        <Calendar id="fromDate_cal" taborder="2" dateformat="yyMMdd" left="228" top="60" width="120" height="39" font="12pt &quot;a두리둥실&quot;"/>
+        <Calendar id="toDate_cal" taborder="3" dateformat="yyMMdd" left="380" top="60" width="120" height="39" font="12pt &quot;a두리둥실&quot;"/>
+        <Button id="search_btn" taborder="4" text="검색" left="515" top="60" width="95" height="39" onclick="search_btn_onclick" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="workList_stc" taborder="5" text="작업이력" left="660" top="60" width="95" height="39" background="darkgray" border="1px solid rgba(177,181,185,0.7019607843137254)" borderRadius="0px" textAlign="center" verticalAlign="middle" font="12pt &quot;a두리둥실&quot;"/>
+        <Grid id="contract_grid" taborder="6" binddataset="ds_completeDelivery" left="64" top="103" width="553" height="305" autofittype="col" oncelldblclick="contract_grid_oncelldblclick" font="12pt &quot;a두리둥실&quot;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="157"/>
+                <Column size="83"/>
+                <Column size="114"/>
+                <Column size="55"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="수주상세번호" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="거래처" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" text="제품" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" text="수량" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:CONTRACT_DETAIL_NO" autosizecol="default" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="bind:CUSTOMER_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" text="bind:ITEM_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" text="bind:CONTRACT_AMOUNT" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="contractDetail_grid" taborder="7" binddataset="ds_completeDelivery" left="660" top="103" width="553" height="305" autofittype="col" font="12pt &quot;a두리둥실&quot;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="132"/>
+                <Column size="132"/>
+                <Column size="55"/>
+                <Column size="88"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="취합번호" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="작업지시번호" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" text="품명" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" text="지시일" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:MRP_GATHERING_NO" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="bind:WORK_INSTRUCTION_NO" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" text="bind:R_ITEM_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" text="bind:MPS_PLAN_DATE" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="stc_contract01" taborder="8" text="출고이력" left="64" top="420" width="95" height="39" background="darkgray" border="1px solid rgba(177,181,185,0.7019607843137254)" borderRadius="0px" textAlign="center" verticalAlign="middle" font="12pt &quot;a두리둥실&quot;"/>
+        <Static id="stc_contract02" taborder="9" text="발송이력" left="660" top="420" width="95" height="39" background="darkgray" border="1px solid rgba(177,181,185,0.7019607843137254)" borderRadius="0px" textAlign="center" verticalAlign="middle" font="12pt &quot;a두리둥실&quot;"/>
+        <Grid id="stock_grid" taborder="10" binddataset="ds_completeDelivery" left="64" top="463" width="553" height="284" autofittype="col" font="12pt &quot;a두리둥실&quot;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="202"/>
+                <Column size="205"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="품번" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="품명" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:R_ITEM_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="bind:R_ITEM_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="deliveryResult_grid" taborder="11" binddataset="ds_completeDelivery" left="660" top="463" width="553" height="284" autofittype="col" font="12pt &quot;a두리둥실&quot;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="156"/>
+                <Column size="101"/>
+                <Column size="72"/>
+                <Column size="74"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="납품번호" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="납품일" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" text="품번" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" text="수량" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:DELIVERY_NO" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="bind:DELIVERY_DATE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" text="bind:D_ITEM_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" text="bind:DELIVERY_AMOUNT" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static00" taborder="12" text="~" left="27.97%" top="69" right="71.09%" height="20" color="black" font="10pt &quot;나눔바른고딕&quot;"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_contractDetail">
+        <ColumnInfo>
+          <Column id="CONTRACT_DETAIL_NO" type="STRING" size="256"/>
+          <Column id="CONTRACT_NO" type="STRING" size="256"/>
+          <Column id="ITEM_CODE" type="STRING" size="256"/>
+          <Column id="ITEM_NAME" type="STRING" size="256"/>
+          <Column id="UNIT_OF_CONTRACT" type="STRING" size="256"/>
+          <Column id="DUE_DATE_OF_CONTRACT" type="STRING" size="256"/>
+          <Column id="CONTRACT_AMOUNT" type="STRING" size="256"/>
+          <Column id="UNIT_PRICE_OF_CONTRACT" type="STRING" size="256"/>
+          <Column id="SUM_PRICE_OF_CONTRACT" type="STRING" size="256"/>
+          <Column id="MPS_APPLY_STATUS" type="STRING" size="256"/>
+          <Column id="DELIVERY_STATUS" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_contract">
+        <ColumnInfo>
+          <Column id="CONTRACT_NO" type="STRING" size="256"/>
+          <Column id="ESTIMATE_NO" type="STRING" size="256"/>
+          <Column id="CONTRACT_TYPE" type="STRING" size="256"/>
+          <Column id="CUSTOMER_CODE" type="STRING" size="256"/>
+          <Column id="CONTRACT_DATE" type="STRING" size="256"/>
+          <Column id="CONTRACT_REQUESTER" type="STRING" size="256"/>
+          <Column id="PERSON_CODE_IN_CHARGE" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+          <Column id="DELIVERY_RESULT_STATUS" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_deliveryResult">
+        <ColumnInfo>
+          <Column id="DELIVERY_NO" type="STRING" size="256"/>
+          <Column id="CONTRACT_DETAIL_NO" type="STRING" size="256"/>
+          <Column id="WAREHOUSE_CODE" type="STRING" size="256"/>
+          <Column id="ITEM_CODE" type="STRING" size="256"/>
+          <Column id="ITEM_NAME" type="STRING" size="256"/>
+          <Column id="UNIT_OF_DELIVERY_RESULT" type="STRING" size="256"/>
+          <Column id="DELIVERY_DATE" type="STRING" size="256"/>
+          <Column id="DELIVERY_AMOUNT" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+          <Column id="CUSTOMER_CODE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_stock">
+        <ColumnInfo>
+          <Column id="WAREHOUSE_CODE" type="STRING" size="256"/>
+          <Column id="ITEM_CODE" type="STRING" size="256"/>
+          <Column id="DELIVERY_NO" type="STRING" size="256"/>
+          <Column id="PRODUCTION_RESULT_NO" type="STRING" size="256"/>
+          <Column id="INPUT_ITEM_NO" type="STRING" size="256"/>
+          <Column id="ITEM_NAME" type="STRING" size="256"/>
+          <Column id="UNIT_OF_STOCK" type="STRING" size="256"/>
+          <Column id="SAFETY_ALLOWANCE_AMOUNT" type="STRING" size="256"/>
+          <Column id="STOCK_AMOUNT" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsService">
+        <ColumnInfo>
+          <Column id="serviceID" type="STRING" size="256"/>
+          <Column id="URL" type="STRING" size="256"/>
+          <Column id="inData" type="STRING" size="256"/>
+          <Column id="outData" type="STRING" size="256"/>
+          <Column id="argument" type="STRING" size="256"/>
+          <Column id="callbackFunc" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="serviceID">findContractList</Col>
+            <Col id="URL">dataURL::logi/business/findContractList.do</Col>
+            <Col id="outData">ds_contract=ds_contract</Col>
+            <Col id="argument">fromDate=unDeliveried toDate=application.today()</Col>
+            <Col id="callbackFunc"/>
+          </Row>
+          <Row>
+            <Col id="serviceID">findDeliveryResultList</Col>
+            <Col id="URL">dataURL::logi/business/findDeliveryResultList.do</Col>
+            <Col id="outData">ds_deliveryResult=ds_deliveryResult</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findStockList</Col>
+            <Col id="URL">dataURL::logi/purchase/findStockList.do</Col>
+            <Col id="outData">ds_stock=ds_stock</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findContractDetailList</Col>
+            <Col id="URL">dataURL::logi/business/findContractDetailList.do</Col>
+            <Col id="outData">ds_contractDetail=ds_contractDetail</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">takeSerialCode</Col>
+            <Col id="URL">dataURL::sys/findSequenceNo.do</Col>
+            <Col id="argument">findSeq=SERIAL_SEQ</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">registDeliveryResult</Col>
+            <Col id="URL">dataURL::logi/business/registDeliveryResult.do</Col>
+            <Col id="inData">ds_contract=ds_contract:u ds_contractDetail=ds_contractDetail:u ds_stock=ds_stock:u ds_deliveryResult=ds_deliveryResult:u</Col>
+          </Row>
+          <Row>
+            <Col id="serviceID">findDeliveryResultList</Col>
+            <Col id="URL">dataURL::logi/business/findDeliveryResultList.do</Col>
+            <Col id="outData">ds_deliveryResult=ds_deliveryResult</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[this.logi_DeliveryResultForm_onload = function (obj:Form, e:nexacro.LoadEventInfo)
+{
+	// 온로드
+	this.transaction("findCompleteDeliveryList",
+		"dataURL::logi/business/findCompleteDeliveryResultList.do",
+		"",
+		"ds_completeDelivery=ds_completeDelivery",
+		"fromDate='" + nexacro.getApplication().today() + "' toDate='" + nexacro.getApplication().today() + "'",
+		"callback"
+	);
+};
+
+this.contract_grid_oncelldblclick = function (obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	// 1번그리드 셀더블클릭
+	var scode = this.ds_completeDelivery.GetColumn(e.row, "CONTRACT_DETAIL_NO");
+	this.ds_completeDelivery.filter("CONTRACT_DETAIL_NO=='" + scode + "'");
+};
+
+
+
+
+
+this.search_btn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	// 서치버튼 클릭
+	alert("시작일:" + this.fromDate_cal.value + "  종료일:" + this.toDate_cal.value);
+	this.transaction("findCompleteDeliveryList",
+		"dataURL::logi/business/findCompleteDeliveryResultList.do",
+		"",
+		"ds_completeDelivery=ds_completeDelivery",
+		"fromDate='" + this.fromDate_cal.value + "' toDate='" + this.toDate_cal.value + "'",
+		"callback"
+	);
+}
+;
+]]></Script>
+  </Form>
+</FDL>

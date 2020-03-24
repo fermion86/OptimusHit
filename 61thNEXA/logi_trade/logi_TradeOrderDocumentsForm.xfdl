@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="logi_TradeOrderDocumentsForm" width="1024" height="990" titletext="New Form">
+    <Layouts>
+      <Layout height="990" mobileorientation="landscape" width="1024">
+        <GroupBox id="GroupBox00" text="출고 구비서류" taborder="0" left="2.93%" top="19" right="0.68%" height="949" font="18pt/normal &quot;a두리둥실&quot;"/>
+        <Tab id="Tab00" taborder="1" left="4.59%" top="76" right="5.57%" height="866" tabindex="0" scrollbars="autoboth" font="12pt &quot;a두리둥실&quot;">
+          <Tabpages>
+            <Tabpage id="tabpage1" text="Invoice">
+              <Layouts>
+                <Layout>
+                  <Static id="Static00" taborder="0" text="운송장 정보" left="2.61%" top="27" right="82.03%" height="35" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="Static01" taborder="1" text="MAWB No&#13;&#10;(항공운송장번호)" left="2.07%" top="84" right="88.02%" height="33" background="aliceblue" color="darkblue" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="Static02" taborder="2" text="운송장번호" left="2.07%" top="116" right="88.02%" height="33" background="aliceblue" color="darkblue" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="Static03" taborder="3" text="고객계약번호" left="2.07%" top="148" right="88.02%" height="33" background="aliceblue" color="darkblue" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="Static04" taborder="4" text="POL&#13;&#10;(선적항)" left="2.07%" top="180" right="88.02%" height="33" background="aliceblue" color="darkblue" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="Static05" taborder="5" text="서비스유형" left="2.07%" top="212" right="88.02%" height="33" background="aliceblue" color="darkblue" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="Static06" taborder="6" text="자동여부" left="2.07%" top="244" right="88.02%" height="33" background="aliceblue" color="darkblue" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="Static07" taborder="7" left="11.98%" top="84" right="74.18%" height="33" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="Static08" taborder="8" left="11.98%" top="116" right="74.18%" height="33" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="Static09" taborder="9" left="11.98%" top="148" right="74.18%" height="33" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="Static10" taborder="10" left="11.98%" top="180" right="74.18%" height="33" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="Static11" taborder="11" left="11.98%" top="212" right="74.18%" height="33" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="Static12" taborder="12" left="11.98%" top="244" right="74.18%" height="33" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="Static13" taborder="13" text="Flight(편명)" left="25.82%" top="84" right="64.27%" height="33" background="aliceblue" color="darkblue" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="Static14" taborder="14" left="25.82%" top="116" right="64.27%" height="33" text="HSN NO&#13;&#10;(화물관리번호)" background="aliceblue" color="darkblue" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="Static15" taborder="15" text="파트너운송장번호" left="25.82%" top="148" right="64.27%" height="33" background="aliceblue" color="darkblue" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="Static16" taborder="16" text="POD(도착항)" left="25.82%" top="180" right="64.27%" height="33" background="aliceblue" color="darkblue" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="Static17" taborder="17" text="PAYMENT&#13;&#10;(지불방법)" left="25.82%" top="212" right="64.27%" height="33" background="aliceblue" color="darkblue" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="Static25" taborder="25" text="ETD / HH" left="49.56%" top="84" right="40.41%" height="33" background="aliceblue" color="darkblue" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="Static26" taborder="26" text="ETA / HH" left="49.56%" top="116" right="40.41%" height="33" background="aliceblue" color="darkblue" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="Static27" taborder="27" text="통관용운송장번호" left="49.56%" top="148" right="40.41%" height="33" background="aliceblue" color="darkblue" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="Static28" taborder="28" text="상품유형" left="49.56%" top="180" right="40.41%" height="33" background="aliceblue" color="darkblue" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="Static29" taborder="29" text="거래구분" left="49.56%" top="212" right="40.41%" height="33" background="aliceblue" color="darkblue" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="Static30" taborder="30" text="오더구분" left="49.56%" top="244" right="40.41%" height="33" background="aliceblue" color="darkblue" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="Static38" taborder="38" left="73.42%" top="116" right="16.88%" height="33" text="오더일자" background="aliceblue" color="darkblue" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="Static19" taborder="43" left="35.73%" top="84" right="50.44%" height="33" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="Static20" taborder="44" left="35.73%" top="116" right="50.44%" height="33" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="Static21" taborder="45" left="35.73%" top="148" right="50.44%" height="33" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="Static22" taborder="46" left="35.73%" top="180" right="50.44%" height="33" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="Static23" taborder="47" left="35.73%" top="212" right="50.44%" height="33" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="Static24" taborder="48" left="35.73%" top="244" right="50.44%" height="33" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="Static31" taborder="49" left="59.59%" top="84" right="26.58%" height="33" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="Static32" taborder="50" left="59.59%" top="116" right="26.58%" height="33" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="Static33" taborder="51" left="59.59%" top="148" right="26.58%" height="33" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="Static34" taborder="52" left="59.59%" top="180" right="26.58%" height="33" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="Static35" taborder="53" left="59.59%" top="212" right="26.58%" height="33" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="Static36" taborder="54" left="59.59%" top="244" right="26.58%" height="33" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="Static40" taborder="55" left="83.12%" top="84" right="3.05%" height="33" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="Static42" taborder="56" left="83.12%" top="116" right="3.05%" height="33" font="12pt &quot;a두리둥실&quot;"/>
+                  <Edit id="Edit00" taborder="58" left="12.75%" top="88" height="24" width="112" font="12pt &quot;a두리둥실&quot;"/>
+                  <Edit id="Edit01" taborder="59" left="12.75%" top="120" height="24" width="112" font="12pt &quot;a두리둥실&quot;"/>
+                  <Edit id="Edit02" taborder="60" left="12.75%" top="152" height="24" width="112" font="12pt &quot;a두리둥실&quot;"/>
+                  <Edit id="Edit03" taborder="61" left="12.75%" top="216" height="24" width="112" font="12pt &quot;a두리둥실&quot;"/>
+                  <Edit id="Edit04" taborder="62" left="12.75%" top="248" height="24" width="112" font="12pt &quot;a두리둥실&quot;"/>
+                  <Edit id="Edit07" taborder="65" left="36.6%" top="152" height="24" width="112" font="12pt &quot;a두리둥실&quot;"/>
+                  <Combo id="Combo00" taborder="66" left="36.6%" top="185" height="24" width="112" font="12pt &quot;a두리둥실&quot;"/>
+                  <Combo id="Combo01" taborder="67" left="36.6%" top="216" height="24" width="112" font="12pt &quot;a두리둥실&quot;"/>
+                  <Combo id="Combo02" taborder="68" left="36.6%" top="248" height="24" width="112" font="12pt &quot;a두리둥실&quot;"/>
+                  <Combo id="Combo04" taborder="70" left="60.46%" top="186" height="24" width="112" font="12pt &quot;a두리둥실&quot;"/>
+                  <Combo id="Combo05" taborder="71" left="60.46%" top="219" height="24" width="112" font="12pt &quot;a두리둥실&quot;"/>
+                  <Edit id="Edit09" taborder="76" left="60.46%" top="154" height="24" width="112" font="12pt &quot;a두리둥실&quot;"/>
+                  <Edit id="Edit11" taborder="78" left="83.77%" top="120" height="25" width="112" font="12pt &quot;a두리둥실&quot;"/>
+                  <Button id="Button00" taborder="79" text="저장" left="88.45%" top="44" right="3.38%" height="25" font="12pt &quot;a두리둥실&quot;"/>
+                  <Edit id="Edit05" taborder="80" left="36.27%" top="88" width="112" height="24" font="12pt &quot;a두리둥실&quot;"/>
+                  <Edit id="Edit06" taborder="81" left="36.27%" top="120" width="112" height="24" font="12pt &quot;a두리둥실&quot;"/>
+                  <Edit id="Edit10" taborder="82" left="60.46%" top="88" width="66" height="24" font="12pt &quot;a두리둥실&quot;"/>
+                  <Edit id="Edit12" taborder="83" left="68.08%" top="88" width="41" height="24" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="Static44" taborder="86" left="73.42%" top="180" right="3.05%" height="33" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="Static45" taborder="87" left="73.42%" top="244" right="3.05%" height="33" font="12pt &quot;a두리둥실&quot;"/>
+                  <Tab id="Tab00" taborder="89" left="2.61%" top="310" right="3.49%" height="511" tabindex="0" scrollbars="autoboth" font="12pt &quot;a두리둥실&quot;">
+                    <Tabpages>
+                      <Tabpage id="tabpage1" text="Main">
+                        <Layouts>
+                          <Layout>
+                            <GroupBox id="GroupBox01" text="송하인정보" taborder="0" left="5%" top="35" right="5.47%" height="204" font="12pt &quot;a두리둥실&quot;"/>
+                            <GroupBox id="GroupBox02" text="수하인정보" taborder="1" left="3.84%" top="252" right="5.47%" height="219" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static00" taborder="2" text="송하인명(기업)" left="7.67%" top="62" right="81.74%" height="27" background="aliceblue" color="darkblue" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static01" taborder="3" text="송하인명(영문)" left="7.67%" top="88" right="81.74%" height="27" background="aliceblue" color="darkblue" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static02" taborder="4" text="국가" left="7.67%" top="114" right="81.74%" height="27" background="aliceblue" color="darkblue" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static03" taborder="5" text="도" left="7.67%" top="140" right="81.74%" height="27" background="aliceblue" color="darkblue" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static04" taborder="6" text="시" left="7.67%" top="166" right="81.74%" height="27" background="aliceblue" color="darkblue" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static11" taborder="7" text="ZipCode" left="7.67%" top="192" right="81.74%" height="27" background="aliceblue" color="darkblue" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static12" taborder="8" left="18.26%" top="62" right="61.28%" height="27" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static13" taborder="9" left="18.26%" top="88" right="61.28%" height="27" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static14" taborder="10" left="18.26%" top="114" right="61.28%" height="27" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static15" taborder="11" left="18.26%" top="140" right="61.28%" height="27" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static16" taborder="12" left="18.26%" top="166" right="61.28%" height="27" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static17" taborder="13" left="18.26%" top="192" right="61.28%" height="27" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static19" taborder="14" left="49.3%" top="88" right="15.93%" height="27" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static20" taborder="15" left="49.3%" top="114" right="15.93%" height="27" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static21" taborder="16" left="49.3%" top="140" right="15.93%" height="27" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static22" taborder="17" left="49.3%" top="166" right="15.93%" height="27" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static23" taborder="18" left="49.3%" top="192" right="15.93%" height="27" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static06" taborder="19" text="주소1" left="38.72%" top="88" right="50.7%" height="27" background="aliceblue" color="darkblue" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static07" taborder="20" text="주소2" left="38.72%" top="114" right="50.7%" height="27" background="aliceblue" color="darkblue" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static08" taborder="21" text="쇼핑몰URL" left="38.72%" top="140" right="50.7%" height="27" background="aliceblue" color="darkblue" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static09" taborder="22" text="ATTEN" left="38.72%" top="166" right="50.7%" height="27" background="aliceblue" color="darkblue" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static10" taborder="23" text="AEO" left="38.72%" top="192" right="50.7%" height="27" background="aliceblue" color="darkblue" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static05" taborder="24" left="49.3%" top="62" right="38.6%" height="27" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static18" taborder="25" text="Mobile" left="38.72%" top="62" right="50.7%" height="27" background="aliceblue" color="darkblue" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static24" taborder="26" left="71.98%" top="62" right="15.93%" height="27" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static25" taborder="27" text="Tel" left="61.4%" top="62" right="28.02%" height="27" background="aliceblue" color="darkblue" font="12pt &quot;a두리둥실&quot;"/>
+                            <Edit id="Edit00" taborder="28" left="18.72%" top="66" right="61.74%" height="19" font="12pt &quot;a두리둥실&quot;"/>
+                            <Edit id="Edit01" taborder="29" left="18.72%" top="92" right="61.74%" height="19" font="12pt &quot;a두리둥실&quot;"/>
+                            <Edit id="Edit02" taborder="30" left="18.72%" top="118" right="68.02%" height="19" font="12pt &quot;a두리둥실&quot;"/>
+                            <Edit id="Edit03" taborder="31" left="18.72%" top="144" right="61.74%" height="19" font="12pt &quot;a두리둥실&quot;"/>
+                            <Edit id="Edit04" taborder="32" left="18.72%" top="170" right="61.74%" height="19" font="12pt &quot;a두리둥실&quot;"/>
+                            <Edit id="Edit05" taborder="33" left="18.72%" top="196" right="61.74%" height="19" font="12pt &quot;a두리둥실&quot;"/>
+                            <Edit id="Edit06" taborder="34" left="49.88%" top="66" right="39.42%" height="19" font="12pt &quot;a두리둥실&quot;"/>
+                            <Edit id="Edit07" taborder="35" left="72.67%" top="66" right="16.63%" height="19" font="12pt &quot;a두리둥실&quot;"/>
+                            <Edit id="Edit08" taborder="36" left="49.77%" top="92" right="16.63%" height="19" font="12pt &quot;a두리둥실&quot;"/>
+                            <Edit id="Edit09" taborder="37" left="49.77%" top="118" right="16.63%" height="19" font="12pt &quot;a두리둥실&quot;"/>
+                            <Edit id="Edit10" taborder="38" left="49.77%" top="144" right="16.63%" height="19" font="12pt &quot;a두리둥실&quot;"/>
+                            <Edit id="Edit11" taborder="39" left="49.77%" top="170" right="16.63%" height="19" font="12pt &quot;a두리둥실&quot;"/>
+                            <Edit id="Edit12" taborder="40" left="49.77%" top="196" right="16.63%" height="19" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static26" taborder="41" text="수하인명(기업)" left="7.67%" top="278" right="81.74%" height="27" background="aliceblue" color="darkblue" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static27" taborder="42" text="수하인명(영문)" left="7.67%" top="304" right="81.74%" height="27" background="aliceblue" color="darkblue" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static28" taborder="43" text="국가" left="7.67%" top="330" right="81.74%" height="27" background="aliceblue" color="darkblue" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static29" taborder="44" text="도" left="7.67%" top="356" right="81.74%" height="27" background="aliceblue" color="darkblue" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static30" taborder="45" text="시" left="7.67%" top="382" right="81.74%" height="27" background="aliceblue" color="darkblue" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static31" taborder="46" text="ZipCode" left="7.67%" top="408" right="81.74%" height="27" background="aliceblue" color="darkblue" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static32" taborder="47" left="18.26%" top="278" right="61.28%" height="27" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static33" taborder="48" left="18.26%" top="304" right="61.28%" height="27" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static34" taborder="49" left="18.26%" top="330" right="61.28%" height="27" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static35" taborder="50" left="18.26%" top="356" right="61.28%" height="27" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static36" taborder="51" left="18.26%" top="382" right="61.28%" height="27" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static37" taborder="52" left="18.26%" top="408" right="61.28%" height="27" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static38" taborder="53" left="49.3%" top="304" right="15.93%" height="27" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static39" taborder="54" left="49.3%" top="330" right="15.93%" height="27" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static40" taborder="55" left="49.3%" top="356" right="15.93%" height="27" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static41" taborder="56" left="49.3%" top="382" right="15.93%" height="27" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static42" taborder="57" left="49.3%" top="408" right="15.93%" height="27" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static43" taborder="58" text="주소1(현지어)" left="38.72%" top="304" right="50.7%" height="27" background="aliceblue" color="darkblue" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static44" taborder="59" text="주소2(현지어)" left="38.72%" top="330" right="50.7%" height="27" background="aliceblue" color="darkblue" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static45" taborder="60" text="주소1(영어)" left="38.72%" top="356" right="50.7%" height="27" background="aliceblue" color="darkblue" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static46" taborder="61" text="주소2(영어)" left="38.72%" top="382" right="50.7%" height="27" background="aliceblue" color="darkblue" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static47" taborder="62" text="ATTEN" left="38.72%" top="408" right="50.7%" height="27" background="aliceblue" color="darkblue" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static48" taborder="63" left="49.3%" top="278" right="38.6%" height="27" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static49" taborder="64" text="Mobile" left="38.72%" top="278" right="50.7%" height="27" background="aliceblue" color="darkblue" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static50" taborder="65" left="71.98%" top="278" right="15.93%" height="27" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static51" taborder="66" text="Tel" left="61.4%" top="278" right="28.02%" height="27" background="aliceblue" color="darkblue" font="12pt &quot;a두리둥실&quot;"/>
+                            <Edit id="Edit13" taborder="67" left="18.72%" top="282" right="61.74%" height="19" font="12pt &quot;a두리둥실&quot;"/>
+                            <Edit id="Edit14" taborder="68" left="18.72%" top="308" right="61.74%" height="19" font="12pt &quot;a두리둥실&quot;"/>
+                            <Edit id="Edit15" taborder="69" left="18.72%" top="334" right="68.02%" height="19" font="12pt &quot;a두리둥실&quot;"/>
+                            <Edit id="Edit16" taborder="70" left="18.72%" top="360" right="61.74%" height="19" font="12pt &quot;a두리둥실&quot;"/>
+                            <Edit id="Edit17" taborder="71" left="18.72%" top="386" right="61.74%" height="19" font="12pt &quot;a두리둥실&quot;"/>
+                            <Edit id="Edit18" taborder="72" left="18.72%" top="412" right="61.74%" height="19" font="12pt &quot;a두리둥실&quot;"/>
+                            <Edit id="Edit19" taborder="73" left="49.88%" top="282" right="39.42%" height="19" font="12pt &quot;a두리둥실&quot;"/>
+                            <Edit id="Edit20" taborder="74" left="72.67%" top="282" right="16.63%" height="19" font="12pt &quot;a두리둥실&quot;"/>
+                            <Edit id="Edit21" taborder="75" left="49.77%" top="308" right="16.63%" height="19" font="12pt &quot;a두리둥실&quot;"/>
+                            <Edit id="Edit22" taborder="76" left="49.77%" top="334" right="16.63%" height="19" font="12pt &quot;a두리둥실&quot;"/>
+                            <Edit id="Edit23" taborder="77" left="49.77%" top="360" right="16.63%" height="19" font="12pt &quot;a두리둥실&quot;"/>
+                            <Edit id="Edit24" taborder="78" left="49.77%" top="386" right="16.63%" height="19" font="12pt &quot;a두리둥실&quot;"/>
+                            <Edit id="Edit25" taborder="79" left="49.77%" top="412" right="16.63%" height="19" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static52" taborder="80" text="E-mail" left="7.67%" top="434" right="81.74%" height="27" background="aliceblue" color="darkblue" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static53" taborder="81" left="18.26%" top="434" right="61.28%" height="27" font="12pt &quot;a두리둥실&quot;"/>
+                            <Edit id="Edit26" taborder="82" left="18.72%" top="438" right="61.74%" height="19" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static54" taborder="83" text="AEO" left="38.72%" top="434" right="50.7%" height="27" background="aliceblue" color="darkblue" font="12pt &quot;a두리둥실&quot;"/>
+                            <Static id="Static55" taborder="84" left="49.3%" top="434" right="15.93%" height="27" font="12pt &quot;a두리둥실&quot;"/>
+                            <Edit id="Edit27" taborder="85" left="49.77%" top="438" right="16.63%" height="19" font="12pt &quot;a두리둥실&quot;"/>
+                            <Button id="Button00" taborder="86" text="검색" left="32.44%" top="118" right="61.74%" height="19" background="antiquewhite" font="12pt &quot;a두리둥실&quot;"/>
+                            <Button id="Button01" taborder="87" text="검색" left="32.44%" top="334" right="61.74%" height="19" background="antiquewhite" font="12pt &quot;a두리둥실&quot;"/>
+                          </Layout>
+                        </Layouts>
+                      </Tabpage>
+                      <Tabpage id="tabpage2" text="Other"/>
+                    </Tabpages>
+                  </Tab>
+                  <Combo id="Combo09" taborder="90" left="12.75%" top="185" width="112" height="24" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="Static18" taborder="91" text="통관유형" left="25.82%" top="244" right="64.27%" height="33" background="aliceblue" color="darkblue" font="12pt &quot;a두리둥실&quot;"/>
+                  <Combo id="Combo06" taborder="92" left="60.46%" top="248" width="112" height="24" font="12pt &quot;a두리둥실&quot;"/>
+                  <Edit id="Edit08" taborder="93" left="68.08%" top="120" width="41" height="24" font="12pt &quot;a두리둥실&quot;"/>
+                  <Edit id="Edit13" taborder="94" left="60.46%" top="120" width="66" height="24" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="Static41" taborder="95" left="73.42%" top="212" right="3.05%" height="33" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="Static37" taborder="96" text="ShipMode" left="73.42%" top="84" right="16.88%" height="33" background="aliceblue" color="darkblue" font="12pt &quot;a두리둥실&quot;"/>
+                  <Combo id="Combo03" taborder="97" left="83.88%" top="88" width="112" height="25" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="Static39" taborder="98" left="73.42%" top="148" right="3.05%" height="33" font="12pt &quot;a두리둥실&quot;"/>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+            <Tabpage id="tabpage2" text="ParkingList"/>
+            <Tabpage id="tabpage3" text="거래명세서"/>
+          </Tabpages>
+        </Tab>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[// 무업 업무는 코드작성전]]></Script>
+  </Form>
+</FDL>

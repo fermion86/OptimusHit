@@ -1,0 +1,300 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="logi_MPSForm" width="1280" height="780" titletext="New Form" onload="logi_MPSForm_onload">
+    <Layouts>
+      <Layout height="780" mobileorientation="landscape" width="1280">
+        <GroupBox id="MPS_GB" taborder="0" left="4.84%" top="62" right="5.23%" height="705" titlealign="topcenter" font="12pt &quot;a두리둥실&quot;"/>
+        <Tab id="MPS_tab" taborder="1" left="7.03%" top="97" right="6.88%" height="653" tabindex="0" scrollbars="autoboth" onchanged="MPS_tab_onchanged" font="12pt &quot;a두리둥실&quot;">
+          <Tabpages>
+            <Tabpage id="writeMPS_tPage" text="주생산계획(MPS)작성">
+              <Layouts>
+                <Layout>
+                  <Static id="Static00" taborder="0" text="수주목록" left="497" top="25" width="100" height="40" border="3px double darkslategray" verticalAlign="middle" font="12pt &quot;a두리둥실&quot;" textAlign="center"/>
+                  <Calendar id="fromDate_cal" taborder="1" left="620" top="25" width="150" height="40" onchanged="calendarChange" font="12pt &quot;a두리둥실&quot;" dateformat="yyyy-MM-dd"/>
+                  <Calendar id="toDate_cal" taborder="2" left="804" top="25" width="150" height="40" onchanged="calendarChange" font="12pt &quot;a두리둥실&quot;" dateformat="yyyy-MM-dd"/>
+                  <Button id="searchContract_btn" taborder="3" text="조회" left="972" top="25" width="100" height="40" onclick="MPS_tab_writeMPS_tPage_searchContract_btn_onclick" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="Static01" taborder="4" text="~" left="70.90%" top="26" height="40" width="45" border="1px none darkgray" font="12pt &quot;a두리둥실&quot;"/>
+                  <Grid id="contractDetailManagement_grid" taborder="5" binddataset="ds_contractDetail" autoenter="select" autofittype="col" left="12" top="77" width="1060" height="215" oncelldblclick="MPS_tab_writeMPS_tPage_contractDetailManagement_grid_oncelldblclick" font="12pt &quot;a두리둥실&quot;">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="160"/>
+                          <Column size="120"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="50"/>
+                          <Column size="50"/>
+                          <Column size="80"/>
+                          <Column size="102"/>
+                          <Column size="106"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="30" band="head"/>
+                          <Row size="25"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell displaytype="normal" text="수주상세일련번호" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="1" displaytype="normal" text="수주일련번호" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="2" displaytype="normal" text="품목코드" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="3" displaytype="normal" text="품목명" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="4" displaytype="normal" text="단위" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="5" displaytype="normal" text="납기일" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="6" displaytype="normal" text="수량" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="7" displaytype="normal" text="단가" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="8" displaytype="normal" text="합계액" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="9" displaytype="normal" text="MPS적용여부" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="10" displaytype="normal" text="납품여부" font="12pt/normal &quot;a두리둥실&quot;"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell displaytype="normal" text="bind:CONTRACT_DETAIL_NO" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="1" displaytype="normal" text="bind:CONTRACT_NO" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="2" displaytype="normal" text="bind:ITEM_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="3" displaytype="normal" text="bind:ITEM_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="4" displaytype="normal" text="bind:UNIT_OF_CONTRACT" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="5" displaytype="normal" text="bind:DUE_DATE_OF_CONTRACT" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="6" displaytype="normal" text="bind:CONTRACT_AMOUNT" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="7" displaytype="normal" text="bind:UNIT_PRICE_OF_CONTRACT" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="8" displaytype="normal" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="9" displaytype="normal" text="bind:MPS_APPLY_STATUS" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="10" displaytype="normal" text="bind:DELIVERY_STATUS" font="12pt/normal &quot;a두리둥실&quot;"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                  <Grid id="mpsManagement_grid" taborder="7" binddataset="ds_mps" autofittype="col" left="12" top="358" width="1060" height="250" font="12pt &quot;a두리둥실&quot;">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="30" band="head"/>
+                          <Row size="25"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell displaytype="normal" text="주생산계획번호" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="1" displaytype="normal" text="수주상세일련번호" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="2" displaytype="normal" text="품목코드" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="3" displaytype="normal" text="품목명" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="4" displaytype="normal" text="단위" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="5" displaytype="normal" text="계획일자" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="6" displaytype="normal" text="계획수량" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="7" displaytype="normal" text="납기일" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="8" displaytype="normal" text="예정마감일자" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="9" displaytype="normal" text="MRP적용여부" font="12pt/normal &quot;a두리둥실&quot;"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell displaytype="normal" text="bind:MPS_NO" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="1" displaytype="normal" text="bind:CONTRACT_DETAIL_NO" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="2" displaytype="normal" text="bind:ITEM_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="3" displaytype="normal" text="bind:ITEM_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="4" displaytype="normal" text="bind:UNIT_OF_MPS" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="5" displaytype="normal" text="bind:MPS_PLAN_DATE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="6" displaytype="normal" text="bind:MPS_PLAN_AMOUNT" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="7" displaytype="normal" text="bind:DUE_DATE_OF_MPS" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="8" displaytype="normal" text="bind:SCHEDULED_END_DATE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="9" displaytype="normal" text="bind:MRP_APPLY_STATUS" font="12pt/normal &quot;a두리둥실&quot;"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                  <Button id="btn_registerMps" taborder="8" text="MPS적용" left="972" top="308" width="100" height="40" onclick="MPS_tab_writeMPS_tPage_btn_registerMps_onclick" font="12pt &quot;a두리둥실&quot;"/>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+            <Tabpage id="checkMPS_tPage" text="MPS내역조회">
+              <Layouts>
+                <Layout>
+                  <Grid id="applyMps_grid" taborder="0" binddataset="ds_mps" autofittype="col" left="18" top="64" width="1060" height="551" font="12pt &quot;a두리둥실&quot;">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="120"/>
+                          <Column size="120"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                          <Column size="80"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="30" band="head"/>
+                          <Row size="25"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell displaytype="normal" text="주생산계획번호" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="1" displaytype="normal" text="수주상세일련번호" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="2" displaytype="normal" text="품목코드" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="3" displaytype="normal" text="품목명" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="4" displaytype="normal" text="단위" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="5" displaytype="normal" text="계획일자" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="6" displaytype="normal" text="계획수량" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="7" displaytype="normal" text="납기일" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="8" displaytype="normal" text="예정마감일자" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="9" displaytype="normal" text="MRP적용여부" font="12pt/normal &quot;a두리둥실&quot;"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell displaytype="normal" text="bind:MPS_NO" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="1" displaytype="normal" text="bind:CONTRACT_DETAIL_NO" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="2" displaytype="normal" text="bind:ITEM_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="3" displaytype="normal" text="bind:ITEM_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="4" displaytype="normal" text="bind:UNIT_OF_MPS" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="5" displaytype="normal" text="bind:MPS_PLAN_DATE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="6" displaytype="normal" text="bind:MPS_PLAN_AMOUNT" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="7" displaytype="normal" text="bind:DUE_DATE_OF_MPS" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="8" displaytype="normal" text="bind:SCHEDULED_END_DATE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="9" displaytype="normal" text="bind:MRP_APPLY_STATUS" font="12pt/normal &quot;a두리둥실&quot;"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                  <Calendar id="fromDate_cal" taborder="1" left="609" top="12" width="150" height="40" font="12pt &quot;a두리둥실&quot;" dateformat="yyyy-MM-dd"/>
+                  <Static id="Static01" taborder="2" text="~" left="70.26%" top="13" width="45" height="40" border="1px none darkgray" font="12pt &quot;a두리둥실&quot;"/>
+                  <Calendar id="toDate_cal" taborder="3" left="794" top="12" width="150" height="40" font="12pt &quot;a두리둥실&quot;" dateformat="yyyy-MM-dd"/>
+                  <Button id="searchContract_btn" taborder="4" text="조회" left="962" top="12" width="100" height="40" defaultbutton="false" tooltiptype="default" onclick="MPS_tab_checkMPS_tPage_searchContract_btn_onclick" font="12pt &quot;a두리둥실&quot;"/>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+          </Tabpages>
+        </Tab>
+        <Static id="MPS_stc" taborder="2" text="주생산계획" onclick="Static00_onclick" left="64" top="9" right="59" height="45" border="3px solid darkgray" font="18pt/normal &quot;a두리둥실&quot;" textAlign="center"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_contractDetail">
+        <ColumnInfo>
+          <Column id="CONTRACT_DETAIL_NO" type="STRING" size="256"/>
+          <Column id="CONTRACT_NO" type="STRING" size="256"/>
+          <Column id="ITEM_CODE" type="STRING" size="256"/>
+          <Column id="ITEM_NAME" type="STRING" size="256"/>
+          <Column id="UNIT_OF_CONTRACT" type="STRING" size="256"/>
+          <Column id="DUE_DATE_OF_CONTRACT" type="STRING" size="256"/>
+          <Column id="CONTRACT_AMOUNT" type="STRING" size="256"/>
+          <Column id="UNIT_PRICE_OF_CONTRACT" type="STRING" size="256"/>
+          <Column id="SUM_PRICE_OF_CONTRACT" type="STRING" size="256"/>
+          <Column id="MPS_APPLY_STATUS" type="STRING" size="256"/>
+          <Column id="DELIVERY_STATUS" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_mps">
+        <ColumnInfo>
+          <Column id="MPS_NO" type="STRING" size="256"/>
+          <Column id="MPS_PLAN_CLASSIFICATION" type="STRING" size="256"/>
+          <Column id="CONTRACT_DETAIL_NO" type="STRING" size="256"/>
+          <Column id="SALES_PLAN_NO" type="STRING" size="256"/>
+          <Column id="ITEM_CODE" type="STRING" size="256"/>
+          <Column id="ITEM_NAME" type="STRING" size="256"/>
+          <Column id="UNIT_OF_MPS" type="STRING" size="256"/>
+          <Column id="MPS_PLAN_DATE" type="STRING" size="256"/>
+          <Column id="MPS_PLAN_AMOUNT" type="STRING" size="256"/>
+          <Column id="DUE_DATE_OF_MPS" type="STRING" size="256"/>
+          <Column id="SCHEDULED_END_DATE" type="STRING" size="256"/>
+          <Column id="MRP_APPLY_STATUS" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_stock">
+        <ColumnInfo>
+          <Column id="WAREHOUSE_CODE" type="STRING" size="256"/>
+          <Column id="ITEM_CODE" type="STRING" size="256"/>
+          <Column id="DELIVERY_NO" type="STRING" size="256"/>
+          <Column id="PRODUCTION_RESULT_NO" type="STRING" size="256"/>
+          <Column id="INPUT_ITEM_NO" type="STRING" size="256"/>
+          <Column id="ITEM_NAME" type="STRING" size="256"/>
+          <Column id="UNIT_OF_STOCK" type="STRING" size="256"/>
+          <Column id="SAFETY_ALLOWANCE_AMOUNT" type="STRING" size="256"/>
+          <Column id="STOCK_AMOUNT" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_MPSSqeNo">
+        <ColumnInfo>
+          <Column id="SEQ_NO" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[
+/********************************************************************************                                                                            
+ 주생산계획(MPS) 관리 화면
+ @Path			물류
+ @Description	주생산계획 관리를 하기 위한  폼
+ 등록된 주생산계획 재입력 방지 추가
+ @Author	  		박주영
+ @Create         2019. 05. 16.
+ ********************************************************************************/
+
+// 온로드 이벤트
+this.logi_MPSForm_onload = function (obj:Form, e:nexacro.LoadEventInfo)
+{
+	// 재고
+	this.transaction("findStockList",
+		"dataURL::logi/purchase/findStockList.do",
+		"",
+		"ds_stock=ds_stock",
+		"",
+		"callback",
+		true);
+	trace(this.ds_stock.saveXML());
+
+
+	// 수주상세 - logi_MPSForm_onload에 넣어서 오늘 날짜는 바로 조회가 되어서 그리드에 나타남
+	this.transaction("findRangedContractDetailList",
+		"dataURL::logi/business/findRangedContractDetailList.do",
+		"",
+		"ds_contractDetail=ds_contractDetail",
+		"fromDate='" + nexacro.getApplication().today() + "' toDate='" + nexacro.getApplication().today() + "'",
+		"callback");
+	trace(this.ds_contractDetail.saveXML());
+
+
+	// 주생산계획
+	this.transaction("findMpsList",
+		"dataURL::logi/production/findMpsList.do",
+		"",
+		"ds_mps=ds_mps",
+		"fromDate='" + nexacro.getApplication().today() + "' toDate='" + nexacro.getApplication().today() + "'",
+		"callback");
+	
+	this.ds_mps.filter("MPS_NO=='XX'");
+	trace(this.ds_mps.saveXML());
+
+	nexacro.getApplication().trace(this.ds_contractDetail.getRowCount());
+};
+
+
+
+
+// 탭 전환
+this.MPS_tab_onchanged = function (obj:Tab, e:nexacro.TabIndexChangeEventInfo)
+{
+	if (e.postindex == 1) 
+	{
+		// e.postindex로 tab 변할때 인덱스 확인
+		this.ds_mps.filter(""); 
+	}
+	else 
+	{
+		// 
+		this.ds_mps.filter("MPS_NO=='XX'");
+	}
+};
+
+
+]]></Script>
+  </Form>
+</FDL>

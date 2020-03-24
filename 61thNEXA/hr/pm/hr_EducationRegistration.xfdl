@@ -1,0 +1,530 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="hr_EducationRegistration" width="1180" height="570" titletext="New Form" onload="hr_EducationRegistration_onload">
+    <Layouts>
+      <Layout height="570" mobileorientation="landscape" width="1180">
+        <Div id="EmpElm0_div" taborder="0" left="0.00%" top="0" right="55" height="45" font="18pt/normal &quot;a두리둥실&quot;"/>
+        <Static id="EmpElm00_stc" taborder="1" text="교육관리" onclick="Static00_onclick" left="1.72%" top="16" width="170" height="34" wordWrap="char" border="0px none rgba(128,128,128,1)" color="black" textAlign="left" verticalAlign="middle" font="18pt/normal &quot;a두리둥실&quot;"/>
+        <Div id="EmpElm1_div" taborder="2" left="0.94%" top="11" width="4" height="23" background="rgba(213,217,224,1)" font="12pt &quot;a두리둥실&quot;"/>
+        <Tab id="Tab00" taborder="3" left="15" top="55" height="504" tabindex="0" scrollbars="autoboth" width="1143" color="black" font="11pt/normal &quot;a두리둥실&quot;">
+          <Tabpages>
+            <Tabpage id="tabpage1" text="교육 등록" background="rgba(255,255,255,1)">
+              <Layouts>
+                <Layout width="1141" height="628">
+                  <Button id="educationAdd_btn" taborder="5" text="교육추가" onclick="educationAdd_btn_onclick" left="61.79%" top="19" right="29.54%" height="31" background="gold" border="1px none rgba(153,153,153,1)" borderRadius="100px / 30px" font="12pt &quot;a두리둥실&quot;" cursor="auto"/>
+                  <Button id="educationDel_btn" taborder="6" text="교육삭제" onclick="educationDel_btn_onclick" left="70.55%" top="18" right="20.77%" height="31" background="gold" border="1px none rgba(153,153,153,1)" borderRadius="100px / 30px" font="12pt &quot;a두리둥실&quot;" cursor="auto"/>
+                  <Button id="batch_btn" taborder="7" text="일괄저장" onclick="batch_btn_onclick" left="79.4%" top="18" right="12.01%" height="31" background="gold" border="1px none rgba(153,153,153,1)" borderRadius="100px / 30px" font="12pt &quot;a두리둥실&quot;" cursor="auto"/>
+                  <Static id="Static01" taborder="9" text="교육목록" left="1.4%" top="24" right="82.91%" height="36" onclick="Tab00_tabpage1_Static01_onclick" border="1px none rgba(153,153,153,1)" color="black" borderRadius="100px / 30px" font="16pt/normal &quot;a두리둥실&quot;" cursor="auto"/>
+                  <GroupBox id="GroupBox00" text="교육정보" taborder="13" left="3.77%" top="56" right="12.27%" height="332" titlealign="topcenter" background="rgba(255,255,255,1)" color="goldenrod" font="12pt &quot;a두리둥실&quot;"/>
+                  <Grid id="Grid00" taborder="14" binddataset="ds_educationTraining" oncellclick="Tab00_tabpage1_Grid00_oncellclick" left="4.03%" top="86" right="12.8%" height="297" font="12pt &quot;a두리둥실&quot;">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="74"/>
+                          <Column size="104"/>
+                          <Column size="144"/>
+                          <Column size="164"/>
+                          <Column size="93"/>
+                          <Column size="126"/>
+                          <Column size="121"/>
+                          <Column size="119"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="24" band="head"/>
+                          <Row size="24"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell text="구분코드" background="gold" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="1" text="구분코드명" background="gold" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="2" text="교육코드" background="gold" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="3" text="교육명" background="gold" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="4" text="교육시작일" background="gold" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="5" text="교육종료일" background="gold" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="6" text="담당강사" background="gold" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="7" text="교육장소" background="gold" font="12pt/normal &quot;a두리둥실&quot;"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell edittype="normal" text="bind:DETAIL_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="1" edittype="normal" text="bind:DETAIL_CODE_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="2" edittype="normal" text="bind:EDUCATION_CODE" calendardisplaynulltype="nullmask" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="3" edittype="normal" text="bind:EDUCATION_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="4" displaytype="date" edittype="date" text="bind:EDUCATION_START" mask="yyyy-MM-dd" calendardisplaynulltype="none" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="5" displaytype="date" edittype="date" text="bind:EDUCATION_END" mask="yyyy-MM-dd" calendardisplaynulltype="none" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="6" edittype="normal" text="bind:EDUCATION_TEACHER" font="12pt/normal &quot;a두리둥실&quot;"/>
+                          <Cell col="7" edittype="normal" text="bind:EDUCATION_PLACE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                </Layout>
+              </Layouts>
+              <InitValue/>
+            </Tabpage>
+            <Tabpage id="tabpage2" text="대상자 등록">
+              <Layouts>
+                <Layout width="1141" height="857">
+                  <Static id="EmpElm01_stc" taborder="0" text="교육선택" onclick="Static00_onclick" left="3.07%" top="16" width="174" height="35" wordWrap="char" background="transparent" border="0px none rgba(128,128,128,1)" color="black" textAlign="left" verticalAlign="middle" font="16pt/normal &quot;a두리둥실&quot;"/>
+                  <Combo id="Combo00" taborder="6" left="12.86%" top="15" right="68.24%" height="35" codecolumn="EDUCATION_CODE" datacolumn="EDUCATION_NAME" innerdataset="@ds_educationTraining" type="dropdown" onitemchanged="Tab00_tabpage2_Combo00_onitemchanged" font="12pt &quot;a두리둥실&quot;"/>
+                  <Grid id="Grid00" taborder="8" left="1.14%" top="62" right="5.95%" height="101" binddataset="ds_eduCopy" background="aliceblue" borderRadius="0px" font="12pt &quot;a두리둥실&quot;">
+                    <Formats>
+                      <Format id="default">
+                        <Columns>
+                          <Column size="167"/>
+                          <Column size="172"/>
+                          <Column size="181"/>
+                          <Column size="185"/>
+                          <Column size="179"/>
+                          <Column size="174"/>
+                        </Columns>
+                        <Rows>
+                          <Row size="41" band="head"/>
+                          <Row size="39"/>
+                        </Rows>
+                        <Band id="head">
+                          <Cell displaytype="normal" text="교육코드" background="gold" font="12pt &quot;a두리둥실&quot;"/>
+                          <Cell col="1" displaytype="normal" text="교육이름" background="gold" font="12pt &quot;a두리둥실&quot;"/>
+                          <Cell col="2" displaytype="normal" text="교육시작일" background="gold" font="12pt &quot;a두리둥실&quot;"/>
+                          <Cell col="3" displaytype="normal" text="교육종료일" background="gold" font="12pt &quot;a두리둥실&quot;"/>
+                          <Cell col="4" displaytype="normal" text="담당강사" background="gold" font="12pt &quot;a두리둥실&quot;"/>
+                          <Cell col="5" displaytype="normal" text="교육장소" background="gold" font="12pt &quot;a두리둥실&quot;"/>
+                        </Band>
+                        <Band id="body">
+                          <Cell displaytype="normal" text="bind:EDUCATION_CODE" background="floralwhite" font="12pt &quot;a두리둥실&quot;"/>
+                          <Cell col="1" displaytype="normal" text="bind:EDUCATION_NAME" background="floralwhite" font="12pt &quot;a두리둥실&quot;"/>
+                          <Cell col="2" displaytype="normal" text="bind:EDUCATION_START" background="floralwhite" font="12pt &quot;a두리둥실&quot;"/>
+                          <Cell col="3" displaytype="normal" text="bind:EDUCATION_END" background="floralwhite" font="12pt &quot;a두리둥실&quot;"/>
+                          <Cell col="4" displaytype="normal" text="bind:EDUCATION_TEACHER" background="floralwhite" font="12pt &quot;a두리둥실&quot;"/>
+                          <Cell col="5" displaytype="normal" text="bind:EDUCATION_PLACE" background="floralwhite" font="12pt &quot;a두리둥실&quot;"/>
+                        </Band>
+                      </Format>
+                    </Formats>
+                  </Grid>
+                  <GroupBox id="GroupBox00" text="교육대상자 선택" taborder="9" left="11.29%" top="181" right="18.72%" height="434" titlealign="topcenter" color="goldenrod" font="12pt &quot;a두리둥실&quot;"/>
+                  <Button id="Button00" taborder="11" text="▶▶▶" onclick="Tab00_tabpage2_Button00_onclick" left="40.23%" top="262" right="46.71%" height="59" background="transparent" border="1px none rgba(153,153,153,1)" font="12pt &quot;a두리둥실&quot;"/>
+                  <Button id="Button01" taborder="12" text="◀◀◀" onclick="Tab00_tabpage2_Button01_onclick" left="40.05%" top="376" right="46.89%" height="59" background="transparent" border="1px none rgba(153,153,153,1)" font="12pt &quot;a두리둥실&quot;"/>
+                  <Button id="Button02" taborder="13" text="선택저장" left="42.33%" top="482" right="49.17%" height="42" onclick="Tab00_tabpage2_Button02_onclick" background="gold" border="1px none rgba(153,153,153,1)" borderRadius="100px / 30px" font="12pt &quot;a두리둥실&quot;" cursor="auto"/>
+                  <ListBox id="ListBox00" taborder="14" multiselect="true" innerdataset="@gds_employee" codecolumn="EMP_CODE" datacolumn="EMP_NAME" left="22.09%" top="233" right="60.21%" height="326" background="aliceblue" font="12pt &quot;a두리둥실&quot;"/>
+                  <ListBox id="ListBox01" taborder="15" multiselect="true" innerdataset="@ds_TargetCopy" codecolumn="EMP_CODE" datacolumn="EMP_NAME" left="53.46%" top="235" right="28.57%" height="323" onitemclick="Tab00_tabpage2_ListBox01_onitemclick" background="aliceblue" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="st1" taborder="16" text="전체직원목록" left="20.86%" top="211" right="70.03%" height="27" onclick="Tab00_tabpage2_Static00_onclick" border="1px none darkgray" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="st2" taborder="17" text="선택된직원목록" onclick="Tab00_tabpage2_Static00_onclick" left="52.23%" top="212" right="37.25%" height="27" border="1px none darkgray" font="12pt &quot;a두리둥실&quot;"/>
+                  <Static id="st00" taborder="18" text="※ Shift,Ctrl 다중선택 가능" onclick="Tab00_tabpage2_Static00_onclick" left="11.31%" top="574" right="72.3%" height="27" border="1px none darkgray" color="goldenrod" font="12pt &quot;a두리둥실&quot;"/>
+                </Layout>
+              </Layouts>
+              <InitValue>
+                <Combo id="Combo00" innerdataset="@ds_educationTraining" datacolumn="EDUCATION_NAME" codecolumn="EDUCATION_CODE"/>
+              </InitValue>
+            </Tabpage>
+          </Tabpages>
+        </Tab>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_employeeinfo">
+        <ColumnInfo>
+          <Column id="CHK" type="STRING" size="256"/>
+          <Column id="EMP_CODE" type="STRING" size="256"/>
+          <Column id="EMP_NAME" type="STRING" size="256"/>
+          <Column id="RESIDENT_NUMBER" type="STRING" size="256"/>
+          <Column id="BIRTH_DATE" type="STRING" size="256"/>
+          <Column id="GENDER" type="STRING" size="256"/>
+          <Column id="TEL" type="STRING" size="256"/>
+          <Column id="PHONE_NUMBER" type="STRING" size="256"/>
+          <Column id="NATIVE_TYPE_CODE" type="STRING" size="256"/>
+          <Column id="EMAIL" type="STRING" size="256"/>
+          <Column id="HIGHEST_EDUCATION_CODE" type="STRING" size="256"/>
+          <Column id="BASE_ADDRESS" type="STRING" size="256"/>
+          <Column id="DETAIL_ADDRESS" type="STRING" size="256"/>
+          <Column id="ZIP_CODE" type="STRING" size="256"/>
+          <Column id="IMG_SRC" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_educationTraining">
+        <ColumnInfo>
+          <Column id="DETAIL_CODE" type="STRING" size="256"/>
+          <Column id="DETAIL_CODE_NAME" type="STRING" size="256"/>
+          <Column id="EDUCATION_CODE" type="STRING" size="256"/>
+          <Column id="EDUCATION_NAME" type="STRING" size="256"/>
+          <Column id="EDUCATION_START" type="STRING" size="256"/>
+          <Column id="EDUCATION_END" type="STRING" size="256"/>
+          <Column id="EDUCATION_TEACHER" type="STRING" size="256"/>
+          <Column id="EDUCATION_PLACE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_educationTarget">
+        <ColumnInfo>
+          <Column id="EDUCATION_CODE" type="STRING" size="256"/>
+          <Column id="EDUCATION_NAME" type="STRING" size="256"/>
+          <Column id="EMP_CODE" type="STRING" size="256"/>
+          <Column id="EMP_NAME" type="STRING" size="256"/>
+          <Column id="EVALUATION_STATUS" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_eduCopy">
+        <ColumnInfo>
+          <Column id="DETAIL_CODE" type="STRING" size="256"/>
+          <Column id="DETAIL_CODE_NAME" type="STRING" size="256"/>
+          <Column id="EDUCATION_CODE" type="STRING" size="256"/>
+          <Column id="EDUCATION_NAME" type="STRING" size="256"/>
+          <Column id="EDUCATION_START" type="STRING" size="256"/>
+          <Column id="EDUCATION_END" type="STRING" size="256"/>
+          <Column id="EDUCATION_TEACHER" type="STRING" size="256"/>
+          <Column id="EDUCATION_PLACE" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_employee">
+        <ColumnInfo>
+          <Column id="EMP_CODE" type="STRING" size="256"/>
+          <Column id="EMP_NAME" type="STRING" size="256"/>
+          <Column id="PASSWORD" type="STRING" size="256"/>
+          <Column id="WORKPLACE_CODE" type="STRING" size="256"/>
+          <Column id="AUTHORITY_CODE" type="STRING" size="256"/>
+          <Column id="DEPT_CODE" type="STRING" size="256"/>
+          <Column id="BUSINESS_PLACE_CODE" type="STRING" size="256"/>
+          <Column id="POSITION_CODE" type="STRING" size="256"/>
+          <Column id="CHK" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_TargetCopy">
+        <ColumnInfo>
+          <Column id="EDUCATION_CODE" type="STRING" size="256"/>
+          <Column id="EDUCATION_NAME" type="STRING" size="256"/>
+          <Column id="EMP_CODE" type="STRING" size="256"/>
+          <Column id="EMP_NAME" type="STRING" size="256"/>
+          <Column id="EVALUATION_STATUS" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[/********************************************************************************                                                                            
+ 교육 입력화면
+ 
+ @Path      인사
+ @Description   교육 입력을 위한 상태창
+ @Author        임성훈
+ @Create           2019. 07. 24
+ ********************************************************************************/
+// 콜백메서드
+this.callback = function (trid, ErrorCode, ErrorMsg)
+{
+	if (trid == "educationTraining" || trid == "education" || trid == "addEducation" || trid == "education_search" || trid == "educationTarget1" || trid == "educationTarget2") 
+	{
+		if (ErrorCode < 0) 
+		{
+			alert("저장을 실패하였습니다" + ErrorMsg);
+		}
+		else 
+		{
+			if (trid == "educationTraining") 
+			{
+				alert("저장에 성공하였습니다.");
+			}
+			else if (trid == "educationTarget1") 
+			{
+				alert("대상자가 저장되었습니다.");
+			}
+
+
+
+			trace("성공");
+			// this.ds_educationTraining.filter("");
+			// var a=this.ds_educationTraining.getColumn(2,"EDUCATION_NAME");
+			// alert(this.ds_educationTraining.rowcount+a);
+			// this.reload();
+		}
+	}
+};
+
+// 폼온로드
+this.hr_EducationRegistration_onload = function (obj:Form, e:nexacro.LoadEventInfo)
+{
+	var id = "education";
+	var url = "dataURL::hr/pm/education.do";
+	var reqDs = "";
+	var respDs = "ds_educationTraining=ds_educationTraining";
+	var args = "";
+	var callback = "callback";
+	this.transaction(id, url, reqDs, respDs, args, callback, false);
+
+
+	var id2 = "educationTarget";
+	var url2 = "dataURL::hr/pm/educationTarget.do";
+	var reqDs2 = "";
+	var respDs2 = "ds_educationTarget=ds_educationTarget";
+	var args2 = "";
+	var callback = "callback";
+	this.transaction(id2, url2, reqDs2, respDs2, args2, callback, false);
+
+
+	this.ds_eduCopy.copyData(this.ds_educationTraining, true);
+
+
+
+	this.ds_eduCopy.filter("EDUCATION_CODE=='0'");
+	// this.ds_educationTarget.copyData(application.gds_employee,true);
+
+
+	nexacro.getApplication().gds_employee.filter("EMP_CODE=='0'");
+
+	// this.ds_educationTarget.filter("EMP_CODE=='0'");
+
+	// alert(application.gds_employee.rowcount);
+};
+
+
+
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ Tabpage1 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+
+var str1;
+var cheak;
+var value;
+// 셀클릭시 이벤트
+this.Tab00_tabpage1_Grid00_oncellclick = function (obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	this.cheak = null;
+
+	this.str1 = this.Tab00.tabpage1.form.Grid00.currentrow;
+
+	this.value = this.Tab00.tabpage1.form.Grid00.getCellValue(e.row, e.cell);
+	/*
+	 alert("currentrow-"+str1+"@ e.row-"+e.row);
+	 var rowpo=this.ds_educationTraining.rowposition;
+	 alert("rowposition : "+rowpo);
+	 */
+
+	switch (true) 
+	{
+		case this.value == null:
+			this.cheak = "N";
+			break;
+		case this.value != null:
+			this.cheak = "Y";
+			break;
+	}
+
+	if (e.cell == 0 || e.cell == 1) 
+	{
+		switch (this.cheak) 
+		{
+			case "N":
+				nexacro.open("modeless",
+					"hr_pm::hr_EducationCodeDialog.xfdl",
+					this.getOwnerFrame(),
+					{
+					mode : 'modeless',
+					ds : this.ds_educationTraining,
+					front : 's'
+				},
+					"showtitlebar=true showstatusbar=false openalign='center middle' showcascadetitletext=false titletext='dept'"
+				);
+				break;
+			case "Y":
+				trace("값이 바인딩 되있군요.");
+				break;
+		}
+	}
+};
+
+
+
+// 교육추가버튼
+var educationAddRow;
+this.educationAdd_btn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	this.educationAddRow = this.ds_educationTraining.addRow();
+
+	this.ds_educationTraining.setColumn(this.educationAddRow, "EDUCATION_CODE", "저장후 자동삽입됩니다");
+};
+
+
+
+// 일괄저장
+this.batch_btn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	// alert(this.ds_educationTraining.getColumn(e.row,"DETAIL_CODE"));
+
+
+	var id = "educationTraining";
+	var url = "dataURL::hr/pm/batchEducation.do";
+	var reqDs = "ds_educationTraining=ds_educationTraining:U";
+	var respDs = "";
+	var args = "";
+	var callback = "callback";
+
+	this.transaction(id, url, reqDs, respDs, args, callback, false);
+};
+
+
+// 삭제클릭
+this.educationDel_btn_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	this.ds_educationTraining.deleteRow(this.ds_educationTraining.rowposition);
+};
+
+
+
+/*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ Tabpage2 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+
+
+// >>> 클릭이벤트
+var ds_employeeRowCnt = null;
+var addInt = null;
+this.Tab00_tabpage2_Button00_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	var eduTargetTotalRow = new Number(this.ds_TargetCopy.rowcount);
+	var getRow = this.Tab00.tabpage2.form.ListBox00.getSelectedItems();
+	var select_Cnt = this.Tab00.tabpage2.form.ListBox00.getSelectedCount();
+	var totalGetRow = new String(getRow);
+	var aryItems = totalGetRow.split(",");
+	// alert("#aryItems  : "+aryItems+"\n"+"#dsEmployTotalRow  : "+dsEmployTotalRow);
+
+
+
+	for (var aItem in aryItems) 
+	{
+		var eCode = this.ds_eduCopy.getColumn(0, "EDUCATION_CODE");
+		var eName = this.ds_eduCopy.getColumn(0, "EDUCATION_NAME");
+
+		var dCode = nexacro.getApplication().gds_employee.getColumn(aryItems[aItem], "EMP_CODE");
+		var dName = nexacro.getApplication().gds_employee.getColumn(aryItems[aItem], "EMP_NAME");
+
+
+		// 데이터셋 저장된 값확인
+		// trace(dCode+"  :  "+dName+"\n"+eCode+"  :  "+eName);
+		var NumItem = new Number(aItem);
+		var nRow = new Number(eduTargetTotalRow + NumItem);
+
+		// this.ds_educationTarget.setColumn(nRow, "");
+
+
+		if (this.ds_TargetCopy.findRow("EMP_CODE", dCode) == -1) 
+		{
+			this.ds_TargetCopy.addRow();
+			this.ds_TargetCopy.setColumn(nRow, "EDUCATION_CODE", eCode);
+			this.ds_TargetCopy.setColumn(nRow, "EDUCATION_NAME", eName);
+			this.ds_TargetCopy.setColumn(nRow, "EMP_CODE", dCode);
+			this.ds_TargetCopy.setColumn(nRow, "EMP_NAME", dName);
+		}
+		else 
+		{
+			alert("중복된사원이 존재합니다..->" + dName);
+			// 데이터셋 전체해제.
+			for (i = 0; i < this.ds_educationTarget.getRowCount(); i++) 
+			{
+				this.Tab00.tabpage2.form.ListBox01.setSelect(i, false);
+			}
+			for (i = 0; i < nexacro.getApplication().gds_employee.getRowCount(); i++) 
+			{
+				this.Tab00.tabpage2.form.ListBox00.setSelect(i, false);
+			}
+
+			return;
+		}
+	}
+
+
+	// 데이터셋 전체해제.
+	for (i = 0; i < this.ds_educationTarget.getRowCount(); i++) 
+	{
+		this.Tab00.tabpage2.form.ListBox01.setSelect(i, false);
+	}
+	for (i = 0; i < nexacro.getApplication().gds_employee.getRowCount(); i++) 
+	{
+		this.Tab00.tabpage2.form.ListBox00.setSelect(i, false);
+	}
+};
+
+
+// 페이지2 콤보박스 아이템체인지 이벤트
+var eduCode = null;
+this.Tab00_tabpage2_Combo00_onitemchanged = function (obj:Combo, e:nexacro.ItemChangeEventInfo)
+{
+	this.eduCode = this.Tab00.tabpage2.form.Combo00.value;
+	// alert(this.eduCode);
+
+
+	nexacro.getApplication().gds_employee.filter("POSITION_CODE=='POS010'");
+	this.ds_TargetCopy.copyData(this.ds_educationTarget, true);
+
+	this.ds_eduCopy.filter("EDUCATION_CODE=='" + this.eduCode + "'");
+	this.ds_TargetCopy.filter("EDUCATION_CODE=='" + this.eduCode + "'");
+
+	// this.transaction("education", "dataURL::hr/pm/education.do", "", "ds_educationTraining=ds_educationTraining", "", "callback", false);
+	// this.ds_eduCopy.setColumn(0,"EDUCATION_CODE",this.eduCode);
+};
+
+
+
+
+
+// <<< 클릭시
+this.Tab00_tabpage2_Button01_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	var eduTargetTotalRow = new Number(this.ds_TargetCopy.rowcount);
+	var getRow = this.Tab00.tabpage2.form.ListBox01.getSelectedItems();
+	var select_Cnt = this.Tab00.tabpage2.form.ListBox01.getSelectedCount();
+	var totalGetRow = new String(getRow);
+	var aryItems = totalGetRow.split(",");
+
+	var target = 0;
+	var miNus = -1;
+	var rnt = this.ds_TargetCopy.rowcount;
+
+	this.ds_TargetCopy.deleteMultiRows(aryItems);
+
+
+	// 데이터셋 전체해제.
+	for (i = 0; i < this.ds_TargetCopy.getRowCount(); i++) 
+	{
+		this.Tab00.tabpage2.form.ListBox01.setSelect(i, false);
+	}
+	for (i = 0; i < nexacro.getApplication().gds_employee.getRowCount(); i++) 
+	{
+		this.Tab00.tabpage2.form.ListBox00.setSelect(i, false);
+	}
+};
+
+
+// 전체해제 더블클릭
+this.Tab00_tabpage2_Button02_ondblclick = function (obj:Button, e:nexacro.MouseEventInfo)
+{
+	for (i = 0; i < nexacro.getApplication().gds_employee.getRowCount(); i++) 
+	{
+		this.Tab00.tabpage2.form.ListBox00.setSelect(i, false);
+	}
+};
+
+// 전체해제
+this.Tab00_tabpage2_Button03_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	for (i = 0; i < this.ds_educationTarget.getRowCount(); i++) 
+	{
+		this.Tab00.tabpage2.form.ListBox01.setSelect(i, false);
+	}
+};
+
+// 선택저장버튼
+var clicks = null;
+this.Tab00_tabpage2_Button02_onclick = function (obj:Button, e:nexacro.ClickEventInfo)
+{
+	var id = "educationTarget1";
+	var url = "dataURL::hr/pm/batchEdutarget.do";
+	var reqDs = "ds_educationTarget=ds_TargetCopy:U";
+	var respDs = "";
+	var args = "";
+	var callback = "callback";
+
+	this.transaction(id, url, reqDs, respDs, args, callback, false);
+
+
+
+
+	var id2 = "educationTarget2";
+	var url2 = "dataURL::hr/pm/educationTarget.do";
+	var reqDs2 = "";
+	var respDs2 = "ds_educationTarget=ds_educationTarget";
+	var args2 = "";
+	var callback = "callback";
+	this.transaction(id2, url2, reqDs2, respDs2, args2, callback, false);
+};
+]]></Script>
+  </Form>
+</FDL>

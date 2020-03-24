@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.0">
+  <Form id="logi_ItemDialog" width="470" height="400" titletext="New Form" onload="logi_ItemDialog_onload">
+    <Layouts>
+      <Layout height="400" mobileorientation="landscape" width="470">
+        <Static id="sys_bisinessPlace_stc" taborder="0" text="품목코드" onclick="Static00_onclick" left="21" top="21" right="28" height="45" border="3px solid darkgray" color="dimgray" font="18pt/normal &quot;a두리둥실&quot;" textAlign="center"/>
+        <Grid id="grd_itemDialog" taborder="1" binddataset="ds_item" oncelldblclick="grd_itemDialog_oncelldblclick" left="22" top="87" width="420" height="279" font="12pt &quot;a두리둥실&quot;">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="120"/>
+                <Column size="120"/>
+                <Column size="60"/>
+                <Column size="120"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="품목코드" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="품목명" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" text="단위" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" text="표준단가" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:ITEM_CODE" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="1" text="bind:ITEM_NAME" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="2" text="bind:UNIT_OF_STOCK" font="12pt/normal &quot;a두리둥실&quot;"/>
+                <Cell col="3" text="bind:STANDARD_UNIT_PRICE" font="12pt/normal &quot;a두리둥실&quot;"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_item">
+        <ColumnInfo>
+          <Column id="ITEM_CODE" type="STRING" size="256"/>
+          <Column id="ITEM_NAME" type="STRING" size="256"/>
+          <Column id="ITEM_GROUP_CODE" type="STRING" size="256"/>
+          <Column id="ITEM_CLASSIFICATION" type="STRING" size="256"/>
+          <Column id="UNIT_OF_STOCK" type="STRING" size="256"/>
+          <Column id="LOSS_RATE" type="STRING" size="256"/>
+          <Column id="LEAD_TIME" type="STRING" size="256"/>
+          <Column id="STANDARD_UNIT_PRICE" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[// 다이얼로그 로드시 발생하는 이벤트
+this.logi_ItemDialog_onload = function (obj:Form, e:nexacro.LoadEventInfo)
+{
+	obj.transaction("findItemList",
+		"dataURL::logi/purchase/findItemList.do",
+		"",
+		"ds_item=ds_item",
+		"",
+		"callback");
+
+	this.ds_item.filter("ITEM_CLASSIFICATION!='IT-MA'");
+};
+
+
+
+var dn = "";
+
+this.grd_itemDialog_oncelldblclick = function (obj:Grid, e:nexacro.GridClickEventInfo)
+{
+	dn = this.opener.dialogName;
+	
+	var selitemCode = this.ds_item.getColumn(e.row, "ITEM_CODE");
+	var selitemName = this.ds_item.getColumn(e.row, "ITEM_NAME");
+	var selunitOfStock = this.ds_item.getColumn(e.row, "UNIT_OF_STOCK");
+	var selstandardUnitPrice = this.ds_item.getColumn(e.row, "STANDARD_UNIT_PRICE");
+
+	if (dn == "CustomerDialog")
+	{
+		this.opener.ds_estimateDetail.setColumn(this.opener.position, "ITEM_CODE", selitemCode);
+		this.opener.ds_estimateDetail.setColumn(this.opener.position, "ITEM_NAME", selitemName);
+		this.opener.ds_estimateDetail.setColumn(this.opener.position, "UNIT_OF_ESTIMATE", selunitOfStock);
+		this.opener.ds_estimateDetail.setColumn(this.opener.position, "UNIT_PRICE_OF_ESTIMATE", selstandardUnitPrice);
+	}
+	
+	this.close();
+	//this.close(selitemCode + "/" + selitemName + "/" + selunitOfStock + "/" + selstandardUnitPrice);
+};
+]]></Script>
+  </Form>
+</FDL>
